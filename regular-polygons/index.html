@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Κανονικό εξάγωνο και οκτάγωνο · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για τη Β΄ Γυμνασίου: κατασκευή κανονικού εξαγώνου και κανονικού οκταγώνου με κανόνα και διαβήτη, κεντρική γωνία ω = 360° : ν και γωνία φ = 180° − ω.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.plain{background-image:none!important}
+.pink{color:var(--pink)}.orange{color:#b4560c}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.modes{display:flex;flex-wrap:wrap;gap:6px}
+.modes .btn,.shapes .btn{padding:3px 10px;font-size:14px}
+.modes .btn[aria-pressed="true"],.shapes .btn[aria-pressed="true"]{background:var(--orange);border-color:#b4560c;color:#fff;box-shadow:0 3px 0 #b4560c}
+.shapes{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:6px}
+.radius{display:grid;grid-template-columns:minmax(0,1fr);padding:10px 14px 12px;border-top:2.5px dashed #cfe0f7}
+.hop-count{font-weight:800;color:var(--purple)}
+.table.poly{grid-template-columns:auto auto auto}
+</style>
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Β΄ Γυμνασίου · Γεωμετρία</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Κανονικό εξάγωνο και οκτάγωνο –</span> <span class="t2">με κανόνα και διαβήτη</span></h1>
+    <p>Γεωμετρία του επιπέδου | Β΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Πρόβλημα</span>Οι μέλισσες χτίζουν την κηρήθρα τους με <b class="red">κανονικά εξάγωνα</b> (σελ. 116). Πώς σχεδιάζουμε ένα κανονικό εξάγωνο στο τετράδιο; Κι ένα <b class="red">κανονικό οκτάγωνο</b>;</p>
+      <p>Ένα πολύγωνο λέγεται <span class="hl b">κανονικό</span>, όταν έχει <strong>όλες τις πλευρές του ίσες</strong> και <strong>όλες τις γωνίες του ίσες</strong> (σελ. 117).</p>
+      <p>Δοκίμασε στο σχήμα: βάλε κανονικά πλακάκια γύρω από ένα σημείο. <span class="hl y">Ποια κλείνουν χωρίς κενά;</span></p>
+      <p>Το βιβλίο χωρίζει τον κύκλο σε ίσα τόξα με την κεντρική γωνία (σελ. 117–121). Εδώ θα δεις ότι το εξάγωνο και το οκτάγωνο γίνονται <span class="hl g">μόνο με κανόνα και διαβήτη</span>!</p>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να κατασκευάζεις κανονικό εξάγωνο με κανόνα και διαβήτη.</span></li>
+          <li><b>Σ2</b><span>Να κατασκευάζεις κανονικό οκτάγωνο από ένα τετράγωνο, με τις μεσοκαθέτους των πλευρών του.</span></li>
+          <li><b>Σ3</b><span>Να υπολογίζεις την κεντρική γωνία ω = 360° : ν και τη γωνία φ = 180° − ω ενός κανονικού ν-γώνου.</span></li>
+          <li><b>Σ4</b><span>Να εξηγείς γιατί μόνο τα τρίγωνα, τα τετράγωνα και τα εξάγωνα στρώνουν ένα πάτωμα.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">Διάλεξε σχήμα και πάτα «+» για να βάλεις πλακάκια!</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box">
+        <div class="shapes" role="group" aria-label="Διάλεξε κανονικό πολύγωνο">
+          <button class="btn ghost" type="button" data-n="3" aria-pressed="false">τρίγωνο</button><button class="btn ghost" type="button" data-n="4" aria-pressed="false">τετράγωνο</button><button class="btn ghost" type="button" data-n="5" aria-pressed="false">πεντάγωνο</button><button class="btn ghost" type="button" data-n="6" aria-pressed="true">εξάγωνο</button><button class="btn ghost" type="button" data-n="8" aria-pressed="false">οκτάγωνο</button>
+        </div>
+        <svg id="tiles" viewBox="-150 -150 300 300" role="img" aria-label="Κανονικά πλακάκια γύρω από ένα σημείο"></svg>
+        <div class="btnrow" style="justify-content:center"><button class="btn" id="addTile" type="button">+ Βάλε πλακάκι</button><button class="btn ghost" id="tileReset" type="button">↺</button></div>
+        <p class="result" id="tileMsg" aria-live="polite" style="margin:4px 0 0;font-size:14.5px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Τι χρειαζόμαστε -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Τι χρειαζόμαστε</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico" aria-hidden="true">📏</span>Κανόνας<small>για διαμέτρους και πλευρές</small></div>
+    <div class="chip c2"><span class="ico" aria-hidden="true">🧭</span>Διαβήτης<small>ένα άνοιγμα για όλο το εξάγωνο</small></div>
+    <div class="chip c3">ΟΑ = ΟΒ = ρ<small>όλες οι ακτίνες είναι ίσες</small></div>
+    <div class="chip c4">ω = 360° : ν<small>κεντρική γωνία (σελ. 118)</small></div>
+    <div class="chip c5">ω + φ = 180°<small>γωνία του πολυγώνου (σελ. 120)</small></div>
+    <div class="chip c6">μεσοκάθετος<small>από την Α΄ Γυμνασίου</small></div>
+  </div>
+</section>
+
+<!-- 3. Η κατασκευή -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Η κατασκευή με κανόνα και διαβήτη</h2></div>
+  <p class="lead">Διάλεξε <b>εξάγωνο</b> ή <b>οκτάγωνο</b> και κάνε την κατασκευή μόνος σου, βήμα-βήμα. Σέρνε τη <span class="hl v">μωβ τελεία</span> του διαβήτη ή χρησιμοποίησε τις μπάρες και τα κουμπιά. Τα τετραγωνάκια είναι 1 cm.</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><div class="modes" role="group" aria-label="Ποιο πολύγωνο"><button class="btn ghost" type="button" data-mode="6" aria-pressed="true">Εξάγωνο</button><button class="btn ghost" type="button" data-mode="8" aria-pressed="false">Οκτάγωνο</button></div><span class="tag" id="rTag">ρ = 3 cm</span></div>
+      <div class="stage-fig plain"><svg id="stage" viewBox="-360 -260 720 520" role="img" aria-label="Η κατασκευή του κανονικού πολυγώνου"></svg></div>
+      <div class="stepbar">
+        <button class="btn ghost" id="prev" type="button">◀ Πίσω</button>
+        <ol class="dots" aria-label="Βήματα">
+          <li><button type="button" data-go="1" aria-label="Βήμα 1">1</button></li>
+          <li><button type="button" data-go="2" aria-label="Βήμα 2">2</button></li>
+          <li><button type="button" data-go="3" aria-label="Βήμα 3">3</button></li>
+          <li><button type="button" data-go="4" aria-label="Βήμα 4">4</button></li>
+          <li><button type="button" data-go="5" aria-label="Βήμα 5">5</button></li>
+          <li><button type="button" data-go="6" aria-label="Βήμα 6">6</button></li>
+        </ol>
+        <button class="btn" id="next" type="button">Επόμενο ▶</button>
+      </div>
+      <div class="radius">
+        <div class="range-label"><label for="rr">Ακτίνα ρ του κύκλου</label><strong id="rrText">3 cm</strong></div>
+        <input id="rr" type="range" min="4" max="8" value="6">
+      </div>
+    </div>
+
+    <aside class="step-card" id="card" aria-live="polite">
+      <p class="step-count" id="stepCount">Βήμα 1 από 6</p>
+      <div class="step-head"><span class="letter" id="stepNum">1</span><h3 id="stepTitle">Ο κύκλος (Ο, ρ)</h3></div>
+      <span class="tool" id="stepTool">🧭 Διαβήτης</span>
+
+      <!-- κοινό βήμα 1 -->
+      <div class="step-text" data-mode="all" data-step="1" data-title="Ο κύκλος (Ο, ρ)" data-tool="🧭 Διαβήτης">
+        <p>Κάθε κανονικό πολύγωνο χωράει μέσα σε έναν κύκλο, τον <span class="hl p">περιγεγραμμένο κύκλο</span> (σελ. 118). Βάζουμε τη μύτη του διαβήτη στο <b>Ο</b> και γράφουμε κύκλο με ακτίνα <b>ρ</b>.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sw1">Γύρισε τον διαβήτη</label><strong id="sw1Text">0%</strong></div>
+          <input id="sw1" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto1" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="done1">✓ Ο κύκλος είναι έτοιμος: ένα τόξο 360°.</div>
+        </div>
+        <p style="font-size:15px">Την ακτίνα ρ μπορείς να την αλλάξεις κάτω από το σχήμα, σε όποιο βήμα θέλεις.</p>
+      </div>
+
+      <!-- Εξάγωνο -->
+      <div class="step-text" data-mode="6" data-step="2" data-title="Το πρώτο τόξο" data-tool="🧭 Διαβήτης" hidden>
+        <p>Παίρνουμε ένα σημείο <b class="red">Α</b> πάνω στον κύκλο. <strong>Χωρίς να αλλάξουμε το άνοιγμα</strong> του διαβήτη, βάζουμε τη μύτη στο Α και γράφουμε ένα τόξο που κόβει τον κύκλο στο <b class="red">Β</b>.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sw2">Γύρισε τον διαβήτη</label><strong id="sw2Text">0%</strong></div>
+          <input id="sw2" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto2" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="done2">✓ Το Β απέχει από το Α όσο το άνοιγμα: <b>ΑΒ = ρ</b>.</div>
+        </div>
+      </div>
+      <div class="step-text" data-mode="6" data-step="3" data-title="Ο διαβήτης «περπατά»" data-tool="🧭 Διαβήτης" hidden>
+        <p>Με <strong>το ίδιο άνοιγμα</strong>: μύτη στο Β, τόξο, και βρίσκουμε το Γ. Μύτη στο Γ, και βρίσκουμε το Δ. Συνεχίζουμε γύρω-γύρω.</p>
+        <p class="hop-count" id="hopText">Τόξα: 1 από 6</p>
+        <div class="btnrow"><button class="btn violet" id="hop" type="button">▶ Επόμενο τόξο</button><button class="btn ghost" id="hopAll" type="button">⏩ Όλα τα τόξα</button></div>
+        <div class="success" id="done3">🎯 Το 6ο τόξο έπεσε <b>ακριβώς</b> πάνω στο Α! Η ακτίνα «χωράει» ακριβώς 6 φορές στον κύκλο.</div>
+      </div>
+      <div class="step-text" data-mode="6" data-step="4" data-title="Το κανονικό εξάγωνο" data-tool="📏 Κανόνας" hidden>
+        <p>Ενώνουμε με τον κανόνα τις διαδοχικές κορυφές <b>Α, Β, Γ, Δ, Ε, Ζ</b>.</p>
+        <p>Τα 6 τόξα είναι ίσα, άρα και οι χορδές τους είναι ίσες (σελ. 118): όλες οι πλευρές είναι ίσες με <b>ρ</b>. Έχει και όλες τις γωνίες ίσες, άρα είναι <span class="hl y">κανονικό εξάγωνο</span>!</p>
+      </div>
+      <div class="step-text" data-mode="6" data-step="5" data-title="Γιατί ακριβώς 6 φορές;" data-tool="✏️ Μολύβι" hidden>
+        <p>Ενώνουμε το Ο με τις κορυφές. Στο τρίγωνο ΟΑΒ: <b>ΟΑ = ΟΒ = ρ</b> (ακτίνες) και <b>ΑΒ = ρ</b> (το άνοιγμα του διαβήτη). Είναι <strong>ισόπλευρο</strong>, άρα όλες οι γωνίες του είναι 60° (σελ. 119).</p>
+        <div class="fbox">ω = 60° και 6 × 60° = 360°</div>
+        <p>Η γωνία του εξαγώνου αποτελείται από δύο γωνίες 60°: <b>φ = 120°</b>.</p>
+      </div>
+      <div class="step-text" data-mode="6" data-step="6" data-title="Μπόνους: ισόπλευρο τρίγωνο" data-tool="📏 Κανόνας" hidden>
+        <p>Ενώνουμε <strong>κάθε δεύτερη</strong> κορυφή: <b class="orange">Α, Γ, Ε</b>. Παίρνουμε ένα <span class="hl o">ισόπλευρο τρίγωνο</span> εγγεγραμμένο στον κύκλο, με κεντρική γωνία ω = 120° (σελ. 118).</p>
+        <div class="btnrow"><button class="btn ghost" id="star" type="button">✶ Ένωσε και τα Β, Δ, Ζ</button></div>
+        <p class="result miss" id="starMsg" hidden>Δύο ισόπλευρα τρίγωνα μαζί κάνουν ένα <b>εξάκτινο αστέρι</b>!</p>
+      </div>
+
+      <!-- Οκτάγωνο -->
+      <div class="step-text" data-mode="8" data-step="2" data-title="Μια διάμετρος ΑΓ" data-tool="📏 Κανόνας" hidden>
+        <p>Με τον κανόνα φέρνουμε μια <span class="hl b">διάμετρο</span> <b>ΑΓ</b>, δηλαδή μια χορδή που περνά από το κέντρο Ο.</p>
+        <p>Για το τετράγωνο χρειαζόμαστε και μια δεύτερη διάμετρο, <strong>κάθετη</strong> στην ΑΓ. Πώς θα τη βρούμε χωρίς γνώμονα;</p>
+      </div>
+      <div class="step-text" data-mode="8" data-step="3" data-title="Η μεσοκάθετος της ΑΓ" data-tool="🧭 Διαβήτης" hidden>
+        <p>Όπως στη <a href="../perpendicular-bisector/">μεσοκάθετο</a>: γράφουμε δύο τόξα με κέντρα <b>Α</b> και <b>Γ</b> και το ίδιο άνοιγμα, μεγαλύτερο από ΑΓ : 2.</p>
+        <p>Η ευθεία από τα σημεία τομής τους είναι κάθετη στην ΑΓ, περνά από το <b>Ο</b> και κόβει τον κύκλο στα <b class="red">Β</b> και <b class="red">Δ</b>.</p>
+        <div class="btnrow"><button class="btn ghost" id="replay3" type="button">↺ Δείξε το ξανά</button></div>
+      </div>
+      <div class="step-text" data-mode="8" data-step="4" data-title="Το τετράγωνο ΑΒΓΔ" data-tool="📏 Κανόνας" hidden>
+        <p>Δύο κάθετες διάμετροι χωρίζουν τον κύκλο σε <strong>4 ίσα τόξα</strong> των 90°. Ενώνουμε τα Α, Β, Γ, Δ: ένα κανονικό τετράπλευρο, δηλαδή <span class="hl y">τετράγωνο</span> (σελ. 119).</p>
+        <div class="fbox">ω = 360° : 4 = 90°</div>
+      </div>
+      <div class="step-text" data-mode="8" data-step="5" data-title="Οι μεσοκάθετοι των πλευρών" data-tool="🧭 Διαβήτης" hidden>
+        <p>Φέρνουμε τη μεσοκάθετο της πλευράς <b>ΑΒ</b>. Περνά από το <b>Ο</b>, γιατί το Ο ισαπέχει από τα Α και Β (ΟΑ = ΟΒ = ρ)! Κόβει το τόξο ΑΒ στη μέση, στο <b class="red">Ε</b>.</p>
+        <p>Το ίδιο κάνουμε με την πλευρά <b>ΒΓ</b>. Βρίσκουμε τα <b class="red">Ζ, Η, Θ</b>.</p>
+        <p class="ask">Οι μεσοκάθετοι των απέναντι πλευρών είναι η ίδια ευθεία, άρα αρκούν δύο!</p>
+        <div class="btnrow"><button class="btn ghost" id="replay5" type="button">↺ Δείξε το ξανά</button></div>
+      </div>
+      <div class="step-text" data-mode="8" data-step="6" data-title="Το κανονικό οκτάγωνο" data-tool="📏 Κανόνας" hidden>
+        <p>Ενώνουμε τα 8 σημεία με τη σειρά: <b>Α, Ε, Β, Ζ, Γ, Η, Δ, Θ</b>. Ο κύκλος χωρίστηκε σε 8 ίσα τόξα των 45°: είναι <span class="hl y">κανονικό οκτάγωνο</span> (σελ. 121).</p>
+        <div class="fbox">ω = 360° : 8 = 45° &nbsp;·&nbsp; φ = 180° − 45° = 135°</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. Γιατί δουλεύει -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Γιατί δουλεύει η κατασκευή;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Έξι ισόπλευρα τρίγωνα</h3>
+      <svg class="fig" id="hexFig" viewBox="-120 -110 240 220" role="img" aria-label="Κανονικό εξάγωνο χωρισμένο σε 6 ισόπλευρα τρίγωνα με κοινή κορυφή το κέντρο Ο" style="max-width:260px"></svg>
+      <p>Κάθε τρίγωνο έχει δύο πλευρές ακτίνες (ρ) και τρίτη πλευρά το άνοιγμα του διαβήτη (ρ). Είναι <strong>ισόπλευρο</strong>, με γωνίες 60°.</p>
+      <p>Έξι γωνίες των 60° γύρω από το Ο κάνουν <b>360°</b>. Γι' αυτό η ακτίνα χωράει ακριβώς 6 φορές στον κύκλο, <strong>όποιο κι αν είναι το ρ</strong>!</p>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Κεντρική γωνία ω και γωνία φ</h3>
+      <svg class="fig" id="angFig" viewBox="-115 -115 230 230" role="img" aria-label="Κανονικό πολύγωνο εγγεγραμμένο σε κύκλο, με την κεντρική γωνία ω και τη γωνία φ" style="max-width:250px"></svg>
+      <div class="range-label" style="margin-top:4px"><label for="nn">Πλήθος πλευρών ν</label><strong id="nnText">5</strong></div>
+      <input id="nn" type="range" min="3" max="12" value="5">
+      <p class="result" id="angMsg" aria-live="polite" style="margin:8px 0 4px;font-size:14.5px"></p>
+      <p>Τα τρίγωνα με κορυφή το Ο είναι ισοσκελή, με γωνίες βάσης φ : 2 (σελ. 120). Άρα ω + φ : 2 + φ : 2 = 180°, δηλαδή <b>ω + φ = 180°</b>.</p>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Η μεσοκάθετος κόβει το τόξο στη μέση</h3>
+      <svg class="fig" id="bisFig" viewBox="-110 -110 220 220" role="img" aria-label="Τετράγωνο σε κύκλο. Η μεσοκάθετος της πλευράς ΑΒ περνά από το Ο και χωρίζει το τόξο ΑΒ σε δύο τόξα των 45 μοιρών." style="max-width:250px"></svg>
+      <p>Το Ο ισαπέχει από τα Α και Β, άρα είναι πάνω στη μεσοκάθετο της ΑΒ. Η μεσοκάθετος είναι <strong>άξονας συμμετρίας</strong>: χωρίζει το τόξο ΑΒ των 90° σε δύο ίσα τόξα των 45°.</p>
+      <div class="fbox blue">μεσοκάθετοι των πλευρών → διπλάσιες πλευρές</div>
+      <p>Έτσι από το τετράγωνο φτιάχνουμε οκτάγωνο, και από το εξάγωνο δωδεκάγωνο (δες την πρόκληση).</p>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Γιατί οι μέλισσες διαλέγουν εξάγωνα;</h3>
+      <div class="table poly">
+        <span class="th">πολύγωνο</span><span class="th">γωνία φ</span><span class="th">360° : φ</span>
+        <span>τρίγωνο</span><span>60°</span><span class="lt">6 ✓</span>
+        <span>τετράγωνο</span><span>90°</span><span class="lt">4 ✓</span>
+        <span>πεντάγωνο</span><span>108°</span><span class="gt">3,33… ✗</span>
+        <span>εξάγωνο</span><span>120°</span><span class="lt">3 ✓</span>
+        <span>οκτάγωνο</span><span>135°</span><span class="gt">2,66… ✗</span>
+      </div>
+      <p>Για να κλείσουν τα πλακάκια γύρω από μια κορυφή, οι γωνίες τους πρέπει να κάνουν ακριβώς <b>360°</b>. Αυτό γίνεται μόνο με τρίγωνα, τετράγωνα και εξάγωνα: είναι τα <strong>κανονικά πλακόστρωτα</strong> (σελ. 204).</p>
+      <p>Από τα τρία, το εξάγωνο κλείνει τον περισσότερο χώρο με την ίδια περίμετρο: περισσότερο μέλι με λιγότερο κερί! Ο Πάππος ο Αλεξανδρεύς έγραφε γι' αυτό τον 4ο αιώνα μ.Χ., αλλά η πλήρης απόδειξη ήρθε μόλις το 1999, από τον Thomas Hales.</p>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>η ακτίνα χωράει ακριβώς 6 φορές στον κύκλο, γιατί τα τρίγωνα ΟΑΒ είναι ισόπλευρα. Οι μεσοκάθετοι των πλευρών διπλασιάζουν τις πλευρές: από 4 σε 8. Για κάθε κανονικό ν-γωνο: ω = 360° : ν και ω + φ = 180°</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Με κανόνα και διαβήτη κατασκευάζονται το τρίγωνο, το τετράγωνο, το πεντάγωνο, το εξάγωνο, το οκτάγωνο, αλλά <strong>όχι</strong> το κανονικό επτάγωνο ή το εννιάγωνο! Το 1796 ο Carl Friedrich Gauss, μόλις 18 χρονών, ανακάλυψε ότι κατασκευάζεται το κανονικό <strong>17-γωνο</strong>, κάτι που κανείς δεν είχε βρει για 2.000 χρόνια. Ήθελε να χαραχτεί ένα 17-γωνο στον τάφο του. Ο λιθοξόος αρνήθηκε, γιατί θα έμοιαζε με κύκλο. Στο μνημείο του στο Μπράουνσβαϊγκ υπάρχει ένα αστέρι με 17 ακτίνες.</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Σ"><span class="n">1</span><span class="stmt">Το ισόπλευρο τρίγωνο είναι κανονικό πολύγωνο.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Έχει όλες τις πλευρές ίσες και όλες τις γωνίες ίσες (60°).</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">2</span><span class="stmt">Ο ρόμβος είναι κανονικό πολύγωνο.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Έχει ίσες πλευρές, αλλά όχι πάντα ίσες γωνίες. Κανονικός ρόμβος είναι μόνο το τετράγωνο.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">3</span><span class="stmt">Η κεντρική γωνία του κανονικού οκταγώνου είναι 45°.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> ω = 360° : 8 = 45°.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">4</span><span class="stmt">Η γωνία φ του κανονικού εξαγώνου είναι 60°.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 60° είναι η κεντρική γωνία ω. Η γωνία του εξαγώνου είναι φ = 180° − 60° = 120°.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">5</span><span class="stmt">Η πλευρά του κανονικού εξαγώνου είναι ίση με την ακτίνα του κύκλου του.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Τα τρίγωνα ΟΑΒ είναι ισόπλευρα, άρα ΑΒ = ΟΑ = ρ.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">6</span><span class="stmt">Με κανονικά πεντάγωνα στρώνουμε ένα πάτωμα χωρίς κενά.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 3 × 108° = 324°: μένει κενό 36°, και ένα 4ο πεντάγωνο δεν χωράει.</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση (άσκηση 10, σελ. 123):</b> Υπολόγισε την κεντρική γωνία του κανονικού <b>6-γώνου</b> και του κανονικού <b>12-γώνου</b>. Τι παρατηρείς; Πώς θα κατασκευάσεις ένα κανονικό 12-γωνο με κανόνα και διαβήτη;</p></div>
+<div class="mini">
+  <div class="mini-head"><h3>Διπλασίασε τις πλευρές</h3><div class="btnrow" style="margin:0"><button class="btn violet" id="dblBtn" type="button">✂ Φέρε τις μεσοκαθέτους</button><button class="btn ghost" id="dblReset" type="button">↺</button></div></div>
+  <div class="stage-fig plain"><svg id="dbl" viewBox="-200 -150 400 300" role="img" aria-label="Ένα κανονικό πολύγωνο σε κύκλο. Οι μεσοκάθετοι των πλευρών του διπλασιάζουν τις κορυφές."></svg></div>
+  <p class="readout" id="dblMsg" aria-live="polite"></p>
+</div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Οι κεντρικές γωνίες:</strong></p>
+<div class="fbox">ω₆ = 360° : 6 = 60° &nbsp;·&nbsp; ω₁₂ = 360° : 12 = 30°</div>
+<p><strong>Παρατήρηση:</strong> με διπλάσιες πλευρές, η κεντρική γωνία γίνεται η <strong>μισή</strong>. Κάθε τόξο των 60° χωρίζεται σε δύο τόξα των 30°.</p>
+<p><strong>Κατασκευή:</strong> κάνε το κανονικό εξάγωνο (βήματα 1–4). Φέρε τις μεσοκαθέτους των πλευρών του: περνούν από το Ο και κόβουν κάθε τόξο στη μέση. Οι 6 παλιές και οι 6 νέες κορυφές δίνουν το 12-γωνο, με γωνία φ = 180° − 30° = 150°.</p>
+<p class="final">Απάντηση: ω₁₂ = 30° = ω₆ : 2, και το 12-γωνο φτιάχνεται από το εξάγωνο με τις μεσοκαθέτους των πλευρών του</p>
+<p>Αν συνεχίσεις να διπλασιάζεις, το πολύγωνο μοιάζει όλο και περισσότερο με τον κύκλο. Ο Αρχιμήδης έφτασε έτσι μέχρι το 96-γωνο, για να υπολογίσει τον αριθμό π!</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a><a href="../perpendicular-bisector/">Δες και: η μεσοκάθετος →</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+<script src="../assets/lesson.js"></script>
+<script>
+(() => {
+'use strict';
+const { fmt, animate, stop, ease } = MathLab;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const C = { ink: '#1f2a5c', muted: '#4b5682', blue: '#2c6fd6', red: '#e0313b', green: '#2f8a4e', purple: '#8a5cf0', pink: '#e2508c', orange: '#f08a1c', gray: '#59627f', grid: '#e8eef8', amber: '#b4560c', honey: '#ffd36b', honeyD: '#c98a12' };
+const TAU = Math.PI * 2, DEG = Math.PI / 180, EPS = 1e-6;
+const f2 = v => v.toFixed(2);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const dist = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
+const num = v => (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : fmt(v, 1));
+const deg = v => (Math.abs(v - Math.round(v)) < 0.05 ? String(Math.round(v)) : fmt(v, 1)) + '°';
+const dir = a => [Math.cos(a), Math.sin(a)];
+const add = (p, q, k = 1) => [p[0] + k * q[0], p[1] + k * q[1]];
+const sub = (p, q) => [p[0] - q[0], p[1] - q[1]];
+const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+const ang = (p, q) => Math.atan2(q[1] - p[1], q[0] - p[0]);   // γωνία της κατεύθυνσης p → q
+
+/* «Μολύβι» για SVG: μαθηματικές συντεταγμένες (ο y προς τα πάνω), U pixel ανά μονάδα. */
+function pen(U, fs, g) {
+  const X = x => f2(x * U), Y = y => f2(-y * U);
+  const pts = ps => ps.map(p => X(p[0]) + ',' + Y(p[1])).join(' ');
+  return {
+    U, fs, g, X, Y, pts,
+    line: (a, b, col, w, extra = '') => `<line x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`,
+    dot: (p, col, r = 6) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="${col}" stroke="#fff" stroke-width="${f2(2.2 * g)}"/>`,
+    text: (p, s, o = {}) => `<text x="${f2(p[0] * U + (o.dx || 0))}" y="${f2(-p[1] * U + (o.dy || 0))}" font-size="${f2((o.size || 1) * fs)}" font-weight="${o.w || 800}" fill="${o.col || C.ink}" text-anchor="${o.anchor || 'middle'}" stroke="#fff" stroke-width="${f2(5 * g)}" stroke-linejoin="round" paint-order="stroke"${o.op != null ? ` opacity="${f2(o.op)}"` : ''}>${s}</text>`,
+    grip: (p, name, r = 26) => `<circle data-grip="${name}" class="grip" cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="transparent"/>`,
+    arc: (c, r, a0, da, col, w = 3, extra = '') => {
+      if (da <= 0.001) return '';
+      if (da >= TAU - 0.001) return `<circle cx="${X(c[0])}" cy="${Y(c[1])}" r="${f2(r * U)}" fill="none" stroke="${col}" stroke-width="${f2(w * g)}" ${extra}/>`;
+      const R = f2(r * U), p0 = add(c, dir(a0), r), p1 = add(c, dir(a0 + da), r);
+      return `<path d="M${X(p0[0])} ${Y(p0[1])}A${R} ${R} 0 ${da > Math.PI ? 1 : 0} 0 ${X(p1[0])} ${Y(p1[1])}" fill="none" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`;
+    },
+    tick: (a, b, n, col) => {
+      const m = mid(a, b), d = dist(a, b), v = [(b[0] - a[0]) / d, (b[1] - a[1]) / d], u = [-v[1], v[0]], s = 7 / U, gap = 5 / U;
+      let o = '';
+      for (let i = 0; i < n; i++) { const c = add(m, v, (i - (n - 1) / 2) * gap); o += `<line x1="${X(c[0] - u[0] * s)}" y1="${Y(c[1] - u[1] * s)}" x2="${X(c[0] + u[0] * s)}" y2="${Y(c[1] + u[1] * s)}" stroke="${col}" stroke-width="${f2(2.4 * g)}" stroke-linecap="round"/>`; }
+      return o;
+    }
+  };
+}
+function compass(P, c, r, phi, active) {
+  const d = dir(phi), n = [-d[1], d[0]], tip = add(c, d, r);
+  const H = add(add(c, d, r / 2), n, 0.42 * r), Hh = add(H, n, 0.5);
+  let s = `<g opacity="0.85">${P.line(c, H, C.gray, 5)}${P.line(H, tip, C.gray, 5)}${P.line(H, Hh, C.gray, 8)}<circle cx="${P.X(H[0])}" cy="${P.Y(H[1])}" r="${f2(8 * P.g)}" fill="${C.orange}" stroke="#fff" stroke-width="${f2(2 * P.g)}"/></g>`;
+  if (active) s += `<circle class="halo" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(17 * P.g)}" fill="${C.purple}" opacity="0.2"/>`;
+  s += `<circle cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(9.5 * P.g)}" fill="${C.purple}" stroke="#fff" stroke-width="${f2(3 * P.g)}"/>`;
+  return { s, tip };
+}
+// κορυφές κανονικού ν-γώνου σε κύκλο (κέντρο c, ακτίνα r), από τη γωνία a0
+const ngon = (c, r, n, a0) => Array.from({ length: n }, (_, k) => add(c, dir(a0 + k * TAU / n), r));
+// τόξο γωνίας στην κορυφή V ανάμεσα στις κατευθύνσεις προς p και q (το μικρό)
+function angleArc(P, V, p, q, rad, col, w = 2.4) {
+  let a1 = ang(V, p), a2 = ang(V, q), d = a2 - a1;
+  while (d <= -Math.PI) d += TAU; while (d > Math.PI) d -= TAU;
+  return d >= 0 ? P.arc(V, rad, a1, d, col, w) : P.arc(V, rad, a2, -d, col, w);
+}
+const bis = (V, p, q) => { const u = dir(ang(V, p)), v = dir(ang(V, q)), s = [u[0] + v[0], u[1] + v[1]], l = Math.hypot(...s) || 1; return [s[0] / l, s[1] / l]; };
+const NAMES = { 3: 'τρίγωνα', 4: 'τετράγωνα', 5: 'πεντάγωνα', 6: 'εξάγωνα', 8: 'οκτάγωνα' };
+
+/* ---------- 1. Πλακάκια γύρω από ένα σημείο ---------- */
+{
+  const svg = $('#tiles'), U = 46, T = { n: 6, count: 1 };
+  const phiOf = n => 180 - 360 / n;
+  function tile(n, start) {          // κανονικό ν-γωνο με κορυφή στο (0,0) και γωνία από το start έως start + φ
+    const ext = 360 / n, p = [[0, 0]];
+    let a = start;
+    for (let i = 1; i < n; i++) { p.push(add(p[i - 1], dir(a * DEG), 1)); a += ext; }
+    return p;
+  }
+  function draw() {
+    const P = pen(U, 15, 1), phi = phiOf(T.n), total = T.count * phi, over = total > 360 + EPS, closed = Math.abs(total - 360) < EPS;
+    let s = '';
+    if (!over && !closed) {           // ό,τι μένει γύρω από το σημείο
+      const left = 360 - total, a0 = total * DEG;
+      s += `<path d="M0 0L${P.X(Math.cos(a0) * 0.9)} ${P.Y(Math.sin(a0) * 0.9)}A${f2(0.9 * U)} ${f2(0.9 * U)} 0 ${left > 180 ? 1 : 0} 0 ${P.X(0.9)} ${P.Y(0)}Z" fill="${(T.count + 1) * phi > 360 + EPS ? '#ffd9dc' : '#eef3fb'}"/>`;
+      s += P.text(dir((total + left / 2) * DEG).map(v => v * 1.3), deg(left), { dy: 5, col: (T.count + 1) * phi > 360 + EPS ? C.red : C.muted, size: 0.85 });
+    }
+    for (let i = 0; i < T.count; i++) {
+      const bad = i * phi + phi > 360 + EPS;
+      s += `<polygon points="${P.pts(tile(T.n, i * phi))}" fill="${bad ? 'rgba(224,49,59,0.35)' : C.honey}" stroke="${bad ? C.red : C.honeyD}" stroke-width="2.4" stroke-linejoin="round"${bad ? ' stroke-dasharray="6 4"' : ''}/>`;
+      if (!bad) s += P.arc([0, 0], 0.32, i * phi * DEG, phi * DEG, C.amber, 2);
+    }
+    s += P.dot([0, 0], C.ink, 5);
+    svg.innerHTML = s;
+    const nm = NAMES[T.n], m = $('#tileMsg'), sum = Array(T.count).fill(deg(phi)).join(' + ');
+    $('#addTile').disabled = over || closed;
+    if (closed) { m.className = 'result miss'; m.innerHTML = `✓ ${T.count} ${nm}: ${T.count} × ${deg(phi)} = <b>360°</b>. Κλείνουν ακριβώς, χωρίς κενά!` + (T.n === 6 ? ' Σαν την κηρήθρα 🐝' : ''); }
+    else if (over) { m.className = 'result hit'; m.innerHTML = `✗ ${T.count} ${nm}: ${T.count} × ${deg(phi)} = ${deg(total)}, περισσότερο από 360°. Το τελευταίο πέφτει πάνω στο πρώτο!`; }
+    else if ((T.count + 1) * phi > 360 + EPS) { m.className = 'result hit'; m.innerHTML = `${T.count} ${nm}: ${T.count === 1 ? deg(phi) : sum + ' = ' + deg(total)}. Μένει κενό ${deg(360 - total)}, αλλά ένα ακόμα (${deg(phi)}) δεν χωράει!`; }
+    else { m.className = 'result'; m.innerHTML = `Η γωνία του κανονικού ${T.n === 3 ? 'τριγώνου' : T.n === 4 ? 'τετραγώνου' : T.n === 5 ? 'πενταγώνου' : T.n === 6 ? 'εξαγώνου' : 'οκταγώνου'} είναι <b>${deg(phi)}</b>. Γύρω από το σημείο μένουν ${deg(360 - total)}.`; }
+  }
+  $('#addTile').addEventListener('click', () => { T.count++; draw(); });
+  $('#tileReset').addEventListener('click', () => { T.count = 1; draw(); });
+  $$('.shapes .btn').forEach(b => b.addEventListener('click', () => { T.n = +b.dataset.n; T.count = 1; $$('.shapes .btn').forEach(x => x.setAttribute('aria-pressed', String(x === b))); draw(); }));
+  draw();
+}
+
+/* ---------- 3. Η κατασκευή βήμα-βήμα ---------- */
+const st = $('#stage'), card = $('#card'), texts = $$('.step-text'), dots = $$('.dots button');
+const VW = 720, VH = 520, RMAX = 4, O = [0, 0];
+const S = { mode: 6, step: 1, p: 1, r: 3, s1: 0, s2: 0, hops: 1, hopP: 0, star: false, lockU: null };
+const COLORS = [['#8a5cf0', '#f3edff'], ['#e0313b', '#ffeceb'], ['#e2508c', '#ffeaf2'], ['#2c6fd6', '#eaf2ff'], ['#f08a1c', '#fff2df'], ['#3f9d58', '#e9f8ec']];
+const HEX = ['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ'];
+const hexV = k => add(O, dir((180 + 60 * k) * DEG), S.r);                         // Α αριστερά, αριστερόστροφα
+const hexArc = k => ({ c: hexV(k), r: S.r, a0: (300 + 60 * k - 20) * DEG, da: 40 * DEG });   // το τόξο από την κορυφή k προς την k+1
+const OCT = { 'Α': 180, 'Ε': 225, 'Β': 270, 'Ζ': 315, 'Γ': 0, 'Η': 45, 'Δ': 90, 'Θ': 135 };
+const octV = name => add(O, dir(OCT[name] * DEG), S.r);
+const sweeps = () => ({ s1: { c: O, r: S.r, a0: 0, da: TAU }, s2: hexArc(0) });
+function geom() {
+  const w = st.clientWidth || 640, VWc = w < 520 ? VH : VW, px = VWc / w, fs = Math.max(19, 14 * px), g = Math.max(1, px / 1.3);   // στο κινητό, τετράγωνο σχήμα
+  const U = VH / (2 * 1.35 * RMAX + 0.6);
+  return { VW: VWc, U, fs, g };
+}
+// ετικέτα σημείου «προς τα έξω» από το κέντρο
+const outLabel = (P, p, name, col, size = 1.05) => { const a = Math.atan2(p[1], p[0]), d = 20 * P.g / P.U; return P.text(add(p, dir(a), d + 0.06), name, { dy: 7 * P.g, col, size }); };
+// οι δύο μεσοκάθετοι του οκταγώνου: τόξα με κέντρα τα άκρα της πλευράς γύρω από το εξωτερικό σημείο τομής, και η ευθεία από το Ο
+function bisectorParts(P, A, B, R, t, col) {
+  const M = mid(A, B), half = dist(A, B) / 2, h = Math.sqrt(R * R - half * half), u = dir(ang(M, O)), Pout = add(M, u, -h);
+  const fa = clamp(t / 0.6, 0, 1), fl = clamp((t - 0.6) / 0.4, 0, 1), SP = 16 * DEG;
+  let s = '';
+  for (const c of [A, B]) { const a = ang(c, Pout); s += P.arc(c, R, a - SP, 2 * SP * fa, col, 2.6); }
+  if (fa >= 1) s += P.dot(Pout, C.gray, 3.5);
+  if (fl > 0) { const v = dir(ang(Pout, O)), L = dist(Pout, O) + 1.3 * S.r; s += P.line(Pout, add(Pout, v, L * fl), C.green, 2.6); }
+  return s;
+}
+function draw() {
+  const G = geom(), P = pen(G.U, G.fs, G.g), g = G.g, r = S.r, s = S.step, e = ease(S.p), k = n => s > n ? 1 : s === n ? e : 0;
+  st.setAttribute('viewBox', [-G.VW / 2, -VH / 2, G.VW, VH].join(' '));
+  let o = '';
+  // πλέγμα εκατοστών
+  const gx = Math.ceil(G.VW / 2 / G.U), gy = Math.ceil(VH / 2 / G.U);
+  for (let x = -gx; x <= gx; x++) o += P.line([x, -gy], [x, gy], C.grid, 0.6 / g);
+  for (let y = -gy; y <= gy; y++) o += P.line([-gx, y], [gx, y], C.grid, 0.6 / g);
+  // ο κύκλος
+  const f1 = s >= 2 ? 1 : S.s1;
+  o += P.arc(O, r, 0, TAU * f1, C.purple, 3);
+  let grip = '', comp = null;
+  if (s === 1) comp = { c: O, r, phi: TAU * S.s1, key: 's1', active: S.s1 < 1 };
+
+  if (S.mode === 6) {
+    // τα τόξα του διαβήτη
+    const faint = s >= 4 ? ' opacity="0.45"' : '';
+    if (s === 2) { const w = hexArc(0); o += P.arc(w.c, w.r, w.a0, w.da * S.s2, C.pink, 3); comp = { c: w.c, r, phi: w.a0 + w.da * S.s2, key: 's2', active: S.s2 < 1 }; }
+    if (s >= 3) {
+      const done = s >= 4 ? 6 : S.hops;
+      for (let i = 0; i < done; i++) { const w = hexArc(i); o += P.arc(w.c, w.r, w.a0, w.da, C.pink, 3, faint); }
+      if (s === 3 && S.hops < 6) { const w = hexArc(S.hops); o += P.arc(w.c, w.r, w.a0, w.da * S.hopP, C.pink, 3); comp = { c: w.c, r, phi: w.a0 + w.da * S.hopP, key: null, active: false }; }
+    }
+    // το εξάγωνο
+    const V = [0, 1, 2, 3, 4, 5].map(hexV);
+    if (s >= 5) o += `<polygon points="${P.pts(V)}" fill="#fff3a6" opacity="${f2(0.9 * Math.max(k(5), s >= 6 ? 1 : 0))}"/>`;
+    if (s >= 5) {                     // ισόπλευρα τρίγωνα
+      const t = k(5);
+      for (let i = 0; i < 6; i++) o += `<polygon points="${P.pts([O, V[i], V[(i + 1) % 6]])}" fill="${i % 2 ? '#ffe08a' : '#fff6c4'}" opacity="${f2(t * (s >= 6 ? 0.5 : 1))}"/>`;
+      for (let i = 0; i < 6; i++) o += P.line(O, add(O, sub(V[i], O), t), C.gray, 2, `stroke-dasharray="${f2(6 * g)} ${f2(4 * g)}"`);
+    }
+    if (s >= 4) { const t = k(4); for (let i = 0; i < 6; i++) { const f = clamp(6 * t - i, 0, 1); if (f > 0) o += P.line(V[i], add(V[i], sub(V[(i + 1) % 6], V[i]), f), C.ink, 4); } }
+    if (s === 5 && e > 0.6) {
+      o += angleArc(P, O, V[0], V[1], 0.55, C.red, 2.6) + P.text(add(O, bis(O, V[0], V[1]), 1.05), '60°', { dy: 7 * g, col: C.red, size: 0.9 });
+      o += angleArc(P, V[1], V[0], V[2], 0.5, C.blue, 2.6) + P.text(add(V[1], bis(V[1], V[0], V[2]), 1.1), '120°', { dy: 7 * g, col: C.blue, size: 0.9 });
+      o += P.tick(O, V[0], 1, C.gray) + P.tick(O, V[1], 1, C.gray) + P.tick(V[0], V[1], 1, C.ink);
+    }
+    if (s >= 6) {
+      const t = k(6), tri = [V[0], V[2], V[4]], tri2 = [V[1], V[3], V[5]];
+      for (let i = 0; i < 3; i++) { const f = clamp(3 * t - i, 0, 1); if (f > 0) o += P.line(tri[i], add(tri[i], sub(tri[(i + 1) % 3], tri[i]), f), C.orange, 4); }
+      if (S.star) for (let i = 0; i < 3; i++) o += P.line(tri2[i], tri2[(i + 1) % 3], C.green, 4);
+    }
+    // κορυφές
+    const shown = s === 2 ? (S.s2 >= 0.5 ? 2 : 1) : s === 3 ? Math.min(6, S.hops + (S.hopP >= 0.5 ? 1 : 0) + 1) : s >= 4 ? 6 : 0;
+    for (let i = 0; i < Math.min(shown, 6); i++) o += P.dot(V[i], C.red, 6.5) + outLabel(P, V[i], HEX[i], C.red);
+    if (s === 3 && S.hops >= 6) o += `<circle class="halo" cx="${P.X(V[0][0])}" cy="${P.Y(V[0][1])}" r="${f2(17 * g)}" fill="${C.green}" opacity="0.25"/>`;
+  } else {
+    const A = octV('Α'), B = octV('Β'), Gm = octV('Γ'), D = octV('Δ');
+    // διάμετρος ΑΓ
+    if (s >= 2) o += P.line(A, add(A, sub(Gm, A), k(2)), C.ink, s >= 4 ? 2 : 3.2);
+    // μεσοκάθετος της ΑΓ
+    if (s >= 3) {
+      const t = k(3), R = 1.65 * r, h = Math.sqrt(R * R - r * r), fa = clamp(t / 0.6, 0, 1), fl = clamp((t - 0.6) / 0.4, 0, 1), SP = 16 * DEG, th = Math.atan2(h, r);
+      const op = s > 3 ? ' opacity="0.45"' : '';
+      for (const [c, a] of [[A, th], [A, -th], [Gm, Math.PI - th], [Gm, Math.PI + th]]) o += P.arc(c, R, a - SP, 2 * SP * fa, C.pink, 2.6, op);
+      if (fa >= 1 && s === 3) o += P.dot([0, h], C.gray, 3.5) + P.dot([0, -h], C.gray, 3.5);
+      if (fl > 0) o += P.line([0, h + 0.3], [0, h + 0.3 - (2 * h + 0.6) * fl], C.green, s > 3 ? 2 : 2.8);
+    }
+    // μεσοκάθετοι των ΑΒ και ΒΓ
+    if (s >= 5) {
+      const t = k(5), R2 = 0.9 * r;
+      const op = s > 5 ? ' opacity="0.45"' : '';
+      o += `<g${op}>` + bisectorParts(P, A, B, R2, clamp(t * 2, 0, 1), C.blue) + (t > 0.5 ? bisectorParts(P, B, Gm, R2, clamp(t * 2 - 1, 0, 1), C.blue) : '') + '</g>';
+    }
+    // τετράγωνο
+    const sq = [A, B, Gm, D];
+    if (s === 4) {
+      const t = k(4);
+      o += `<polygon points="${P.pts(sq)}" fill="#fff3a6" opacity="${f2(0.8 * t)}"/>`;
+      for (let i = 0; i < 4; i++) { const f = clamp(4 * t - i, 0, 1); if (f > 0) o += P.line(sq[i], add(sq[i], sub(sq[(i + 1) % 4], sq[i]), f), C.ink, 4); }
+      if (t > 0.8) o += angleArc(P, O, A, B, 0.6, C.red, 2.6) + P.text(add(O, bis(O, A, B), 1.05), '90°', { dy: 7 * g, col: C.red, size: 0.85 });
+    }
+    if (s === 5) for (let i = 0; i < 4; i++) o += P.line(sq[i], sq[(i + 1) % 4], C.ink, 2.6, 'opacity="0.6"');
+    // οκτάγωνο
+    const ORDER = ['Α', 'Ε', 'Β', 'Ζ', 'Γ', 'Η', 'Δ', 'Θ'], V8 = ORDER.map(octV);
+    if (s >= 6) {
+      const t = k(6);
+      o += `<polygon points="${P.pts(V8)}" fill="#fff3a6" opacity="${f2(0.85 * t)}"/>`;
+      for (let i = 0; i < 8; i++) { const f = clamp(8 * t - i, 0, 1); if (f > 0) o += P.line(V8[i], add(V8[i], sub(V8[(i + 1) % 8], V8[i]), f), C.ink, 4); }
+      if (t > 0.8) {
+        o += P.line(O, A, C.gray, 2, `stroke-dasharray="${f2(6 * g)} ${f2(4 * g)}"`) + P.line(O, V8[1], C.gray, 2, `stroke-dasharray="${f2(6 * g)} ${f2(4 * g)}"`);
+        o += angleArc(P, O, A, V8[1], 0.7, C.red, 2.6) + P.text(add(O, bis(O, A, V8[1]), 1.2), '45°', { dy: 7 * g, col: C.red, size: 0.85 });
+        o += angleArc(P, V8[2], V8[1], V8[3], 0.45, C.blue, 2.6) + P.text(add(V8[2], bis(V8[2], V8[1], V8[3]), 0.95), '135°', { dy: 7 * g, col: C.blue, size: 0.85 });
+      }
+    }
+    // σημεία
+    const show = [];
+    if (s >= 2) show.push('Α', 'Γ');
+    if (s >= 4 || (s === 3 && e > 0.97)) show.push('Β', 'Δ');
+    if (s >= 6 || (s === 5 && e > 0.55)) show.push('Ε', 'Η');
+    if (s >= 6 || (s === 5 && e > 0.97)) show.push('Ζ', 'Θ');
+    for (const nm of show) o += P.dot(octV(nm), C.red, 6.5) + outLabel(P, octV(nm), nm, C.red);
+  }
+  // διαβήτης και κέντρο
+  if (comp) { const cp = compass(P, comp.c, comp.r, comp.phi, comp.active); o += cp.s; if (comp.key) grip = P.grip(cp.tip, comp.key, 28); }
+  o += P.dot(O, C.ink, 5.5) + P.text(O, 'Ο', { dx: 12 * g, dy: 22 * g, anchor: 'start' });
+  st.innerHTML = o + grip;
+  $('#rTag').textContent = 'ρ = ' + num(r) + ' cm';
+}
+
+/* Κάρτα και κουμπιά */
+const pct = f => Math.round(f * 100) + '%';
+const stepEl = n => texts.find(t => +t.dataset.step === n && (t.dataset.mode === 'all' || +t.dataset.mode === S.mode));
+function syncUI() {
+  for (const n of [1, 2]) { $('#sw' + n).value = Math.round(S['s' + n] * 100); $('#sw' + n + 'Text').textContent = pct(S['s' + n]); }
+  $('#done1').classList.toggle('show', S.s1 >= 1); $('#done2').classList.toggle('show', S.s2 >= 1); $('#done3').classList.toggle('show', S.hops >= 6);
+  $('#hopText').textContent = `Τόξα: ${S.hops} από 6`;
+  $('#hop').disabled = $('#hopAll').disabled = S.hops >= 6;
+  $('#rr').value = Math.round(S.r * 2); $('#rrText').textContent = num(S.r) + ' cm';
+  $('#star').textContent = S.star ? '↺ Κρύψε τα Β, Δ, Ζ' : '✶ Ένωσε και τα Β, Δ, Ζ'; $('#starMsg').hidden = !S.star;
+  $$('.modes .btn').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.mode === S.mode)));
+}
+function setSweep(key, f) { S[key] = f >= 0.985 ? 1 : clamp(f, 0, 1); syncUI(); draw(); }
+function showCard() {
+  const n = S.step, el = stepEl(n);
+  texts.forEach(t => { t.hidden = t !== el; });
+  $('#stepTitle').textContent = el.dataset.title; $('#stepTool').textContent = el.dataset.tool;
+  $('#stepNum').textContent = n; $('#stepCount').textContent = 'Βήμα ' + n + ' από 6';
+  card.style.setProperty('--sc', COLORS[n - 1][0]); card.style.setProperty('--sh', COLORS[n - 1][1]);
+  dots.forEach((b, i) => { b.classList.toggle('done', i + 1 < n); if (i + 1 === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+  $('#prev').disabled = n === 1;
+  $('#next').textContent = n === 6 ? '↺ Από την αρχή' : 'Επόμενο ▶';
+  syncUI();
+}
+function goTo(n, ms = 900) {
+  n = clamp(n, 1, 6); stop('hop'); S.hopP = 0;
+  if (n >= 2 && S.s1 < 1) S.s1 = 1;            // αν προσπεράσει ένα βήμα, το ολοκληρώνουμε
+  if (n >= 3 && S.s2 < 1) S.s2 = 1;
+  if (n >= 4) S.hops = 6;
+  S.step = n; S.p = 0; showCard();
+  if (S.mode === 8 && (n === 3 || n === 5)) ms = 2200;
+  animate(t => { S.p = t; draw(); }, ms);
+}
+function setMode(m) { if (m === S.mode) return; S.mode = m; S.star = false; goTo(S.s1 >= 1 ? 2 : 1); }
+$$('.modes .btn').forEach(b => b.addEventListener('click', () => setMode(+b.dataset.mode)));
+$('#prev').addEventListener('click', () => goTo(S.step - 1));
+$('#next').addEventListener('click', () => { if (S.step === 6) { Object.assign(S, { s1: 0, s2: 0, hops: 1, star: false }); goTo(1); } else goTo(S.step + 1); });
+dots.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.go)));
+$('.cx').addEventListener('keydown', e => {
+  if (e.target.matches('input')) return;
+  if (e.key === 'ArrowRight' && S.step < 6) { goTo(S.step + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') { goTo(S.step - 1); e.preventDefault(); }
+});
+const live = fn => e => { stop(); S.p = 1; fn(+e.target.value); };
+$('#rr').addEventListener('input', live(v => { S.r = v / 2; syncUI(); draw(); }));
+for (const n of [1, 2]) {
+  $('#sw' + n).addEventListener('input', live(v => setSweep('s' + n, v / 100)));
+  $('#auto' + n).addEventListener('click', () => { S.p = 1; const key = 's' + n, f0 = S[key] >= 1 ? 0 : S[key]; animate(t => setSweep(key, f0 + (1 - f0) * ease(t)), (n === 1 ? 2400 : 1200) * (1 - f0) + 200); });
+}
+// τα τόξα του εξαγώνου, ένα-ένα
+let hopping = false;
+function hop(then) {
+  if (S.hops >= 6 || hopping) return;
+  hopping = true; S.p = 1;
+  animate(t => { S.hopP = ease(t); draw(); }, 650, () => { S.hops++; S.hopP = 0; hopping = false; syncUI(); draw(); if (then) then(); }, 'hop');
+}
+const hopAll = () => hop(() => { if (S.hops < 6) hopAll(); });
+$('#hop').addEventListener('click', () => hop());
+$('#hopAll').addEventListener('click', hopAll);
+$('#star').addEventListener('click', () => { S.star = !S.star; syncUI(); draw(); });
+$('#replay3').addEventListener('click', () => goTo(3));
+$('#replay5').addEventListener('click', () => goTo(5));
+
+// Σύρσιμο του διαβήτη
+let drag = null, unwrapped = 0;
+const toMath = e => { const m = st.getScreenCTM(); if (!m) return null; const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()), U = geom().U; return [p.x / U, -p.y / U]; };
+st.addEventListener('pointerdown', e => {
+  const name = e.target.dataset ? e.target.dataset.grip : null; if (!name) return;
+  drag = name; stop(); S.p = 1; unwrapped = S[name] * sweeps()[name].da;
+  st.setPointerCapture(e.pointerId); e.preventDefault();
+});
+st.addEventListener('pointermove', e => {
+  if (!drag) return; const pt = toMath(e); if (!pt) return;
+  const w = sweeps()[drag], a = Math.atan2(pt[1] - w.c[1], pt[0] - w.c[0]) - w.a0;
+  let delta = a - (unwrapped % TAU); while (delta > Math.PI) delta -= TAU; while (delta <= -Math.PI) delta += TAU;
+  unwrapped = clamp(unwrapped + delta, 0, w.da);
+  setSweep(drag, unwrapped / w.da);
+});
+const endDrag = () => { drag = null; };
+st.addEventListener('pointerup', endDrag); st.addEventListener('pointercancel', endDrag);
+
+/* ---------- 4α. Έξι ισόπλευρα τρίγωνα ---------- */
+{
+  const U = 34, P = pen(U, 14, 1), V = ngon(O, 2.6, 6, Math.PI);
+  let s = '';
+  for (let i = 0; i < 6; i++) s += `<polygon points="${P.pts([O, V[i], V[(i + 1) % 6]])}" fill="${i % 2 ? '#ffe08a' : '#fff6c4'}" stroke="${C.honeyD}" stroke-width="1.4"/>`;
+  s += `<polygon points="${P.pts(V)}" fill="none" stroke="${C.ink}" stroke-width="3" stroke-linejoin="round"/>`;
+  s += P.arc(O, 2.6, 0, TAU, C.purple, 1.6, 'opacity="0.6"');
+  s += P.tick(O, V[0], 1, C.ink) + P.tick(O, V[1], 1, C.ink) + P.tick(V[0], V[1], 1, C.ink);
+  for (let i = 0; i < 6; i++) s += P.text(add(O, bis(O, V[i], V[(i + 1) % 6]), 0.75), '60°', { dy: 5, col: C.red, size: 0.75 });
+  s += P.dot(O, C.ink, 4);
+  s += P.text(V[0], 'Α', { dx: -9, dy: 5, anchor: 'end', col: C.red }) + P.text(V[1], 'Β', { dx: -4, dy: 17, anchor: 'end', col: C.red });
+  s += P.text(mid(O, V[0]), 'ρ', { dy: -6, size: 0.9 }) + P.text(mid(V[0], V[1]), 'ρ', { dx: -10, dy: 4, anchor: 'end', size: 0.9 });
+  $('#hexFig').setAttribute('viewBox', '-112 -100 224 200');
+  $('#hexFig').innerHTML = s;
+}
+
+/* ---------- 4β. ω και φ για κάθε ν ---------- */
+{
+  const svg = $('#angFig'), inp = $('#nn'), U = 38, R = 2.6;
+  const LONG = { 3: 'ισόπλευρο τρίγωνο', 4: 'τετράγωνο', 5: 'κανονικό πεντάγωνο', 6: 'κανονικό εξάγωνο', 7: 'κανονικό επτάγωνο', 8: 'κανονικό οκτάγωνο', 9: 'κανονικό εννιάγωνο', 10: 'κανονικό δεκάγωνο', 11: 'κανονικό 11-γωνο', 12: 'κανονικό 12-γωνο' };
+  function draw() {
+    const n = +inp.value, w = 360 / n, phi = 180 - w, P = pen(U, 14, 1), V = ngon(O, R, n, (-90 - w / 2) * DEG);
+    let s = P.arc(O, R, 0, TAU, C.purple, 1.6, 'opacity="0.6"') + `<polygon points="${P.pts(V)}" fill="#fff3a6" stroke="${C.ink}" stroke-width="2.8" stroke-linejoin="round"/>`;
+    s += P.line(O, V[0], C.gray, 1.8, 'stroke-dasharray="5 4"') + P.line(O, V[1], C.gray, 1.8, 'stroke-dasharray="5 4"');
+    s += angleArc(P, O, V[0], V[1], 0.5, C.red, 2.6) + P.text(add(O, bis(O, V[0], V[1]), n > 8 ? 1.15 : 0.9), 'ω', { dy: 5, col: C.red, size: 0.95 });
+    s += angleArc(P, V[1], V[0], V[2], 0.42, C.blue, 2.6) + P.text(add(V[1], bis(V[1], V[0], V[2]), 0.75), 'φ', { dy: 5, col: C.blue, size: 0.95 });
+    s += P.dot(O, C.ink, 3.5);
+    svg.innerHTML = s;
+    $('#nnText').textContent = n;
+    $('#angMsg').className = 'result miss';
+    const eq = Math.abs(w - Math.round(w)) < 1e-9 ? ' = ' : ' ≈ ';
+    $('#angMsg').innerHTML = `<b>${LONG[n]}</b> (ν = ${n}): ω = 360° : ${n}${eq}<b>${deg(w)}</b> &nbsp;·&nbsp; φ = 180° − ω${eq}<b>${deg(phi)}</b>`;
+  }
+  inp.addEventListener('input', draw);
+  draw();
+}
+
+/* ---------- 4γ. Η μεσοκάθετος χωρίζει το τόξο στη μέση ---------- */
+{
+  const U = 34, P = pen(U, 14, 1), R = 2.4, A = add(O, dir(Math.PI), R), B = add(O, dir(1.5 * Math.PI), R), Gm = add(O, dir(0), R), D = add(O, dir(Math.PI / 2), R), E = add(O, dir(1.25 * Math.PI), R);
+  let s = P.arc(O, R, 0, TAU, C.purple, 1.8, 'opacity="0.7"') + `<polygon points="${P.pts([A, B, Gm, D])}" fill="#fff6c4" stroke="${C.ink}" stroke-width="2.6" stroke-linejoin="round"/>`;
+  s += P.arc(O, R, Math.PI, 0.25 * Math.PI, C.red, 4) + P.arc(O, R, 1.25 * Math.PI, 0.25 * Math.PI, C.orange, 4);
+  s += P.line(add(O, dir(0.25 * Math.PI), 1.2), add(O, dir(1.25 * Math.PI), R + 0.5), C.green, 2.6);
+  s += P.tick(O, A, 1, C.gray) + P.tick(O, B, 1, C.gray) + P.line(O, A, C.gray, 1.6, 'stroke-dasharray="5 4"') + P.line(O, B, C.gray, 1.6, 'stroke-dasharray="5 4"');
+  s += P.text(add(O, dir(1.125 * Math.PI), R + 0.45), '45°', { dy: 5, col: C.red, size: 0.8 }) + P.text(add(O, dir(1.375 * Math.PI), R + 0.45), '45°', { dy: 5, col: '#b4560c', size: 0.8 });
+  s += P.dot(O, C.ink, 3.5) + P.dot(A, C.red, 4.5) + P.dot(B, C.red, 4.5) + P.dot(E, C.green, 5);
+  s += P.text(O, 'Ο', { dx: 8, dy: -6, anchor: 'start', size: 0.9 }) + P.text(A, 'Α', { dx: -8, dy: 5, anchor: 'end', col: C.red }) + P.text(B, 'Β', { dy: 19, col: C.red }) + P.text(E, 'Ε', { dx: -8, dy: 14, anchor: 'end', col: C.green });
+  $('#bisFig').setAttribute('viewBox', '-112 -100 224 212');
+  $('#bisFig').innerHTML = s;
+}
+
+/* ---------- Πρόκληση: διπλασιασμός των πλευρών ---------- */
+const db = $('#dbl'), DU = 46, DR = 2.7, DB = { n: 6, t: 0, busy: false };
+function drawDbl() {
+  const w = db.clientWidth || 400, px = 400 / w, fs = Math.max(14, 13 * px), g = Math.max(1, px / 1.3), P = pen(DU, fs, g);
+  const n = DB.n, V = ngon(O, DR, n, Math.PI), N2 = ngon(O, DR, 2 * n, Math.PI), t = DB.t;
+  let s = P.arc(O, DR, 0, TAU, C.purple, 2, 'opacity="0.7"');
+  s += `<polygon points="${P.pts(t >= 1 ? N2 : V)}" fill="#fff3a6" stroke="${C.ink}" stroke-width="${f2(2.8 * g)}" stroke-linejoin="round"/>`;
+  if (t > 0 && t < 1) {               // οι μεσοκάθετοι των πλευρών από το Ο
+    const fl = clamp(t / 0.7, 0, 1);
+    for (let i = 0; i < n; i++) { const a = Math.PI + (i + 0.5) * TAU / n; s += P.line(O, add(O, dir(a), (DR + 0.35) * fl), C.green, 1.8); }
+    if (t > 0.7) for (let i = 0; i < n; i++) s += P.dot(N2[2 * i + 1], C.green, 4.5);
+  }
+  for (const p of (t >= 1 ? N2 : V)) s += P.dot(p, C.red, n >= 24 ? 2.6 : 4);
+  s += P.dot(O, C.ink, 3.5);
+  db.innerHTML = s;
+  const m = t >= 1 ? 2 * n : n, w2 = 360 / m;
+  let msg = `Κανονικό <b>${m}-γωνο</b> · ω = 360° : ${m} = <b>${deg(w2)}</b> · φ = 180° − ω = <b>${deg(180 - w2)}</b>`;
+  if (m === 12) msg += ' · Διπλάσιες πλευρές, μισή κεντρική γωνία!';
+  if (m >= 48) msg += ' · Σχεδόν κύκλος! Ο Αρχιμήδης έφτασε μέχρι το 96-γωνο.';
+  $('#dblMsg').innerHTML = msg;
+  $('#dblBtn').disabled = DB.busy || m >= 48;
+}
+$('#dblBtn').addEventListener('click', () => {
+  if (DB.busy) return; DB.busy = true;
+  animate(t => { DB.t = t; drawDbl(); }, 1600, () => { DB.n *= 2; DB.t = 0; DB.busy = false; drawDbl(); }, 'dbl');
+});
+$('#dblReset').addEventListener('click', () => { stop('dbl'); Object.assign(DB, { n: 6, t: 0, busy: false }); drawDbl(); });
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = st.clientWidth + db.clientWidth; if (w !== lastW) { lastW = w; draw(); drawDbl(); } }).observe(document.body);
+showCard(); goTo(1); drawDbl();
+})();
+</script></body></html>

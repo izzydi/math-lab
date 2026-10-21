@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Κατασκευή τριγώνου · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για την Α΄ Γυμνασίου: κατασκευή τριγώνου από τα μήκη των τριών πλευρών του με κανόνα και διαβήτη, βήμα-βήμα, και πότε δεν υπάρχει τρίγωνο.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.emoji{font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+.plain{background-image:none!important}
+.pink{color:var(--pink)}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 2px}
+.presets .btn{padding:3px 10px;font-size:14px}
+.presets .btn[aria-pressed="true"]{border-color:var(--blue);box-shadow:0 3px 0 var(--blue)}
+.sides{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 16px;padding:10px 14px 12px;border-top:2.5px dashed #cfe0f7}
+.sides .range-label strong{min-width:64px}
+.s-c .range-label strong{border-color:var(--ink);color:var(--ink)}.s-c input{accent-color:var(--ink)}
+.s-b .range-label strong{border-color:var(--pink);color:var(--pink)}.s-b input{accent-color:var(--pink)}
+.s-a .range-label strong{border-color:var(--blue);color:var(--blue)}.s-a input{accent-color:var(--blue)}
+.success.bad{border-color:var(--red);background:#fff2f3;color:var(--red)}
+.sets{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:6px}
+.sets .btn{padding:3px 10px;font-size:14px}
+.sets .btn[aria-pressed="true"]{background:var(--orange);border-color:#b4560c;color:#fff;box-shadow:0 3px 0 #b4560c}
+.hero-ctl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;margin-top:4px}
+.hero-ctl .range-label{font-size:14px}
+.hero-ctl .range-label strong{height:26px;min-width:44px;font-size:14px}
+.hero-ctl .h-l strong{border-color:var(--pink);color:var(--pink)}.hero-ctl .h-l input{accent-color:var(--pink)}
+.hero-ctl .h-r strong{border-color:var(--blue);color:var(--blue)}.hero-ctl .h-r input{accent-color:var(--blue)}
+.table.tri{grid-template-columns:auto auto auto}
+@media (max-width:620px){.sides{grid-template-columns:1fr}.hero-ctl{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Α΄ Γυμνασίου · Γεωμετρία</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Κατασκευή τριγώνου –</span> <span class="t2">από τις τρεις πλευρές του</span></h1>
+    <p>Γεωμετρία του επιπέδου | Α΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Πρόβλημα</span>Η Ελένη έχει τρία καλαμάκια με μήκη <b class="red">6 cm, 5 cm και 3 cm</b>. Μπορεί να φτιάξει με αυτά ένα τρίγωνο; Κι αν τα καλαμάκια ήταν <b class="red">6 cm, 2 cm και 3 cm</b>;</p>
+      <p>Δοκίμασε στο σχήμα: κράτα το μεγάλο καλαμάκι για βάση και γύρισε τα άλλα δύο μέχρι να <span class="hl y">ενωθούν οι άκρες τους</span>. Πρόσεξε τον δρόμο που κάνει κάθε άκρη!</p>
+      <p>Στο τετράδιο δεν έχουμε καλαμάκια, έχουμε όμως <strong>κανόνα και διαβήτη</strong>. Το βιβλίο (σελ. 210) ρωτά ακριβώς το ίδιο: <span class="hl b">να κατασκευάσετε τρίγωνο ΑΒΓ με ΑΒ = 6 cm, ΑΓ = 5 cm και ΒΓ = 3 cm</span>. Υπάρχει τρίγωνο με πλευρές 6 cm, 2 cm και 3 cm;</p>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να κατασκευάζεις με κανόνα και διαβήτη ένα τρίγωνο, όταν ξέρεις τα μήκη των τριών πλευρών του.</span></li>
+          <li><b>Σ2</b><span>Να εξηγείς γιατί η τρίτη κορυφή βρίσκεται στο σημείο τομής δύο κύκλων.</span></li>
+          <li><b>Σ3</b><span>Να αναγνωρίζεις πότε <strong>δεν</strong> υπάρχει τρίγωνο με τρεις δοσμένες πλευρές.</span></li>
+          <li><b>Σ4</b><span>Να κατασκευάζεις ισοσκελές και ισόπλευρο τρίγωνο.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">Σύρε τις άκρες των καλαμακιών για να φτιάξεις τρίγωνο!</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box">
+        <div class="sets" role="group" aria-label="Διάλεξε καλαμάκια"><button class="btn ghost" type="button" data-set="0" aria-pressed="true">Καλαμάκια 6, 5, 3</button><button class="btn ghost" type="button" data-set="1" aria-pressed="false">Καλαμάκια 6, 2, 3</button></div>
+        <svg id="straws" viewBox="-209 -150 370 180" role="img" aria-label="Τρία καλαμάκια: η βάση των 6 cm και δύο καλαμάκια που γυρίζουν γύρω από τις άκρες της"></svg>
+        <div class="hero-ctl">
+          <div class="h-l"><div class="range-label"><label for="al">Ροζ καλαμάκι</label><strong id="alText">120°</strong></div><input id="al" type="range" min="0" max="180" value="120"></div>
+          <div class="h-r"><div class="range-label"><label for="be">Μπλε καλαμάκι</label><strong id="beText">60°</strong></div><input id="be" type="range" min="0" max="180" value="60"></div>
+        </div>
+        <p class="result" id="heroMsg" aria-live="polite" style="margin:8px 0 0;font-size:14.5px"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Τι χρειαζόμαστε -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Τι χρειαζόμαστε</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico" aria-hidden="true">📏</span>Κανόνας<small>για την ΑΒ και για να ενώσουμε</small></div>
+    <div class="chip c2"><span class="ico" aria-hidden="true">🧭</span>Διαβήτης<small>για δύο κύκλους</small></div>
+    <div class="chip c3">(Α, ρ)<small>κύκλος με κέντρο Α και ακτίνα ρ</small></div>
+    <div class="chip c4">ΑΓ = 5 cm<small>το Γ είναι στον κύκλο (Α, 5 cm)</small></div>
+    <div class="chip c5">ΒΓ = 3 cm<small>το Γ είναι στον κύκλο (Β, 3 cm)</small></div>
+    <div class="chip c6"><span class="ico" aria-hidden="true">🚫</span>Μοιρογνωμόνιο<small>δεν μετράμε γωνίες!</small></div>
+  </div>
+</section>
+
+<!-- 3. Η κατασκευή -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Η κατασκευή με κανόνα και διαβήτη</h2></div>
+  <p class="lead">Κάνε την κατασκευή μόνος σου, βήμα-βήμα. Σέρνε τη <span class="hl v">μωβ τελεία</span> του διαβήτη πάνω στο σχήμα ή χρησιμοποίησε τις μπάρες. Τα τετραγωνάκια είναι 1 cm. Κάτω από το σχήμα μπορείς να αλλάξεις τα μήκη των πλευρών.</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><h3>Το τετράδιό σου</h3><span class="tag" id="sideTag">ΑΒ = 6 · ΑΓ = 5 · ΒΓ = 3 cm</span></div>
+      <div class="stage-fig plain"><svg id="stage" viewBox="-405 -250 810 500" role="img" aria-label="Η κατασκευή του τριγώνου ΑΒΓ"></svg></div>
+      <div class="stepbar">
+        <button class="btn ghost" id="prev" type="button">◀ Πίσω</button>
+        <ol class="dots" aria-label="Βήματα">
+          <li><button type="button" data-go="1" aria-label="Βήμα 1">1</button></li>
+          <li><button type="button" data-go="2" aria-label="Βήμα 2">2</button></li>
+          <li><button type="button" data-go="3" aria-label="Βήμα 3">3</button></li>
+          <li><button type="button" data-go="4" aria-label="Βήμα 4">4</button></li>
+          <li><button type="button" data-go="5" aria-label="Βήμα 5">5</button></li>
+          <li><button type="button" data-go="6" aria-label="Βήμα 6">6</button></li>
+        </ol>
+        <button class="btn" id="next" type="button">Επόμενο ▶</button>
+      </div>
+      <div class="sides">
+        <div class="s-c"><div class="range-label"><label for="sc">ΑΒ</label><strong id="scText">6 cm</strong></div><input id="sc" type="range" min="4" max="16" value="12"></div>
+        <div class="s-b"><div class="range-label"><label for="sb">ΑΓ</label><strong id="sbText">5 cm</strong></div><input id="sb" type="range" min="2" max="16" value="10"></div>
+        <div class="s-a"><div class="range-label"><label for="sa">ΒΓ</label><strong id="saText">3 cm</strong></div><input id="sa" type="range" min="2" max="16" value="6"></div>
+      </div>
+    </div>
+
+    <aside class="step-card" id="card" aria-live="polite">
+      <p class="step-count" id="stepCount">Βήμα 1 από 6</p>
+      <div class="step-head"><span class="letter" id="stepNum">1</span><h3 id="stepTitle">Οι τρεις πλευρές</h3></div>
+      <span class="tool" id="stepTool">📋 Δεδομένα</span>
+
+      <div class="step-text" data-step="1" data-title="Οι τρεις πλευρές" data-tool="📋 Δεδομένα">
+        <p>Θέλουμε ένα τρίγωνο ΑΒΓ με <b>ΑΒ = <span data-side="c">6</span> cm</b>, <b class="pink">ΑΓ = <span data-side="b">5</span> cm</b> και <b class="blue">ΒΓ = <span data-side="a">3</span> cm</b>. Ξεκίνα με το παράδειγμα του βιβλίου (σελ. 210).</p>
+        <p>Μπορείς να αλλάξεις τα μήκη με τις μπάρες κάτω από το σχήμα ή με ένα κουμπί (ΑΒ, ΑΓ, ΒΓ σε cm):</p>
+        <div class="presets">
+          <button class="btn ghost" type="button" data-sides="6,5,3">σελ. 210: 6, 5, 3</button>
+          <button class="btn ghost" type="button" data-sides="6,5,4">άσκ. 9α: 6, 5, 4</button>
+          <button class="btn ghost" type="button" data-sides="6,2,3">6, 2, 3</button>
+        </div>
+      </div>
+      <div class="step-text" data-step="2" data-title="Σχεδιάζουμε την ΑΒ" data-tool="📏 Κανόνας" hidden>
+        <p>Με τον κανόνα σχεδιάζουμε <strong>μία</strong> από τις πλευρές, π.χ. την <b>ΑΒ = <span data-side="c">6</span> cm</b>. Τα άκρα της Α και Β είναι δύο κορυφές του τριγώνου.</p>
+        <p class="ask">Πού είναι η τρίτη κορυφή Γ; Ξέρουμε μόνο ότι απέχει <b class="pink"><span data-side="b">5</span> cm από το Α</b> και <b class="blue"><span data-side="a">3</span> cm από το Β</b>.</p>
+      </div>
+      <div class="step-text" data-step="3" data-title="Ο κύκλος με κέντρο Α" data-tool="🧭 Διαβήτης" hidden>
+        <p>Ανοίγουμε τον διαβήτη <b class="pink"><span data-side="b">5</span> cm</b> (όσο η ΑΓ), βάζουμε τη μύτη στο <b>Α</b> και γράφουμε τον κύκλο <span class="hl p">(Α, <span data-side="b">5</span> cm)</span>.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sw1">Γύρισε τον διαβήτη</label><strong id="sw1Text">0%</strong></div>
+          <input id="sw1" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto1" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="done1">✓ Κάθε σημείο του ροζ κύκλου απέχει <span data-side="b">5</span> cm από το Α. Το Γ είναι κάπου πάνω του!</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="4" data-title="Ο κύκλος με κέντρο Β" data-tool="🧭 Διαβήτης" hidden>
+        <p>Ανοίγουμε τον διαβήτη <b class="blue"><span data-side="a">3</span> cm</b> (όσο η ΒΓ), βάζουμε τη μύτη στο <b>Β</b> και γράφουμε τον κύκλο <span class="hl b">(Β, <span data-side="a">3</span> cm)</span>.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sw2">Γύρισε τον διαβήτη</label><strong id="sw2Text">0%</strong></div>
+          <input id="sw2" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto2" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="done2">✓ Οι δύο κύκλοι τέμνονται σε δύο σημεία!</div>
+          <div class="success bad" id="fail2">⚠ Οι δύο κύκλοι δεν τέμνονται σε δύο σημεία. Δες γιατί στο επόμενο βήμα.</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="5" data-title="Η κορυφή Γ" data-tool="✏️ Μολύβι" hidden>
+        <div id="s5ok">
+          <p>Οι δύο κύκλοι τέμνονται σε <strong>δύο</strong> σημεία. Ονομάζουμε <b class="red">Γ</b> το ένα από αυτά (σελ. 211).</p>
+          <p>Το Γ είναι πάνω και στους δύο κύκλους, άρα:</p>
+          <div class="fbox"><span class="pink">ΑΓ = <span data-side="b">5</span> cm</span> και <span class="blue">ΒΓ = <span data-side="a">3</span> cm</span></div>
+          <p>Το άλλο σημείο τομής, το <b>Γ΄</b>, δίνει ένα <strong>ίσο</strong> τρίγωνο ΑΒΓ΄, συμμετρικό του ΑΒΓ ως προς την ΑΒ.</p>
+        </div>
+        <div id="s5no" hidden>
+          <p class="ask" style="border-color:var(--red);background:#fff2f3" id="s5why"></p>
+          <p>Άλλαξε τα μήκη κάτω από το σχήμα ή γύρνα στο βήμα 1.</p>
+          <p><button class="btn ghost" id="back1" type="button">◀ Στο βήμα 1</button></p>
+        </div>
+      </div>
+      <div class="step-text" data-step="6" data-title="Το τρίγωνο ΑΒΓ" data-tool="📏 Κανόνας" hidden>
+        <p>Με τον κανόνα ενώνουμε το <b class="red">Γ</b> με το Α και με το Β. Το τρίγωνο ΑΒΓ είναι το ζητούμενο!</p>
+        <p class="result miss" id="s6msg"></p>
+        <p style="margin-bottom:0"><strong>Δοκίμασε κι άλλα</strong> (ΑΒ, ΑΓ, ΒΓ σε cm):</p>
+        <div class="presets">
+          <button class="btn ghost" type="button" data-sides="6,6,4">ισοσκελές 6, 6, 4</button>
+          <button class="btn ghost" type="button" data-sides="6,6,6">ισόπλευρο 6, 6, 6</button>
+          <button class="btn ghost" type="button" data-sides="5,4,3">5, 4, 3</button>
+          <button class="btn ghost" type="button" data-sides="5,2,3">άσκ. 9β: 5, 2, 3</button>
+          <button class="btn ghost" type="button" data-sides="6,2,3">6, 2, 3</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. Γιατί δουλεύει -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Γιατί δουλεύει η κατασκευή;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Δύο κύκλοι, μία κορυφή</h3>
+      <svg class="fig" id="whyFig" viewBox="-130 -125 300 250" role="img" aria-label="Ο ροζ κύκλος με κέντρο Α και ακτίνα 5 και ο μπλε κύκλος με κέντρο Β και ακτίνα 3. Όλες οι ροζ ακτίνες είναι 5 cm και όλες οι μπλε 3 cm. Το Γ είναι σε σημείο τομής." style="max-width:300px"></svg>
+      <p><strong>Κύκλος</strong> (Α, 5 cm) είναι όλα τα σημεία που απέχουν 5 cm από το Α (σελ. 207). Το Γ πρέπει να απέχει 5 cm από το Α, άρα είναι κάπου πάνω στον <span class="pink"><b>ροζ</b></span> κύκλο.</p>
+      <p>Πρέπει όμως να απέχει και 3 cm από το Β, άρα είναι και πάνω στον <span class="blue"><b>μπλε</b></span> κύκλο. Και τα δύο μαζί ισχύουν μόνο στα σημεία τομής!</p>
+      <div class="fbox">Γ = σημείο τομής των δύο κύκλων</div>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Πότε τέμνονται δύο κύκλοι;</h3>
+      <svg class="fig" id="circFig" viewBox="-80 -78 275 156" role="img" aria-label="Δύο κύκλοι με ακτίνες 3 cm και 2 cm. Αλλάζεις την απόσταση των κέντρων τους." style="max-width:300px"></svg>
+      <div class="range-label" style="margin-top:4px"><label for="dAB">Απόσταση ΑΒ των κέντρων</label><strong id="dABText">6 cm</strong></div>
+      <input id="dAB" type="range" min="1" max="13" value="12">
+      <p class="result" id="circMsg" aria-live="polite" style="margin:8px 0 4px;font-size:14.5px"></p>
+      <p>Ξεκινάμε από το σχήμα του βιβλίου (σελ. 211): κύκλοι (Α, 3 cm) και (Β, 2 cm) με ΑΒ = 6 cm. Φέρε τα κέντρα πιο κοντά. Πότε έχουν 2, 1 ή κανένα κοινό σημείο;</p>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Πότε υπάρχει τρίγωνο;</h3>
+      <div class="table tri">
+        <span class="th">πλευρές</span><span class="th">οι δύο μικρές μαζί</span><span class="th">τρίγωνο;</span>
+        <span>6, 5, 3</span><span>5 + 3 = 8 &gt; 6</span><span class="lt">✓ ναι</span>
+        <span>6, 5, 4</span><span>5 + 4 = 9 &gt; 6</span><span class="lt">✓ ναι</span>
+        <span>6, 2, 3</span><span>2 + 3 = 5 &lt; 6</span><span class="gt">✗ όχι</span>
+        <span>5, 2, 3</span><span>2 + 3 = 5 = 5</span><span class="gt">✗ όχι</span>
+      </div>
+      <p>Ο πιο σύντομος δρόμος από το Α στο Β είναι το ευθύγραμμο τμήμα ΑΒ. Αν πας από το Γ, κάνεις <strong>μεγαλύτερο</strong> δρόμο: ΑΓ + ΓΒ &gt; ΑΒ. Αν ΑΓ + ΓΒ = ΑΒ, το Γ πέφτει πάνω στο ΑΒ και το «τρίγωνο» πλακώνει σε ένα τμήμα.</p>
+      <div class="fbox green">μεγαλύτερη πλευρά &lt; άθροισμα των δύο άλλων</div>
+      <p>Θυμάσαι το ρ &gt; ΑΒ : 2 στη <a href="../perpendicular-bisector/">μεσοκάθετο</a>; Είναι ο ίδιος κανόνας για το ισοσκελές τρίγωνο με πλευρές ρ, ρ και ΑΒ: ρ + ρ &gt; ΑΒ.</p>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Ισοσκελές και ισόπλευρο</h3>
+      <svg class="fig" id="eqFig" viewBox="-110 -150 340 190" role="img" aria-label="Ισόπλευρο τρίγωνο: δύο κύκλοι με ακτίνα όσο το ΒΓ, ο καθένας περνά από το κέντρο του άλλου." style="max-width:280px"></svg>
+      <p><strong>Ισοσκελές</strong> με ΑΒ = ΑΓ = 6 cm και βάση ΒΓ = 4 cm (σελ. 211): σχεδιάζουμε τη <b>βάση</b> ΒΓ και γράφουμε δύο κύκλους με το <span class="hl p">ίδιο άνοιγμα</span> 6 cm. Το Α ισαπέχει από τα Β και Γ, άρα είναι πάνω στη μεσοκάθετο του ΒΓ.</p>
+      <p><strong>Ισόπλευρο</strong> με πλευρά 6 cm (σελ. 212): και οι δύο κύκλοι έχουν ακτίνα όσο η βάση, 6 cm. Κάθε κύκλος περνά από το κέντρο του άλλου!</p>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>σχεδιάζουμε μία πλευρά και γράφουμε δύο κύκλους με ακτίνες τις άλλες δύο πλευρές. Τρίγωνο υπάρχει μόνο αν η μεγαλύτερη πλευρά είναι μικρότερη από το άθροισμα των δύο άλλων</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Τα <em>Στοιχεία</em> του Ευκλείδη (περίπου 300 π.Χ.) ξεκινούν ακριβώς με αυτή την κατασκευή: η <strong>πρώτη πρόταση</strong> του πρώτου βιβλίου κατασκευάζει ένα ισόπλευρο τρίγωνο πάνω σε ένα ευθύγραμμο τμήμα, με δύο κύκλους, όπως στη σελ. 212. Η πρόταση 20 λέει ότι σε κάθε τρίγωνο δύο πλευρές μαζί είναι μεγαλύτερες από την τρίτη, και η πρόταση 22 κατασκευάζει τρίγωνο από τρία τμήματα. Ο φιλόσοφος Πρόκλος γράφει ότι οι Επικούρειοι κορόιδευαν την πρόταση 20: αυτό, έλεγαν, το ξέρει ακόμα και ένας γάιδαρος, γιατί για να φτάσει στο φαγητό του πηγαίνει ίσια και όχι από τις δύο άλλες πλευρές!</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Σ"><span class="n">1</span><span class="stmt">Υπάρχει τρίγωνο με πλευρές 6 cm, 5 cm και 3 cm.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 5 + 3 = 8, που είναι μεγαλύτερο από 6. Οι δύο κύκλοι τέμνονται.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">2</span><span class="stmt">Υπάρχει τρίγωνο με πλευρές 6 cm, 2 cm και 3 cm.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 2 + 3 = 5, μικρότερο από 6: οι κύκλοι δεν τέμνονται (σελ. 211).</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">3</span><span class="stmt">Υπάρχει τρίγωνο με πλευρές 5 cm, 2 cm και 3 cm.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 2 + 3 = 5: οι κύκλοι μόλις ακουμπούν πάνω στην ΑΒ και το «τρίγωνο» πλακώνει σε ένα τμήμα.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">4</span><span class="stmt">Οι δύο κύκλοι τέμνονται στα Γ και Γ΄. Τα τρίγωνα ΑΒΓ και ΑΒΓ΄ είναι ίσα.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Έχουν τις ίδιες πλευρές και είναι συμμετρικά ως προς την ΑΒ.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">5</span><span class="stmt">Για ισόπλευρο τρίγωνο πλευράς 6 cm γράφουμε δύο κύκλους με ακτίνα 3 cm.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Η ακτίνα είναι όσο η πλευρά, 6 cm. Με 3 cm οι κύκλοι μόλις ακουμπούν στο μέσο της βάσης.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">6</span><span class="stmt">Για να δούμε αν υπάρχει τρίγωνο, αρκεί να ελέγξουμε αν η μεγαλύτερη πλευρά είναι μικρότερη από το άθροισμα των δύο άλλων.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Για τις μικρότερες πλευρές ο έλεγχος ισχύει πάντα, γιατί η μεγαλύτερη πλευρά μόνη της τις ξεπερνά.</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση (άσκηση 8, σελ. 215):</b> Ο φοίνικας και ο βράχος του νησιού απέχουν <b>5 m</b>. Ο χάρτης λέει ότι ο θησαυρός είναι <b>6 m</b> από τον φοίνικα και <b>7 m</b> από τον βράχο. Πού μπορεί να είναι; Σύρε το φτυάρι και βρες <em>όλες</em> τις θέσεις!</p></div>
+<div class="mini">
+  <div class="mini-head"><h3>Ο χάρτης του θησαυρού</h3><div class="btnrow" style="margin:0"><button class="btn ghost" id="mpShow" type="button">Δείξε τους κύκλους</button><button class="btn ghost" id="mpReset" type="button">↺</button></div></div>
+  <div class="stage-fig plain"><svg id="map" viewBox="-300 -200 600 400" role="img" aria-label="Χάρτης με έναν φοίνικα και έναν βράχο που απέχουν 5 m, και ένα φτυάρι που μετακινείς"></svg></div>
+  <p class="readout" id="mpMsg" aria-live="polite"></p>
+</div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Ιδέα:</strong> τα σημεία που απέχουν 6 m από τον φοίνικα Α είναι ο κύκλος (Α, 6 m). Τα σημεία που απέχουν 7 m από τον βράχο Β είναι ο κύκλος (Β, 7 m). Ο θησαυρός είναι πάνω και στους δύο κύκλους.</p>
+<p><strong>Τέμνονται;</strong> Η μεγαλύτερη απόσταση είναι 7 m και οι δύο άλλες μαζί κάνουν 5 + 6 = 11 m.</p>
+<div class="fbox">7 &lt; 5 + 6</div>
+<p>Άρα οι κύκλοι τέμνονται σε <strong>δύο</strong> σημεία, ένα από κάθε πλευρά της ευθείας ΑΒ. Κάθε σημείο είναι η τρίτη κορυφή ενός τριγώνου με πλευρές 5 m, 6 m και 7 m. Στο τετράδιο κάνεις την ίδια κατασκευή με ΑΒ = 5 cm και κύκλους (Α, 6 cm) και (Β, 7 cm).</p>
+<p class="final">Απάντηση: σε δύο θέσεις, στα σημεία τομής των κύκλων (Α, 6 m) και (Β, 7 m)</p>
+<p>Κι αν ο θησαυρός απείχε 2 m από τον φοίνικα και 2 m από τον βράχο; Τότε 2 + 2 = 4 &lt; 5, οι κύκλοι δεν τέμνονται και ο χάρτης είναι ψεύτικος!</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a><a href="../regular-polygons/">Επόμενο: κανονικό εξάγωνο και οκτάγωνο →</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+<script src="../assets/lesson.js"></script>
+<script>
+(() => {
+'use strict';
+const { fmt, animate, stop, ease } = MathLab;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const C = { ink: '#1f2a5c', muted: '#4b5682', blue: '#2c6fd6', red: '#e0313b', green: '#2f8a4e', purple: '#8a5cf0', pink: '#e2508c', orange: '#f08a1c', gray: '#59627f', grid: '#e8eef8', amber: '#b4560c' };
+const TAU = Math.PI * 2, DEG = Math.PI / 180, EPS = 1e-6;
+const f2 = v => v.toFixed(2);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const dist = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
+const num = v => (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : fmt(v, 1));   // 6 ή 2,5
+const cm = v => num(v) + ' cm';
+const dir = a => [Math.cos(a), Math.sin(a)];
+const add = (p, q, k = 1) => [p[0] + k * q[0], p[1] + k * q[1]];
+const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+
+/* «Μολύβι» για SVG: μαθηματικές συντεταγμένες (ο y προς τα πάνω), U pixel ανά μονάδα. */
+function pen(U, fs, g) {
+  const X = x => f2(x * U), Y = y => f2(-y * U);
+  return {
+    U, fs, g, X, Y,
+    line: (a, b, col, w, extra = '') => `<line x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`,
+    dot: (p, col, r = 6) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="${col}" stroke="#fff" stroke-width="${f2(2.2 * g)}"/>`,
+    text: (p, s, o = {}) => `<text x="${f2(p[0] * U + (o.dx || 0))}" y="${f2(-p[1] * U + (o.dy || 0))}" font-size="${f2((o.size || 1) * fs)}" font-weight="${o.w || 800}" fill="${o.col || C.ink}" text-anchor="${o.anchor || 'middle'}" stroke="#fff" stroke-width="${f2(5 * g)}" stroke-linejoin="round" paint-order="stroke"${o.op != null ? ` opacity="${f2(o.op)}"` : ''}>${s}</text>`,
+    grip: (p, name, r = 26) => `<circle data-grip="${name}" class="grip" cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="transparent"/>`,
+    // τόξο κύκλου με κέντρο c και ακτίνα r, από τη γωνία a0 κατά da (ακτίνια, αριστερόστροφα)· ολόκληρος κύκλος για da = 2π
+    arc: (c, r, a0, da, col, w = 3, extra = '') => {
+      if (da <= 0.001) return '';
+      if (da >= TAU - 0.001) return `<circle cx="${X(c[0])}" cy="${Y(c[1])}" r="${f2(r * U)}" fill="none" stroke="${col}" stroke-width="${f2(w * g)}" ${extra}/>`;
+      const R = f2(r * U), p0 = add(c, dir(a0), r), p1 = add(c, dir(a0 + da), r);
+      return `<path d="M${X(p0[0])} ${Y(p0[1])}A${R} ${R} 0 ${da > Math.PI ? 1 : 0} 0 ${X(p1[0])} ${Y(p1[1])}" fill="none" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`;
+    },
+    // σημάδι ίσων τμημάτων στο μέσο του ab (n γραμμούλες)
+    tick: (a, b, n, col) => {
+      const m = mid(a, b), d = dist(a, b), v = [(b[0] - a[0]) / d, (b[1] - a[1]) / d], u = [-v[1], v[0]], s = 7 / U, gap = 5 / U;
+      let o = '';
+      for (let i = 0; i < n; i++) { const c = add(m, v, (i - (n - 1) / 2) * gap); o += `<line x1="${X(c[0] - u[0] * s)}" y1="${Y(c[1] - u[1] * s)}" x2="${X(c[0] + u[0] * s)}" y2="${Y(c[1] + u[1] * s)}" stroke="${col}" stroke-width="${f2(2.4 * g)}" stroke-linecap="round"/>`; }
+      return o;
+    }
+  };
+}
+function compass(P, c, r, phi, active) {
+  const d = dir(phi), n = [-d[1], d[0]], tip = add(c, d, r);
+  const H = add(add(c, d, r / 2), n, 0.42 * r), Hh = add(H, n, 0.5);
+  let s = `<g opacity="0.85">${P.line(c, H, C.gray, 5)}${P.line(H, tip, C.gray, 5)}${P.line(H, Hh, C.gray, 8)}<circle cx="${P.X(H[0])}" cy="${P.Y(H[1])}" r="${f2(8 * P.g)}" fill="${C.orange}" stroke="#fff" stroke-width="${f2(2 * P.g)}"/></g>`;
+  if (active) s += `<circle class="halo" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(17 * P.g)}" fill="${C.purple}" opacity="0.2"/>`;
+  s += `<circle cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(9.5 * P.g)}" fill="${C.purple}" stroke="#fff" stroke-width="${f2(3 * P.g)}"/>`;
+  return { s, tip };
+}
+// καλαμάκι: χοντρή γραμμή με λευκές ρίγες
+const straw = (P, p, q, col) => P.line(p, q, col, 10) + P.line(p, q, '#fff', 2.4, `stroke-dasharray="${f2(3 * P.g)} ${f2(9 * P.g)}" opacity="0.75"`);
+
+/* ---------- 1. Τα καλαμάκια ---------- */
+{
+  const svg = $('#straws'), U = 24, A = [-3, 0], B = [3, 0], SETS = [[5, 3], [2, 3]];
+  const H = { set: 0, al: 120, be: 60 };
+  let joined = false;
+  const tips = () => { const [L1, L2] = SETS[H.set]; return [add(A, dir(H.al * DEG), L1), add(B, [-Math.cos(H.be * DEG), Math.sin(H.be * DEG)], L2)]; };
+  function snap() {
+    const [L1, L2] = SETS[H.set], [T1, T2] = tips();
+    joined = false;
+    if (L1 + L2 > 6 + EPS && dist(T1, T2) < 0.35) {
+      H.al = Math.acos((L1 * L1 + 36 - L2 * L2) / (12 * L1)) / DEG;
+      H.be = Math.acos((L2 * L2 + 36 - L1 * L1) / (12 * L2)) / DEG;
+      joined = true;
+    }
+  }
+  function draw() {
+    const P = pen(U, 15, 1), [L1, L2] = SETS[H.set], [T1, T2] = tips();
+    let s = P.arc(A, L1, 0, Math.PI, '#f0a0b8', 1.8, 'stroke-dasharray="4 6"') + P.arc(B, L2, 0, Math.PI, '#9fbfee', 1.8, 'stroke-dasharray="4 6"');
+    if (joined) s += `<polygon points="${[A, B, T1].map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" fill="#fff3a6"/>`;
+    s += straw(P, A, B, C.gray) + straw(P, A, T1, C.pink) + straw(P, B, T2, C.blue);
+    // μήκη
+    s += P.text(mid(A, B), '6 cm', { dy: 26, size: 0.9 });
+    const lab = (p, q, L, col, side) => { const m = mid(p, q), d = dist(p, q), n = [-(q[1] - p[1]) / d * side, (q[0] - p[0]) / d * side]; return P.text(add(m, n, 0.62), L + ' cm', { dy: 5, col, size: 0.9 }); };
+    s += lab(A, T1, L1, C.pink, 1) + lab(B, T2, L2, C.blue, -1);
+    s += P.dot(A, C.ink, 5) + P.dot(B, C.ink, 5) + P.text(A, 'Α', { dx: -6, dy: 22, anchor: 'end' }) + P.text(B, 'Β', { dx: 6, dy: 22, anchor: 'start' });
+    if (joined) s += P.dot(T1, C.red, 6) + P.text(T1, 'Γ', { dy: -14, col: C.red });
+    else for (const [T, name, col] of [[T1, 'T1', C.pink], [T2, 'T2', C.blue]]) s += `<circle class="halo" cx="${P.X(T[0])}" cy="${P.Y(T[1])}" r="15" fill="${col}" opacity="0.22"/>` + P.dot(T, col, 6) + P.grip(T, name, 22);
+    svg.innerHTML = s;
+    $('#al').value = Math.round(H.al); $('#be').value = Math.round(H.be);
+    $('#alText').textContent = Math.round(H.al) + '°'; $('#beText').textContent = Math.round(H.be) + '°';
+    const m = $('#heroMsg'), d = dist(T1, T2);
+    if (joined) { m.className = 'result miss'; m.innerHTML = `✓ Οι άκρες ενώθηκαν: έφτιαξες τρίγωνο με πλευρές <b>6, ${L1} και ${L2} cm</b>!`; }
+    else if (L1 + L2 < 6 && d < 1.25) { m.className = 'result hit'; m.innerHTML = `Πιο κοντά δεν γίνεται! Ακόμα και ξαπλωμένα πάνω στη βάση, τα καλαμάκια κάνουν ${L1} + ${L2} = ${L1 + L2} cm και <b>λείπει 1 cm</b>.`; }
+    else { m.className = 'result'; m.innerHTML = `Οι άκρες απέχουν <b>${fmt(d, 1)} cm</b>. Σύρε τις άκρες για να ενωθούν!`; }
+  }
+  const setAng = (key, v) => { H[key] = clamp(v, 0, 180); snap(); draw(); };
+  $('#al').addEventListener('input', e => setAng('al', +e.target.value));
+  $('#be').addEventListener('input', e => setAng('be', +e.target.value));
+  $$('.sets .btn').forEach(b => b.addEventListener('click', () => {
+    H.set = +b.dataset.set; H.al = 120; H.be = 60; joined = false;
+    $$('.sets .btn').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    draw();
+  }));
+  let drag = null;
+  svg.addEventListener('pointerdown', e => { const n = e.target.dataset && e.target.dataset.grip; if (n) { drag = n; svg.setPointerCapture(e.pointerId); e.preventDefault(); } });
+  svg.addEventListener('pointermove', e => {
+    if (!drag) return; const m = svg.getScreenCTM(); if (!m) return;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()), x = p.x / U, y = -p.y / U;
+    const ang = drag === 'T1' ? Math.atan2(y - A[1], x - A[0]) / DEG : Math.atan2(y - B[1], B[0] - x) / DEG;
+    setAng(drag === 'T1' ? 'al' : 'be', ang < 0 ? (ang < -90 ? 180 : 0) : ang);
+  });
+  const end = () => { drag = null; };
+  svg.addEventListener('pointerup', end); svg.addEventListener('pointercancel', end);
+  draw();
+}
+
+/* ---------- 3. Η κατασκευή βήμα-βήμα ---------- */
+const st = $('#stage'), card = $('#card'), texts = $$('.step-text'), dots = $$('.dots button');
+const VW = 810, VH = 500;
+const S = { step: 1, p: 1, a: 3, b: 5, c: 6, s1: 0, s2: 0, lockU: null, view: null };
+const COLORS = [['#e0313b', '#ffeceb'], ['#1f2a5c', '#eef1f8'], ['#e2508c', '#ffeaf2'], ['#2c6fd6', '#eaf2ff'], ['#f08a1c', '#fff2df'], ['#3f9d58', '#e9f8ec']];
+const NAMES = { a: 'ΒΓ', b: 'ΑΓ', c: 'ΑΒ' };
+
+function geo() {
+  const { a, b, c } = S, A = [0, 0], B = [c, 0];
+  const x = (b * b - a * a + c * c) / (2 * c), y = Math.sqrt(Math.max(0, b * b - x * x));
+  const keys = ['c', 'b', 'a'].sort((p, q) => S[q] - S[p]), big = keys[0], small = ['c', 'b', 'a'].filter(k => k !== big);   // σειρά ΑΒ, ΑΓ, ΒΓ
+  const diff = S[small[0]] + S[small[1]] - S[big];
+  const tri = diff > EPS, touch = Math.abs(diff) <= EPS;
+  const G = [x, tri ? y : 0], G2 = [x, -y];
+  const phiB = Math.atan2(G[1], G[0] - c);             // πού «περνά» ο κύκλος του Β από το Γ
+  // το κενό ανάμεσα στους κύκλους πάνω στην ευθεία ΑΒ (όταν δεν τέμνονται)
+  let gap = null;
+  if (!tri && !touch) {
+    if (big === 'c') gap = [b, c - a];
+    else if (big === 'b') gap = [c + a, b];
+    else gap = [c - a, -b];
+  }
+  return { A, B, G, G2, tri, touch, big, small, diff, phiB, gap };
+}
+// Ο λόγος που δεν υπάρχει τρίγωνο, με τα δικά του νούμερα
+function why(Q) {
+  const L = Q.big, [p, q] = Q.small, sum = S[p] + S[q];
+  const expr = `${NAMES[p]} + ${NAMES[q]} = ${num(S[p])} + ${num(S[q])} = ${cm(sum)}`;
+  if (Q.touch) return `⚠ Οι κύκλοι μόλις <strong>ακουμπούν</strong> σε ένα σημείο, πάνω στην ευθεία ΑΒ: ${expr}, όσο ακριβώς η ${NAMES[L]}. Το «τρίγωνο» πλακώνει σε ένα ευθύγραμμο τμήμα, άρα <strong>δεν υπάρχει τρίγωνο</strong>.`;
+  const miss = S[L] - sum;
+  return `⚠ Οι κύκλοι <strong>δεν τέμνονται</strong>! ${expr}, που είναι <b>μικρότερο</b> από ${NAMES[L]} = ${cm(S[L])}. ${Math.abs(miss - 1) < EPS ? 'Λείπει' : 'Λείπουν'} ${cm(miss)}, άρα <strong>δεν υπάρχει τρίγωνο</strong>.`;
+}
+const sweeps = Q => ({ s1: { c: Q.A, r: S.b, a0: 0, da: TAU }, s2: { c: Q.B, r: S.a, a0: 0, da: TAU } });
+function geom() {
+  const w = st.clientWidth || 720, VWc = w < 520 ? 560 : VW, px = VWc / w;
+  const fs = Math.max(19, 14 * px), g = Math.max(1, px / 1.3);
+  if (S.lockU) return { VW: VWc, U: S.lockU, cx: S.view[0], cy: S.view[1], fs, g };
+  const { a, b, c } = S, R = Math.max(a, b);
+  const x0 = Math.min(-b, c - a, 0) - 0.8, x1 = Math.max(b, c + a, c) + 0.8, y0 = -R - 0.9, y1 = R + 0.8;
+  const U = Math.min(VWc / (x1 - x0), VH / (y1 - y0));
+  return { VW: VWc, U, cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, fs, g };
+}
+
+function draw() {
+  const G = geom(), P = pen(G.U, G.fs, G.g), g = G.g, Q = geo(), W = sweeps(Q);
+  st.setAttribute('viewBox', [G.cx * G.U - G.VW / 2, -G.cy * G.U - VH / 2, G.VW, VH].map(f2).join(' '));
+  S.view = [G.cx, G.cy];
+  const s = S.step, e = ease(S.p), k = n => s > n ? 1 : s === n ? e : 0;
+  let o = '';
+  // πλέγμα εκατοστών
+  const gx0 = Math.floor(G.cx - G.VW / 2 / G.U), gx1 = Math.ceil(G.cx + G.VW / 2 / G.U), gy0 = Math.floor(G.cy - VH / 2 / G.U), gy1 = Math.ceil(G.cy + VH / 2 / G.U);
+  for (let x = gx0; x <= gx1; x++) o += P.line([x, gy0], [x, gy1], C.grid, 0.6 / g);
+  for (let y = gy0; y <= gy1; y++) o += P.line([gx0, y], [gx1, y], C.grid, 0.6 / g);
+
+  // Βήμα 1: τα τρία δοσμένα τμήματα
+  if (s === 1) {
+    const L = Math.max(S.a, S.b, S.c), x0 = G.cx - L / 2 + 0.4, rows = [['c', 'ΑΒ', C.ink, 1.9], ['b', 'ΑΓ', C.pink, 0], ['a', 'ΒΓ', C.blue, -1.9]];
+    for (const [key, name, col, dy] of rows) {
+      const y = G.cy + dy, p0 = [x0, y], p1 = [x0 + S[key] * e, y];
+      o += P.line(p0, p1, col, 5) + P.line([x0, y - 0.18], [x0, y + 0.18], col, 2.4) + (e > 0.98 ? P.line([p1[0], y - 0.18], [p1[0], y + 0.18], col, 2.4) : '');
+      o += P.text(p0, name, { dx: -14 * g, dy: 7 * g, anchor: 'end', col }) + P.text(p1, cm(S[key]), { dx: 14 * g, dy: 7 * g, anchor: 'start', col, op: e });
+    }
+  }
+  // οι δύο κύκλοι
+  const f1 = s >= 4 ? 1 : s === 3 ? S.s1 : 0, fB = s >= 5 ? 1 : s === 4 ? S.s2 : 0;
+  o += P.arc(W.s1.c, W.s1.r, W.s1.a0, W.s1.da * f1, C.pink) + P.arc(W.s2.c, W.s2.r, W.s2.a0, W.s2.da * fB, C.blue);
+  const narrow = (st.clientWidth || 720) < 520;            // στο κινητό κρύβουμε τις ετικέτες των κύκλων
+  if (f1 >= 1 && s <= 5 && !narrow) o += P.text(add(Q.A, dir(125 * DEG), S.b), `(Α, ${cm(S.b)})`, { dx: -8 * g, dy: -8 * g, anchor: 'end', col: C.pink, size: 0.85 });
+  if (fB >= 1 && s <= 5 && !narrow) o += P.text(add(Q.B, dir(55 * DEG), S.a), `(Β, ${cm(S.a)})`, { dx: 8 * g, dy: -8 * g, anchor: 'start', col: C.blue, size: 0.85 });
+  const both = s >= 5 || (s === 4 && S.s2 >= 1);
+  // όταν δεν υπάρχει τρίγωνο: το κενό ή το σημείο επαφής
+  if (both && Q.gap) {
+    const [u0, u1] = Q.gap, y = 0.45, mx = (u0 + u1) / 2, miss = Math.abs(u1 - u0);
+    o += P.line([u0, 0], [u1, 0], C.red, 6) + P.line([u0, y], [u1, y], C.red, 2) + P.line([u0, y - 0.15], [u0, y + 0.15], C.red, 2) + P.line([u1, y - 0.15], [u1, y + 0.15], C.red, 2);
+    o += P.text([mx, y], (Math.abs(miss - 1) < EPS ? 'λείπει ' : 'λείπουν ') + cm(miss), { dy: -10 * g, col: C.red, size: 0.9 });
+  }
+  if (both && Q.touch) o += `<circle class="halo" cx="${P.X(Q.G[0])}" cy="${P.Y(Q.G[1])}" r="${f2(16 * g)}" fill="${C.red}" opacity="0.22"/>` + P.dot(Q.G, C.red, 6.5) + P.text(Q.G, 'Γ;', { dy: -16 * g, col: C.red });
+  // Βήμα 6: το τρίγωνο
+  if (s >= 6 && Q.tri) {
+    const t = k(6), pA = add(Q.A, [Q.G[0] - Q.A[0], Q.G[1] - Q.A[1]], t), pB = add(Q.B, [Q.G[0] - Q.B[0], Q.G[1] - Q.B[1]], t);
+    o += `<polygon points="${[Q.A, Q.B, Q.G].map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" fill="#fff3a6" opacity="${f2(0.85 * t)}"/>`;
+    o += `<g opacity="0.35">${P.line(Q.A, Q.G2, C.pink, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`)}${P.line(Q.B, Q.G2, C.blue, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`)}</g>`;
+    o += P.line(Q.A, pA, C.pink, 4) + P.line(Q.B, pB, C.blue, 4);
+    if (t > 0.9) {
+      const cen = [(Q.A[0] + Q.B[0] + Q.G[0]) / 3, (Q.A[1] + Q.B[1] + Q.G[1]) / 3];
+      const lab = (p, q, txt, col) => { const m = mid(p, q), v = [m[0] - cen[0], m[1] - cen[1]], l = Math.hypot(...v) || 1; return P.text(add(m, v, 22 / G.U / l), txt, { dy: 7 * g, col, size: 0.85 }); };
+      o += lab(Q.A, Q.G, cm(S.b), C.pink) + lab(Q.B, Q.G, cm(S.a), C.blue);
+      // ίσες πλευρές
+      const eq = (u, v) => Math.abs(S[u] - S[v]) < EPS, seg = { a: [Q.B, Q.G, C.blue], b: [Q.A, Q.G, C.pink], c: [Q.A, Q.B, C.ink] };
+      const marked = new Set();
+      for (const [u, v] of [['a', 'b'], ['b', 'c'], ['a', 'c']]) if (eq(u, v)) { marked.add(u); marked.add(v); }
+      for (const key of marked) o += P.tick(seg[key][0], seg[key][1], 1, seg[key][2]);
+      // ορθή γωνία
+      const right = (V, p, q) => { const u = [p[0] - V[0], p[1] - V[1]], v = [q[0] - V[0], q[1] - V[1]], lu = Math.hypot(...u), lv = Math.hypot(...v); if (Math.abs((u[0] * v[0] + u[1] * v[1]) / (lu * lv)) > 1e-9) return ''; const r = 14 / G.U, a1 = add(V, u, r / lu), a2 = add(V, v, r / lv), c2 = add(a1, v, r / lv); return `<path d="M${P.X(a1[0])} ${P.Y(a1[1])}L${P.X(c2[0])} ${P.Y(c2[1])}L${P.X(a2[0])} ${P.Y(a2[1])}" fill="none" stroke="${C.ink}" stroke-width="${f2(1.8 * g)}"/>`; };
+      o += right(Q.A, Q.B, Q.G) + right(Q.B, Q.A, Q.G) + right(Q.G, Q.A, Q.B);
+    }
+  }
+  // Βήμα 5: οι ακτίνες προς το Γ
+  if (s === 5 && Q.tri) {
+    const op = k(5);
+    o += `<g opacity="${f2(op)}">` + P.line(Q.A, Q.G, C.pink, 2.4, `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`) + P.line(Q.B, Q.G, C.blue, 2.4, `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`) + '</g>';
+    const cen = [(Q.A[0] + Q.B[0] + Q.G[0]) / 3, (Q.A[1] + Q.B[1] + Q.G[1]) / 3];
+    for (const [p, txt, col] of [[Q.A, cm(S.b), C.pink], [Q.B, cm(S.a), C.blue]]) { const m = mid(p, Q.G), v = [m[0] - cen[0], m[1] - cen[1]], l = Math.hypot(...v) || 1; o += P.text(add(m, v, 22 / G.U / l), txt, { dy: 7 * g, col, size: 0.85, op }); }
+  }
+  // η πλευρά ΑΒ (βήμα 2 με χάρακα)
+  if (s >= 2) {
+    const end = [S.c * k(2), 0];
+    if (s === 2) {
+      const r0 = -0.3, r1 = S.c + 0.3, y0 = -0.12, y1 = -0.95;
+      o += `<rect x="${P.X(r0)}" y="${P.Y(y0)}" width="${f2((r1 - r0) * G.U)}" height="${f2((y0 - y1) * G.U)}" rx="${f2(4 * g)}" fill="#fff6d1" stroke="#d9b54a" stroke-width="${f2(1.5 * g)}" opacity="0.95"/>`;
+      for (let i = 0; i <= Math.floor(S.c + EPS); i++) o += P.line([i, y0], [i, y0 - 0.32], '#a8862a', 1.6) + P.text([i, y0 - 0.32], i, { dy: 15 * g, col: '#8a6a1c', size: 0.62, w: 700 });
+    }
+    o += P.line(Q.A, end, C.ink, 4.4);
+  }
+  // ο διαβήτης
+  let grip = '';
+  if (s === 3 || s === 4) {
+    const key = 's' + (s - 2), w = W[key], f = S[key], phi = w.a0 + w.da * f;
+    const cp = compass(P, w.c, w.r, phi, f < 1);
+    o += cp.s; grip = P.grip(cp.tip, key, 28);
+  }
+  // σημεία
+  if (s >= 2) {
+    o += P.dot(Q.A, C.ink, 6.5) + P.text(Q.A, 'Α', { dx: -12 * g, dy: 24 * g, anchor: 'end' });
+    if (s > 2 || e > 0.98) o += P.dot(Q.B, C.ink, 6.5) + P.text(Q.B, 'Β', { dx: 12 * g, dy: 24 * g, anchor: 'start' });
+  }
+  if (Q.tri) {
+    const ang = W.s2.da * S.s2, showG = s >= 5 || (s === 4 && ang >= Q.phiB), showG2 = s >= 5 || (s === 4 && ang >= TAU - Q.phiB);
+    if (s === 5) o += `<circle class="halo" cx="${P.X(Q.G[0])}" cy="${P.Y(Q.G[1])}" r="${f2(16 * g)}" fill="${C.red}" opacity="0.22"/>`;
+    if (showG2) o += P.dot(Q.G2, s >= 6 ? '#f29aa0' : C.red, 6) + P.text(Q.G2, 'Γ΄', { dy: 30 * g, col: s >= 6 ? '#e57b83' : C.red, size: 0.95 });
+    if (showG) o += P.dot(Q.G, C.red, 7) + P.text(Q.G, 'Γ', { dy: -16 * g, col: C.red, size: 1.1 });
+  }
+  st.innerHTML = o + grip;
+  $('#sideTag').textContent = `ΑΒ = ${num(S.c)} · ΑΓ = ${num(S.b)} · ΒΓ = ${num(S.a)} cm`;
+}
+
+/* Κάρτα και κουμπιά */
+const pct = f => Math.round(f * 100) + '%';
+function kind() {
+  const { a, b, c } = S, e = (u, v) => Math.abs(u - v) < EPS;
+  const sides = e(a, b) && e(b, c) ? 'ισόπλευρο' : e(a, b) || e(b, c) || e(a, c) ? 'ισοσκελές' : 'σκαληνό';
+  const cA = (b * b + c * c - a * a) / (2 * b * c), cB = (a * a + c * c - b * b) / (2 * a * c), cG = (a * a + b * b - c * c) / (2 * a * b);
+  const minCos = Math.min(cA, cB, cG), angles = Math.abs(minCos) < 1e-9 ? 'ορθογώνιο' : minCos < 0 ? 'αμβλυγώνιο' : 'οξυγώνιο';
+  const d = x => Math.round(Math.acos(clamp(x, -1, 1)) / DEG) + '°';
+  return `✓ Τρίγωνο <b>${sides}</b> και <b>${angles}</b>. Αν μετρήσεις με το μοιρογνωμόνιο, θα βρεις γωνίες περίπου: Α ≈ ${d(cA)}, Β ≈ ${d(cB)}, Γ ≈ ${d(cG)}.`;
+}
+function syncUI() {
+  for (const n of [1, 2]) { $('#sw' + n).value = Math.round(S['s' + n] * 100); $('#sw' + n + 'Text').textContent = pct(S['s' + n]); }
+  for (const key of ['a', 'b', 'c']) { $('#s' + key).value = Math.round(S[key] * 2); $('#s' + key + 'Text').textContent = cm(S[key]); }
+  $$('[data-side]').forEach(el => { el.textContent = num(S[el.dataset.side]); });
+  const Q = geo();
+  $('#done1').classList.toggle('show', S.s1 >= 1);
+  $('#done2').classList.toggle('show', S.s2 >= 1 && Q.tri); $('#fail2').classList.toggle('show', S.s2 >= 1 && !Q.tri);
+  $('#s5ok').hidden = !Q.tri; $('#s5no').hidden = Q.tri; $('#s5why').innerHTML = Q.tri ? '' : why(Q);
+  if (S.step === 5) $('#next').disabled = !Q.tri;
+  const m = $('#s6msg');
+  if (Q.tri) { m.className = 'result miss'; m.innerHTML = kind(); } else { m.className = 'result hit'; m.innerHTML = why(Q); }
+  const cur = [S.c, S.b, S.a].map(num).join(',');
+  $$('.presets .btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sides === cur)));
+}
+function setSweep(key, f) { S[key] = f >= 0.985 ? 1 : clamp(f, 0, 1); syncUI(); draw(); }
+function setSide(key, v) { v = Math.round(clamp(v, key === 'c' ? 2 : 1, 8) * 2) / 2; if (v === S[key]) return; S[key] = v; syncUI(); draw(); }
+function showCard() {
+  const n = S.step, el = texts[n - 1];
+  texts.forEach(t => { t.hidden = t !== el; });
+  $('#stepTitle').textContent = el.dataset.title; $('#stepTool').textContent = el.dataset.tool;
+  $('#stepNum').textContent = n; $('#stepCount').textContent = 'Βήμα ' + n + ' από 6';
+  card.style.setProperty('--sc', COLORS[n - 1][0]); card.style.setProperty('--sh', COLORS[n - 1][1]);
+  dots.forEach((b, i) => { b.classList.toggle('done', i + 1 < n); if (i + 1 === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+  $('#prev').disabled = n === 1; $('#next').disabled = false;
+  $('#next').textContent = n === 6 ? '↺ Από την αρχή' : 'Επόμενο ▶';
+  syncUI();
+}
+function goTo(n) {
+  n = clamp(n, 1, 6);
+  if (n >= 4 && S.s1 < 1) S.s1 = 1;            // αν προσπεράσει έναν κύκλο, τον ολοκληρώνουμε
+  if (n >= 5 && S.s2 < 1) S.s2 = 1;
+  S.step = n; S.p = 0; showCard();
+  animate(t => { S.p = t; draw(); }, 900);
+}
+$('#prev').addEventListener('click', () => goTo(S.step - 1));
+$('#next').addEventListener('click', () => { if (S.step === 6) { S.s1 = S.s2 = 0; goTo(1); } else goTo(S.step + 1); });
+$('#back1').addEventListener('click', () => goTo(1));
+dots.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.go)));
+$('.cx').addEventListener('keydown', e => {
+  if (e.target.matches('input')) return;
+  if (e.key === 'ArrowRight' && !$('#next').disabled && S.step < 6) { goTo(S.step + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') { goTo(S.step - 1); e.preventDefault(); }
+});
+const live = fn => e => { stop(); S.p = 1; fn(+e.target.value); };
+for (const key of ['a', 'b', 'c']) $('#s' + key).addEventListener('input', live(v => setSide(key, v / 2)));
+for (const n of [1, 2]) {
+  $('#sw' + n).addEventListener('input', live(v => setSweep('s' + n, v / 100)));
+  $('#auto' + n).addEventListener('click', () => { S.p = 1; const key = 's' + n, f0 = S[key] >= 1 ? 0 : S[key]; animate(t => setSweep(key, f0 + (1 - f0) * ease(t)), 2400 * (1 - f0) + 200); });
+}
+$$('.presets .btn').forEach(b => b.addEventListener('click', () => {
+  const [c, bb, a] = b.dataset.sides.split(',').map(Number);
+  Object.assign(S, { a, b: bb, c }); syncUI();
+  if (S.step === 6) { S.p = 0; animate(t => { S.p = t; draw(); }, 900); } else { S.p = 1; draw(); }
+}));
+
+// Σύρσιμο του διαβήτη πάνω στο σχήμα
+let drag = null, unwrapped = 0;
+const toMath = e => { const m = st.getScreenCTM(); if (!m) return null; const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()), U = geom().U; return [p.x / U, -p.y / U]; };
+st.addEventListener('pointerdown', e => {
+  const name = e.target.dataset ? e.target.dataset.grip : null; if (!name) return;
+  drag = name; stop(); S.p = 1; const G0 = geom(); S.lockU = G0.U; S.view = [G0.cx, G0.cy];
+  unwrapped = S[name] * TAU;
+  st.setPointerCapture(e.pointerId); e.preventDefault();
+});
+st.addEventListener('pointermove', e => {
+  if (!drag) return; const pt = toMath(e); if (!pt) return;
+  const w = sweeps(geo())[drag], a = Math.atan2(pt[1] - w.c[1], pt[0] - w.c[0]) - w.a0;
+  let delta = a - (unwrapped % TAU); while (delta > Math.PI) delta -= TAU; while (delta <= -Math.PI) delta += TAU;
+  unwrapped = clamp(unwrapped + delta, 0, w.da);
+  setSweep(drag, unwrapped / w.da);
+});
+const endDrag = () => { if (drag) { drag = null; S.lockU = null; draw(); } };
+st.addEventListener('pointerup', endDrag); st.addEventListener('pointercancel', endDrag);
+
+/* ---------- 4α. Δύο κύκλοι, μία κορυφή ---------- */
+{
+  const U = 22, P = pen(U, 14, 1), A = [0, 0], B = [6, 0], x = (25 - 9 + 36) / 12, G = [x, Math.sqrt(25 - x * x)], G2 = [x, -G[1]];
+  let s = P.arc(A, 5, 0, TAU, C.pink, 2.4) + P.arc(B, 3, 0, TAU, C.blue, 2.4);
+  for (const a of [150, 215, 280]) { const q = add(A, dir(a * DEG), 5); s += P.line(A, q, C.pink, 1.8, 'stroke-dasharray="5 4"') + P.dot(q, C.pink, 3.5) + P.text(mid(A, q), '5', { dx: 2, dy: -5, col: C.pink, size: 0.9 }); }
+  for (const a of [10, 300]) { const q = add(B, dir(a * DEG), 3); s += P.line(B, q, C.blue, 1.8, 'stroke-dasharray="5 4"') + P.dot(q, C.blue, 3.5) + P.text(mid(B, q), '3', { dx: 4, dy: -5, col: C.blue, size: 0.9 }); }
+  s += P.line(A, B, C.ink, 2.6) + P.line(A, G, C.pink, 2.6) + P.line(B, G, C.blue, 2.6);
+  s += P.text(mid(A, G), '5', { dx: -8, dy: -2, anchor: 'end', col: C.pink, size: 0.9 }) + P.text(mid(B, G), '3', { dx: 9, dy: -2, anchor: 'start', col: C.blue, size: 0.9 });
+  s += P.dot(A, C.ink, 4.5) + P.dot(B, C.ink, 4.5) + P.dot(G, C.red, 5.5) + P.dot(G2, C.red, 4.5);
+  s += P.text(A, 'Α', { dx: -7, dy: 16, anchor: 'end' }) + P.text(B, 'Β', { dx: 7, dy: 16, anchor: 'start' }) + P.text(G, 'Γ', { dy: -11, col: C.red }) + P.text(G2, 'Γ΄', { dy: 22, col: C.red, size: 0.9 });
+  $('#whyFig').setAttribute('viewBox', '-120 -122 330 244');
+  $('#whyFig').innerHTML = s;
+}
+
+/* ---------- 4β. Πότε τέμνονται δύο κύκλοι ---------- */
+{
+  const svg = $('#circFig'), inp = $('#dAB'), U = 22, r1 = 3, r2 = 2;
+  function draw() {
+    const d = +inp.value / 2, P = pen(U, 14, 1), A = [0, 0], B = [d, 0];
+    const x = (r1 * r1 - r2 * r2 + d * d) / (2 * d), h2 = r1 * r1 - x * x;
+    const two = d > r1 - r2 + EPS && d < r1 + r2 - EPS, one = Math.abs(d - (r1 + r2)) < EPS || Math.abs(d - (r1 - r2)) < EPS;
+    let s = P.arc(A, r1, 0, TAU, C.pink, 2.6) + P.arc(B, r2, 0, TAU, C.blue, 2.6) + P.line(A, B, C.ink, 2);
+    s += P.dot(A, C.ink, 4) + P.dot(B, C.ink, 4) + P.text(A, 'Α', { dx: -6, dy: 16, anchor: 'end' }) + P.text(B, 'Β', { dx: 6, dy: 16, anchor: 'start' });
+    if (two) { const h = Math.sqrt(h2); s += P.dot([x, h], C.red, 5) + P.dot([x, -h], C.red, 5); }
+    if (one) s += P.dot([r1, 0], C.orange, 6);           // και στις δύο επαφές το κοινό σημείο είναι το (3, 0)
+    svg.innerHTML = s;
+    $('#dABText').textContent = cm(d);
+    const m = $('#circMsg');
+    if (two) { m.className = 'result miss'; m.innerHTML = `<b>2 κοινά σημεία</b>: οι κύκλοι τέμνονται. Υπάρχει τρίγωνο με πλευρές ${num(d)}, 3 και 2 cm ✓`; }
+    else if (one) { m.className = 'result hit'; m.innerHTML = `<b>1 κοινό σημείο</b>: οι κύκλοι μόλις ακουμπούν (εφάπτονται), πάνω στην ευθεία ΑΒ. Τρίγωνο δεν υπάρχει.`; }
+    else if (d < r1 - r2) { m.className = 'result hit'; m.innerHTML = `<b>Κανένα κοινό σημείο</b>: ο μπλε κύκλος είναι ολόκληρος μέσα στον ροζ. Τρίγωνο δεν υπάρχει.`; }
+    else { m.className = 'result hit'; m.innerHTML = `<b>Κανένα κοινό σημείο</b>: οι κύκλοι δεν φτάνουν ο ένας τον άλλον. Τρίγωνο δεν υπάρχει.`; }
+  }
+  inp.addEventListener('input', draw);
+  draw();
+}
+
+/* ---------- 4δ. Το ισόπλευρο τρίγωνο (Ευκλείδης Ι.1) ---------- */
+{
+  const U = 21, P = pen(U, 14, 1), B = [0, 0], G = [4, 0], A = [2, 2 * Math.sqrt(3)], A2 = [2, -2 * Math.sqrt(3)];
+  let s = P.arc(B, 4, 0, TAU, C.pink, 2.2) + P.arc(G, 4, 0, TAU, C.blue, 2.2);
+  s += `<polygon points="${[B, G, A].map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" fill="#fff3a6" stroke="${C.ink}" stroke-width="2.6" stroke-linejoin="round"/>`;
+  s += P.tick(B, G, 1, C.ink) + P.tick(B, A, 1, C.ink) + P.tick(G, A, 1, C.ink);
+  s += P.dot(B, C.ink, 4.5) + P.dot(G, C.ink, 4.5) + P.dot(A, C.red, 5) + P.dot(A2, '#f29aa0', 4);
+  s += P.text(B, 'Β', { dx: -7, dy: 17, anchor: 'end' }) + P.text(G, 'Γ', { dx: 7, dy: 17, anchor: 'start' }) + P.text(A, 'Α', { dy: -11, col: C.red });
+  $('#eqFig').setAttribute('viewBox', '-100 -106 284 206');
+  $('#eqFig').innerHTML = s;
+}
+
+/* ---------- Πρόκληση: ο χάρτης του θησαυρού ---------- */
+const mp = $('#map'), MU = 27, PA = [-2.5, 0], PB = [2.5, 0], RA = 6, RB = 7;
+const tx = (RA * RA - RB * RB + 25) / 10, ty = Math.sqrt(RA * RA - tx * tx), TR = [[PA[0] + tx, ty], [PA[0] + tx, -ty]];
+const M = { P: [4.5, 3.5], trA: [], trB: [], found: [false, false], show: false, drag: false };
+function drawMap() {
+  const w = mp.clientWidth || 600, px = 600 / w, fs = Math.max(15, 13 * px), g = Math.max(1, px / 1.3), P = pen(MU, fs, g);
+  let s = `<rect x="-1200" y="-200" width="2400" height="400" fill="#f7ecd0"/>`;
+  for (let x = -12; x <= 12; x++) s += P.line([x, -8], [x, 8], '#efdfb8', 0.7 / g);
+  for (let y = -8; y <= 8; y++) s += P.line([-12, y], [12, y], '#efdfb8', 0.7 / g);
+  if (M.show) s += P.arc(PA, RA, 0, TAU, C.pink, 2.4, `stroke-dasharray="${f2(9 * g)} ${f2(6 * g)}"`) + P.arc(PB, RB, 0, TAU, C.blue, 2.4, `stroke-dasharray="${f2(9 * g)} ${f2(6 * g)}"`);
+  for (const q of M.trA) s += `<circle cx="${P.X(q[0])}" cy="${P.Y(q[1])}" r="${f2(4 * g)}" fill="${C.pink}" opacity="0.75"/>`;
+  for (const q of M.trB) s += `<circle cx="${P.X(q[0])}" cy="${P.Y(q[1])}" r="${f2(4 * g)}" fill="${C.blue}" opacity="0.75"/>`;
+  s += P.line(PA, PB, '#b59a62', 1.6, `stroke-dasharray="${f2(5 * g)} ${f2(5 * g)}"`) + P.text(mid(PA, PB), '5 m', { dy: 22 * g, col: '#8a6a1c', size: 0.85 });
+  M.found.forEach((f, i) => { if (f) { const T = TR[i]; s += `<text x="${P.X(T[0])}" y="${f2(+P.Y(T[1]) + 9 * g)}" font-size="${f2(26 * g)}" text-anchor="middle" class="emoji">💰</text>`; } });
+  const dA = dist(M.P, PA), dB = dist(M.P, PB), okA = Math.abs(dA - RA) < 0.12, okB = Math.abs(dB - RB) < 0.12;
+  s += P.line(M.P, PA, C.pink, 2.4, okA ? '' : `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`) + P.line(M.P, PB, C.blue, 2.4, okB ? '' : `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`);
+  s += P.text(mid(M.P, PA), fmt(dA, 1) + ' m', { dx: -6 * g, dy: -6 * g, anchor: 'end', col: C.pink, size: 0.9 }) + P.text(mid(M.P, PB), fmt(dB, 1) + ' m', { dx: 6 * g, dy: -6 * g, anchor: 'start', col: C.blue, size: 0.9 });
+  s += `<text x="${P.X(PA[0])}" y="${f2(+P.Y(PA[1]) + 12 * g)}" font-size="${f2(34 * g)}" text-anchor="middle" class="emoji">🌴</text>` + P.text(PA, 'Α', { dx: -22 * g, dy: 26 * g, anchor: 'end', col: '#2f6b2a' });
+  s += `<text x="${P.X(PB[0])}" y="${f2(+P.Y(PB[1]) + 12 * g)}" font-size="${f2(30 * g)}" text-anchor="middle" class="emoji">🪨</text>` + P.text(PB, 'Β', { dx: 22 * g, dy: 26 * g, anchor: 'start', col: '#5b5345' });
+  // κλίμακα
+  s += P.line([-10.4, -6.8], [-9.4, -6.8], C.ink, 3) + P.text([-9.9, -6.8], '1 m', { dy: -9 * g, size: 0.75 });
+  // το φτυάρι
+  s += `<circle class="halo" cx="${P.X(M.P[0])}" cy="${P.Y(M.P[1])}" r="${f2(20 * g)}" fill="${C.orange}" opacity="0.22"/>`;
+  s += `<circle cx="${P.X(M.P[0])}" cy="${P.Y(M.P[1])}" r="${f2(13 * g)}" fill="${C.orange}" stroke="#fff" stroke-width="${f2(2.5 * g)}"/><text x="${P.X(M.P[0])}" y="${f2(+P.Y(M.P[1]) + 6 * g)}" font-size="${f2(15 * g)}" text-anchor="middle" class="emoji">⛏️</text>`;
+  s += P.grip(M.P, 'dig', 30);
+  mp.innerHTML = s;
+  const n = M.found.filter(Boolean).length;
+  let msg = `Από τον φοίνικα: <b class="pink">${fmt(dA, 1)} m</b> · από τον βράχο: <b class="blue">${fmt(dB, 1)} m</b>`;
+  if (n === 2) msg += ' · 🎉 Βρήκες και τις <b>δύο</b> θέσεις του θησαυρού!';
+  else if (n === 1) msg += ' · 💰 Βρήκες τον θησαυρό! Υπάρχει όμως κι άλλη θέση. Ψάξε την!';
+  else if (M.trA.length + M.trB.length > 6) msg += ' · Τα ροζ σημάδια απέχουν 6 m από τον φοίνικα, τα μπλε 7 m από τον βράχο. Τι σχήμα κάνουν;';
+  $('#mpMsg').innerHTML = msg;
+}
+function moveDigger(e) {
+  const m = mp.getScreenCTM(); if (!m) return;
+  const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+  M.P = [clamp(p.x / MU, -10.6, 10.6), clamp(-p.y / MU, -7, 7)];
+  const dA = dist(M.P, PA), dB = dist(M.P, PB);
+  if (Math.abs(dA - RA) < 0.12 && M.trA.every(q => dist(q, M.P) > 0.3)) M.trA.push(M.P.slice());
+  if (Math.abs(dB - RB) < 0.12 && M.trB.every(q => dist(q, M.P) > 0.3)) M.trB.push(M.P.slice());
+  if (Math.abs(dA - RA) < 0.2 && Math.abs(dB - RB) < 0.2) { const i = dist(M.P, TR[0]) < dist(M.P, TR[1]) ? 0 : 1; M.P = TR[i].slice(); M.found[i] = true; }
+  drawMap();
+}
+mp.addEventListener('pointerdown', e => { if (e.target.dataset && e.target.dataset.grip === 'dig') { M.drag = true; mp.setPointerCapture(e.pointerId); e.preventDefault(); } });
+mp.addEventListener('pointermove', e => { if (M.drag) moveDigger(e); });
+mp.addEventListener('pointerup', () => { M.drag = false; }); mp.addEventListener('pointercancel', () => { M.drag = false; });
+mp.addEventListener('click', e => { if (!(e.target.dataset && e.target.dataset.grip)) moveDigger(e); });
+$('#mpShow').addEventListener('click', () => { M.show = !M.show; $('#mpShow').textContent = M.show ? 'Κρύψε τους κύκλους' : 'Δείξε τους κύκλους'; drawMap(); });
+$('#mpReset').addEventListener('click', () => { Object.assign(M, { P: [4.5, 3.5], trA: [], trB: [], found: [false, false], show: false }); $('#mpShow').textContent = 'Δείξε τους κύκλους'; drawMap(); });
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = st.clientWidth + mp.clientWidth; if (w !== lastW) { lastW = w; draw(); drawMap(); } }).observe(document.body);
+showCard(); goTo(1); drawMap();
+})();
+</script></body></html>
