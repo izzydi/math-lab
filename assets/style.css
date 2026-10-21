@@ -213,7 +213,7 @@ input[type=range]{width:100%;accent-color:var(--purple)}
 .lab .meta{margin:-4px 0 0;font-size:14.5px;color:var(--muted);font-weight:600}
 .lab p{margin:0;font-size:16px}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0}
-.tags span{border:2px solid var(--tc);background:var(--tb);border-radius:8px 10px 9px 11px;padding:0 9px;font-size:14px;font-weight:600}
+.tags > span{border:2px solid var(--tc);background:var(--tb);border-radius:8px 10px 9px 11px;padding:0 9px;font-size:14px;font-weight:600}
 .t1{--tc:#f0a0b8;--tb:#ffeef4}.t2{--tc:#8fbbea;--tb:#eaf4ff}.t3{--tc:#b49be8;--tb:#f2ecff}.t4{--tc:#8fd09b;--tb:#ecfaee}.t5{--tc:#f3b46b;--tb:#fff4e6}
 .lab-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
 .open{display:inline-block;text-decoration:none;background:var(--lc);color:#fff;border:2.5px solid var(--ld);border-radius:12px 15px 12px 14px;padding:7px 16px;font-weight:800;box-shadow:0 3px 0 var(--ld)}
@@ -261,3 +261,48 @@ footer a{color:var(--blue);font-weight:700}
 @media(prefers-reduced-motion:reduce){
   .halo,.success.show{animation:none}
 }
+
+/* ---------- Κοινά στοιχεία για τα μαθήματα με πείραμα ---------- */
+/* Πρόβλεψη πριν από το πείραμα */
+.guess{margin-top:14px;border:2.5px dashed var(--orange);background:#fffaf0;border-radius:14px 18px 15px 19px;padding:10px 16px}
+.guess h3{margin:0 0 4px;font-size:18px;color:#b4560c}
+.guess p{margin:4px 0;font-size:15.5px}
+.guess .range-label strong{border-color:var(--orange);color:#b4560c}
+.guess input[type=range]{accent-color:var(--orange)}
+.guess .saved{font-weight:700;color:#24683a}
+/* Πίνακας ελέγχου δίπλα στο σχήμα */
+.panel-card{border:2.5px solid var(--pc,var(--purple));border-radius:16px 20px 15px 19px;background:#fff;padding:12px 16px 16px}
+.panel-card h3{margin:0 0 8px;font-size:19px}
+.panel-card .row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.result{border:2.5px solid #c9d6ef;border-radius:12px 15px 13px 16px;padding:8px 12px;margin:10px 0;font-size:15.5px;font-weight:600;background:#fbfcff;min-height:48px}
+.result.hit{border-color:var(--red);background:#fff2f3}
+.result.miss{border-color:var(--green);background:#f0fbf2}
+.result b{font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.stat{border:2.5px solid var(--sc,#c9d6ef);background:var(--sb,#fff);border-radius:10px 13px 11px 14px;padding:6px 8px;text-align:center;line-height:1.25}
+.stat b{display:block;font-size:22px;font-weight:800}
+.stat small{display:block;font-size:12.5px;color:var(--muted);font-weight:600}
+.s1{--sc:#8fbbea;--sb:#eaf4ff}.s2{--sc:#f0a0b8;--sb:#ffeef4}.s3{--sc:#8fd09b;--sb:#ecfaee}
+/* Γράφημα */
+.chart-wrap{position:relative}
+.chart-wrap svg{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:8px 14px 0;font-size:14.5px;font-weight:600}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:22px;height:0;border-top:3px solid var(--lc)}
+.legend i.dash{border-top-style:dashed}
+.tip{position:absolute;pointer-events:none;background:#fff;border:2px solid #c9d6ef;border-radius:10px;padding:4px 10px;font-size:14px;line-height:1.4;box-shadow:0 2px 6px #1f2a5c22;white-space:nowrap;display:none;z-index:3}
+.tip b{font-weight:800}
+.tip .k{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--lc);margin-right:6px;vertical-align:0}
+/* Πίνακας βημάτων */
+.ztable{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:0;border:2.5px solid #d9e2f3;border-radius:12px 15px 13px 16px;overflow:hidden;font-size:15px;margin:10px 0;background:#fff}
+.ztable span{padding:4px 8px;border-bottom:1.5px solid #eef2fa;text-align:center;font-variant-numeric:tabular-nums}
+.ztable .th{background:#f3edff;font-weight:800;font-size:13.5px;color:var(--ink)}
+.ztable .new{background:#fff9df;animation:pop .35s ease-out}
+.ztable .sum{font-weight:800;color:var(--purple)}
+@media(max-width:560px){
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stat b{font-size:19px}
+  .ztable{font-size:13.5px}
+}
+/* Περιοδικό ψηφίο με γραμμή από πάνω, π.χ. 0,9̅ */
+.per{text-decoration:overline;text-decoration-thickness:.09em;text-underline-offset:0}

@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Το παράδοξο των γενεθλίων · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για τη Γ΄ Γυμνασίου: γιατί σε μια τάξη 23 μαθητών η πιθανότητα για κοινά γενέθλια είναι πάνω από 50%. Πείραμα, γράφημα και υπολογισμός.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Γ΄ Γυμνασίου · Πιθανότητες</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Το παράδοξο των γενεθλίων –</span> <span class="t2">23 μαθητές, μία στις δύο</span></h1>
+    <p>Πειράματα τύχης και πιθανότητες | Γ΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Ερώτηση</span>Σε μια τάξη με <b class="red">23 μαθητές</b>, πόση είναι η πιθανότητα δύο τουλάχιστον να έχουν γενέθλια την ίδια μέρα;</p>
+      <p>Ο χρόνος έχει 365 μέρες και οι 23 μαθητές είναι λίγοι. Οι περισσότεροι λοιπόν μαντεύουν μια <span class="hl y">πολύ μικρή</span> πιθανότητα. Η σωστή απάντηση όμως είναι <span class="hl p">πάνω από 50%</span>! Γι' αυτό λέγεται <strong>παράδοξο</strong>: το αποτέλεσμα είναι σωστό, αλλά μοιάζει λάθος.</p>
+      <p>Για να είναι απλοί οι υπολογισμοί, υποθέτουμε ότι ο χρόνος έχει <span class="hl b">365 μέρες</span> (χωρίς 29 Φεβρουαρίου) και ότι <span class="hl b">κάθε μέρα είναι εξίσου πιθανή</span>.</p>
+      <div class="guess">
+        <h3>🤔 Μάντεψε πρώτα!</h3>
+        <div class="range-label"><label for="guessIn">Πόση νομίζεις ότι είναι η πιθανότητα για 23 μαθητές;</label><strong id="guessText">10%</strong></div>
+        <input id="guessIn" type="range" min="0" max="100" value="10">
+        <p><button class="btn ghost" id="guessSave" type="button">✓ Κράτα την πρόβλεψή μου</button> <span class="saved" id="guessSaved" aria-live="polite"></span></p>
+      </div>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να κάνεις ένα πείραμα τύχης πολλές φορές και να συγκρίνεις τη σχετική συχνότητα με την πιθανότητα.</span></li>
+          <li><b>Σ2</b><span>Να μετράς πόσα ζευγάρια σχηματίζουν ν άτομα.</span></li>
+          <li><b>Σ3</b><span>Να υπολογίζεις την πιθανότητα να έχουν όλοι διαφορετικά γενέθλια.</span></li>
+          <li><b>Σ4</b><span>Να βρίσκεις μια πιθανότητα από την πιθανότητα του αντίθετου ενδεχομένου.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">23 μαθητές σχηματίζουν 253 ζευγάρια! Κάθε γραμμή είναι μια ευκαιρία για κοινά γενέθλια.</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box"><svg id="hero" viewBox="0 0 260 260" role="img" aria-label="23 τελείες σε κύκλο, όλες ενωμένες ανά δύο με 253 γραμμές. Ένα ζευγάρι είναι κόκκινο."></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Τι χρειαζόμαστε -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Τι χρειαζόμαστε</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico" aria-hidden="true">📅</span>365 μέρες<small>χωρίς 29 Φεβρουαρίου</small></div>
+    <div class="chip c2"><span class="ico" aria-hidden="true">🎲</span>1/365<small>κάθε μέρα εξίσου πιθανή</small></div>
+    <div class="chip c3">ν · (ν − 1) : 2<small>ζευγάρια από ν άτομα</small></div>
+    <div class="chip c4">365 · 364 · …<small>βασική αρχή απαρίθμησης</small></div>
+    <div class="chip c5">1 − Ρ<small>το αντίθετο ενδεχόμενο</small></div>
+    <div class="chip c6"><span class="ico" aria-hidden="true">🔁</span>Πολλές φορές<small>νόμος των μεγάλων αριθμών</small></div>
+  </div>
+</section>
+
+<!-- 3. Το πείραμα -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Το πείραμα: μοίρασε γενέθλια</h2></div>
+  <p class="lead">Πάτα <strong>«Νέα τάξη»</strong>: η σελίδα δίνει σε κάθε μαθητή μια τυχαία μέρα γενεθλίων. Μετά δοκίμασε <strong>100 τάξεις</strong> μαζί και δες πόσες είχαν κοινά γενέθλια.</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><h3>Το ημερολόγιο της τάξης</h3><span class="tag" id="nTag">ν = 23 μαθητές</span></div>
+      <div class="stage-fig"><svg id="cal" role="img" aria-label="Ημερολόγιο με τα γενέθλια της τάξης"></svg></div>
+      <div class="stepbar">
+        <button class="btn" id="oneClass" type="button">🎲 Νέα τάξη</button>
+        <button class="btn violet" id="manyClasses" type="button">▶ 100 τάξεις</button>
+        <button class="btn ghost" id="resetStats" type="button">↺ Μηδένισε</button>
+      </div>
+    </div>
+    <aside class="panel-card" style="--pc:var(--blue)">
+      <h3>Η τάξη σου</h3>
+      <div class="range-label"><label for="n">Μαθητές στην τάξη</label><strong id="nText" style="border-color:var(--blue);color:var(--blue)">23</strong></div>
+      <input id="n" type="range" min="2" max="70" value="23" style="accent-color:var(--blue)">
+      <p class="result" id="result" aria-live="polite">Πάτα «🎲 Νέα τάξη» για να μοιράσεις γενέθλια.</p>
+      <div class="stats">
+        <div class="stat s1"><b id="tClasses">0</b><small>τάξεις</small></div>
+        <div class="stat s2"><b id="tHits">0</b><small>με κοινά γενέθλια</small></div>
+        <div class="stat s3"><b id="tFreq">–</b><small>σχετική συχνότητα</small></div>
+      </div>
+      <p style="margin:6px 0;font-size:15.5px">Θεωρητική πιθανότητα: <b id="theory">50,7%</b></p>
+      <p style="margin:6px 0;font-size:15.5px" id="guessCompare"></p>
+    </aside>
+  </div>
+
+  <div class="stage" style="margin-top:18px">
+    <div class="stage-head"><h3>Πόσο μεγάλη πρέπει να είναι η τάξη;</h3><span class="tag" id="chartTag">ν = 23 → 50,7%</span></div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="--lc:#2c6fd6"></i>δύο οποιοιδήποτε μαθητές να έχουν ίδια γενέθλια</span>
+      <span><i class="dash" style="--lc:#e2741a"></i>κάποιος να έχει τα δικά σου γενέθλια</span>
+      <span><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" fill="#fff" stroke="#1f2a5c" stroke-width="2.5"/></svg>το πείραμά σου</span>
+    </div>
+    <div class="stage-fig chart-wrap"><svg id="chart" role="img" aria-label="Γράφημα: πιθανότητα κοινών γενεθλίων ανάλογα με το πλήθος των μαθητών"></svg><div class="tip" id="tip" role="presentation"></div></div>
+    <p class="readout" id="chartRead" aria-live="polite"></p>
+  </div>
+  <p class="lead" style="margin:10px 0 0;font-size:14.5px">💡 Πέρασε το ποντίκι πάνω από το γράφημα για να δεις κάθε τιμή. Πάτα πάνω του για να αλλάξεις το μέγεθος της τάξης.</p>
+</section>
+
+<!-- 4. Γιατί συμβαίνει -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Γιατί συμβαίνει;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Μετράμε ζευγάρια, όχι μαθητές</h3>
+      <p>Κάθε μαθητής κάνει ζευγάρι με καθέναν από τους άλλους 22. Αυτά κάνουν 23 · 22 = 506, αλλά έτσι μετράμε κάθε ζευγάρι <strong>δύο φορές</strong> (το Α–Β και το Β–Α):</p>
+      <div class="fbox">23 · 22 : 2 = 253 ζευγάρια</div>
+      <p>Κάθε ζευγάρι έχει μικρή πιθανότητα να ταιριάξει, μόλις 1/365. Όμως <span class="hl y">253 ευκαιρίες</span> είναι πολλές! Οι μαθητές αυξάνονται κατά ένα, ενώ τα ζευγάρια όλο και πιο γρήγορα: 10 μαθητές κάνουν 45 ζευγάρια, 20 κάνουν 190 και 40 κάνουν 780.</p>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Πιο εύκολα: το αντίθετο</h3>
+      <p>Είναι δύσκολο να μετρήσουμε όλους τους τρόπους να ταιριάξουν δύο, τρεις ή περισσότεροι μαθητές. Μετράμε λοιπόν το <strong>αντίθετο</strong>: «όλοι έχουν διαφορετικά γενέθλια».</p>
+      <p>Ένα από τα δύο σίγουρα συμβαίνει και δεν γίνεται να συμβούν μαζί. Άρα οι πιθανότητές τους έχουν άθροισμα 1:</p>
+      <div class="fbox green">Ρ(κοινά) = 1 − Ρ(όλοι διαφορετικά)</div>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Όλοι σε διαφορετική μέρα</h3>
+      <p>Ο 1ος μαθητής μπορεί να έχει γενέθλια οποιαδήποτε από τις 365 μέρες. Ο 2ος πρέπει να πέσει σε μία από τις <strong>364</strong> άλλες, ο 3ος σε μία από τις <strong>363</strong>, …, και ο 23ος σε μία από τις <strong>343</strong>. Με τη βασική αρχή απαρίθμησης και τον κλασικό ορισμό της πιθανότητας:</p>
+      <div class="fbox blue">Ρ(όλοι διαφορετικά) = <sup>365</sup>⁄<sub>365</sub> · <sup>364</sup>⁄<sub>365</sub> · … · <sup>343</sup>⁄<sub>365</sub> ≈ 0,493</div>
+      <p>Άρα <strong>Ρ(κοινά) ≈ 1 − 0,493 = 0,507</strong>, δηλαδή <span class="hl p">50,7%</span>.</p>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Πώς μεγαλώνει η πιθανότητα</h3>
+      <div class="table"><span class="th">Μαθητές ν</span><span class="th">Ζευγάρια</span><span class="th">Ρ(κοινά)</span><span>10</span><span>45</span><span>11,7%</span><span>15</span><span>105</span><span>25,3%</span><span>20</span><span>190</span><span>41,1%</span><span>23</span><span>253</span><span>50,7%</span><span>30</span><span>435</span><span>70,6%</span><span>40</span><span>780</span><span>89,1%</span><span>50</span><span>1.225</span><span>97,0%</span></div>
+      <p>Με 23 μαθητές η πιθανότητα περνά το 50%. Με 50 μαθητές είναι σχεδόν σίγουρο ότι θα βρούμε κοινά γενέθλια.</p>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>23 μαθητές κάνουν 253 ζευγάρια, και η πιθανότητα για κοινά γενέθλια είναι 50,7%</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Σε έναν αγώνα ποδοσφαίρου, μέσα στο γήπεδο βρίσκονται <strong>23 άτομα</strong>: 22 παίκτες και ο διαιτητής. Άρα περίπου στους μισούς αγώνες, δύο από αυτούς έχουν γενέθλια την ίδια μέρα! Και κάτι ακόμα: για να είναι 50% πιθανό να βρεις κάποιον με <em>τα δικά σου</em> γενέθλια, χρειάζεσαι 253 άλλους ανθρώπους, όσα δηλαδή και τα ζευγάρια των 23 μαθητών!</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Λ"><span class="n">1</span><span class="stmt">Για πιθανότητα 50% να έχουν δύο μαθητές ίδια γενέθλια, χρειάζονται τουλάχιστον 183 μαθητές.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Αρκούν 23. Το 183 είναι περίπου το μισό του 365, αλλά εδώ μετράνε τα ζευγάρια, όχι οι μαθητές.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">2</span><span class="stmt">23 μαθητές σχηματίζουν 253 ζευγάρια.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 23 · 22 : 2 = 253.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">3</span><span class="stmt">Αν σε μια τάξη 23 μαθητών δεν υπάρχουν κοινά γενέθλια, τότε ο υπολογισμός του 50,7% είναι λάθος.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Πιθανότητα 50,7% σημαίνει ότι περίπου στις μισές τάξεις θα βρούμε κοινά γενέθλια, όχι σε όλες.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">4</span><span class="stmt">Ρ(κοινά γενέθλια) = 1 − Ρ(όλοι διαφορετικά).</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Ένα από τα δύο ενδεχόμενα σίγουρα συμβαίνει, και δεν μπορούν να συμβούν μαζί.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">5</span><span class="stmt">Σε μια τάξη 23 μαθητών είναι 50% πιθανό κάποιος να έχει τα δικά σου γενέθλια.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Αυτό είναι μόλις 5,9%. Το 50,7% αφορά δύο οποιουσδήποτε μαθητές της τάξης.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">6</span><span class="stmt">Όσο περισσότερες τάξεις δοκιμάζουμε, τόσο πιο κοντά στο 50,7% πηγαίνει συνήθως η σχετική συχνότητα.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Αυτό λέει ο νόμος των μεγάλων αριθμών.</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση:</b> Πόσοι μαθητές χρειάζονται, ώστε η πιθανότητα για κοινά γενέθλια να ξεπεράσει το <b>90%</b>; Βρες το με τον πίνακα της ενότητας 4 και έλεγξέ το με το γράφημα.</p></div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Από τον πίνακα:</strong> για ν = 40 η πιθανότητα είναι 89,1%, δηλαδή λίγο κάτω από 90%. Για ν = 50 είναι 97,0%. Άρα η απάντηση είναι ανάμεσα στο 40 και στο 50.</p>
+<p><strong>Με το γράφημα:</strong> βάζουμε ν = 41 και βλέπουμε 90,3%. Αυτό είναι το πρώτο ν που περνά το 90%.</p>
+<div class="fbox">ν = 40 → 89,1% &nbsp;&nbsp; ν = 41 → 90,3%</div>
+<p>Οι 41 μαθητές σχηματίζουν 41 · 40 : 2 = 820 ζευγάρια. <strong>Μπόνους:</strong> για 99% χρειάζονται 57 μαθητές.</p>
+<p class="final">Απάντηση: 41 μαθητές</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+<script src="../assets/lesson.js"></script>
+<script>
+(() => {
+'use strict';
+const { fmt, animate, stop } = MathLab;
+const $ = s => document.querySelector(s);
+const C = { ink: '#1f2a5c', muted: '#4b5682', blue: '#2c6fd6', orange: '#e2741a', red: '#e0313b', pink: '#e2508c', grid: '#e3e9f5' };
+const MONTHS = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μάι', 'Ιούν', 'Ιούλ', 'Αύγ', 'Σεπ', 'Οκτ', 'Νοέ', 'Δεκ'];
+const MONTHS_GEN = ['Ιανουαρίου', 'Φεβρουαρίου', 'Μαρτίου', 'Απριλίου', 'Μαΐου', 'Ιουνίου', 'Ιουλίου', 'Αυγούστου', 'Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου'];
+const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const START = DAYS.map((_, i) => DAYS.slice(0, i).reduce((a, b) => a + b, 0));   // πρώτη μέρα κάθε μήνα (0–364)
+const NMAX = 70;
+
+// Πιθανότητα να έχουν δύο τουλάχιστον από ν άτομα ίδια γενέθλια.
+const P = n => { let q = 1; for (let i = 0; i < n; i++) q *= (365 - i) / 365; return 1 - q; };
+// Πιθανότητα να έχει κάποιος από τους άλλους ν − 1 τα δικά σου γενέθλια.
+const Q = n => 1 - Math.pow(364 / 365, Math.max(0, n - 1));
+const pct = x => fmt(100 * x, 1) + '%';
+const pairs = n => n * (n - 1) / 2;
+const nice = v => v.toLocaleString('el-GR');
+const dateOf = k => { let m = 0; while (m < 11 && k >= START[m + 1]) m++; return (k - START[m] + 1) + ' ' + MONTHS_GEN[m]; };
+
+const S = { n: 23, bdays: null, shown: 0, classes: 0, hits: 0, guess: null };
+const randomClass = n => Array.from({ length: n }, () => Math.floor(Math.random() * 365));
+const counts = (b, upto = b.length) => { const c = new Array(365).fill(0); for (let i = 0; i < upto; i++) c[b[i]]++; return c; };
+const hasMatch = b => new Set(b).size < b.length;
+
+/* ---------- Η εικόνα της εκφώνησης: 23 σημεία και τα 253 ζευγάρια τους ---------- */
+{
+  const pts = Array.from({ length: 23 }, (_, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / 23; return [130 + 108 * Math.cos(a), 130 + 108 * Math.sin(a)]; });
+  let s = '<g stroke="#2c6fd6" stroke-opacity="0.2" stroke-width="1">';
+  for (let i = 0; i < 23; i++) for (let j = i + 1; j < 23; j++) s += `<line x1="${pts[i][0].toFixed(1)}" y1="${pts[i][1].toFixed(1)}" x2="${pts[j][0].toFixed(1)}" y2="${pts[j][1].toFixed(1)}"/>`;
+  s += '</g>';
+  const [a, b] = [3, 14];
+  s += `<line x1="${pts[a][0].toFixed(1)}" y1="${pts[a][1].toFixed(1)}" x2="${pts[b][0].toFixed(1)}" y2="${pts[b][1].toFixed(1)}" stroke="${C.red}" stroke-width="3.5" stroke-linecap="round"/>`;
+  pts.forEach((p, i) => { s += `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="7" fill="${i === a || i === b ? C.red : C.pink}" stroke="#fff" stroke-width="2"/>`; });
+  $('#hero').innerHTML = s;
+}
+
+/* ---------- Πρόβλεψη ---------- */
+const guessIn = $('#guessIn');
+guessIn.addEventListener('input', () => { $('#guessText').textContent = guessIn.value + '%'; });
+$('#guessSave').addEventListener('click', () => {
+  S.guess = Number(guessIn.value);
+  $('#guessSaved').textContent = 'Κρατήθηκε: ' + S.guess + '%. Θα τη συγκρίνουμε με το πείραμα!';
+  updateStats();
+});
+
+/* ---------- Το ημερολόγιο ---------- */
+const cal = $('#cal');
+function drawCal() {
+  const w = cal.clientWidth || 720, narrow = w < 560;
+  const cols = narrow ? 16 : 31, rpm = narrow ? 2 : 1, cs = 24, gap = 3, mgap = narrow ? 7 : 0;
+  const left = narrow ? 46 : 52, top = narrow ? 4 : 24;
+  const W = left + cols * cs + 4, H = top + 12 * (rpm * cs + mgap) + 2;
+  cal.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const c = S.bdays ? counts(S.bdays, S.shown) : new Array(365).fill(0);
+  let s = '';
+  if (!narrow) for (const d of [1, 5, 10, 15, 20, 25, 30]) s += `<text x="${left + (d - 1) * cs + (cs - gap) / 2}" y="${top - 8}" font-size="13" font-weight="700" fill="${C.muted}" text-anchor="middle">${d}</text>`;
+  for (let m = 0; m < 12; m++) {
+    const y0 = top + m * (rpm * cs + mgap);
+    s += `<text x="${left - 8}" y="${y0 + rpm * cs / 2 + 5}" font-size="14" font-weight="700" fill="${C.ink}" text-anchor="end">${MONTHS[m]}</text>`;
+    for (let d = 1; d <= DAYS[m]; d++) {
+      const k = START[m] + d - 1, x = left + ((d - 1) % cols) * cs, y = y0 + Math.floor((d - 1) / cols) * cs, n = c[k];
+      const fill = n >= 2 ? '#ffd3e4' : n === 1 ? '#dbeaff' : '#f4f7fd', stroke = n >= 2 ? C.red : n === 1 ? '#8fbbea' : '#e1e8f5';
+      s += `<rect x="${x}" y="${y}" width="${cs - gap}" height="${cs - gap}" rx="4" fill="${fill}" stroke="${stroke}" stroke-width="${n >= 2 ? 2 : 1}"/>`;
+      if (n === 1) s += `<circle cx="${x + (cs - gap) / 2}" cy="${y + (cs - gap) / 2}" r="5.5" fill="${C.blue}"/>`;
+      if (n >= 2) s += `<text x="${x + (cs - gap) / 2}" y="${y + (cs - gap) / 2 + 5.5}" font-size="15" font-weight="800" fill="${C.red}" text-anchor="middle">${n}</text>`;
+    }
+  }
+  cal.innerHTML = s;
+}
+
+function showResult() {
+  const r = $('#result');
+  if (!S.bdays) { r.className = 'result'; r.textContent = 'Πάτα «🎲 Νέα τάξη» για να μοιράσεις γενέθλια.'; return; }
+  const c = counts(S.bdays), m = [];
+  c.forEach((v, k) => { if (v >= 2) m.push([k, v]); });
+  if (!m.length) { r.className = 'result miss'; r.innerHTML = '🙂 Κανένα κοινό γενέθλιο σε αυτή την τάξη.'; return; }
+  const list = m.slice(0, 3).map(([k, v]) => `<b>${dateOf(k)}</b> (${v} μαθητές)`).join(', ');
+  r.className = 'result hit';
+  r.innerHTML = '🎂 Κοινά γενέθλια: ' + list + (m.length > 3 ? ` και ακόμα ${m.length - 3}` : '') + '.';
+}
+
+function updateStats() {
+  $('#tClasses').textContent = nice(S.classes);
+  $('#tHits').textContent = nice(S.hits);
+  $('#tFreq').textContent = S.classes ? pct(S.hits / S.classes) : '–';
+  $('#theory').textContent = pct(P(S.n));
+  const g = $('#guessCompare');
+  g.innerHTML = S.guess == null ? '' : `Η πρόβλεψή σου για 23 μαθητές ήταν <b>${S.guess}%</b>. ${S.guess >= 45 && S.guess <= 56 ? 'Πολύ κοντά! 👏' : 'Η θεωρία λέει 50,7%.'}`;
+  drawChart();
+}
+
+function newClass() {
+  stop();
+  S.bdays = randomClass(S.n); S.shown = 0;
+  $('#result').className = 'result'; $('#result').textContent = 'Μοιράζω γενέθλια…';
+  animate(t => { S.shown = Math.ceil(t * S.n); drawCal(); }, Math.min(1400, 45 * S.n), () => {
+    S.shown = S.n; drawCal();
+    S.classes++; if (hasMatch(S.bdays)) S.hits++;
+    showResult(); updateStats();
+  });
+}
+
+function manyClasses() {
+  stop();
+  const total = 100; let done = 0;
+  animate(t => {
+    const target = Math.round(t * total);
+    while (done < target) { S.bdays = randomClass(S.n); S.classes++; if (hasMatch(S.bdays)) S.hits++; done++; }
+    S.shown = S.n; drawCal(); updateStats();
+  }, 1800, () => { showResult(); updateStats(); });
+}
+
+function setN(n) {
+  n = Math.max(2, Math.min(NMAX, Math.round(n)));
+  if (n === S.n) return;
+  stop();
+  S.n = n; S.bdays = null; S.shown = 0; S.classes = 0; S.hits = 0;
+  $('#n').value = n; $('#nText').textContent = n; $('#nTag').textContent = 'ν = ' + n + ' μαθητές';
+  drawCal(); showResult(); updateStats();
+}
+
+$('#oneClass').addEventListener('click', newClass);
+$('#manyClasses').addEventListener('click', manyClasses);
+$('#resetStats').addEventListener('click', () => { stop(); S.bdays = null; S.classes = 0; S.hits = 0; drawCal(); showResult(); updateStats(); });
+$('#n').addEventListener('input', e => setN(Number(e.target.value)));
+
+/* ---------- Το γράφημα ---------- */
+const chart = $('#chart'), tip = $('#tip'), wrap = chart.parentElement;
+let G = null, hoverN = null;
+function geom() {
+  const w = chart.clientWidth || 720, narrow = w < 560;
+  const W = narrow ? 520 : 820, H = narrow ? 500 : 340;
+  const px = W / w, fs = Math.max(14, 12.5 * px);
+  const L = fs * 3.4, R = 18, T = 16, B = fs * 3;
+  return { W, H, fs, L, R, T, B, x: v => L + (v - 1) / (NMAX - 1) * (W - L - R), y: p => T + (1 - p) * (H - T - B), toN: px2 => 1 + (px2 - L) / (W - L - R) * (NMAX - 1) };
+}
+function drawChart() {
+  G = geom();
+  const { W, H, fs, L, R, T, B, x, y } = G, n = S.n;
+  chart.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  let s = '';
+  for (const g of [0, 0.25, 0.5, 0.75, 1]) {
+    s += `<line x1="${L}" x2="${W - R}" y1="${y(g)}" y2="${y(g)}" stroke="${g === 0.5 ? '#9aa6c7' : C.grid}" stroke-width="${g === 0.5 ? 1.6 : 1}" ${g === 0.5 ? 'stroke-dasharray="6 5"' : ''}/>`;
+    s += `<text x="${L - 8}" y="${y(g) + fs * 0.35}" text-anchor="end" font-size="${fs}" fill="${C.muted}">${g * 100}%</text>`;
+  }
+  for (let v = 10; v <= NMAX; v += 10) {
+    s += `<line x1="${x(v)}" x2="${x(v)}" y1="${H - B}" y2="${H - B + 6}" stroke="${C.muted}" stroke-width="1.5"/>`;
+    s += `<text x="${x(v)}" y="${H - B + 6 + fs}" text-anchor="middle" font-size="${fs}" fill="${C.muted}">${v}</text>`;
+  }
+  s += `<line x1="${L}" x2="${W - R}" y1="${H - B}" y2="${H - B}" stroke="${C.ink}" stroke-width="1.6"/>`;
+  s += `<text x="${(L + W - R) / 2}" y="${H - 6}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="${C.ink}">Μαθητές στην τάξη (ν)</text>`;
+  const path = f => 'M' + Array.from({ length: NMAX }, (_, i) => x(i + 1).toFixed(1) + ' ' + y(f(i + 1)).toFixed(1)).join('L');
+  // οδηγός στο τρέχον ν
+  s += `<line x1="${x(n)}" x2="${x(n)}" y1="${T}" y2="${H - B}" stroke="#c9d6ef" stroke-width="2" stroke-dasharray="4 4"/>`;
+  s += `<path d="${path(Q)}" fill="none" stroke="${C.orange}" stroke-width="3" stroke-dasharray="9 6" stroke-linecap="round"/>`;
+  s += `<path d="${path(P)}" fill="none" stroke="${C.blue}" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>`;
+  // ετικέτες στις άκρες των καμπυλών
+  const halo = `stroke="#fff" stroke-width="5" stroke-linejoin="round" paint-order="stroke"`;
+  s += `<text x="${x(NMAX) - 2}" y="${y(P(NMAX)) + fs * 1.4}" text-anchor="end" font-size="${fs}" font-weight="700" fill="${C.ink}" ${halo}>δύο οποιοιδήποτε</text>`;
+  s += `<text x="${x(NMAX) - 2}" y="${y(Q(NMAX)) - fs * 0.7}" text-anchor="end" font-size="${fs}" font-weight="700" fill="${C.ink}" ${halo}>τα δικά σου γενέθλια</text>`;
+  // σημεία στο τρέχον ν
+  const right = n < 46, ax = right ? 'start' : 'end', dx = right ? 12 : -12;
+  s += `<circle cx="${x(n)}" cy="${y(Q(n))}" r="6.5" fill="${C.orange}" stroke="#fff" stroke-width="2.5"/>`;
+  s += `<circle cx="${x(n)}" cy="${y(P(n))}" r="7.5" fill="${C.blue}" stroke="#fff" stroke-width="2.5"/>`;
+  s += `<text x="${x(n) + dx}" y="${y(P(n)) - 8}" text-anchor="${ax}" font-size="${fs * 1.15}" font-weight="800" fill="${C.ink}" ${halo}>${pct(P(n))}</text>`;
+  s += `<text x="${x(n) + dx}" y="${y(Q(n)) - 8}" text-anchor="${ax}" font-size="${fs}" font-weight="700" fill="${C.ink}" ${halo}>${pct(Q(n))}</text>`;
+  // το πείραμα του μαθητή
+  if (S.classes) {
+    const f = S.hits / S.classes;
+    s += `<circle cx="${x(n)}" cy="${y(f)}" r="7" fill="#fff" stroke="${C.ink}" stroke-width="2.8"/>`;
+    s += `<text x="${x(n) - dx}" y="${y(f) + fs * 0.35}" text-anchor="${right ? 'end' : 'start'}" font-size="${fs * 0.95}" font-weight="700" fill="${C.ink}" ${halo}>πείραμα ${pct(f)}</text>`;
+  }
+  if (hoverN != null) s += `<line x1="${x(hoverN)}" x2="${x(hoverN)}" y1="${T}" y2="${H - B}" stroke="${C.ink}" stroke-opacity="0.35" stroke-width="1.5"/>` +
+    `<circle cx="${x(hoverN)}" cy="${y(P(hoverN))}" r="5" fill="${C.blue}" stroke="#fff" stroke-width="2"/><circle cx="${x(hoverN)}" cy="${y(Q(hoverN))}" r="5" fill="${C.orange}" stroke="#fff" stroke-width="2"/>`;
+  // διαφανής επιφάνεια για το ποντίκι
+  s += `<rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent" style="cursor:crosshair"/>`;
+  chart.innerHTML = s;
+  $('#chartTag').textContent = 'ν = ' + n + ' → ' + pct(P(n));
+  $('#chartRead').innerHTML = `ν = ${n} μαθητές → ${nice(pairs(n))} ζευγάρια → κοινά γενέθλια: <b>${pct(P(n))}</b> · κάποιος με τα δικά σου γενέθλια: <b>${pct(Q(n))}</b>`;
+}
+const nAt = e => {
+  const m = chart.getScreenCTM(); if (!m || !G) return null;
+  const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+  if (p.x < G.L - 10 || p.x > G.W - G.R + 10) return null;
+  return Math.max(1, Math.min(NMAX, Math.round(G.toN(p.x))));
+};
+chart.addEventListener('pointermove', e => {
+  const v = nAt(e);
+  if (v == null) { hoverN = null; tip.style.display = 'none'; drawChart(); return; }
+  if (v !== hoverN) { hoverN = v; drawChart(); }
+  tip.innerHTML = `<b>ν = ${v}</b> · ${nice(pairs(v))} ζευγάρια<br><span class="k" style="--lc:${C.blue}"></span>δύο οποιοιδήποτε: <b>${pct(P(v))}</b><br><span class="k" style="--lc:${C.orange}"></span>τα δικά σου: <b>${pct(Q(v))}</b>`;
+  tip.style.display = 'block';
+  const r = wrap.getBoundingClientRect(), tw = tip.offsetWidth;
+  let left = e.clientX - r.left + 14; if (left + tw > r.width - 4) left = e.clientX - r.left - tw - 14;
+  tip.style.left = Math.max(4, left) + 'px'; tip.style.top = Math.max(4, e.clientY - r.top - 70) + 'px';
+});
+chart.addEventListener('pointerleave', () => { hoverN = null; tip.style.display = 'none'; drawChart(); });
+chart.addEventListener('click', e => { const v = nAt(e); if (v != null) setN(Math.max(2, v)); });
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = cal.clientWidth + chart.clientWidth; if (w !== lastW) { lastW = w; drawCal(); drawChart(); } }).observe(document.body);
+drawCal(); showResult(); updateStats();
+})();
+</script></body></html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Ο Αχιλλέας και η χελώνα · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για τη Γ΄ Γυμνασίου: το παράδοξο του Ζήνωνα, άπειρα βήματα σε πεπερασμένο χρόνο, 0,999… = 1 και μια εξίσωση που λύνει το μυστήριο.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.emoji{font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+.zsteps{margin:0 0 12px;padding-left:22px}
+.zsteps li{margin:4px 0}
+</style>
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Γ΄ Γυμνασίου · Πραγματικοί αριθμοί</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Ο Αχιλλέας και η χελώνα –</span> <span class="t2">το παράδοξο του Ζήνωνα</span></h1>
+    <p>Άπειρα βήματα σε πεπερασμένο χρόνο | Γ΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Ερώτηση</span>Ο Αχιλλέας τρέχει <b class="red">10 φορές πιο γρήγορα</b> από μια χελώνα και της δίνει <b class="red">9 μέτρα</b> προβάδισμα. Θα τη φτάσει ποτέ;</p>
+      <p>Ο φιλόσοφος <strong>Ζήνων ο Ελεάτης</strong> (5ος αιώνας π.Χ.) υποστήριξε ότι <span class="hl y">δεν θα τη φτάσει ποτέ</span>! Σκέψου όπως εκείνος:</p>
+      <ol class="zsteps">
+        <li>Ο Αχιλλέας τρέχει ως το σημείο όπου ξεκίνησε η χελώνα. Στο μεταξύ, η χελώνα έχει προχωρήσει λίγο.</li>
+        <li>Ο Αχιλλέας τρέχει ως εκεί. Η χελώνα όμως έχει προχωρήσει ξανά, λίγο ακόμα.</li>
+        <li>Αυτό επαναλαμβάνεται για πάντα: όποτε ο Αχιλλέας φτάνει εκεί που ήταν η χελώνα, εκείνη είναι λίγο πιο μπροστά.</li>
+      </ol>
+      <p>Άρα, λέει ο Ζήνων, ο Αχιλλέας χρειάζεται <span class="hl p">άπειρα βήματα</span> και δεν φτάνει ποτέ τη χελώνα. Ξέρουμε όμως ότι ένας γρήγορος δρομέας προσπερνά μια χελώνα σε λίγα δευτερόλεπτα. <strong>Πού είναι το λάθος;</strong></p>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να περιγράφεις τα βήματα του Ζήνωνα με δεκαδικούς αριθμούς.</span></li>
+          <li><b>Σ2</b><span>Να βρίσκεις το άθροισμα 0,9 + 0,09 + 0,009 + … με τον περιοδικό δεκαδικό 0,<span class="per">9</span>.</span></li>
+          <li><b>Σ3</b><span>Να εξηγείς γιατί 0,<span class="per">9</span> = 1.</span></li>
+          <li><b>Σ4</b><span>Να λύνεις το ίδιο πρόβλημα με μια εξίσωση και να συγκρίνεις τις δύο λύσεις.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">Κάθε βήμα του Ζήνωνα είναι 10 φορές μικρότερο από το προηγούμενο: 9 m, 0,9 m, 0,09 m, …</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box">
+        <svg viewBox="0 0 280 190" role="img" aria-label="Ο Αχιλλέας στην αρχή και η χελώνα στα 9 μέτρα. Τόξα που μικραίνουν: 9 μέτρα, 0,9 μέτρα, 0,09 μέτρα.">
+          <path d="M22 150 Q 120 40 218 150" fill="none" stroke="#8a5cf0" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round"/>
+          <path d="M218 150 Q 228 118 238 150" fill="none" stroke="#8a5cf0" stroke-width="2.6" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <path d="M238 150 Q 239.5 140 241 150" fill="none" stroke="#8a5cf0" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="150" x2="270" y2="150" stroke="#1f2a5c" stroke-width="3" stroke-linecap="round"/>
+          <g stroke="#1f2a5c" stroke-width="2"><line x1="22" y1="144" x2="22" y2="156"/><line x1="218" y1="144" x2="218" y2="156"/></g>
+          <g font-weight="800" text-anchor="middle" stroke="#fff" stroke-width="5" stroke-linejoin="round" paint-order="stroke">
+            <text x="120" y="80" font-size="20" fill="#8a5cf0">9 m</text>
+            <text x="230" y="110" font-size="14" fill="#8a5cf0">0,9</text>
+            <text x="22" y="176" font-size="16" fill="#1f2a5c">0</text>
+            <text x="218" y="176" font-size="16" fill="#1f2a5c">9</text>
+          </g>
+          <text class="emoji" font-size="34" text-anchor="middle" transform="translate(22 140) scale(-1 1)">🏃</text>
+          <text class="emoji" font-size="28" text-anchor="middle" transform="translate(246 142) scale(-1 1)">🐢</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Δίνονται -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Δίνονται</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico emoji" aria-hidden="true">🏃</span>10 m/s<small>ο Αχιλλέας</small></div>
+    <div class="chip c2"><span class="ico emoji" aria-hidden="true">🐢</span>1 m/s<small>η χελώνα</small></div>
+    <div class="chip c3">9 m<small>προβάδισμα της χελώνας</small></div>
+    <div class="chip c4">s = υ · t<small>απόσταση = ταχύτητα · χρόνος</small></div>
+    <div class="chip c5">0,<span class="per">9</span> = 1<small>Γ΄ Γυμνασίου, σελ. 15</small></div>
+    <div class="chip c6">10t = 9 + t<small>εξίσωση πρώτου βαθμού</small></div>
+  </div>
+</section>
+
+<!-- 3. Τα βήματα του Ζήνωνα -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Τα βήματα του Ζήνωνα</h2></div>
+  <p class="lead">Πάτα <strong>«Επόμενο βήμα»</strong> για να κάνεις τα βήματα του Ζήνωνα. Η εικόνα μεγεθύνεται, γιατί τα βήματα μικραίνουν πολύ γρήγορα. Μετά πάτα <strong>«Τρέξε τον αγώνα»</strong> για να δεις τι γίνεται στην πραγματικότητα!</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><h3>Ο αγώνας</h3><span class="tag" id="zoomTag">μεγέθυνση ×1</span></div>
+      <div class="stage-fig"><svg id="track" role="img" aria-label="Ο Αχιλλέας και η χελώνα πάνω σε μια ευθεία με μέτρα"></svg></div>
+      <div class="stepbar">
+        <button class="btn" id="zstep" type="button">Επόμενο βήμα ▶</button>
+        <button class="btn violet" id="race" type="button">🏁 Τρέξε τον αγώνα</button>
+        <button class="btn ghost" id="zreset" type="button">↺ Από την αρχή</button>
+      </div>
+    </div>
+    <aside class="panel-card" style="--pc:var(--purple)">
+      <h3>Τα βήματα σε αριθμούς</h3>
+      <div class="range-label"><label for="lead">Προβάδισμα της χελώνας</label><strong id="leadText">9 m</strong></div>
+      <input id="lead" type="range" min="1" max="27" value="9">
+      <div class="ztable" id="ztable" aria-live="polite"></div>
+      <svg id="tbar" viewBox="0 0 400 74" role="img" aria-label="Ο συνολικός χρόνος των βημάτων" style="display:block;width:100%;height:auto"></svg>
+      <p class="result" id="zmsg" aria-live="polite"></p>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. Πού είναι το λάθος -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Πού είναι το λάθος;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Άπειρα βήματα, πεπερασμένος χρόνος</h3>
+      <p>Ο Αχιλλέας τρέχει 10 m/s. Το 1ο βήμα (9 m) του παίρνει 0,9 s, το 2ο (0,9 m) 0,09 s, το 3ο 0,009 s, κ.ο.κ. Αν προσθέσουμε όλους τους χρόνους:</p>
+      <div class="fbox">0,9 + 0,09 + 0,009 + … = 0,999… = 0,<span class="per">9</span></div>
+      <p>Τα βήματα είναι <strong>άπειρα</strong>, αλλά το άθροισμα των χρόνων τους <span class="hl y">δεν ξεπερνά ποτέ το 1 s</span>. Το λάθος του Ζήνωνα είναι ότι θεώρησε πως άπειρα βήματα χρειάζονται άπειρο χρόνο.</p>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Γιατί 0,<span class="per">9</span> = 1;</h3>
+      <p>Ονομάζουμε x τον αριθμό 0,999… και τον πολλαπλασιάζουμε με 10:</p>
+      <div class="calc">
+        <span class="or"></span><span>10x</span><span>= 9,999…</span>
+        <span class="or">−</span><span>x</span><span>= 0,999…</span>
+        <span class="or"></span><span>9x</span><span>= 9</span>
+        <span class="or">άρα</span><span class="red">x</span><span class="red">= 1</span>
+      </div>
+      <p>Τα δεκαδικά ψηφία «φεύγουν» στην αφαίρεση. Το βιβλίο της Γ΄ Γυμνασίου έχει την πρόταση «0,<span class="per">9</span> = 1» στις ασκήσεις Σωστό ή Λάθος (σελ. 15): είναι <strong>σωστή</strong>!</p>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Με μια εξίσωση</h3>
+      <p>Μετά από t δευτερόλεπτα, ο Αχιλλέας είναι στα <b>10t</b> μέτρα και η χελώνα στα <b>9 + t</b> μέτρα. Τη φτάνει όταν βρίσκονται στο ίδιο σημείο:</p>
+      <div class="calc">
+        <span class="or"></span><span>10t</span><span>= 9 + t</span>
+        <span class="or">ή</span><span>9t</span><span>= 9</span>
+        <span class="or">ή</span><span class="red">t</span><span class="red">= 1 s</span>
+      </div>
+      <p>Τότε ο Αχιλλέας είναι στα 10 · 1 = <strong>10 m</strong>. Ίδια απάντηση με τα βήματα του Ζήνωνα: 9 + 0,9 + 0,09 + … = 9,999… = 10!</p>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Η διχοτομία: το ίδιο, αλλιώς</h3>
+      <svg class="fig" id="dicho" viewBox="0 0 220 220" role="img" aria-label="Τετράγωνο με εμβαδόν 1 χωρισμένο σε κομμάτια: μισό, τέταρτο, όγδοο, δέκατο έκτο και ούτω καθεξής." style="max-width:200px"></svg>
+      <p>Ο Ζήνων έλεγε επίσης: για να διανύσεις μια απόσταση, πρέπει πρώτα να φτάσεις στη μέση της, μετά στη μέση του υπόλοιπου, κ.ο.κ. Τα κομμάτια γεμίζουν το τετράγωνο χωρίς να το ξεπερνούν:</p>
+      <div class="fbox blue">1/2 + 1/4 + 1/8 + 1/16 + … = 1</div>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>άπειρα βήματα χωρούν σε πεπερασμένο χρόνο. Ο Αχιλλέας φτάνει τη χελώνα σε 1 s, στα 10 m</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Ο Ζήνων ο Ελεάτης ήταν μαθητής του Παρμενίδη. Τα παράδοξά του τα γνωρίζουμε κυρίως από τα «Φυσικά» του Αριστοτέλη. Οι μαθηματικοί χρειάστηκαν πάνω από 2.000 χρόνια για να εξηγήσουν αυστηρά πώς άπειροι αριθμοί μπορούν να έχουν πεπερασμένο άθροισμα, με την έννοια του <strong>ορίου</strong>, που θα συναντήσεις στο Λύκειο.</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Λ"><span class="n">1</span><span class="stmt">Ο Ζήνων απέδειξε ότι ο Αχιλλέας δεν φτάνει ποτέ τη χελώνα.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Το επιχείρημα μοιάζει σωστό, αλλά κρύβει ένα λάθος: θεωρεί ότι άπειρα βήματα χρειάζονται άπειρο χρόνο.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">2</span><span class="stmt">0,9 + 0,09 + 0,009 + … = 1.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Το άθροισμα είναι 0,999… = 0,<span class="per">9</span>, που ισούται με 1.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">3</span><span class="stmt">Ο αριθμός 0,999… είναι λίγο μικρότερος από το 1.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Είναι ακριβώς ίσος με 1: αν x = 0,999…, τότε 10x − x = 9, άρα x = 1.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">4</span><span class="stmt">Ο Αχιλλέας φτάνει τη χελώνα στα 10 m.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Σε 1 s ο Αχιλλέας τρέχει 10 · 1 = 10 m, και η χελώνα είναι στα 9 + 1 = 10 m.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">5</span><span class="stmt">Αν προσθέσουμε άπειρους θετικούς αριθμούς, το άθροισμα είναι πάντα άπειρο.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Όχι πάντα. Αν οι αριθμοί μικραίνουν αρκετά γρήγορα, όπως 0,9 + 0,09 + …, το άθροισμα είναι ένας κανονικός αριθμός.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">6</span><span class="stmt">1/2 + 1/4 + 1/8 + 1/16 + … = 1.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Κάθε φορά προσθέτουμε το μισό από ό,τι λείπει ως το 1, χωρίς να το ξεπερνάμε ποτέ.</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση:</b> Αν η χελώνα πάρει προβάδισμα <b>18 m</b> (με τις ίδιες ταχύτητες), πότε και πού θα τη φτάσει ο Αχιλλέας; Γράψε και το άθροισμα των χρόνων του Ζήνωνα. Έλεγξε την απάντησή σου βάζοντας 18 m στο πείραμα.</p></div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Με την εξίσωση:</strong> ο Αχιλλέας είναι στα 10t μέτρα και η χελώνα στα 18 + t μέτρα.</p>
+<div class="fbox">10t = 18 + t &nbsp;→&nbsp; 9t = 18 &nbsp;→&nbsp; t = 2 s</div>
+<p>Τότε ο Αχιλλέας είναι στα 10 · 2 = 20 m.</p>
+<p><strong>Με τα βήματα του Ζήνωνα:</strong> το 1ο βήμα είναι 18 m και διαρκεί 1,8 s, το 2ο 1,8 m και διαρκεί 0,18 s, κ.ο.κ.</p>
+<div class="fbox pink">1,8 + 0,18 + 0,018 + … = 1,999… = 1 + 0,999… = 2 s</div>
+<p><strong>Μπόνους:</strong> με προβάδισμα 1 m, ο χρόνος είναι 0,1 + 0,01 + … = 0,<span class="per">1</span> = 1/9 s.</p>
+<p class="final">Απάντηση: σε 2 s, στα 20 m</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+<script src="../assets/lesson.js"></script>
+<script>
+(() => {
+'use strict';
+const { fmt, animate, stop, ease } = MathLab;
+const $ = s => document.querySelector(s);
+const C = { ink: '#1f2a5c', muted: '#4b5682', blue: '#2c6fd6', green: '#2f8a4e', purple: '#8a5cf0', red: '#e0313b', orange: '#f08a1c' };
+const KMAX = 7;
+const S = { d: 9, k: 0, mode: 'steps' };
+const lerp = (a, b, t) => a + (b - a) * t;
+
+// Ο Αχιλλέας τρέχει 10 m/s, η χελώνα 1 m/s και ξεκινά d μέτρα μπροστά.
+const X = () => 10 * S.d / 9;                       // σημείο συνάντησης
+const T = () => S.d / 9;                            // χρόνος συνάντησης
+const ach = k => X() * (1 - Math.pow(10, -k));      // θέση του Αχιλλέα μετά από k βήματα
+const tor = k => ach(k + 1);                        // θέση της χελώνας μετά από k βήματα
+const timeAt = k => ach(k) / 10;                    // συνολικός χρόνος μετά από k βήματα
+const viewFor = k => { const W = Math.min(1.2 * X(), 3.2 * X() * Math.pow(10, -k)); return { lo: X() - 0.85 * W, w: W }; };
+const limitTxt = v => Number.isInteger(+v.toFixed(9)) ? String(Math.round(v)) : fmt(v, 3) + '…';
+
+/* ---------- Ο διάδρομος ---------- */
+const track = $('#track');
+function drawTrack(view, a, t, opt = {}) {
+  const w = track.clientWidth || 720, narrow = w < 560;
+  const VW = narrow ? 520 : 820, VH = narrow ? 300 : 250, px = VW / w, fs = Math.max(15, 13.5 * px), g = Math.max(1, px / 1.3);
+  const L = 20, R = 20, Y = VH * 0.6, X0 = x => L + (x - view.lo) / view.w * (VW - L - R);
+  track.setAttribute('viewBox', `0 0 ${VW} ${VH}`);
+  const halo = `stroke="#fff" stroke-width="${5 * g}" stroke-linejoin="round" paint-order="stroke"`;
+  let s = `<defs><clipPath id="clip"><rect x="0" y="0" width="${VW}" height="${VH}"/></clipPath></defs><g clip-path="url(#clip)">`;
+  // υποδιαιρέσεις με «στρογγυλά» βήματα
+  const raw = view.w / (narrow ? 3.2 : 6), p10 = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p10;
+  const step = (m < 1.5 ? 1 : m < 3.5 ? 2 : m < 7.5 ? 5 : 10) * p10, dec = Math.max(0, -Math.floor(Math.log10(step) + 1e-9));
+  s += `<line x1="0" y1="${Y}" x2="${VW}" y2="${Y}" stroke="${C.ink}" stroke-width="${3 * g}"/>`;
+  for (let v = Math.ceil(view.lo / step) * step; v <= view.lo + view.w; v += step) {
+    const xx = X0(v);
+    s += `<line x1="${xx}" y1="${Y - 7 * g}" x2="${xx}" y2="${Y + 7 * g}" stroke="${C.ink}" stroke-width="${2 * g}"/>`;
+    s += `<text x="${xx}" y="${Y + 9 * g + fs}" font-size="${fs}" font-weight="700" fill="${C.muted}" text-anchor="middle">${fmt(v, dec)}</text>`;
+  }
+  s += `<text x="${VW - 6}" y="${Y + 9 * g + fs * 2.2}" font-size="${fs * 0.9}" font-weight="700" fill="${C.muted}" text-anchor="end">μέτρα</text>`;
+  // το τελευταίο άλμα του Αχιλλέα
+  if (opt.jump) {
+    const [x1, x2] = opt.jump.map(X0), h = Math.min(80 * g, Math.max(24 * g, (x2 - x1) * 0.35));
+    s += `<path d="M${x1} ${Y}Q${(x1 + x2) / 2} ${Y - 2 * h} ${x2} ${Y}" fill="none" stroke="${C.purple}" stroke-width="${3 * g}" stroke-dasharray="${8 * g} ${6 * g}" stroke-linecap="round" opacity="${opt.jumpOp ?? 1}"/>`;
+    if (opt.jumpLabel) s += `<text x="${Math.max(60, (x1 + x2) / 2)}" y="${Y - h - 6 * g}" font-size="${fs * 1.05}" font-weight="800" fill="${C.purple}" text-anchor="middle" ${halo} opacity="${opt.jumpOp ?? 1}">${opt.jumpLabel}</text>`;
+  }
+  // απόσταση ανάμεσά τους
+  if (opt.gap) {
+    const x1 = X0(a), x2 = X0(t), yb = Y + 9 * g + fs * 2.4;
+    s += `<path d="M${x1} ${yb - 6 * g}V${yb}H${x2}V${yb - 6 * g}" fill="none" stroke="${C.red}" stroke-width="${2 * g}"/>`;
+    s += `<text x="${(x1 + x2) / 2}" y="${yb + fs * 1.15}" font-size="${fs}" font-weight="800" fill="${C.red}" text-anchor="middle" ${halo}>${opt.gap}</text>`;
+  }
+  // σημείο συνάντησης στον αγώνα
+  if (opt.meet) {
+    const xm = X0(X());
+    s += `<line x1="${xm}" y1="${Y - 95 * g}" x2="${xm}" y2="${Y}" stroke="${C.green}" stroke-width="${2.5 * g}" stroke-dasharray="${5 * g} ${4 * g}"/>`;
+    s += `<text x="${xm}" y="${Y - 100 * g}" font-size="${fs * 1.05}" font-weight="800" fill="${C.green}" text-anchor="middle" ${halo}>🏁 ${opt.meet}</text>`;
+  }
+  // οι δρομείς (τα emoji κοιτάνε αριστερά, οπότε τα καθρεφτίζουμε)
+  const runner = (x, ch, size, col) => `<circle cx="${X0(x)}" cy="${Y}" r="${6.5 * g}" fill="${col}" stroke="#fff" stroke-width="${2.5 * g}"/>` +
+    `<text class="emoji" font-size="${size * g}" text-anchor="middle" transform="translate(${X0(x)} ${Y - 12 * g}) scale(-1 1)">${ch}</text>`;
+  s += runner(t, '🐢', 34, C.green) + runner(a, '🏃', 42, C.blue);
+  if (opt.clock) s += `<text x="10" y="${fs * 1.4}" font-size="${fs * 1.2}" font-weight="800" fill="${C.ink}" ${halo}>⏱ ${opt.clock}</text>`;
+  s += '</g>';
+  track.innerHTML = s;
+  const zoom = 1.2 * X() / view.w;
+  $('#zoomTag').textContent = 'μεγέθυνση ×' + (zoom < 1.5 ? '1' : Math.round(zoom).toLocaleString('el-GR'));
+}
+
+/* ---------- Πίνακας και χρονόμετρο ---------- */
+function drawTable() {
+  const k = S.k;
+  let s = '<span class="th">Βήμα</span><span class="th">Ο Αχιλλέας φτάνει στο</span><span class="th">Η χελώνα είναι στο</span><span class="th">Συνολικός χρόνος</span>';
+  for (let i = 1; i <= k; i++) {
+    const cls = i === k ? ' class="new"' : '';
+    s += `<span${cls}>${i}</span><span${cls}>${fmt(ach(i), i - 1)} m</span><span${cls}>${fmt(tor(i), i)} m</span><span${cls}>${fmt(timeAt(i), i)} s</span>`;
+  }
+  s += `<span>…</span><span class="sum">→ ${limitTxt(X())} m</span><span class="sum">→ ${limitTxt(X())} m</span><span class="sum">→ ${limitTxt(T())} s</span>`;
+  $('#ztable').innerHTML = s;
+}
+function drawBar(tNow) {
+  const L = 14, R = 14, W = 400, tMax = T() * 1.12, xb = v => L + v / tMax * (W - L - R), y = 24, h = 18;
+  let s = `<rect x="${L}" y="${y}" width="${W - L - R}" height="${h}" rx="6" fill="#f3edff" stroke="#c9bdf0" stroke-width="1.5"/>`;
+  const shades = ['#8a5cf0', '#b49be8'];
+  if (S.mode === 'race') s += `<rect x="${L}" y="${y}" width="${Math.max(0, xb(Math.min(tNow, tMax)) - L)}" height="${h}" rx="6" fill="${C.green}" opacity="0.8"/>`;
+  else for (let i = 1; i <= S.k; i++) { const x1 = xb(timeAt(i - 1)), x2 = xb(timeAt(i)); s += `<rect x="${x1}" y="${y}" width="${Math.max(1, x2 - x1)}" height="${h}" fill="${shades[(i - 1) % 2]}"/>`; }
+  const xt = xb(T());
+  s += `<line x1="${xt}" y1="${y - 6}" x2="${xt}" y2="${y + h + 6}" stroke="${C.red}" stroke-width="2.5"/>`;
+  s += `<text x="${xt}" y="${y + h + 22}" font-size="15" font-weight="800" fill="${C.red}" text-anchor="middle">${limitTxt(T())} s</text>`;
+  s += `<text x="${L}" y="${y - 8}" font-size="14" font-weight="700" fill="${C.ink}">Χρονόμετρο: ${S.mode === 'race' ? fmt(tNow, 2) : fmt(timeAt(S.k), S.k)} s</text>`;
+  $('#tbar').innerHTML = s;
+}
+function msg(html) { $('#zmsg').innerHTML = html; }
+
+function showStep(k, view) {
+  const gapTxt = 'απόσταση ' + fmt(tor(k) - ach(k), k) + ' m';
+  drawTrack(view || viewFor(k), ach(k), tor(k), { gap: gapTxt, jump: k ? [ach(k - 1), ach(k)] : null, jumpLabel: k ? fmt(ach(k) - ach(k - 1), k - 1) + ' m' : '' });
+}
+function render() {
+  S.mode = 'steps';
+  showStep(S.k); drawTable(); drawBar(0);
+  if (S.k === 0) msg(`Η χελώνα ξεκινά <b>${S.d} m</b> μπροστά. Πάτα «Επόμενο βήμα».`);
+  else msg(`Βήμα ${S.k}: ο Αχιλλέας έφτασε στα <b>${fmt(ach(S.k), S.k - 1)} m</b>, αλλά η χελώνα είναι πάλι <b>${fmt(tor(S.k) - ach(S.k), S.k)} m</b> πιο μπροστά.` + (S.k >= 4 ? ' Ο χρόνος όμως δεν ξεπερνά ποτέ το ' + limitTxt(T()) + ' s!' : ''));
+  $('#zstep').disabled = S.k >= KMAX;
+}
+
+function nextStep() {
+  if (S.mode === 'race') { S.k = 0; render(); return; }
+  if (S.k >= KMAX) return;
+  const k0 = S.k, k1 = k0 + 1, v0 = viewFor(k0), v1 = viewFor(k1);
+  S.k = k1; drawTable(); drawBar(0);
+  $('#zstep').disabled = true;
+  animate(t => {
+    const tm = Math.min(1, t / 0.55), tz = Math.max(0, (t - 0.55) / 0.45), e = ease(tm), ez = ease(tz);
+    const w = Math.exp(lerp(Math.log(v0.w), Math.log(v1.w), ez)), view = { lo: X() - 0.85 * w, w };
+    const a = lerp(ach(k0), ach(k1), e), tt = lerp(tor(k0), tor(k1), e);
+    drawTrack(view, a, tt, { jump: [ach(k0), a], jumpLabel: tm >= 1 ? fmt(ach(k1) - ach(k0), k0) + ' m' : '', gap: tm >= 1 ? 'απόσταση ' + fmt(tor(k1) - ach(k1), k1) + ' m' : '' });
+  }, 1500, render);
+}
+
+function race() {
+  stop(); S.mode = 'race';
+  const view = { lo: -0.03 * X(), w: 1.55 * X() }, tEnd = 1.4 * T();
+  msg('Ο αγώνας τρέχει…');
+  $('#zstep').disabled = false;
+  animate(p => {
+    const t = p * tEnd, a = 10 * t, tt = S.d + t, met = t >= T();
+    drawTrack(view, a, tt, { clock: 't = ' + fmt(t, 2) + ' s', meet: met ? limitTxt(T()) + ' s, ' + limitTxt(X()) + ' m' : '' });
+    drawBar(t);
+    if (met) msg(`🏁 Ο Αχιλλέας φτάνει τη χελώνα σε <b>${limitTxt(T())} s</b>, στα <b>${limitTxt(X())} m</b>, και μετά την προσπερνά!`);
+  }, 3600);
+}
+
+$('#zstep').addEventListener('click', nextStep);
+$('#race').addEventListener('click', race);
+$('#zreset').addEventListener('click', () => { stop(); S.k = 0; render(); });
+$('#lead').addEventListener('input', e => {
+  stop(); S.d = Number(e.target.value); S.k = 0;
+  $('#leadText').textContent = S.d + ' m';
+  render();
+});
+
+/* ---------- Η διχοτομία ---------- */
+{
+  let x = 10, y = 10, w = 200, h = 200, s = '';
+  const labels = ['1/2', '1/4', '1/8', '1/16', '1/32'], fills = ['#cfe6ff', '#ffd3e4', '#c9f4c0', '#ffe1b8', '#e8dcff', '#fff27a'];
+  for (let i = 0; i < 10; i++) {
+    let r;
+    if (i % 2 === 0) { r = [x, y, w / 2, h]; x += w / 2; w /= 2; } else { r = [x, y, w, h / 2]; y += h / 2; h /= 2; }
+    s += `<rect x="${r[0]}" y="${r[1]}" width="${r[2]}" height="${r[3]}" fill="${fills[i % fills.length]}" stroke="#1f2a5c" stroke-width="${i < 6 ? 2 : 1}"/>`;
+    if (i < labels.length) s += `<text x="${r[0] + r[2] / 2}" y="${r[1] + r[3] / 2 + 7}" font-size="${[24, 20, 16, 13, 10][i]}" font-weight="800" fill="#1f2a5c" text-anchor="middle">${labels[i]}</text>`;
+  }
+  $('#dicho').innerHTML = s;
+}
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = track.clientWidth; if (w !== lastW) { lastW = w; if (S.mode === 'steps') showStep(S.k); } }).observe(track);
+render();
+})();
+</script></body></html>

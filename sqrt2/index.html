@@ -229,7 +229,7 @@
 <nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a></nav>
 <footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
 </main>
-
+<script src="../assets/lesson.js"></script>
 <script>
 (() => {
 'use strict';
@@ -462,26 +462,6 @@ $$('.num-step button').forEach(btn => btn.addEventListener('click', () => {
   M[btn.dataset.k] = clamp(M[btn.dataset.k] + Number(btn.dataset.d), 1, 4);
   drawMini();
 }));
-
-/* ---------- Σωστό ή Λάθος ---------- */
-const items = $$('.q-item');
-const score = () => { $('#score').textContent = items.filter(q => q.classList.contains('right')).length + ' / ' + items.length; };
-items.forEach(q => q.querySelectorAll('.opts button').forEach(b => b.addEventListener('click', () => {
-  if (q.classList.contains('answered')) return;
-  const ok = b.dataset.v === q.dataset.answer;
-  q.classList.add('answered', ok ? 'right' : 'wrong');
-  b.classList.add('picked');
-  q.querySelectorAll('.opts button').forEach(x => { x.disabled = true; });
-  q.querySelector('.fb b').textContent = ok ? '✓ Σωστά!' : '✗ Όχι ακριβώς.';
-  score();
-})));
-$('#quizReset').addEventListener('click', () => {
-  items.forEach(q => {
-    q.classList.remove('answered', 'right', 'wrong');
-    q.querySelectorAll('.opts button').forEach(x => { x.disabled = false; x.classList.remove('picked'); });
-  });
-  score();
-});
 
 /* ---------- Ξεκίνημα ---------- */
 let lastW = 0;
