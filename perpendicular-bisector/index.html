@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Η μεσοκάθετος · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για την Α΄ Γυμνασίου: κατασκευή της μεσοκαθέτου ευθύγραμμου τμήματος με κανόνα και διαβήτη, βήμα-βήμα, και γιατί κάθε σημείο της ισαπέχει από τα άκρα.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.emoji{font-family:'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif}
+.plain{background-image:none!important}
+.cand{cursor:pointer}
+.cand:focus-visible{outline:none}
+.cand:focus-visible circle{stroke:var(--pink);stroke-width:4}
+.mini-fig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:6px 0}
+.mini-fig figure{margin:0;text-align:center;font-size:13.5px;font-weight:600;line-height:1.3}
+.mini-fig svg{display:block;width:100%;height:auto}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+</style>
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Α΄ Γυμνασίου · Γεωμετρία</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Η μεσοκάθετος –</span> <span class="t2">με κανόνα και διαβήτη</span></h1>
+    <p>Γεωμετρία του επιπέδου | Α΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Πρόβλημα</span>Ένας αρχιτέκτονας θέλει να χτίσει μια βρύση στην πλατεία, έτσι ώστε να έχει την <b class="red">ίδια απόσταση</b> από τα δύο αιωνόβια πλατάνια. Πού πρέπει να τη βάλει;</p>
+      <p>Δοκίμασε τις θέσεις 1 έως 4 στο σχήμα. Μία μόνο ισαπέχει από τα δύο πλατάνια. Υπάρχουν όμως <span class="hl y">άπειρες τέτοιες θέσεις</span>, και όλες βρίσκονται πάνω σε μια ευθεία: τη <strong>μεσοκάθετο</strong>.</p>
+      <p><span class="hl b">Μεσοκάθετος</span> ενός ευθύγραμμου τμήματος λέγεται η ευθεία που είναι <strong>κάθετη</strong> σε αυτό και περνά από το <strong>μέσο</strong> του. Σε αυτό το μάθημα θα τη <span class="hl g">κατασκευάσεις μόνος σου</span>, μόνο με κανόνα και διαβήτη!</p>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να κατασκευάζεις τη μεσοκάθετο ενός τμήματος με κανόνα και διαβήτη.</span></li>
+          <li><b>Σ2</b><span>Να εξηγείς γιατί η ακτίνα πρέπει να είναι μεγαλύτερη από το μισό του τμήματος.</span></li>
+          <li><b>Σ3</b><span>Να αναγνωρίζεις ότι κάθε σημείο της μεσοκαθέτου ισαπέχει από τα άκρα του τμήματος.</span></li>
+          <li><b>Σ4</b><span>Να λύνεις προβλήματα του τύπου «βρες το σημείο που ισαπέχει από…».</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">Πάτησε μια θέση για να δεις τις αποστάσεις της από τα δύο πλατάνια!</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box"><svg id="plaza" viewBox="-150 -125 300 250" role="group" aria-label="Η πλατεία με δύο πλατάνια και τέσσερις πιθανές θέσεις για τη βρύση"></svg>
+        <p class="result" id="plazaMsg" aria-live="polite" style="margin:8px 0 0;font-size:14.5px">Ποια θέση ισαπέχει από τα δύο πλατάνια;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Τι χρειαζόμαστε -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Τι χρειαζόμαστε</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico" aria-hidden="true">📏</span>Κανόνας<small>για να ενώσουμε δύο σημεία</small></div>
+    <div class="chip c2"><span class="ico" aria-hidden="true">🧭</span>Διαβήτης<small>για τους δύο κύκλους</small></div>
+    <div class="chip c3">ίδια ακτίνα ρ<small>και στους δύο κύκλους</small></div>
+    <div class="chip c4">ρ &gt; ΑΒ : 2<small>για να τέμνονται οι κύκλοι</small></div>
+    <div class="chip c5">ΓΑ = ΓΒ<small>ισαπέχει από τα άκρα</small></div>
+    <div class="chip c6">μέσο + 90°<small>ο ορισμός της μεσοκαθέτου</small></div>
+  </div>
+</section>
+
+<!-- 3. Η κατασκευή -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Η κατασκευή με κανόνα και διαβήτη</h2></div>
+  <p class="lead">Κάνε την κατασκευή μόνος σου, βήμα-βήμα. Σέρνε τη <span class="hl v">μωβ τελεία</span> του διαβήτη πάνω στο σχήμα ή χρησιμοποίησε τις μπάρες. Τα τετραγωνάκια είναι 1 cm.</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><h3>Το τετράδιό σου</h3><span class="tag" id="abTag">ΑΒ = 6 cm</span></div>
+      <div class="stage-fig plain"><svg id="stage" viewBox="-405 -270 810 540" role="img" aria-label="Η κατασκευή της μεσοκαθέτου"></svg></div>
+      <div class="stepbar">
+        <button class="btn ghost" id="prev" type="button">◀ Πίσω</button>
+        <ol class="dots" aria-label="Βήματα">
+          <li><button type="button" data-go="1" aria-label="Βήμα 1">1</button></li>
+          <li><button type="button" data-go="2" aria-label="Βήμα 2">2</button></li>
+          <li><button type="button" data-go="3" aria-label="Βήμα 3">3</button></li>
+          <li><button type="button" data-go="4" aria-label="Βήμα 4">4</button></li>
+          <li><button type="button" data-go="5" aria-label="Βήμα 5">5</button></li>
+          <li><button type="button" data-go="6" aria-label="Βήμα 6">6</button></li>
+        </ol>
+        <button class="btn" id="next" type="button">Επόμενο ▶</button>
+      </div>
+    </div>
+
+    <aside class="step-card" id="card" aria-live="polite">
+      <p class="step-count" id="stepCount">Βήμα 1 από 6</p>
+      <div class="step-head"><span class="letter" id="stepNum">1</span><h3 id="stepTitle">Το τμήμα ΑΒ</h3></div>
+      <span class="tool" id="stepTool">📏 Κανόνας</span>
+
+      <div class="step-text" data-step="1" data-title="Το τμήμα ΑΒ" data-tool="📏 Κανόνας">
+        <p>Έχουμε ένα ευθύγραμμο τμήμα <span class="hl b">ΑΒ = 6 cm</span>, όπως στην άσκηση 1 του βιβλίου.</p>
+        <p>Θέλουμε την ευθεία που είναι <strong>κάθετη</strong> στο ΑΒ και περνά από το <strong>μέσο</strong> του. Δεν θα μετρήσουμε τίποτα με το υποδεκάμετρο. Θα χρησιμοποιήσουμε μόνο <span class="hl y">κανόνα και διαβήτη</span>!</p>
+      </div>
+      <div class="step-text" data-step="2" data-title="Άνοιξε τον διαβήτη" data-tool="🧭 Διαβήτης" hidden>
+        <p>Βάζουμε τη μύτη του διαβήτη στο <b>Α</b> και τον ανοίγουμε σε ένα άνοιγμα <b>ρ</b>. Σύρε τη μωβ τελεία ή τη μπάρα.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="rho">Άνοιγμα ρ</label><strong id="rhoText">4,0 cm</strong></div>
+          <input id="rho" type="range" min="10" max="60" value="40">
+          <p class="ask" id="rhoHint" style="margin:0"></p>
+        </div>
+      </div>
+      <div class="step-text" data-step="3" data-title="Κύκλος με κέντρο Α" data-tool="🧭 Διαβήτης" hidden>
+        <p>Με τη μύτη στο <b>Α</b>, <strong>γύρισε τον διαβήτη</strong> για να σχεδιάσεις κύκλο με κέντρο Α και ακτίνα ρ. Σύρε τη μωβ τελεία γύρω-γύρω ή τη μπάρα.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sa">Στροφή του διαβήτη</label><strong id="saText">0°</strong></div>
+          <input id="sa" type="range" min="0" max="360" value="0">
+          <div><button class="btn violet" id="autoA" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="doneA">✓ Ο κύκλος με κέντρο Α είναι έτοιμος!</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="4" data-title="Κύκλος με κέντρο Β, ίδιο άνοιγμα" data-tool="🧭 Διαβήτης" hidden>
+        <p>Τώρα βάλε τη μύτη στο <b>Β</b> και σχεδίασε κύκλο με <span class="hl p">την ίδια ακτίνα ρ</span>. <strong>Μην αλλάξεις το άνοιγμα!</strong></p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sb">Στροφή του διαβήτη</label><strong id="sbText">0°</strong></div>
+          <input id="sb" type="range" min="0" max="360" value="0">
+          <div><button class="btn violet" id="autoB" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="doneB">✓ Και ο κύκλος με κέντρο Β είναι έτοιμος!</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="5" data-title="Τα σημεία Γ και Δ" data-tool="✏️ Μολύβι" hidden>
+        <div id="s5ok">
+          <p>Οι δύο κύκλοι τέμνονται σε <strong>δύο σημεία</strong>. Τα ονομάζουμε <b class="red">Γ</b> και <b class="red">Δ</b>.</p>
+          <p>Πρόσεξε: το Γ είναι πάνω και στους δύο κύκλους, άρα <span class="hl y">ΓΑ = ρ</span> και <span class="hl y">ΓΒ = ρ</span>. Το ίδιο ισχύει για το Δ:</p>
+          <div class="fbox">ΓΑ = ΓΒ = ρ &nbsp;&nbsp; ΔΑ = ΔΒ = ρ</div>
+        </div>
+        <div id="s5no" hidden>
+          <p class="ask" style="border-color:var(--red);background:#fff2f3">⚠ Οι κύκλοι <strong>δεν τέμνονται</strong> σε δύο σημεία! Το ρ = <b id="s5rho">2,5 cm</b> δεν είναι μεγαλύτερο από το μισό του ΑΒ (<b id="s5half">3 cm</b>).</p>
+          <p>Γύρνα στο βήμα 2 και <strong>μεγάλωσε το άνοιγμα</strong> του διαβήτη.</p>
+          <p><button class="btn ghost" id="back2" type="button">◀ Στο βήμα 2</button></p>
+        </div>
+      </div>
+      <div class="step-text" data-step="6" data-title="Η ευθεία ΓΔ" data-tool="📏 Κανόνας" hidden>
+        <p>Με τον κανόνα ενώνουμε τα <b>Γ</b> και <b>Δ</b>. Η ευθεία <b class="green">ε = ΓΔ</b> είναι η <span class="hl g">μεσοκάθετος</span> του ΑΒ: κόβει το ΑΒ στο μέσο του Μ και είναι κάθετη σε αυτό.</p>
+        <p><strong>Δοκίμασε:</strong> σύρε το πορτοκαλί σημείο Ρ πάνω στην ε. Σύρε και τα Α, Β για να αλλάξεις το τμήμα!</p>
+        <p class="result miss" id="s6msg"></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. Γιατί δουλεύει -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Γιατί δουλεύει η κατασκευή;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Ανακάλυψε την ιδιότητα</h3>
+      <p>Σύρε το σημείο <b>Ρ</b> ή πάτησε οπουδήποτε στο σχήμα. Όποτε το Ρ ισαπέχει από τα Α και Β, αφήνει μια <span class="hl g">πράσινη τελεία</span>. Τι σχήμα φτιάχνουν οι τελείες;</p>
+      <svg id="locus" viewBox="-200 -150 400 300" role="img" aria-label="Τμήμα ΑΒ και ένα σημείο Ρ που σέρνεις. Οι αποστάσεις ΡΑ και ΡΒ φαίνονται πάνω στο σχήμα." style="display:block;width:100%;height:auto;border:2px dashed #b9c8e6;border-radius:12px;background:#fbfdff"></svg>
+      <p class="result" id="locMsg" aria-live="polite" style="margin:8px 0"></p>
+      <div class="btnrow"><button class="btn ghost" id="locShow" type="button">Δείξε τη μεσοκάθετο</button><button class="btn ghost" id="locClear" type="button">↺ Καθάρισε</button></div>
+      <div class="fbox green">Κάθε σημείο της μεσοκαθέτου ισαπέχει από τα Α και Β</div>
+      <p>Ισχύει και το αντίστροφο: κάθε σημείο που ισαπέχει από τα Α και Β βρίσκεται πάνω στη μεσοκάθετο.</p>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Γιατί η ευθεία ΓΔ είναι η μεσοκάθετος;</h3>
+      <p>Το Γ είναι πάνω και στους δύο κύκλους, άρα απέχει <b>ρ</b> από το Α και <b>ρ</b> από το Β. Αφού <strong>ισαπέχει</strong> από τα άκρα, βρίσκεται πάνω στη μεσοκάθετο. Το ίδιο ισχύει και για το Δ.</p>
+      <div class="fbox blue">ΓΑ = ΓΒ = ρ &nbsp;και&nbsp; ΔΑ = ΔΒ = ρ</div>
+      <p>Από δύο σημεία περνά <span class="hl y">μία μόνο ευθεία</span>. Αφού και τα δύο είναι πάνω στη μεσοκάθετο, η ευθεία ΓΔ <strong>είναι</strong> η μεσοκάθετος!</p>
+      <p>Γι' αυτό η ακτίνα πρέπει να είναι <strong>ίδια</strong> στους δύο κύκλους. Με διαφορετικές ακτίνες, το Γ δεν θα ισαπείχε από τα Α και Β.</p>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Γιατί ρ &gt; ΑΒ : 2;</h3>
+      <div class="mini-fig" id="cases"></div>
+      <p>Ο δρόμος Α → Γ → Β έχει μήκος ρ + ρ = 2ρ. Είναι μεγαλύτερος από τον ευθύ δρόμο ΑΒ, γιατί η ευθεία είναι ο πιο σύντομος δρόμος. Άρα:</p>
+      <div class="fbox pink">2ρ &gt; ΑΒ &nbsp;→&nbsp; ρ &gt; ΑΒ : 2</div>
+      <p>Για ΑΒ = 6 cm χρειαζόμαστε ρ &gt; 3 cm. Με ρ = 3 cm οι κύκλοι μόλις αγγίζονται στο μέσο Μ, και από ένα σημείο δεν φτιάχνουμε ευθεία.</p>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Ο άλλος τρόπος: υποδεκάμετρο και γνώμονας</h3>
+      <svg class="fig" viewBox="0 0 260 160" role="img" aria-label="Το τμήμα ΑΒ πάνω σε υποδεκάμετρο, το μέσο Μ στα 3 εκατοστά και η κάθετη ευθεία από το Μ." style="max-width:260px">
+        <rect x="20" y="96" width="220" height="30" rx="4" fill="#ffe1b8" stroke="#b4560c" stroke-width="2"/>
+        <g stroke="#7e3a06" stroke-width="1.6">
+          <line x1="40" y1="96" x2="40" y2="110"/><line x1="70" y1="96" x2="70" y2="106"/><line x1="100" y1="96" x2="100" y2="106"/><line x1="130" y1="96" x2="130" y2="110"/><line x1="160" y1="96" x2="160" y2="106"/><line x1="190" y1="96" x2="190" y2="106"/><line x1="220" y1="96" x2="220" y2="110"/>
+        </g>
+        <g font-size="11" font-weight="700" fill="#7e3a06" text-anchor="middle"><text x="40" y="122">0</text><text x="130" y="122">3</text><text x="220" y="122">6</text></g>
+        <line x1="130" y1="10" x2="130" y2="88" stroke="#2f8a4e" stroke-width="3" stroke-dasharray="7 5"/>
+        <line x1="40" y1="88" x2="220" y2="88" stroke="#1f2a5c" stroke-width="4" stroke-linecap="round"/>
+        <path d="M130 76H142V88" fill="none" stroke="#1f2a5c" stroke-width="2"/>
+        <g fill="#1f2a5c" stroke="#fff" stroke-width="2"><circle cx="40" cy="88" r="5"/><circle cx="220" cy="88" r="5"/><circle cx="130" cy="88" r="5" fill="#e0313b"/></g>
+        <g font-size="16" font-weight="800" text-anchor="middle" stroke="#fff" stroke-width="4" paint-order="stroke" stroke-linejoin="round"><text x="40" y="78" fill="#1f2a5c">Α</text><text x="220" y="78" fill="#1f2a5c">Β</text><text x="118" y="78" fill="#e0313b">Μ</text><text x="150" y="30" fill="#2f8a4e">ε</text></g>
+      </svg>
+      <p>Βρίσκουμε το μέσο <b>Μ</b> με το υποδεκάμετρο (6 : 2 = 3 cm) και φέρνουμε με τον γνώμονα κάθετη στο Μ. Είναι πιο γρήγορο, αλλά θέλει <strong>μέτρηση</strong>. Με κανόνα και διαβήτη βρίσκουμε το μέσο <span class="hl y">χωρίς να μετρήσουμε τίποτα</span>!</p>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>τα Γ και Δ ισαπέχουν από τα Α και Β, άρα η ευθεία ΓΔ είναι η μεσοκάθετος του ΑΒ</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Οι κατασκευές με κανόνα και διαβήτη είναι αρχαιοελληνική ιδέα. Στα «Στοιχεία» του <strong>Ευκλείδη</strong> (περίπου 300 π.Χ.), η πρώτη πρόταση του πρώτου βιβλίου κατασκευάζει ένα ισόπλευρο τρίγωνο με δύο κύκλους που έχουν ακτίνα όσο το ΑΒ. Δοκίμασέ το: στο βήμα 2 βάλε ρ = 6 cm, και το τρίγωνο ΑΒΓ θα γίνει ισόπλευρο!</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Σ"><span class="n">1</span><span class="stmt">Η μεσοκάθετος του ΑΒ περνά από το μέσο του ΑΒ.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Είναι κάθετη στο ΑΒ και περνά από το μέσο του, όπως λέει ο ορισμός.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">2</span><span class="stmt">Στην κατασκευή μπορούμε να πάρουμε άλλη ακτίνα για τον κύκλο του Α και άλλη για τον κύκλο του Β.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Η ακτίνα πρέπει να είναι ίδια, αλλιώς τα Γ και Δ δεν ισαπέχουν από τα Α και Β.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">3</span><span class="stmt">Αν ΑΒ = 6 cm και ρ = 2 cm, οι κύκλοι τέμνονται σε δύο σημεία.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 2 + 2 = 4 &lt; 6, άρα οι κύκλοι δεν συναντιούνται. Χρειάζεται ρ &gt; 3 cm.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">4</span><span class="stmt">Το σημείο Γ ισαπέχει από τα Α και Β.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Το Γ είναι πάνω και στους δύο κύκλους, άρα ΓΑ = ΓΒ = ρ.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">5</span><span class="stmt">Αν ΡΑ = 5 cm και ΡΒ = 5 cm, τότε το Ρ βρίσκεται πάνω στη μεσοκάθετο του ΑΒ.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Κάθε σημείο που ισαπέχει από τα άκρα βρίσκεται πάνω στη μεσοκάθετο.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">6</span><span class="stmt">Η μεσοκάθετος σχηματίζει με το ΑΒ γωνία 45°.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Σχηματίζει γωνία 90°, γιατί είναι κάθετη στο ΑΒ.</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση (άσκηση 6, σελ. 166):</b> Δύο χωριά Α και Β βρίσκονται κοντά σε ένα ποτάμι. Πού πρέπει να χτιστεί μια <b>γέφυρα</b> πάνω στο ποτάμι, ώστε να ισαπέχει από τα δύο χωριά; Σύρε τη γέφυρα και βρες τη θέση!</p></div>
+<div class="mini">
+  <div class="mini-head"><h3>Το ποτάμι</h3><div class="btnrow" style="margin:0"><button class="btn ghost" id="brShow" type="button">Δείξε τη μεσοκάθετο</button><button class="btn ghost" id="brReset" type="button">↺</button></div></div>
+  <div class="stage-fig plain"><svg id="bridge" viewBox="-300 -200 600 400" role="img" aria-label="Ένα ποτάμι, δύο χωριά Α και Β και μια γέφυρα που μετακινείς πάνω στο ποτάμι"></svg></div>
+  <p class="readout" id="brMsg" aria-live="polite"></p>
+</div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Βήμα 1:</strong> η γέφυρα πρέπει να ισαπέχει από τα Α και Β, άρα πρέπει να είναι πάνω στη <strong>μεσοκάθετο του ΑΒ</strong>. Την κατασκευάζουμε με κανόνα και διαβήτη, όπως στην ενότητα 3.</p>
+<p><strong>Βήμα 2:</strong> η γέφυρα πρέπει να είναι και πάνω στο <strong>ποτάμι</strong>. Άρα τη χτίζουμε εκεί όπου η μεσοκάθετος τέμνει το ποτάμι.</p>
+<div class="fbox">γέφυρα = μεσοκάθετος του ΑΒ ∩ ποτάμι</div>
+<p><strong>Μπόνους (άσκηση 8):</strong> για ένα σημείο που ισαπέχει από τις 3 κορυφές ενός τριγώνου ΑΒΓ, φέρνουμε τις μεσοκαθέτους των ΑΒ και ΒΓ. Το σημείο όπου τέμνονται ισαπέχει και από τα τρία!</p>
+<p class="final">Απάντηση: στο σημείο όπου η μεσοκάθετος του ΑΒ τέμνει το ποτάμι</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+<script src="../assets/lesson.js"></script>
+<script>
+(() => {
+'use strict';
+const { fmt, animate, stop, ease } = MathLab;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const C = { ink: '#1f2a5c', muted: '#4b5682', blue: '#2c6fd6', red: '#e0313b', green: '#2f8a4e', purple: '#8a5cf0', pink: '#e2508c', orange: '#f08a1c', gray: '#59627f', grid: '#e8eef8' };
+const TAU = Math.PI * 2;
+const f2 = v => v.toFixed(2);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const dist = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
+const cm = v => fmt(v, 1) + ' cm';
+
+/* «Μολύβι» για SVG: μαθηματικές συντεταγμένες (ο y προς τα πάνω), U pixel ανά μονάδα. */
+function pen(U, fs, g) {
+  const X = x => f2(x * U), Y = y => f2(-y * U);
+  return {
+    U, fs, g, X, Y,
+    line: (a, b, col, w, extra = '') => `<line x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`,
+    dot: (p, col, r = 6) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="${col}" stroke="#fff" stroke-width="${f2(2.2 * g)}"/>`,
+    text: (p, s, o = {}) => `<text x="${f2(p[0] * U + (o.dx || 0))}" y="${f2(-p[1] * U + (o.dy || 0))}" font-size="${f2((o.size || 1) * fs)}" font-weight="${o.w || 800}" fill="${o.col || C.ink}" text-anchor="${o.anchor || 'middle'}" stroke="#fff" stroke-width="${f2(5 * g)}" stroke-linejoin="round" paint-order="stroke"${o.op != null ? ` opacity="${f2(o.op)}"` : ''}>${s}</text>`,
+    grid: (W, H) => { let s = ''; for (let x = Math.ceil(-W / 2 / U); x * U <= W / 2; x++) s += `<line x1="${f2(x * U)}" y1="${-H / 2}" x2="${f2(x * U)}" y2="${H / 2}" stroke="${C.grid}" stroke-width="1"/>`; for (let y = Math.ceil(-H / 2 / U); y * U <= H / 2; y++) s += `<line x1="${-W / 2}" y1="${f2(y * U)}" x2="${W / 2}" y2="${f2(y * U)}" stroke="${C.grid}" stroke-width="1"/>`; return s; },
+    grip: (p, name, r = 26) => `<circle data-grip="${name}" class="grip" cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="transparent"/>`
+  };
+}
+// Τόξο κύκλου από τη γωνία 0, αριστερόστροφα, κατά ένα ποσοστό f (0–1).
+function arc(P, c, r, f, col, w = 3) {
+  if (f <= 0.001) return '';
+  const R = f2(r * P.U), sw = f2(w * P.g);
+  if (f >= 0.999) return `<circle cx="${P.X(c[0])}" cy="${P.Y(c[1])}" r="${R}" fill="none" stroke="${col}" stroke-width="${sw}"/>`;
+  const a = f * TAU;
+  return `<path d="M${P.X(c[0] + r)} ${P.Y(c[1])}A${R} ${R} 0 ${f > 0.5 ? 1 : 0} 0 ${P.X(c[0] + r * Math.cos(a))} ${P.Y(c[1] + r * Math.sin(a))}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round"/>`;
+}
+// Ο διαβήτης: μύτη στο c, μολύβι στη γωνία φ, άνοιγμα r.
+function compass(P, c, r, phi, active) {
+  const d = [Math.cos(phi), Math.sin(phi)], n = [-d[1], d[0]], tip = [c[0] + r * d[0], c[1] + r * d[1]];
+  const H = [c[0] + d[0] * r / 2 + n[0] * 0.42 * r, c[1] + d[1] * r / 2 + n[1] * 0.42 * r], Hh = [H[0] + n[0] * 0.5, H[1] + n[1] * 0.5];
+  let s = `<g opacity="0.85">${P.line(c, H, C.gray, 5)}${P.line(H, tip, C.gray, 5)}${P.line(H, Hh, C.gray, 8)}<circle cx="${P.X(H[0])}" cy="${P.Y(H[1])}" r="${f2(8 * P.g)}" fill="${C.orange}" stroke="#fff" stroke-width="${f2(2 * P.g)}"/></g>`;
+  if (active) s += `<circle class="halo" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(17 * P.g)}" fill="${C.purple}" opacity="0.2"/>`;
+  s += `<circle cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(9.5 * P.g)}" fill="${C.purple}" stroke="#fff" stroke-width="${f2(3 * P.g)}"/>`;
+  return { s, tip };
+}
+
+/* ---------- 1. Η πλατεία ---------- */
+{
+  const plaza = $('#plaza'), U = 25, T1 = [-4, 0], T2 = [4, 0];
+  const cands = [[-1.5, 2.5], [0, -3], [2.2, 1.6], [0.8, 3.6]];
+  let sel = null;
+  const P = pen(U, 15, 1);
+  function drawPlaza() {
+    let s = `<rect x="-142" y="-117" width="284" height="234" rx="18" fill="#eef1f6" stroke="#b9c3d6" stroke-width="2" stroke-dasharray="6 5"/>`;
+    for (const [x, y] of [[-110, -90], [-60, 80], [30, -100], [100, 60], [120, -40], [-120, 40], [60, 100], [-20, 60]]) s += `<circle cx="${x}" cy="${y}" r="9" fill="#e1e6ef"/>`;
+    if (sel != null) {
+      const c = cands[sel], d1 = dist(c, T1), d2 = dist(c, T2), eq = Math.abs(d1 - d2) < 0.05, col = eq ? C.green : C.red;
+      s += P.line(c, T1, col, 2.4, 'stroke-dasharray="6 5"') + P.line(c, T2, col, 2.4, 'stroke-dasharray="6 5"');
+      s += P.text([(c[0] + T1[0]) / 2, (c[1] + T1[1]) / 2], fmt(d1, 1) + ' m', { dy: -6, col, size: 0.95 });
+      s += P.text([(c[0] + T2[0]) / 2, (c[1] + T2[1]) / 2], fmt(d2, 1) + ' m', { dy: -6, col, size: 0.95 });
+    }
+    for (const t of [T1, T2]) s += `<circle cx="${P.X(t[0])}" cy="${P.Y(t[1])}" r="16" fill="#c9f4c0" stroke="${C.green}" stroke-width="2"/><text class="emoji" x="${P.X(t[0])}" y="${+P.Y(t[1]) + 11}" font-size="30" text-anchor="middle">🌳</text>`;
+    cands.forEach((c, i) => {
+      const on = sel === i;
+      s += `<g class="cand" role="button" tabindex="0" data-i="${i}" aria-label="Θέση ${i + 1}"><circle cx="${P.X(c[0])}" cy="${P.Y(c[1])}" r="13" fill="${on ? C.orange : '#fff'}" stroke="${C.orange}" stroke-width="3"/><text x="${P.X(c[0])}" y="${+P.Y(c[1]) + 5.5}" font-size="15" font-weight="800" text-anchor="middle" fill="${on ? '#fff' : '#b4560c'}">${i + 1}</text></g>`;
+    });
+    plaza.innerHTML = s;
+  }
+  function pick(i) {
+    sel = i; drawPlaza();
+    const c = cands[i], d1 = dist(c, T1), d2 = dist(c, T2), m = $('#plazaMsg');
+    if (Math.abs(d1 - d2) < 0.05) { m.className = 'result miss'; m.innerHTML = `✓ Θέση ${i + 1}: <b>${fmt(d1, 1)} m</b> και <b>${fmt(d2, 1)} m</b>. Ισαπέχει από τα δύο πλατάνια!`; }
+    else { m.className = 'result hit'; m.innerHTML = `Θέση ${i + 1}: ${fmt(d1, 1)} m και ${fmt(d2, 1)} m. Δεν ισαπέχει. Δοκίμασε άλλη!`; }
+  }
+  plaza.addEventListener('click', e => { const g = e.target.closest('.cand'); if (g) pick(+g.dataset.i); });
+  plaza.addEventListener('keydown', e => { const g = e.target.closest('.cand'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(+g.dataset.i); } });
+  drawPlaza();
+}
+
+/* ---------- 3. Η κατασκευή βήμα-βήμα ---------- */
+const st = $('#stage'), card = $('#card'), texts = $$('.step-text'), dots = $$('.dots button');
+const VW = 810, VH = 540;
+const S = { step: 1, p: 1, rho: 4, sa: 0, sb: 0, A: [-3, 0], B: [3, 0], t: 2.2, lockU: null };
+const COLORS = [['#e0313b', '#ffeceb'], ['#e2508c', '#ffeaf2'], ['#8a5cf0', '#f3edff'], ['#e2508c', '#ffeaf2'], ['#f08a1c', '#fff2df'], ['#3f9d58', '#e9f8ec']];
+
+function inter() {
+  const A = S.A, B = S.B, d = dist(A, B), M = [(A[0] + B[0]) / 2, (A[1] + B[1]) / 2], v = [(B[0] - A[0]) / d, (B[1] - A[1]) / d];
+  let u = [-v[1], v[0]]; if (u[1] < 0 || (Math.abs(u[1]) < 1e-9 && u[0] < 0)) u = [-u[0], -u[1]];
+  const h2 = S.rho * S.rho - d * d / 4, ok = h2 > 0.01, h = ok ? Math.sqrt(h2) : 0;
+  return { d, M, v, u, ok, h, G: [M[0] + h * u[0], M[1] + h * u[1]], D: [M[0] - h * u[0], M[1] - h * u[1]] };
+}
+function geom() {
+  const w = st.clientWidth || 720, px = VW / w;
+  const ex = Math.max(Math.abs(S.A[0]), Math.abs(S.B[0])) + S.rho + 0.7, ey = Math.max(Math.abs(S.A[1]), Math.abs(S.B[1])) + S.rho + 0.7;
+  const U = S.lockU || Math.min(VW / 2 / ex, VH / 2 / ey);
+  return { U, fs: Math.max(19, 14 * px), g: Math.max(1, px / 1.3) };
+}
+
+function draw() {
+  const G = geom(), P = pen(G.U, G.fs, G.g), g = G.g, I = inter(), narrow = (st.clientWidth || 720) < 520;
+  const s = S.step, e = ease(S.p), k = n => s > n ? 1 : s === n ? e : 0;
+  let o = P.grid(VW, VH);
+  // Οι δύο κύκλοι
+  const fa = s >= 4 ? 1 : s === 3 ? S.sa : 0, fb = s >= 5 ? 1 : s === 4 ? S.sb : 0;
+  o += arc(P, S.A, S.rho, fa, C.purple) + arc(P, S.B, S.rho, fb, C.pink);
+  // Οι ακτίνες προς τα Γ και Δ
+  if (s >= 5 && I.ok) {
+    const op = s === 5 ? 0.9 * k(5) : 0.35;
+    for (const q of [I.G, I.D]) o += P.line(S.A, q, C.purple, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}" opacity="${f2(op)}"`) + P.line(S.B, q, C.pink, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}" opacity="${f2(op)}"`);
+    if (s === 5) for (const q of [I.G, I.D]) {
+      o += P.text([(S.A[0] + q[0]) / 2, (S.A[1] + q[1]) / 2], 'ρ', { dx: -10 * g, col: C.purple, size: 0.95, op: k(5) });
+      o += P.text([(S.B[0] + q[0]) / 2, (S.B[1] + q[1]) / 2], 'ρ', { dx: 10 * g, col: C.pink, size: 0.95, op: k(5) });
+    }
+  }
+  // Βήμα 6: η ευθεία ε = ΓΔ
+  if (s >= 6 && I.ok) {
+    const L = 30 * k(6);
+    o += P.line([I.M[0] - I.u[0] * L, I.M[1] - I.u[1] * L], [I.M[0] + I.u[0] * L, I.M[1] + I.u[1] * L], C.green, 3.4);
+  }
+  // Το τμήμα ΑΒ
+  o += P.line(S.A, S.B, C.ink, 4.5);
+  if (s >= 6 && I.ok && k(6) > 0.6) {
+    const q = 0.38, v = I.v, u = I.u, M = I.M;
+    o += `<path d="M${P.X(M[0] + v[0] * q)} ${P.Y(M[1] + v[1] * q)}L${P.X(M[0] + v[0] * q + u[0] * q)} ${P.Y(M[1] + v[1] * q + u[1] * q)}L${P.X(M[0] + u[0] * q)} ${P.Y(M[1] + u[1] * q)}" fill="none" stroke="${C.ink}" stroke-width="${f2(2.2 * g)}"/>`;
+    if (!narrow) {
+      o += P.text([M[0] + (v[0] + u[0]) * 0.75, M[1] + (v[1] + u[1]) * 0.75], '90°', { dy: 6 * g, col: C.green, size: 0.85 });
+      const below = [-u[0] * 0.55, -u[1] * 0.55];
+      o += P.text([(S.A[0] + M[0]) / 2 + below[0], (S.A[1] + M[1]) / 2 + below[1]], cm(I.d / 2), { dy: 7 * g, col: C.blue, size: 0.85 });
+      o += P.text([(S.B[0] + M[0]) / 2 + below[0], (S.B[1] + M[1]) / 2 + below[1]], cm(I.d / 2), { dy: 7 * g, col: C.blue, size: 0.85 });
+    }
+    // Το σημείο Ρ πάνω στην ε
+    const Pp = [M[0] + u[0] * S.t, M[1] + u[1] * S.t];
+    o += P.line(Pp, S.A, C.orange, 2.4, `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`) + P.line(Pp, S.B, C.orange, 2.4, `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`);
+    const dA = dist(Pp, S.A);
+    o += P.text([(Pp[0] + S.A[0]) / 2, (Pp[1] + S.A[1]) / 2], cm(dA), { dx: -14 * g, anchor: 'end', col: '#b4560c', size: 0.85 });
+    o += P.text([(Pp[0] + S.B[0]) / 2, (Pp[1] + S.B[1]) / 2], cm(dist(Pp, S.B)), { dx: 14 * g, anchor: 'start', col: '#b4560c', size: 0.85 });
+    o += `<circle class="halo" cx="${P.X(Pp[0])}" cy="${P.Y(Pp[1])}" r="${f2(16 * g)}" fill="${C.orange}" opacity="0.2"/>` + P.dot(Pp, C.orange, 8);
+    o += P.text(Pp, 'Ρ', { dx: -14 * g, dy: -10 * g, anchor: 'end', col: '#b4560c' });
+    o += P.dot(M, C.red, 5.5) + P.text(M, 'Μ', { dx: -12 * g, dy: 22 * g, anchor: 'end', col: C.red, size: 0.95 });
+    o += P.text([M[0] - u[0] * (I.h + 1.1), M[1] - u[1] * (I.h + 1.1)], 'ε', { dx: -14 * g, anchor: 'end', col: C.green, size: 1.15 });
+  }
+  // Ο διαβήτης
+  let grip = '';
+  if (s >= 2 && s <= 4) {
+    const c = s === 4 ? S.B : S.A, phi = s === 2 ? 0.9 : (s === 3 ? S.sa : S.sb) * TAU;
+    const active = s === 2 || (s === 3 && S.sa < 1) || (s === 4 && S.sb < 1);
+    const cp = compass(P, c, S.rho, phi, active);
+    if (s === 2) {
+      o += P.line(c, cp.tip, C.purple, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`);
+      o += P.text([(c[0] + cp.tip[0]) / 2, (c[1] + cp.tip[1]) / 2], 'ρ = ' + cm(S.rho), { dx: 14 * g, dy: 10 * g, anchor: 'start', col: C.purple, size: 0.95 });
+    }
+    o += cp.s;
+    grip = P.grip(cp.tip, s === 2 ? 'rho' : s === 3 ? 'sa' : 'sb', 28);
+  }
+  // Σημεία και ονόματα
+  const lab = (p, name, dx, dy, anchor) => P.dot(p, C.ink, 6.5) + P.text(p, name, { dx: dx * g, dy: dy * g, anchor });
+  o += lab(S.A, 'Α', -12, -12, 'end') + lab(S.B, 'Β', 12, -12, 'start');
+  if (s >= 5 && I.ok) {
+    if (s === 5) for (const q of [I.G, I.D]) o += `<circle class="halo" cx="${P.X(q[0])}" cy="${P.Y(q[1])}" r="${f2(15 * g)}" fill="${C.red}" opacity="0.2"/>`;
+    o += P.dot(I.G, C.red, 7) + P.text(I.G, 'Γ', { dx: 14 * g, dy: -8 * g, anchor: 'start', col: C.red, size: 1.1 });
+    o += P.dot(I.D, C.red, 7) + P.text(I.D, 'Δ', { dx: 14 * g, dy: 22 * g, anchor: 'start', col: C.red, size: 1.1 });
+  }
+  if (s < 6) o += P.text([I.M[0] - I.u[0] * 0.6, I.M[1] - I.u[1] * 0.6], 'ΑΒ = ' + cm(I.d), { dy: 8 * g, col: C.blue, size: 0.9 });
+  if (s >= 6) o += P.grip(S.A, 'A', 22) + P.grip(S.B, 'B', 22) + (I.ok ? P.grip([I.M[0] + I.u[0] * S.t, I.M[1] + I.u[1] * S.t], 'P', 26) : '');
+  st.innerHTML = o + grip;
+  $('#abTag').textContent = 'ΑΒ = ' + cm(I.d);
+}
+
+/* Κείμενα και κουμπιά της κάρτας */
+function rhoHint() {
+  const half = dist(S.A, S.B) / 2, h = $('#rhoHint');
+  $('#rhoText').textContent = cm(S.rho);
+  if (S.rho > half + 0.04) { h.style.borderColor = 'var(--green)'; h.style.background = '#ecfaee'; h.innerHTML = `✓ Καλό άνοιγμα: ρ = ${cm(S.rho)} είναι μεγαλύτερο από το μισό του ΑΒ (${cm(half)}).`; }
+  else { h.style.borderColor = 'var(--red)'; h.style.background = '#fff2f3'; h.innerHTML = `⚠ Πρόσεξε: ρ = ${cm(S.rho)} δεν είναι μεγαλύτερο από το μισό του ΑΒ (${cm(half)}). Τι θα γίνει με τους κύκλους;`; }
+}
+function setRho(r) {
+  r = Math.round(clamp(r, 1, 6) * 10) / 10;
+  if (r === S.rho) return;
+  S.rho = r; S.sa = 0; S.sb = 0;     // νέο άνοιγμα: οι κύκλοι σχεδιάζονται από την αρχή
+  $('#rho').value = Math.round(r * 10); setSweepUI();
+  rhoHint(); draw();
+}
+function setSweepUI() {
+  $('#sa').value = Math.round(S.sa * 360); $('#saText').textContent = Math.round(S.sa * 360) + '°'; $('#doneA').classList.toggle('show', S.sa >= 1);
+  $('#sb').value = Math.round(S.sb * 360); $('#sbText').textContent = Math.round(S.sb * 360) + '°'; $('#doneB').classList.toggle('show', S.sb >= 1);
+}
+function setSweep(name, f) { S[name] = f >= 0.985 ? 1 : clamp(f, 0, 1); setSweepUI(); draw(); }
+function s5() {
+  const I = inter(), ok = I.ok;
+  $('#s5ok').hidden = !ok; $('#s5no').hidden = ok;
+  $('#s5rho').textContent = cm(S.rho); $('#s5half').textContent = cm(I.d / 2);
+  if (S.step === 5) $('#next').disabled = !ok;
+}
+function s6() {
+  const I = inter(), m = $('#s6msg');
+  if (!I.ok) { m.className = 'result hit'; m.innerHTML = `⚠ Με ΑΒ = ${cm(I.d)} οι κύκλοι με ρ = ${cm(S.rho)} δεν τέμνονται πια. Φέρε τα Α και Β πιο κοντά ή μεγάλωσε το ρ στο βήμα 2.`; return; }
+  const Pp = [I.M[0] + I.u[0] * S.t, I.M[1] + I.u[1] * S.t];
+  m.className = 'result miss';
+  m.innerHTML = `ΡΑ = <b>${cm(dist(Pp, S.A))}</b> και ΡΒ = <b>${cm(dist(Pp, S.B))}</b>: ίσα, όπου κι αν βάλεις το Ρ πάνω στην ε! ✓`;
+}
+function showCard() {
+  const n = S.step, el = texts[n - 1];
+  texts.forEach(t => { t.hidden = t !== el; });
+  $('#stepTitle').textContent = el.dataset.title; $('#stepTool').textContent = el.dataset.tool;
+  $('#stepNum').textContent = n; $('#stepCount').textContent = 'Βήμα ' + n + ' από 6';
+  card.style.setProperty('--sc', COLORS[n - 1][0]); card.style.setProperty('--sh', COLORS[n - 1][1]);
+  dots.forEach((b, i) => { b.classList.toggle('done', i + 1 < n); if (i + 1 === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+  $('#prev').disabled = n === 1;
+  $('#next').disabled = false;
+  $('#next').textContent = n === 6 ? '↺ Από την αρχή' : 'Επόμενο ▶';
+  if (n === 2) rhoHint();
+  if (n === 5) s5();
+  if (n === 6) s6();
+}
+function goTo(n) {
+  n = clamp(n, 1, 6);
+  if (n >= 4 && S.sa < 1) S.sa = 1;          // αν προσπεράσει τον κύκλο του Α, τον ολοκληρώνουμε
+  if (n >= 5 && S.sb < 1) S.sb = 1;
+  if (n === 1) { S.A = [-3, 0]; S.B = [3, 0]; S.t = 2.2; }
+  setSweepUI();
+  S.step = n; S.p = 0; showCard();
+  animate(t => { S.p = t; draw(); }, 900);
+}
+$('#prev').addEventListener('click', () => goTo(S.step - 1));
+$('#next').addEventListener('click', () => goTo(S.step === 6 ? 1 : S.step + 1));
+$('#back2').addEventListener('click', () => goTo(2));
+dots.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.go)));
+$('.cx').addEventListener('keydown', e => {
+  if (e.target.matches('input')) return;
+  if (e.key === 'ArrowRight' && !$('#next').disabled && S.step < 6) { goTo(S.step + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') { goTo(S.step - 1); e.preventDefault(); }
+});
+$('#rho').addEventListener('input', e => { stop(); S.p = 1; setRho(+e.target.value / 10); });
+$('#sa').addEventListener('input', e => { stop(); S.p = 1; setSweep('sa', +e.target.value / 360); });
+$('#sb').addEventListener('input', e => { stop(); S.p = 1; setSweep('sb', +e.target.value / 360); });
+for (const [btn, name] of [['#autoA', 'sa'], ['#autoB', 'sb']]) $(btn).addEventListener('click', () => {
+  S.p = 1; const f0 = S[name] >= 1 ? 0 : S[name];
+  animate(t => setSweep(name, f0 + (1 - f0) * ease(t)), 1800 * (1 - f0) + 200);
+});
+
+// Σύρσιμο πάνω στο σχήμα
+let drag = null, unwrapped = 0;
+const toMath = e => { const m = st.getScreenCTM(); if (!m) return null; const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()), U = geom().U; return [p.x / U, -p.y / U]; };
+st.addEventListener('pointerdown', e => {
+  const name = e.target.dataset ? e.target.dataset.grip : null; if (!name) return;
+  drag = name; stop(); S.p = 1; S.lockU = geom().U;
+  if (name === 'sa' || name === 'sb') unwrapped = S[name] * TAU;
+  st.setPointerCapture(e.pointerId); e.preventDefault();
+});
+st.addEventListener('pointermove', e => {
+  if (!drag) return; const pt = toMath(e); if (!pt) return;
+  if (drag === 'rho') setRho(dist(pt, S.A));
+  else if (drag === 'sa' || drag === 'sb') {
+    const c = drag === 'sa' ? S.A : S.B; let a = Math.atan2(pt[1] - c[1], pt[0] - c[0]);
+    let delta = a - (unwrapped % TAU); while (delta > Math.PI) delta -= TAU; while (delta <= -Math.PI) delta += TAU;
+    unwrapped = clamp(unwrapped + delta, 0, TAU);
+    setSweep(drag, unwrapped / TAU);
+  } else if (drag === 'P') {
+    const I = inter(); S.t = clamp((pt[0] - I.M[0]) * I.u[0] + (pt[1] - I.M[1]) * I.u[1], -6, 6); draw(); s6();
+  } else if (drag === 'A' || drag === 'B') {
+    const other = drag === 'A' ? S.B : S.A; let q = [clamp(pt[0], -6, 6), clamp(pt[1], -3.5, 3.5)];
+    if (dist(q, other) < 2) return;
+    S[drag] = q; draw(); s6();
+  }
+});
+const endDrag = () => { if (drag) { drag = null; S.lockU = null; draw(); } };
+st.addEventListener('pointerup', endDrag); st.addEventListener('pointercancel', endDrag);
+
+/* ---------- 4α. Ανακάλυψη: τα σημεία που ισαπέχουν ---------- */
+const loc = $('#locus'), LA = [-2.5, 0], LB = [2.5, 0], LS = { P: [1.4, 2.1], pts: [], show: false };
+function drawLoc() {
+  const w = loc.clientWidth || 400, px = 400 / w, fs = Math.max(15, 13 * px), g = Math.max(1, px / 1.3), P = pen(40, fs, g);
+  const dA = dist(LS.P, LA), dB = dist(LS.P, LB), eq = Math.abs(dA - dB) < 0.08;
+  let s = P.grid(400, 300);
+  if (LS.show) s += P.line([0, -4], [0, 4], C.green, 2.6, `stroke-dasharray="${f2(8 * g)} ${f2(6 * g)}"`) + P.text([0, 3.2], 'μεσοκάθετος', { dx: 8 * g, anchor: 'start', col: C.green, size: 0.85 });
+  for (const q of LS.pts) s += P.dot(q, C.green, 5);
+  s += P.line(LS.P, LA, eq ? C.green : C.purple, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`) + P.line(LS.P, LB, eq ? C.green : C.pink, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`);
+  s += P.line(LA, LB, C.ink, 4);
+  s += P.dot(LA, C.ink) + P.text(LA, 'Α', { dx: -10 * g, dy: 6 * g, anchor: 'end' }) + P.dot(LB, C.ink) + P.text(LB, 'Β', { dx: 10 * g, dy: 6 * g, anchor: 'start' });
+  s += `<circle class="halo" cx="${P.X(LS.P[0])}" cy="${P.Y(LS.P[1])}" r="${f2(15 * g)}" fill="${eq ? C.green : C.orange}" opacity="0.2"/>` + P.dot(LS.P, eq ? C.green : C.orange, 8) + P.text(LS.P, 'Ρ', { dx: 12 * g, dy: -10 * g, anchor: 'start' });
+  s += P.grip(LS.P, 'L', 26);
+  loc.innerHTML = s;
+  const m = $('#locMsg');
+  m.className = 'result' + (eq ? ' miss' : '');
+  m.innerHTML = `ΡΑ = <b>${cm(dA)}</b> · ΡΒ = <b>${cm(dB)}</b>` + (eq ? ' → ίσα! ✓' : '') + ` <span style="color:var(--muted)">(πράσινες τελείες: ${LS.pts.length})</span>`;
+}
+function moveLoc(e) {
+  const m = loc.getScreenCTM(); if (!m) return;
+  const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+  LS.P = [clamp(p.x / 40, -4.8, 4.8), clamp(-p.y / 40, -3.6, 3.6)];
+  if (Math.abs(dist(LS.P, LA) - dist(LS.P, LB)) < 0.08 && LS.pts.every(q => dist(q, LS.P) > 0.3)) LS.pts.push(LS.P.slice());
+  drawLoc();
+}
+let ldrag = false;
+loc.addEventListener('pointerdown', e => { if (e.target.dataset && e.target.dataset.grip === 'L') { ldrag = true; loc.setPointerCapture(e.pointerId); e.preventDefault(); } });
+loc.addEventListener('pointermove', e => { if (ldrag) moveLoc(e); });
+loc.addEventListener('pointerup', () => { ldrag = false; });
+loc.addEventListener('pointercancel', () => { ldrag = false; });
+loc.addEventListener('click', e => { if (!(e.target.dataset && e.target.dataset.grip)) moveLoc(e); });
+$('#locShow').addEventListener('click', () => { LS.show = !LS.show; $('#locShow').textContent = LS.show ? 'Κρύψε τη μεσοκάθετο' : 'Δείξε τη μεσοκάθετο'; drawLoc(); });
+$('#locClear').addEventListener('click', () => { LS.pts = []; drawLoc(); });
+
+/* ---------- 4β. Τρεις περιπτώσεις για το ρ ---------- */
+{
+  const box = $('#cases'), cases = [[2.2, 'ρ < ΑΒ : 2', 'δεν τέμνονται'], [3, 'ρ = ΑΒ : 2', 'ένα κοινό σημείο'], [4, 'ρ > ΑΒ : 2', 'δύο σημεία Γ, Δ']];
+  box.innerHTML = cases.map(([r, a, b]) => {
+    const P = pen(11, 13, 1), h = r * r - 9;
+    let s = P.line([-3, 0], [3, 0], C.ink, 2.5) + arc(P, [-3, 0], r, 1, C.purple, 2) + arc(P, [3, 0], r, 1, C.pink, 2) + P.dot([-3, 0], C.ink, 3.5) + P.dot([3, 0], C.ink, 3.5);
+    if (h > 0.01) { const y = Math.sqrt(h); s += P.dot([0, y], C.red, 4.5) + P.dot([0, -y], C.red, 4.5); }
+    else if (Math.abs(h) <= 0.01) s += P.dot([0, 0], C.red, 4.5);
+    return `<figure><svg viewBox="-90 -60 180 120" aria-hidden="true">${s}</svg><b>${a}</b><br>${b}</figure>`;
+  }).join('');
+}
+
+/* ---------- Πρόκληση: η γέφυρα ---------- */
+const br = $('#bridge'), VA = [-3.5, 1.2], VB = [3, -2.2], BU = 50;
+const river = x => 2.4 - 0.2 * x + 0.5 * Math.sin(0.9 * x);
+const BR = { x: -4.5, show: false, drag: false };
+const fd = x => dist([x, river(x)], VA) - dist([x, river(x)], VB);
+const solX = (() => { let a = -6, b = 6; for (let i = 0; i < 60; i++) { const m = (a + b) / 2; if (fd(a) * fd(m) <= 0) b = m; else a = m; } return (a + b) / 2; })();
+function drawBridge() {
+  const w = br.clientWidth || 600, px = 600 / w, fs = Math.max(15, 13 * px), g = Math.max(1, px / 1.3), P = pen(BU, fs, g);
+  const pts = []; for (let x = -24; x <= 24; x += 0.1) pts.push(P.X(x) + ',' + P.Y(river(x)));
+  let s = `<rect x="-1200" y="-200" width="2400" height="400" fill="#eef7e6"/>`;
+  s += `<polyline points="${pts.join(' ')}" fill="none" stroke="#7fb8e8" stroke-width="${f2(30 * g)}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  s += `<polyline points="${pts.join(' ')}" fill="none" stroke="#cfe6ff" stroke-width="${f2(20 * g)}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  if (BR.show) {
+    const M = [(VA[0] + VB[0]) / 2, (VA[1] + VB[1]) / 2], d = dist(VA, VB), u = [-(VB[1] - VA[1]) / d, (VB[0] - VA[0]) / d];
+    s += P.line([M[0] - u[0] * 12, M[1] - u[1] * 12], [M[0] + u[0] * 12, M[1] + u[1] * 12], C.green, 2.8, `stroke-dasharray="${f2(9 * g)} ${f2(6 * g)}"`);
+    s += P.line(VA, VB, C.ink, 2, `stroke-dasharray="${f2(4 * g)} ${f2(4 * g)}" opacity="0.6"`);
+  }
+  const Bp = [BR.x, river(BR.x)], dA = dist(Bp, VA), dB = dist(Bp, VB), eq = Math.abs(dA - dB) < 0.04, col = eq ? C.green : C.orange;
+  s += P.line(Bp, VA, col, 2.4, `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`) + P.line(Bp, VB, col, 2.4, `stroke-dasharray="${f2(7 * g)} ${f2(5 * g)}"`);
+  s += P.text([(Bp[0] + VA[0]) / 2, (Bp[1] + VA[1]) / 2], fmt(dA, 2) + ' km', { dx: -10 * g, anchor: 'end', col: eq ? C.green : '#b4560c', size: 0.9 });
+  s += P.text([(Bp[0] + VB[0]) / 2, (Bp[1] + VB[1]) / 2], fmt(dB, 2) + ' km', { dx: 10 * g, anchor: 'start', col: eq ? C.green : '#b4560c', size: 0.9 });
+  // η γέφυρα: ένα ορθογώνιο κάθετο στο ποτάμι
+  const slope = (river(BR.x + 0.01) - river(BR.x - 0.01)) / 0.02, ang = -Math.atan(slope) * 180 / Math.PI + 90;
+  s += `<g transform="translate(${P.X(Bp[0])} ${P.Y(Bp[1])}) rotate(${f2(ang)})"><rect x="${f2(-22 * g)}" y="${f2(-8 * g)}" width="${f2(44 * g)}" height="${f2(16 * g)}" rx="${f2(3 * g)}" fill="#a0612b" stroke="#fff" stroke-width="${f2(2 * g)}"/></g>`;
+  s += `<circle class="halo" cx="${P.X(Bp[0])}" cy="${P.Y(Bp[1])}" r="${f2(22 * g)}" fill="${col}" opacity="0.2"/>`;
+  for (const [v, name] of [[VA, 'Α'], [VB, 'Β']]) s += `<text class="emoji" x="${P.X(v[0])}" y="${f2(+P.Y(v[1]) + 9 * g)}" font-size="${f2(28 * g)}" text-anchor="middle">🏡</text>` + P.text(v, 'χωριό ' + name, { dy: 34 * g, size: 0.95 });
+  s += P.grip(Bp, 'br', 30);
+  br.innerHTML = s;
+  const m = $('#brMsg');
+  m.innerHTML = eq ? `✓ Βρήκες τη θέση! Η γέφυρα απέχει <b>${fmt(dA, 2)} km</b> και από τα δύο χωριά.` : `Απόσταση από το Α: <b>${fmt(dA, 2)} km</b> · από το Β: <b>${fmt(dB, 2)} km</b>. Σύρε τη γέφυρα πάνω στο ποτάμι.`;
+}
+br.addEventListener('pointerdown', e => { if (e.target.dataset && e.target.dataset.grip === 'br') { BR.drag = true; br.setPointerCapture(e.pointerId); e.preventDefault(); } });
+br.addEventListener('pointermove', e => {
+  if (!BR.drag) return; const m = br.getScreenCTM(); if (!m) return;
+  const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+  let x = clamp(p.x / BU, -5.8, 5.8); if (Math.abs(x - solX) < 0.06) x = solX;
+  BR.x = x; drawBridge();
+});
+br.addEventListener('pointerup', () => { BR.drag = false; }); br.addEventListener('pointercancel', () => { BR.drag = false; });
+$('#brShow').addEventListener('click', () => { BR.show = !BR.show; $('#brShow').textContent = BR.show ? 'Κρύψε τη μεσοκάθετο' : 'Δείξε τη μεσοκάθετο'; drawBridge(); });
+$('#brReset').addEventListener('click', () => { BR.x = -4.5; BR.show = false; $('#brShow').textContent = 'Δείξε τη μεσοκάθετο'; drawBridge(); });
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = st.clientWidth + loc.clientWidth + br.clientWidth; if (w !== lastW) { lastW = w; draw(); drawLoc(); drawBridge(); } }).observe(document.body);
+showCard(); goTo(1); drawLoc(); drawBridge();
+})();
+</script></body></html>

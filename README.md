@@ -6,9 +6,10 @@ Interactive maths lessons for Greek lower-secondary (Gymnasium) students. Each l
 
 | # | Lesson | Class · thematic field | What students do |
 |---|---|---|---|
-| 1 | [Constructing √2](https://izzydi.github.io/math-lab/sqrt2/) · [source](sqrt2) | Β΄ Γυμνασίου · Αριθμός και Άλγεβρα (Α.2 Άρρητοι – Πραγματικοί αριθμοί) | Build the right triangle with legs 1 and 1, use the Pythagorean theorem, turn the compass to place √2 and −√2 on the number line, then construct √5 |
-| 2 | [Achilles and the tortoise](https://izzydi.github.io/math-lab/zeno/) · [source](zeno) | Γ΄ Γυμνασίου · Αριθμός και Άλγεβρα (Α.1 Πραγματικοί αριθμοί) | Step through Zeno's paradox on a zooming track, add 0.9 + 0.09 + … = 0.999… = 1, solve 10t = 9 + t, then race the two in real time |
-| 3 | [The birthday paradox](https://izzydi.github.io/math-lab/birthday-paradox/) · [source](birthday-paradox) | Γ΄ Γυμνασίου · Στοχαστικά Μαθηματικά (Γ.2 Πειράματα τύχης και πιθανότητες) | Guess first, deal random birthdays to 100 classes, compare the relative frequency with the probability curve, and see why 23 students make 253 pairs |
+| 1 | [The perpendicular bisector](https://izzydi.github.io/math-lab/perpendicular-bisector/) · [source](perpendicular-bisector) | Α΄ Γυμνασίου · Γεωμετρία (Β.3 Γεωμετρία του επιπέδου, §3.2) | Do the ruler-and-compass construction step by step: open the compass, sweep the two circles, find Γ and Δ, draw the line; discover that every point on it is equidistant from A and B; place a bridge on a river |
+| 2 | [Constructing √2](https://izzydi.github.io/math-lab/sqrt2/) · [source](sqrt2) | Β΄ Γυμνασίου · Αριθμός και Άλγεβρα (Α.2 Άρρητοι – Πραγματικοί αριθμοί) | Build the right triangle with legs 1 and 1, use the Pythagorean theorem, turn the compass to place √2 and −√2 on the number line, then construct √5 |
+| 3 | [Achilles and the tortoise](https://izzydi.github.io/math-lab/zeno/) · [source](zeno) | Γ΄ Γυμνασίου · Αριθμός και Άλγεβρα (Α.1 Πραγματικοί αριθμοί) | Step through Zeno's paradox on a zooming track, add 0.9 + 0.09 + … = 0.999… = 1, solve 10t = 9 + t, then race the two in real time |
+| 4 | [The birthday paradox](https://izzydi.github.io/math-lab/birthday-paradox/) · [source](birthday-paradox) | Γ΄ Γυμνασίου · Στοχαστικά Μαθηματικά (Γ.2 Πειράματα τύχης και πιθανότητες) | Guess first, deal random birthdays to 100 classes, compare the relative frequency with the probability curve, and see why 23 students make 253 pairs |
 
 Lessons are grouped by class and by the thematic fields of the new Greek textbooks: Αριθμός και Άλγεβρα, Γεωμετρία, Στοχαστικά Μαθηματικά.
 
