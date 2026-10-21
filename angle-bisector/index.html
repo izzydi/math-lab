@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Η διχοτόμος γωνίας · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για την Α΄ Γυμνασίου: κατασκευή της διχοτόμου μιας γωνίας με κανόνα και διαβήτη, χωρίς μοιρογνωμόνιο, βήμα-βήμα, με δίπλωση χαρτιού και την ιδιότητα των σημείων της.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+.plain{background-image:none!important}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.methods{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:8px 0;font-size:15px;align-items:start}
+.methods b{white-space:nowrap}
+</style>
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Α΄ Γυμνασίου · Γεωμετρία</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Η διχοτόμος γωνίας –</span> <span class="t2">με κανόνα και διαβήτη</span></h1>
+    <p>Γεωμετρία του επιπέδου | Α΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Πρόβλημα</span>Ο Νίκος θέλει να κόψει ένα κομμάτι πίτσας σε <b class="red">δύο ίσα μέρη</b>, για να το μοιραστεί με τον αδερφό του. Πού πρέπει να κόψει;</p>
+      <p>Το κομμάτι της πίτσας είναι μια <span class="hl y">γωνία 60°</span>. Πρέπει να τη χωρίσει σε δύο γωνίες 30°. Η ημιευθεία που το κάνει αυτό λέγεται <strong>διχοτόμος</strong>.</p>
+      <p><span class="hl b">Διχοτόμος</span> μιας γωνίας λέγεται η ημιευθεία που έχει αρχή την κορυφή της γωνίας και τη χωρίζει σε <strong>δύο ίσες γωνίες</strong>.</p>
+      <p>Το βιβλίο (σελ. 168) δείχνει δύο τρόπους: με <strong>μοιρογνωμόνιο</strong> και με <strong>δίπλωση χαρτιού</strong>. Η άσκηση 7 όμως ζητά τη διχοτόμο <em>χωρίς μοιρογνωμόνιο</em>. Εδώ θα μάθεις έναν τρίτο τρόπο: <span class="hl g">μόνο με κανόνα και διαβήτη</span>!</p>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να κατασκευάζεις τη διχοτόμο μιας γωνίας με κανόνα και διαβήτη, χωρίς μοιρογνωμόνιο.</span></li>
+          <li><b>Σ2</b><span>Να εξηγείς γιατί η ημιευθεία που κατασκεύασες χωρίζει τη γωνία σε δύο ίσες γωνίες.</span></li>
+          <li><b>Σ3</b><span>Να αναγνωρίζεις ότι κάθε σημείο της διχοτόμου ισαπέχει από τις πλευρές της γωνίας.</span></li>
+          <li><b>Σ4</b><span>Να λύνεις προβλήματα του τύπου «βρες τα σημεία που ισαπέχουν από δύο δρόμους».</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">Σύρε το μαχαίρι για να κόψεις την πίτσα σε δύο ίσα κομμάτια!</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box"><svg id="pizza" viewBox="-130 -268 260 290" role="img" aria-label="Ένα κομμάτι πίτσας 60 μοιρών και ένα μαχαίρι που μετακινείς"></svg>
+        <div class="range-label" style="margin-top:6px"><label for="knife">Θέση του μαχαιριού</label><strong id="knifeText" style="border-color:var(--orange);color:#b4560c">40° | 20°</strong></div>
+        <input id="knife" type="range" min="61" max="119" value="80" style="accent-color:var(--orange)">
+        <p class="result" id="pizzaMsg" aria-live="polite" style="margin:8px 0 0;font-size:14.5px">Τα δύο κομμάτια δεν είναι ίσα. Μετακίνησε το μαχαίρι!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Τι χρειαζόμαστε -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Τι χρειαζόμαστε</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico" aria-hidden="true">📏</span>Κανόνας<small>για την ημιευθεία ΟΔ</small></div>
+    <div class="chip c2"><span class="ico" aria-hidden="true">🧭</span>Διαβήτης<small>για τρία τόξα</small></div>
+    <div class="chip c3">ΟΒ = ΟΓ<small>το πρώτο τόξο, από το Ο</small></div>
+    <div class="chip c4">ΒΔ = ΓΔ<small>ίδιο άνοιγμα από Β και Γ</small></div>
+    <div class="chip c5"><span class="ico" aria-hidden="true">🚫</span>Μοιρογνωμόνιο<small>δεν το χρειαζόμαστε!</small></div>
+    <div class="chip c6">απόσταση = ⊥<small>από σημείο σε ευθεία</small></div>
+  </div>
+</section>
+
+<!-- 3. Η κατασκευή -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Η κατασκευή με κανόνα και διαβήτη</h2></div>
+  <p class="lead">Κάνε την κατασκευή μόνος σου, βήμα-βήμα. Σέρνε τη <span class="hl v">μωβ τελεία</span> του διαβήτη πάνω στο σχήμα ή χρησιμοποίησε τις μπάρες. Τα τετραγωνάκια είναι 1 cm.</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><h3>Το τετράδιό σου</h3><span class="tag" id="angTag">xÔy = 64°</span></div>
+      <div class="stage-fig plain"><svg id="stage" viewBox="-405 -250 810 500" role="img" aria-label="Η κατασκευή της διχοτόμου"></svg></div>
+      <div class="stepbar">
+        <button class="btn ghost" id="prev" type="button">◀ Πίσω</button>
+        <ol class="dots" aria-label="Βήματα">
+          <li><button type="button" data-go="1" aria-label="Βήμα 1">1</button></li>
+          <li><button type="button" data-go="2" aria-label="Βήμα 2">2</button></li>
+          <li><button type="button" data-go="3" aria-label="Βήμα 3">3</button></li>
+          <li><button type="button" data-go="4" aria-label="Βήμα 4">4</button></li>
+          <li><button type="button" data-go="5" aria-label="Βήμα 5">5</button></li>
+          <li><button type="button" data-go="6" aria-label="Βήμα 6">6</button></li>
+        </ol>
+        <button class="btn" id="next" type="button">Επόμενο ▶</button>
+      </div>
+    </div>
+
+    <aside class="step-card" id="card" aria-live="polite">
+      <p class="step-count" id="stepCount">Βήμα 1 από 6</p>
+      <div class="step-head"><span class="letter" id="stepNum">1</span><h3 id="stepTitle">Η γωνία xÔy</h3></div>
+      <span class="tool" id="stepTool">📏 Κανόνας</span>
+
+      <div class="step-text" data-step="1" data-title="Η γωνία xÔy" data-tool="📏 Κανόνας">
+        <p>Έχουμε μια γωνία <span class="hl b">xÔy</span>, όπως στο παράδειγμα του βιβλίου (σελ. 168). Θέλουμε να τη χωρίσουμε σε <strong>δύο ίσες γωνίες</strong>, χωρίς μοιρογνωμόνιο.</p>
+        <p>Μπορείς να αλλάξεις τη γωνία με τη μπάρα ή σέρνοντας την άκρη της Οy.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="theta">Γωνία xÔy</label><strong id="thetaText">64°</strong></div>
+          <input id="theta" type="range" min="20" max="170" value="64">
+        </div>
+      </div>
+      <div class="step-text" data-step="2" data-title="Τόξο με κέντρο Ο" data-tool="🧭 Διαβήτης" hidden>
+        <p>Βάζουμε τη μύτη του διαβήτη στην κορυφή <b>Ο</b> και γράφουμε ένα <span class="hl y">τόξο</span> που κόβει τις δύο πλευρές. Τα σημεία τομής τα λέμε <b class="red">Β</b> (στην Οx) και <b class="red">Γ</b> (στην Οy).</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="r1">Άνοιγμα του διαβήτη</label><strong id="r1Text">3,0 cm</strong></div>
+          <input id="r1" type="range" min="15" max="50" value="30">
+          <div class="range-label"><label for="sw1">Γύρισε τον διαβήτη</label><strong id="sw1Text">0%</strong></div>
+          <input id="sw1" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto1" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="done1">✓ Βρήκες τα Β και Γ. Αφού είναι πάνω στο ίδιο τόξο: <b>ΟΒ = ΟΓ</b>.</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="3" data-title="Τόξο με κέντρο Β" data-tool="🧭 Διαβήτης" hidden>
+        <p>Τώρα βάζουμε τη μύτη στο <b>Β</b>, ανοίγουμε τον διαβήτη σε ένα άνοιγμα <b>ρ</b> και γράφουμε τόξο <strong>μέσα</strong> στη γωνία.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="rho">Άνοιγμα ρ</label><strong id="rhoText">3,5 cm</strong></div>
+          <input id="rho" type="range" min="10" max="60" value="35">
+          <p class="ask" id="rhoHint" style="margin:0"></p>
+          <div class="range-label"><label for="sw2">Γύρισε τον διαβήτη</label><strong id="sw2Text">0%</strong></div>
+          <input id="sw2" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto2" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+        </div>
+      </div>
+      <div class="step-text" data-step="4" data-title="Τόξο με κέντρο Γ, ίδιο άνοιγμα" data-tool="🧭 Διαβήτης" hidden>
+        <p>Βάλε τη μύτη στο <b>Γ</b> και γράψε τόξο με <span class="hl p">το ίδιο άνοιγμα ρ</span>. <strong>Μην αλλάξεις το άνοιγμα!</strong></p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="sw3">Γύρισε τον διαβήτη</label><strong id="sw3Text">0%</strong></div>
+          <input id="sw3" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="auto3" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="done3">✓ Τα δύο τόξα τέμνονται!</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="5" data-title="Το σημείο Δ" data-tool="✏️ Μολύβι" hidden>
+        <div id="s5ok">
+          <p>Τα δύο τόξα τέμνονται σε ένα σημείο μέσα στη γωνία. Το λέμε <b class="red">Δ</b>.</p>
+          <p>Το Δ είναι πάνω και στα δύο τόξα, άρα απέχει <b>ρ</b> από το Β και <b>ρ</b> από το Γ:</p>
+          <div class="fbox">ΒΔ = ΓΔ = ρ</div>
+        </div>
+        <div id="s5no" hidden>
+          <p class="ask" style="border-color:var(--red);background:#fff2f3">⚠ Τα δύο τόξα <strong>δεν τέμνονται</strong>! Το ρ = <b id="s5rho">1,5 cm</b> δεν είναι μεγαλύτερο από το μισό του ΒΓ (<b id="s5half">1,6 cm</b>).</p>
+          <p>Γύρνα στο βήμα 3 και <strong>μεγάλωσε το άνοιγμα</strong>.</p>
+          <p><button class="btn ghost" id="back3" type="button">◀ Στο βήμα 3</button></p>
+        </div>
+      </div>
+      <div class="step-text" data-step="6" data-title="Η διχοτόμος Οδ" data-tool="📏 Κανόνας" hidden>
+        <p>Με τον κανόνα φέρνουμε την ημιευθεία <b class="green">Οδ</b> από την κορυφή Ο, που περνά από το Δ. Αυτή είναι η <span class="hl g">διχοτόμος</span> της γωνίας xÔy!</p>
+        <p><strong>Δοκίμασε:</strong> σύρε την άκρη της Οy για να αλλάξεις τη γωνία. Η κατασκευή ξαναγίνεται μόνη της.</p>
+        <p class="result miss" id="s6msg"></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. Γιατί δουλεύει -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Γιατί δουλεύει η κατασκευή;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Μια γνωστή κατασκευή: η μεσοκάθετος!</h3>
+      <svg class="fig" id="whyFig" viewBox="-130 -125 260 175" role="img" aria-label="Η γωνία με τα σημεία Β, Γ, Δ. Η ΟΔ κόβει κάθετα το ΒΓ στο μέσο του." style="max-width:280px"></svg>
+      <p>Πρόσεξε δύο ισότητες: <b>ΟΒ = ΟΓ</b> (ίδιο τόξο) και <b>ΔΒ = ΔΓ</b> (ίδιο άνοιγμα). Άρα και το Ο και το Δ <strong>ισαπέχουν</strong> από τα Β και Γ, δηλαδή βρίσκονται πάνω στη <a href="../perpendicular-bisector/">μεσοκάθετο του ΒΓ</a>.</p>
+      <div class="fbox blue">ΟΔ = μεσοκάθετος του ΒΓ</div>
+      <p>Αν διπλώσεις το χαρτί πάνω στην ΟΔ, το Β πέφτει πάνω στο Γ. Τότε και η πλευρά Οx πέφτει πάνω στην Οy, άρα οι δύο γωνίες είναι <span class="hl y">ίσες</span>.</p>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Η δίπλωση του χαρτιού</h3>
+      <svg class="fig" id="fold" viewBox="-40 -170 250 200" role="img" aria-label="Δίπλωση χαρτιού: η πλευρά Οx διπλώνει πάνω στην Οy κατά μήκος της διχοτόμου." style="max-width:280px"></svg>
+      <div class="btnrow"><button class="btn violet" id="foldBtn" type="button">▶ Δίπλωσε το χαρτί</button></div>
+      <p>Αυτός είναι ο 2ος τρόπος του βιβλίου (σελ. 168): διπλώνουμε το χαρτί ώστε η <b>Οx</b> να πέσει πάνω στην <b>Οy</b>. Η τσάκιση είναι η διχοτόμος, γιατί οι δύο γωνίες συμπίπτουν.</p>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Η ιδιότητα των σημείων της διχοτόμου</h3>
+      <svg class="fig" id="distFig" viewBox="-30 -185 260 210" role="img" aria-label="Ένα σημείο Α πάνω στη διχοτόμο και οι κάθετες αποστάσεις του από τις δύο πλευρές, που είναι ίσες." style="max-width:280px"></svg>
+      <p>Η <strong>απόσταση</strong> ενός σημείου από μια ευθεία είναι το μήκος του <strong>κάθετου</strong> τμήματος προς αυτήν. Για κάθε σημείο Α της διχοτόμου:</p>
+      <div class="fbox green">απόσταση από την Οx = απόσταση από την Οy</div>
+      <p>Και αντίστροφα: κάθε σημείο της γωνίας που ισαπέχει από τις πλευρές της ανήκει στη διχοτόμο. Αυτό θα σου χρειαστεί στην πρόκληση!</p>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Τρεις τρόποι για τη διχοτόμο</h3>
+      <div class="methods">
+        <b>📐 Μοιρογνωμόνιο</b><span>Μετράμε τη γωνία (π.χ. 64°) και παίρνουμε το μισό (32°). Θέλει μέτρηση, και κάθε μέτρηση έχει μικρά λάθη.</span>
+        <b>📄 Δίπλωση</b><span>Γρήγορος και έξυπνος τρόπος, αλλά θέλει χαρτί που διπλώνεται. Στο τετράδιο ή στον πίνακα δεν γίνεται.</span>
+        <b>🧭 Κανόνας και διαβήτης</b><span>Δεν μετράμε τίποτα και δουλεύει για <strong>κάθε</strong> γωνία, ακόμα και αμβλεία. Αυτόν ζητά η άσκηση 7 (σελ. 169)!</span>
+      </div>
+      <p>Δοκίμασε στο βήμα 6 μια αμβλεία γωνία, π.χ. 150°: η διχοτόμος τη χωρίζει σε δύο γωνίες 75°.</p>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>ΟΒ = ΟΓ και ΔΒ = ΔΓ, άρα η ΟΔ είναι η μεσοκάθετος του ΒΓ και χωρίζει τη γωνία σε δύο ίσες γωνίες</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Με κανόνα και διαβήτη χωρίζουμε εύκολα μια γωνία στα δύο. Οι αρχαίοι Έλληνες προσπάθησαν να τη χωρίσουν και σε <strong>τρία</strong> ίσα μέρη (τριχοτόμηση), αλλά δεν τα κατάφεραν ποτέ. Ο Ιππίας ο Ηλείος (σελ. 169 του βιβλίου) βρήκε μια ειδική καμπύλη που το κάνει, αλλά αυτή δεν σχεδιάζεται με κανόνα και διαβήτη. Το 1837 ο Γάλλος μαθηματικός Pierre Wantzel απέδειξε ότι με κανόνα και διαβήτη η τριχοτόμηση μιας τυχαίας γωνίας είναι <strong>αδύνατη</strong>!</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Σ"><span class="n">1</span><span class="stmt">Η διχοτόμος μιας γωνίας 80° τη χωρίζει σε δύο γωνίες 40°.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> 80° : 2 = 40°.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">2</span><span class="stmt">Για να κατασκευάσουμε τη διχοτόμο χρειαζόμαστε οπωσδήποτε μοιρογνωμόνιο.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Αρκούν κανόνας και διαβήτης, ή ακόμα και η δίπλωση του χαρτιού.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">3</span><span class="stmt">Τα τόξα με κέντρα Β και Γ πρέπει να έχουν το ίδιο άνοιγμα.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Αλλιώς το Δ δεν ισαπέχει από τα Β και Γ, και η ΟΔ δεν είναι η διχοτόμος.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">4</span><span class="stmt">Κάθε σημείο της διχοτόμου ισαπέχει από τις πλευρές της γωνίας.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Είναι η ιδιότητα των σημείων της διχοτόμου (σελ. 167).</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">5</span><span class="stmt">Την απόσταση ενός σημείου από μια ευθεία τη μετράμε με οποιοδήποτε τμήμα προς την ευθεία.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Τη μετράμε με το κάθετο τμήμα, που είναι και το πιο κοντό.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">6</span><span class="stmt">Με κανόνα και διαβήτη μπορούμε να χωρίσουμε κάθε γωνία σε τρία ίσα μέρη.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Η τριχοτόμηση μιας τυχαίας γωνίας με κανόνα και διαβήτη είναι αδύνατη. Η διχοτόμηση όμως γίνεται πάντα!</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση (άσκηση 6, σελ. 169):</b> Δύο δρόμοι τέμνονται. Θέλουμε έναν <b>σταθμό φόρτισης</b> ηλεκτρικών οχημάτων που να <b>ισαπέχει</b> από τους δύο δρόμους. Πού μπορεί να χτιστεί; Σύρε τον σταθμό και βρες <em>όλες</em> τις δυνατές θέσεις!</p></div>
+<div class="mini">
+  <div class="mini-head"><h3>Οι δύο δρόμοι</h3><div class="btnrow" style="margin:0"><button class="btn ghost" id="rdShow" type="button">Δείξε τις διχοτόμους</button><button class="btn ghost" id="rdReset" type="button">↺</button></div></div>
+  <div class="stage-fig plain"><svg id="roads" viewBox="-300 -200 600 400" role="img" aria-label="Δύο δρόμοι που τέμνονται και ένας σταθμός φόρτισης που μετακινείς"></svg></div>
+  <p class="readout" id="rdMsg" aria-live="polite"></p>
+</div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Ιδέα:</strong> ο σταθμός πρέπει να ισαπέχει από τους δύο δρόμους, άρα πρέπει να βρίσκεται πάνω σε μια <strong>διχοτόμο</strong>.</p>
+<p><strong>Παγίδα:</strong> οι δύο δρόμοι δεν σχηματίζουν μία γωνία αλλά <strong>τέσσερις</strong>: δύο οξείες (40°) και δύο αμβλείες (140°). Οι διχοτόμοι τους σχηματίζουν <strong>δύο ευθείες</strong>.</p>
+<div class="fbox">20° + 70° = 90°</div>
+<p>Οι δύο ευθείες είναι κάθετες μεταξύ τους: η μία κάνει 20° με τον δρόμο (το μισό των 40°) και η άλλη 70° (το μισό των 140°).</p>
+<p class="final">Απάντηση: σε οποιοδήποτε σημείο των δύο κάθετων ευθειών που διχοτομούν τις γωνίες των δρόμων</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a><a href="../perpendicular-bisector/">Δες και: η μεσοκάθετος →</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+<script src="../assets/lesson.js"></script>
+<script>
+(() => {
+'use strict';
+const { fmt, animate, stop, ease } = MathLab;
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const C = { ink: '#1f2a5c', muted: '#4b5682', blue: '#2c6fd6', red: '#e0313b', green: '#2f8a4e', purple: '#8a5cf0', pink: '#e2508c', orange: '#f08a1c', gray: '#59627f', grid: '#e8eef8' };
+const TAU = Math.PI * 2, DEG = Math.PI / 180;
+const f2 = v => v.toFixed(2);
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const dist = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
+const cm = v => fmt(v, 1) + ' cm';
+const deg = v => (Math.abs(v - Math.round(v)) < 0.05 ? String(Math.round(v)) : fmt(v, 1)) + '°';
+const dir = a => [Math.cos(a), Math.sin(a)];
+const add = (p, q, k = 1) => [p[0] + k * q[0], p[1] + k * q[1]];
+
+/* «Μολύβι» για SVG: μαθηματικές συντεταγμένες (ο y προς τα πάνω), U pixel ανά μονάδα. */
+function pen(U, fs, g) {
+  const X = x => f2(x * U), Y = y => f2(-y * U);
+  return {
+    U, fs, g, X, Y,
+    line: (a, b, col, w, extra = '') => `<line x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`,
+    dot: (p, col, r = 6) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="${col}" stroke="#fff" stroke-width="${f2(2.2 * g)}"/>`,
+    text: (p, s, o = {}) => `<text x="${f2(p[0] * U + (o.dx || 0))}" y="${f2(-p[1] * U + (o.dy || 0))}" font-size="${f2((o.size || 1) * fs)}" font-weight="${o.w || 800}" fill="${o.col || C.ink}" text-anchor="${o.anchor || 'middle'}" stroke="#fff" stroke-width="${f2(5 * g)}" stroke-linejoin="round" paint-order="stroke"${o.op != null ? ` opacity="${f2(o.op)}"` : ''}>${s}</text>`,
+    grip: (p, name, r = 26) => `<circle data-grip="${name}" class="grip" cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="transparent"/>`,
+    // τόξο κύκλου με κέντρο c και ακτίνα r, από τη γωνία a0 κατά da (ακτίνια, αριστερόστροφα)
+    arc: (c, r, a0, da, col, w = 3, extra = '') => {
+      if (da <= 0.001) return '';
+      const R = f2(r * U), p0 = add(c, dir(a0), r), p1 = add(c, dir(a0 + da), r);
+      return `<path d="M${X(p0[0])} ${Y(p0[1])}A${R} ${R} 0 ${da > Math.PI ? 1 : 0} 0 ${X(p1[0])} ${Y(p1[1])}" fill="none" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`;
+    },
+    // μικρό σημάδι ίσων τμημάτων στο μέσο του ab (n γραμμούλες)
+    tick: (a, b, n, col) => {
+      const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], d = dist(a, b), v = [(b[0] - a[0]) / d, (b[1] - a[1]) / d], u = [-v[1], v[0]], s = 7 / U, gap = 5 / U;
+      let o = '';
+      for (let i = 0; i < n; i++) { const c = add(m, v, (i - (n - 1) / 2) * gap); o += `<line x1="${X(c[0] - u[0] * s)}" y1="${Y(c[1] - u[1] * s)}" x2="${X(c[0] + u[0] * s)}" y2="${Y(c[1] + u[1] * s)}" stroke="${col}" stroke-width="${f2(2.4 * g)}" stroke-linecap="round"/>`; }
+      return o;
+    }
+  };
+}
+function compass(P, c, r, phi, active) {
+  const d = dir(phi), n = [-d[1], d[0]], tip = add(c, d, r);
+  const H = add(add(c, d, r / 2), n, 0.42 * r), Hh = add(H, n, 0.5);
+  let s = `<g opacity="0.85">${P.line(c, H, C.gray, 5)}${P.line(H, tip, C.gray, 5)}${P.line(H, Hh, C.gray, 8)}<circle cx="${P.X(H[0])}" cy="${P.Y(H[1])}" r="${f2(8 * P.g)}" fill="${C.orange}" stroke="#fff" stroke-width="${f2(2 * P.g)}"/></g>`;
+  if (active) s += `<circle class="halo" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(17 * P.g)}" fill="${C.purple}" opacity="0.2"/>`;
+  s += `<circle cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(9.5 * P.g)}" fill="${C.purple}" stroke="#fff" stroke-width="${f2(3 * P.g)}"/>`;
+  return { s, tip };
+}
+
+/* ---------- 1. Η πίτσα ---------- */
+{
+  const svg = $('#pizza'), knife = $('#knife'), U = 24, R = 9;
+  const tops = [[-1.2, 6.8], [1.7, 6.0], [0.7, 2.7], [-0.6, 8.1], [2.1, 7.7], [-1.9, 5.7]];
+  function draw() {
+    const P = pen(U, 15, 1), phi = +knife.value * DEG, a = (+knife.value - 60), b = 120 - +knife.value, ok = Math.abs(a - b) < 0.5;
+    let s = `<path d="M0 0L${P.X(R * Math.cos(60 * DEG))} ${P.Y(R * Math.sin(60 * DEG))}A${R * U} ${R * U} 0 0 0 ${P.X(R * Math.cos(120 * DEG))} ${P.Y(R * Math.sin(120 * DEG))}Z" fill="#ffd97a" stroke="#d99a2b" stroke-width="3" stroke-linejoin="round"/>`;
+    s += P.arc([0, 0], R - 0.3, 60 * DEG, 60 * DEG, '#c97a2a', 11);
+    for (const t of tops) s += `<circle cx="${P.X(t[0])}" cy="${P.Y(t[1])}" r="9" fill="#d94a3a" stroke="#b5322a" stroke-width="1.5"/>`;
+    s += P.arc([0, 0], 2.2, 60 * DEG, (+knife.value - 60) * DEG, ok ? C.green : C.blue, 3) + P.arc([0, 0], 2.9, phi, (120 - +knife.value) * DEG, ok ? C.green : C.pink, 3);
+    s += P.text(add([0, 0], dir((60 + +knife.value) / 2 * DEG), 4.2), a + '°', { dy: 5, col: ok ? C.green : C.blue, size: 0.9 });
+    s += P.text(add([0, 0], dir((120 + +knife.value) / 2 * DEG), 4.2), b + '°', { dy: 5, col: ok ? C.green : C.pink, size: 0.9 });
+    const tip = add([0, 0], dir(phi), R + 0.4);
+    s += P.line([0, 0], tip, ok ? C.green : '#5b647f', 3.2, ok ? '' : 'stroke-dasharray="7 5"');
+    s += `<g transform="translate(${P.X(tip[0])} ${P.Y(tip[1])}) rotate(${f2(-phi / DEG)})"><rect x="0" y="-5" width="34" height="10" rx="5" fill="#59627f"/><rect x="-4" y="-3" width="8" height="6" fill="#c9d1e3"/></g>`;
+    s += `<circle class="halo" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="16" fill="${C.orange}" opacity="0.2"/>` + P.grip(tip, 'knife', 22);
+    s += P.dot([0, 0], C.ink, 4.5);
+    svg.innerHTML = s;
+    $('#knifeText').textContent = b + '° | ' + a + '°';
+    const m = $('#pizzaMsg');
+    if (ok) { m.className = 'result miss'; m.innerHTML = '✓ Τέλεια: <b>30° και 30°</b>. Το μαχαίρι είναι πάνω στη <b>διχοτόμο</b>!'; }
+    else { m.className = 'result'; m.textContent = `${a}° και ${b}°: τα δύο κομμάτια δεν είναι ίσα. Μετακίνησε το μαχαίρι!`; }
+  }
+  const setK = v => { let k = Math.round(clamp(v, 61, 119)); if (Math.abs(k - 90) <= 1) k = 90; knife.value = k; draw(); };
+  knife.addEventListener('input', () => setK(+knife.value));
+  let drag = false;
+  svg.addEventListener('pointerdown', e => { if (e.target.dataset && e.target.dataset.grip === 'knife') { drag = true; svg.setPointerCapture(e.pointerId); e.preventDefault(); } });
+  svg.addEventListener('pointermove', e => {
+    if (!drag) return; const m = svg.getScreenCTM(); if (!m) return;
+    const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+    setK(Math.atan2(-p.y, p.x) / DEG);
+  });
+  svg.addEventListener('pointerup', () => { drag = false; }); svg.addEventListener('pointercancel', () => { drag = false; });
+  draw();
+}
+
+/* ---------- 3. Η κατασκευή βήμα-βήμα ---------- */
+const st = $('#stage'), card = $('#card'), texts = $$('.step-text'), dots = $$('.dots button');
+const VW = 810, VH = 500, L = 7, SPAN = 32 * DEG;
+const S = { step: 1, p: 1, theta: 64, r1: 3, rho: 3.5, s1: 0, s2: 0, s3: 0, lockU: null, view: null };
+const COLORS = [['#e0313b', '#ffeceb'], ['#8a5cf0', '#f3edff'], ['#e2508c', '#ffeaf2'], ['#2c6fd6', '#eaf2ff'], ['#f08a1c', '#fff2df'], ['#3f9d58', '#e9f8ec']];
+
+function geo() {
+  const th = S.theta * DEG, u = dir(th / 2), B = [S.r1, 0], G = add([0, 0], dir(th), S.r1);
+  const half = S.r1 * Math.sin(th / 2), h2 = S.rho * S.rho - half * half, ok = h2 > 0.01, h = ok ? Math.sqrt(h2) : 0;
+  const M = add([0, 0], u, S.r1 * Math.cos(th / 2)), D = add(M, u, h);
+  const T = ok ? D : add(M, u, 0.6);           // πού «στοχεύουν» τα τόξα από Β και Γ
+  const aB = Math.atan2(T[1] - B[1], T[0] - B[0]), aG = Math.atan2(T[1] - G[1], T[0] - G[0]);
+  return { th, u, B, G, half, ok, h, M, D, aB, aG, Y: add([0, 0], dir(th), L), X: [L, 0] };
+}
+// Οι τρεις κινήσεις του διαβήτη: από πού ξεκινά το τόξο και πόσο είναι.
+const sweeps = Q => ({
+  s1: { c: [0, 0], r: S.r1, a0: -14 * DEG, da: Q.th + 28 * DEG },
+  s2: { c: Q.B, r: S.rho, a0: Q.aB - SPAN, da: 2 * SPAN },
+  s3: { c: Q.G, r: S.rho, a0: Q.aG - SPAN, da: 2 * SPAN }
+});
+function geom() {
+  const w = st.clientWidth || 720, VWc = w < 520 ? 560 : VW, px = VWc / w;    // σε στενή οθόνη, πιο «τετράγωνο» σχήμα
+  if (S.lockU) return { VW: VWc, U: S.lockU, cx: S.view[0], cy: S.view[1], fs: Math.max(19, 14 * px), g: Math.max(1, px / 1.3) };
+  const Q = geo(), pts = [[0, 0], Q.X, Q.Y, add(Q.B, [S.rho, S.rho]), add(Q.B, [-S.rho, -S.rho]), add(Q.G, [S.rho, S.rho]), add(Q.G, [-S.rho, -S.rho]), [0, -0.9], add([0, 0], Q.u, L + 0.5)];
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  const x0 = Math.min(...xs) - 0.8, x1 = Math.max(...xs) + 0.8, y0 = Math.min(...ys) - 0.6, y1 = Math.max(...ys) + 0.8;
+  const U = Math.min(VWc / (x1 - x0), VH / (y1 - y0));
+  return { VW: VWc, U, cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, fs: Math.max(19, 14 * px), g: Math.max(1, px / 1.3) };
+}
+
+function draw() {
+  const G = geom(), P = pen(G.U, G.fs, G.g), g = G.g, Q = geo(), W = sweeps(Q), narrow = (st.clientWidth || 720) < 520;
+  st.setAttribute('viewBox', [G.cx * G.U - G.VW / 2, -G.cy * G.U - VH / 2, G.VW, VH].map(f2).join(' '));
+  S.view = [G.cx, G.cy];
+  const s = S.step, e = ease(S.p), k = n => s > n ? 1 : s === n ? e : 0;
+  let o = '';
+  // πλέγμα εκατοστών
+  const gx0 = Math.floor(G.cx - G.VW / 2 / G.U), gx1 = Math.ceil(G.cx + G.VW / 2 / G.U), gy0 = Math.floor(G.cy - VH / 2 / G.U), gy1 = Math.ceil(G.cy + VH / 2 / G.U);
+  for (let x = gx0; x <= gx1; x++) o += P.line([x, gy0], [x, gy1], C.grid, 0.6 / g);
+  for (let y = gy0; y <= gy1; y++) o += P.line([gx0, y], [gx1, y], C.grid, 0.6 / g);
+  // τα τόξα
+  const f1 = s >= 3 ? 1 : s === 2 ? S.s1 : 0, f2_ = s >= 4 ? 1 : s === 3 ? S.s2 : 0, f3 = s >= 5 ? 1 : s === 4 ? S.s3 : 0;
+  o += P.arc(W.s1.c, W.s1.r, W.s1.a0, W.s1.da * f1, C.purple) + P.arc(W.s2.c, W.s2.r, W.s2.a0, W.s2.da * f2_, C.pink) + P.arc(W.s3.c, W.s3.r, W.s3.a0, W.s3.da * f3, C.blue);
+  // η διχοτόμος
+  if (s >= 6 && Q.ok) {
+    const end = add([0, 0], Q.u, (L + 0.4) * k(6));
+    o += P.line([0, 0], end, C.green, 3.6);
+    if (k(6) > 0.7) {
+      o += P.arc([0, 0], 1.25, 0, Q.th / 2, C.green, 2.6) + P.arc([0, 0], 1.45, Q.th / 2, Q.th / 2, C.orange, 2.6);
+      if (!narrow || Q.th > 40 * DEG) {
+        o += P.text(add([0, 0], dir(Q.th / 4), 2.1), deg(S.theta / 2), { dy: 6 * g, col: C.green, size: 0.85 });
+        o += P.text(add([0, 0], dir(3 * Q.th / 4), 2.3), deg(S.theta / 2), { dy: 6 * g, col: '#b4560c', size: 0.85 });
+      }
+      o += P.text(end, 'δ', { dx: 12 * g, dy: -4 * g, anchor: 'start', col: C.green, size: 1.1 });
+    }
+  }
+  // ΒΔ και ΓΔ
+  if (s >= 5 && Q.ok) {
+    const op = s === 5 ? k(5) : 0.55;
+    o += `<g opacity="${f2(op)}">` + P.line(Q.B, Q.D, C.pink, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`) + P.line(Q.G, Q.D, C.blue, 2.2, `stroke-dasharray="${f2(6 * g)} ${f2(5 * g)}"`) + '</g>';
+    if (s === 5) o += P.text([(Q.B[0] + Q.D[0]) / 2, (Q.B[1] + Q.D[1]) / 2], 'ρ', { dx: 12 * g, col: C.pink, size: 0.95, op: k(5) }) + P.text([(Q.G[0] + Q.D[0]) / 2, (Q.G[1] + Q.D[1]) / 2], 'ρ', { dx: -12 * g, col: C.blue, size: 0.95, op: k(5) });
+    if (s >= 6) o += P.tick(Q.B, Q.D, 2, C.pink) + P.tick(Q.G, Q.D, 2, C.blue);
+  }
+  // οι πλευρές της γωνίας
+  o += P.line([0, 0], Q.X, C.ink, 4.2) + P.line([0, 0], Q.Y, C.ink, 4.2);
+  o += P.text(Q.X, 'x', { dx: 4 * g, dy: 24 * g, size: 1.05 }) + P.text(Q.Y, 'y', { dx: 14 * g, dy: 4 * g, anchor: 'start', size: 1.05 });
+  if (s === 1) { o += P.arc([0, 0], 1.3, 0, Q.th * Math.max(0.05, e), C.red, 2.6) + P.text(add([0, 0], dir(Q.th / 2), 2.05), deg(S.theta), { dy: 6 * g, col: C.red, size: 0.95 }); }
+  if (s >= 6 && Q.ok) o += P.tick([0, 0], Q.B, 1, C.purple) + P.tick([0, 0], Q.G, 1, C.purple);
+  // ο διαβήτης
+  let grip = '';
+  if (s >= 2 && s <= 4) {
+    const key = 's' + (s - 1), w = W[key], f = S[key], phi = w.a0 + w.da * f;
+    const cp = compass(P, w.c, w.r, phi, f < 1);
+    o += cp.s; grip = P.grip(cp.tip, key, 28);
+  }
+  // σημεία
+  o += P.dot([0, 0], C.ink, 6.5) + P.text([0, 0], 'Ο', { dx: -12 * g, dy: 20 * g, anchor: 'end' });
+  const showB = s >= 3 || (s === 2 && W.s1.a0 + W.s1.da * S.s1 >= 0), showG = s >= 3 || (s === 2 && W.s1.a0 + W.s1.da * S.s1 >= Q.th);
+  if (showB) o += P.dot(Q.B, C.red, 6.5) + P.text(Q.B, 'Β', { dx: 4 * g, dy: 24 * g, col: C.red });
+  if (showG) o += P.dot(Q.G, C.red, 6.5) + P.text(Q.G, 'Γ', { dx: -14 * g, dy: -6 * g, anchor: 'end', col: C.red });
+  if (s >= 5 && Q.ok) {
+    if (s === 5) o += `<circle class="halo" cx="${P.X(Q.D[0])}" cy="${P.Y(Q.D[1])}" r="${f2(15 * g)}" fill="${C.red}" opacity="0.2"/>`;
+    o += P.dot(Q.D, C.red, 7) + P.text(Q.D, 'Δ', { dx: 14 * g, dy: 6 * g, anchor: 'start', col: C.red, size: 1.1 });
+  }
+  // η άκρη της Οy σέρνεται στα βήματα 1 και 6
+  if (s === 1 || s === 6) o += `<circle class="halo" cx="${P.X(Q.Y[0])}" cy="${P.Y(Q.Y[1])}" r="${f2(15 * g)}" fill="${C.orange}" opacity="0.22"/>` + P.dot(Q.Y, C.orange, 7) + P.grip(Q.Y, 'Y', 26);
+  st.innerHTML = o + grip;
+  $('#angTag').textContent = 'xÔy = ' + deg(S.theta);
+}
+
+/* Κάρτα και κουμπιά */
+const pct = f => Math.round(f * 100) + '%';
+function syncUI() {
+  for (const n of [1, 2, 3]) { $('#sw' + n).value = Math.round(S['s' + n] * 100); $('#sw' + n + 'Text').textContent = pct(S['s' + n]); }
+  $('#done1').classList.toggle('show', S.s1 >= 1); $('#done3').classList.toggle('show', S.s3 >= 1 && geo().ok);
+  $('#r1').value = Math.round(S.r1 * 10); $('#r1Text').textContent = cm(S.r1);
+  $('#rho').value = Math.round(S.rho * 10); $('#rhoText').textContent = cm(S.rho);
+  $('#theta').value = S.theta; $('#thetaText').textContent = deg(S.theta);
+  const Q = geo(), h = $('#rhoHint');
+  if (S.rho > Q.half + 0.04) { h.style.borderColor = 'var(--green)'; h.style.background = '#ecfaee'; h.innerHTML = `✓ Καλό άνοιγμα: ρ = ${cm(S.rho)} είναι μεγαλύτερο από το μισό του ΒΓ (${cm(Q.half)}).`; }
+  else { h.style.borderColor = 'var(--red)'; h.style.background = '#fff2f3'; h.innerHTML = `⚠ Πρόσεξε: ρ = ${cm(S.rho)} δεν είναι μεγαλύτερο από το μισό του ΒΓ (${cm(Q.half)}). Θα τέμνονται τα τόξα;`; }
+  $('#s5ok').hidden = !Q.ok; $('#s5no').hidden = Q.ok; $('#s5rho').textContent = cm(S.rho); $('#s5half').textContent = cm(Q.half);
+  if (S.step === 5) $('#next').disabled = !Q.ok;
+  const m = $('#s6msg');
+  if (!Q.ok) { m.className = 'result hit'; m.innerHTML = `⚠ Με γωνία ${deg(S.theta)} το ΒΓ μεγάλωσε και τα τόξα με ρ = ${cm(S.rho)} δεν τέμνονται. Μίκρυνε τη γωνία ή μεγάλωσε το ρ στο βήμα 3.`; }
+  else { m.className = 'result miss'; m.innerHTML = `xÔδ = <b>${deg(S.theta / 2)}</b> και δÔy = <b>${deg(S.theta / 2)}</b>: δύο ίσες γωνίες, χωρίς μοιρογνωμόνιο! ✓`; }
+}
+function setSweep(key, f) { S[key] = f >= 0.985 ? 1 : clamp(f, 0, 1); syncUI(); draw(); }
+function setR1(r) { r = Math.round(clamp(r, 1.5, 5) * 10) / 10; if (r === S.r1) return; S.r1 = r; S.s1 = S.s2 = S.s3 = 0; syncUI(); draw(); }
+function setRho(r) { r = Math.round(clamp(r, 1, 6) * 10) / 10; if (r === S.rho) return; S.rho = r; S.s2 = S.s3 = 0; syncUI(); draw(); }
+function setTheta(t) { t = Math.round(clamp(t, 20, 170)); if (t === S.theta) return; S.theta = t; syncUI(); draw(); }
+function showCard() {
+  const n = S.step, el = texts[n - 1];
+  texts.forEach(t => { t.hidden = t !== el; });
+  $('#stepTitle').textContent = el.dataset.title; $('#stepTool').textContent = el.dataset.tool;
+  $('#stepNum').textContent = n; $('#stepCount').textContent = 'Βήμα ' + n + ' από 6';
+  card.style.setProperty('--sc', COLORS[n - 1][0]); card.style.setProperty('--sh', COLORS[n - 1][1]);
+  dots.forEach((b, i) => { b.classList.toggle('done', i + 1 < n); if (i + 1 === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+  $('#prev').disabled = n === 1; $('#next').disabled = false;
+  $('#next').textContent = n === 6 ? '↺ Από την αρχή' : 'Επόμενο ▶';
+  syncUI();
+}
+function goTo(n) {
+  n = clamp(n, 1, 6);
+  if (n >= 3 && S.s1 < 1) S.s1 = 1;            // αν προσπεράσει ένα τόξο, το ολοκληρώνουμε
+  if (n >= 4 && S.s2 < 1) S.s2 = 1;
+  if (n >= 5 && S.s3 < 1) S.s3 = 1;
+  S.step = n; S.p = 0; showCard();
+  animate(t => { S.p = t; draw(); }, 900);
+}
+$('#prev').addEventListener('click', () => goTo(S.step - 1));
+$('#next').addEventListener('click', () => { if (S.step === 6) { S.s1 = S.s2 = S.s3 = 0; S.theta = 64; goTo(1); } else goTo(S.step + 1); });
+$('#back3').addEventListener('click', () => goTo(3));
+dots.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.go)));
+$('.cx').addEventListener('keydown', e => {
+  if (e.target.matches('input')) return;
+  if (e.key === 'ArrowRight' && !$('#next').disabled && S.step < 6) { goTo(S.step + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') { goTo(S.step - 1); e.preventDefault(); }
+});
+const live = fn => e => { stop(); S.p = 1; fn(+e.target.value); };
+$('#theta').addEventListener('input', live(v => setTheta(v)));
+$('#r1').addEventListener('input', live(v => setR1(v / 10)));
+$('#rho').addEventListener('input', live(v => setRho(v / 10)));
+for (const n of [1, 2, 3]) {
+  $('#sw' + n).addEventListener('input', live(v => setSweep('s' + n, v / 100)));
+  $('#auto' + n).addEventListener('click', () => { S.p = 1; const key = 's' + n, f0 = S[key] >= 1 ? 0 : S[key]; animate(t => setSweep(key, f0 + (1 - f0) * ease(t)), 1700 * (1 - f0) + 200); });
+}
+
+// Σύρσιμο πάνω στο σχήμα
+let drag = null, unwrapped = 0;
+const toMath = e => { const m = st.getScreenCTM(); if (!m) return null; const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()), U = geom().U; return [p.x / U, -p.y / U]; };
+st.addEventListener('pointerdown', e => {
+  const name = e.target.dataset ? e.target.dataset.grip : null; if (!name) return;
+  drag = name; stop(); S.p = 1; const G0 = geom(); S.lockU = G0.U; S.view = [G0.cx, G0.cy];
+  if (name[0] === 's') unwrapped = S[name] * sweeps(geo())[name].da;
+  st.setPointerCapture(e.pointerId); e.preventDefault();
+});
+st.addEventListener('pointermove', e => {
+  if (!drag) return; const pt = toMath(e); if (!pt) return;
+  if (drag === 'Y') setTheta(Math.atan2(pt[1], pt[0]) / DEG);
+  else {
+    const w = sweeps(geo())[drag], a = Math.atan2(pt[1] - w.c[1], pt[0] - w.c[0]) - w.a0;
+    let delta = a - (unwrapped % TAU); while (delta > Math.PI) delta -= TAU; while (delta <= -Math.PI) delta += TAU;
+    unwrapped = clamp(unwrapped + delta, 0, w.da);
+    setSweep(drag, unwrapped / w.da);
+  }
+});
+const endDrag = () => { if (drag) { drag = null; S.lockU = null; draw(); } };
+st.addEventListener('pointerup', endDrag); st.addEventListener('pointercancel', endDrag);
+
+/* ---------- 4α. Γιατί: η ΟΔ είναι μεσοκάθετος του ΒΓ ---------- */
+{
+  const th = 64 * DEG, U = 30, P = pen(U, 14, 1), u = dir(th / 2), B = [2.4, 0], Gm = add([0, 0], dir(th), 2.4);
+  const half = 2.4 * Math.sin(th / 2), D = add(add([0, 0], u, 2.4 * Math.cos(th / 2)), u, Math.sqrt(2.2 * 2.2 - half * half)), M = add([0, 0], u, 2.4 * Math.cos(th / 2));
+  const v = [Gm[0] - B[0], Gm[1] - B[1]], vl = Math.hypot(...v), vn = [v[0] / vl, v[1] / vl], q = 0.28;
+  let s = P.line([0, 0], [4.1, 0], C.ink, 3) + P.line([0, 0], add([0, 0], dir(th), 4.1), C.ink, 3) + P.line([0, 0], add([0, 0], u, 4.4), C.green, 3);
+  s += P.line(B, Gm, C.red, 2.2, 'stroke-dasharray="5 4"') + P.line(B, D, C.pink, 2, 'stroke-dasharray="5 4"') + P.line(Gm, D, C.blue, 2, 'stroke-dasharray="5 4"');
+  s += `<path d="M${P.X(M[0] + vn[0] * q)} ${P.Y(M[1] + vn[1] * q)}L${P.X(M[0] + vn[0] * q + u[0] * q)} ${P.Y(M[1] + vn[1] * q + u[1] * q)}L${P.X(M[0] + u[0] * q)} ${P.Y(M[1] + u[1] * q)}" fill="none" stroke="${C.ink}" stroke-width="1.6"/>`;
+  s += P.tick([0, 0], B, 1, C.purple) + P.tick([0, 0], Gm, 1, C.purple) + P.tick(B, D, 2, C.pink) + P.tick(Gm, D, 2, C.blue);
+  s += P.dot([0, 0], C.ink, 4.5) + P.dot(B, C.red, 4.5) + P.dot(Gm, C.red, 4.5) + P.dot(D, C.red, 4.5);
+  s += P.text([0, 0], 'Ο', { dx: -8, dy: 14, anchor: 'end' }) + P.text(B, 'Β', { dy: 18, col: C.red }) + P.text(Gm, 'Γ', { dx: -9, anchor: 'end', col: C.red }) + P.text(D, 'Δ', { dx: 9, dy: 5, anchor: 'start', col: C.red });
+  $('#whyFig').setAttribute('viewBox', '-30 -150 190 170');
+  $('#whyFig').innerHTML = s;
+}
+
+/* ---------- 4β. Η δίπλωση του χαρτιού ---------- */
+{
+  const svg = $('#fold'), th = 70 * DEG, u = dir(th / 2), R = 5.5, U = 30, P = pen(U, 14, 1);
+  let f = 0, folded = false;
+  // δίπλωση γύρω από τη διχοτόμο: η κάθετη συνιστώσα πολλαπλασιάζεται με cos(π·f)
+  const foldP = p => { const k = p[0] * u[0] + p[1] * u[1], par = [u[0] * k, u[1] * k], per = [p[0] - par[0], p[1] - par[1]], c = Math.cos(Math.PI * f); return [par[0] + per[0] * c, par[1] + per[1] * c]; };
+  function draw() {
+    const Y = add([0, 0], dir(th), R), Dd = add([0, 0], u, R * 1.05), X = [R, 0];
+    const lower = [[0, 0], X, Dd].map(foldP);
+    let s = `<polygon points="${[[0, 0], Dd, Y].map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" fill="#eaf4ff" stroke="#8fbbea" stroke-width="1.5"/>`;
+    s += P.line([0, 0], Y, C.ink, 3.2) + P.text(Y, 'y', { dx: -10, anchor: 'end' });
+    s += `<polygon points="${lower.map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" fill="${f > 0.5 ? '#fff3a6' : '#fffbe0'}" stroke="#e0b93a" stroke-width="1.5" opacity="0.92"/>`;
+    s += P.line([0, 0], lower[1], C.blue, 3.4) + P.text(lower[1], 'x', { dx: 10, dy: 10, anchor: 'start', col: C.blue });
+    s += P.line([0, 0], Dd, C.red, 2.4, 'stroke-dasharray="6 4"') + P.text(Dd, 'τσάκιση', { dx: 6, anchor: 'start', col: C.red, size: 0.85 });
+    s += P.dot([0, 0], C.ink, 4.5) + P.text([0, 0], 'Ο', { dx: -8, dy: 14, anchor: 'end' });
+    if (f >= 1) s += P.text([0.2, -0.55], 'Η Οx έπεσε πάνω στην Οy!', { anchor: 'start', col: C.green, size: 0.9 });
+    svg.innerHTML = s;
+  }
+  $('#foldBtn').addEventListener('click', () => {
+    const from = folded ? 1 : 0, to = folded ? 0 : 1; folded = !folded;
+    $('#foldBtn').textContent = folded ? '↺ Ξεδίπλωσε' : '▶ Δίπλωσε το χαρτί';
+    animate(t => { f = from + (to - from) * ease(t); draw(); }, 1400, null, 'fold');
+  });
+  draw();
+}
+
+/* ---------- 4γ. Αποστάσεις από τις πλευρές ---------- */
+{
+  const th = 56 * DEG, U = 32, P = pen(U, 14, 1), u = dir(th / 2), A = add([0, 0], u, 4.3);
+  const fB = [A[0], 0], k = A[0] * Math.cos(th) + A[1] * Math.sin(th), fG = add([0, 0], dir(th), k), q = 0.28;
+  const vy = dir(th), ny = [-vy[1], vy[0]];
+  let s = P.line([0, 0], [6.3, 0], C.ink, 3) + P.line([0, 0], add([0, 0], dir(th), 6.3), C.ink, 3) + P.line([0, 0], add([0, 0], u, 6.4), C.green, 3);
+  s += P.line(A, fB, C.orange, 2.6) + P.line(A, fG, C.orange, 2.6);
+  s += `<path d="M${P.X(fB[0] - q)} 0V${P.Y(q)}H${P.X(fB[0])}" fill="none" stroke="${C.ink}" stroke-width="1.6"/>`;
+  s += `<path d="M${P.X(fG[0] - vy[0] * q)} ${P.Y(fG[1] - vy[1] * q)}L${P.X(fG[0] - vy[0] * q + ny[0] * -q)} ${P.Y(fG[1] - vy[1] * q + ny[1] * -q)}L${P.X(fG[0] + ny[0] * -q)} ${P.Y(fG[1] + ny[1] * -q)}" fill="none" stroke="${C.ink}" stroke-width="1.6"/>`;
+  s += P.tick(A, fB, 1, C.orange) + P.tick(A, fG, 1, C.orange);
+  s += P.arc([0, 0], 1.1, 0, th / 2, C.green, 2) + P.arc([0, 0], 1.3, th / 2, th / 2, C.green, 2);
+  s += P.dot([0, 0], C.ink, 4.5) + P.dot(A, C.red, 5) + P.dot(fB, C.ink, 3.5) + P.dot(fG, C.ink, 3.5);
+  s += P.text([0, 0], 'Ο', { dx: -8, dy: 14, anchor: 'end' }) + P.text(A, 'Α', { dx: 10, dy: 2, anchor: 'start', col: C.red }) + P.text([6.3, 0], 'x', { dy: 18 }) + P.text(add([0, 0], dir(th), 6.3), 'y', { dx: -8, anchor: 'end' }) + P.text(add([0, 0], u, 6.4), 'δ', { dx: 8, anchor: 'start', col: C.green });
+  $('#distFig').innerHTML = s;
+}
+
+/* ---------- Πρόκληση: οι δύο δρόμοι ---------- */
+const rd = $('#roads'), RU = 50, a1 = -15 * DEG, a2 = 25 * DEG;   // οι δρόμοι σχηματίζουν γωνία 40°
+const RS = { P: [-3.6, 2.2], pts: [], show: false, drag: false };
+const dLine = (p, a) => Math.abs(-Math.sin(a) * p[0] + Math.cos(a) * p[1]);
+const foot = (p, a) => { const d = dir(a), k = p[0] * d[0] + p[1] * d[1]; return [d[0] * k, d[1] * k]; };
+const b1 = (a1 + a2) / 2, b2 = b1 + Math.PI / 2;                    // οι δύο διχοτόμοι
+function drawRoads() {
+  const w = rd.clientWidth || 600, px = 600 / w, fs = Math.max(15, 13 * px), g = Math.max(1, px / 1.3), P = pen(RU, fs, g);
+  let s = `<rect x="-1200" y="-200" width="2400" height="400" fill="#eef7e6"/>`;
+  for (const a of [a1, a2]) { const d = dir(a); s += P.line(add([0, 0], d, -30), add([0, 0], d, 30), '#8b93a7', 26) + P.line(add([0, 0], d, -30), add([0, 0], d, 30), '#fff', 1.6, `stroke-dasharray="${f2(14 * g)} ${f2(10 * g)}"`); }
+  if (RS.show) for (const a of [b1, b2]) { const d = dir(a); s += P.line(add([0, 0], d, -30), add([0, 0], d, 30), C.green, 2.6, `stroke-dasharray="${f2(9 * g)} ${f2(6 * g)}"`); }
+  for (const q of RS.pts) s += P.dot(q, C.green, 5);
+  const d1 = dLine(RS.P, a1), d2 = dLine(RS.P, a2), eq = Math.abs(d1 - d2) < 0.06, col = eq ? C.green : C.orange;
+  const F1 = foot(RS.P, a1), F2 = foot(RS.P, a2), m1 = Math.round((eq ? (d1 + d2) / 2 : d1) * 100), m2 = Math.round((eq ? (d1 + d2) / 2 : d2) * 100);
+  s += P.line(RS.P, F1, col, 2.6) + P.line(RS.P, F2, col, 2.6);
+  s += P.text([(RS.P[0] + F1[0]) / 2, (RS.P[1] + F1[1]) / 2], m1 + ' m', { dx: 10 * g, anchor: 'start', col: eq ? C.green : '#b4560c', size: 0.9 });
+  s += P.text([(RS.P[0] + F2[0]) / 2, (RS.P[1] + F2[1]) / 2], m2 + ' m', { dx: -10 * g, anchor: 'end', col: eq ? C.green : '#b4560c', size: 0.9 });
+  s += `<circle class="halo" cx="${P.X(RS.P[0])}" cy="${P.Y(RS.P[1])}" r="${f2(20 * g)}" fill="${col}" opacity="0.22"/>`;
+  s += `<rect x="${f2(+P.X(RS.P[0]) - 11 * g)}" y="${f2(+P.Y(RS.P[1]) - 11 * g)}" width="${f2(22 * g)}" height="${f2(22 * g)}" rx="${f2(5 * g)}" fill="${col}" stroke="#fff" stroke-width="${f2(2.5 * g)}"/><text x="${P.X(RS.P[0])}" y="${f2(+P.Y(RS.P[1]) + 6 * g)}" font-size="${f2(16 * g)}" font-weight="800" fill="#fff" text-anchor="middle">⚡</text>`;
+  s += P.grip(RS.P, 'st', 30);
+  rd.innerHTML = s;
+  const on1 = RS.pts.some(q => Math.abs(-Math.sin(b1) * q[0] + Math.cos(b1) * q[1]) < 0.2), on2 = RS.pts.some(q => Math.abs(-Math.sin(b2) * q[0] + Math.cos(b2) * q[1]) < 0.2);
+  let msg = `Απόσταση από τον 1ο δρόμο: <b>${Math.round(d1 * 100)} m</b> · από τον 2ο: <b>${Math.round(d2 * 100)} m</b>`;
+  if (eq) msg = `✓ Καλή θέση: <b>${m1} m</b> από κάθε δρόμο!`;
+  if (on1 && on2) msg += ' 🎉 Βρήκες θέσεις και στις <b>δύο</b> ευθείες!';
+  else if (RS.pts.length >= 3) msg += ' Υπάρχει και δεύτερη ευθεία. Ψάξε την!';
+  $('#rdMsg').innerHTML = msg;
+}
+function moveStation(e) {
+  const m = rd.getScreenCTM(); if (!m) return;
+  const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+  RS.P = [clamp(p.x / RU, -5.7, 5.7), clamp(-p.y / RU, -3.7, 3.7)];
+  if (Math.abs(dLine(RS.P, a1) - dLine(RS.P, a2)) < 0.06 && dist(RS.P, [0, 0]) > 0.5 && RS.pts.every(q => dist(q, RS.P) > 0.4)) RS.pts.push(RS.P.slice());
+  drawRoads();
+}
+rd.addEventListener('pointerdown', e => { if (e.target.dataset && e.target.dataset.grip === 'st') { RS.drag = true; rd.setPointerCapture(e.pointerId); e.preventDefault(); } });
+rd.addEventListener('pointermove', e => { if (RS.drag) moveStation(e); });
+rd.addEventListener('pointerup', () => { RS.drag = false; }); rd.addEventListener('pointercancel', () => { RS.drag = false; });
+rd.addEventListener('click', e => { if (!(e.target.dataset && e.target.dataset.grip)) moveStation(e); });
+$('#rdShow').addEventListener('click', () => { RS.show = !RS.show; $('#rdShow').textContent = RS.show ? 'Κρύψε τις διχοτόμους' : 'Δείξε τις διχοτόμους'; drawRoads(); });
+$('#rdReset').addEventListener('click', () => { RS.P = [-3.6, 2.2]; RS.pts = []; RS.show = false; $('#rdShow').textContent = 'Δείξε τις διχοτόμους'; drawRoads(); });
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = st.clientWidth + rd.clientWidth; if (w !== lastW) { lastW = w; draw(); drawRoads(); } }).observe(document.body);
+showCard(); goTo(1); drawRoads();
+})();
+</script></body></html>
