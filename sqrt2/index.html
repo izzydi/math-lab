@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="el"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Κατασκευή του √2 · Math Lab</title>
+<meta name="description" content="Διαδραστικό μάθημα για τη Β΄ Γυμνασίου: κατασκευή του άρρητου αριθμού √2 στον άξονα με χάρακα, γνώμονα, διαβήτη και Πυθαγόρειο θεώρημα.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body><main class="sheet">
+<nav class="lab-nav" aria-label="Math Lab"><a href="../">← Όλα τα μαθήματα</a><span>Math Lab | Β΄ Γυμνασίου · Άρρητοι αριθμοί</span></nav>
+
+<header class="sheet-head">
+  <div class="title-card">
+    <h1><span class="t1">Κατασκευή του √2 –</span> <span class="t2">με χάρακα και διαβήτη</span></h1>
+    <p>Άρρητοι αριθμοί και Πυθαγόρειο θεώρημα | Β΄ Γυμνασίου</p>
+  </div>
+  <aside class="brand-card" aria-label="Math Lab">
+    <strong>Math Lab</strong>
+    <span>Μαθηματικά βήμα-βήμα<br>για το Γυμνάσιο</span>
+    <em>Χωρίς λογαριασμό</em>
+  </aside>
+</header>
+
+<!-- 1. Εκφώνηση -->
+<section class="block b-pink" aria-labelledby="s1">
+  <div class="tab"><span class="num">1</span><h2 id="s1">Εκφώνηση</h2></div>
+  <div class="intro">
+    <div>
+      <p class="task"><span class="lbl">Άσκηση</span>Να κατασκευάσετε γεωμετρικά τον άρρητο αριθμό <b class="red">√2</b> πάνω στον άξονα των πραγματικών αριθμών.</p>
+      <p>Ο <span class="hl y">√2</span> είναι ο θετικός αριθμός που, όταν τον υψώσουμε στο τετράγωνο, δίνει 2: <strong>(√2)² = 2</strong>.</p>
+      <p>Είναι <span class="hl p">άρρητος</span>: √2 = 1,41421356… με άπειρα δεκαδικά ψηφία. Με τον χάρακα δεν μπορούμε να τον μετρήσουμε ακριβώς. Μπορούμε όμως να τον <span class="hl g">κατασκευάσουμε ακριβώς</span> με χάρακα, γνώμονα και διαβήτη, χάρη στο <span class="hl b">Πυθαγόρειο θεώρημα</span>!</p>
+      <div class="goals">
+        <h3>Στόχοι του μαθήματος</h3>
+        <ol>
+          <li><b>Σ1</b><span>Να κατασκευάζεις ορθογώνιο τρίγωνο με κάθετες πλευρές 1 και 1.</span></li>
+          <li><b>Σ2</b><span>Να υπολογίζεις την υποτείνουσά του με το Πυθαγόρειο θεώρημα.</span></li>
+          <li><b>Σ3</b><span>Να μεταφέρεις ένα μήκος πάνω στον άξονα με τον διαβήτη.</span></li>
+          <li><b>Σ4</b><span>Να βρίσκεις ανάμεσα σε ποιους δεκαδικούς βρίσκεται το √2.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="figure">
+      <p class="note">Η διαγώνιος ενός τετραγώνου με πλευρά 1 είναι ακριβώς √2!</p>
+      <svg class="arrow" viewBox="0 0 90 46" aria-hidden="true"><path d="M70 4 C 60 30, 30 36, 12 38" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round"/><path d="M22 30 L11 38.5 L24 43" fill="none" stroke="#3f9d58" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="fig-box">
+        <svg viewBox="0 0 280 270" role="img" aria-label="Τετράγωνο με πλευρά 1. Η διαγώνιός του έχει μήκος ρίζα 2 και το χωρίζει σε δύο ορθογώνια τρίγωνα.">
+          <polygon points="60,220 220,220 220,60" fill="#fff3a6"/>
+          <rect x="60" y="60" width="160" height="160" fill="none" stroke="#1f2a5c" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M204 220V204H220" fill="none" stroke="#1f2a5c" stroke-width="2.2"/>
+          <line x1="60" y1="220" x2="220" y2="60" stroke="#e0313b" stroke-width="4" stroke-dasharray="11 8" stroke-linecap="round"/>
+          <g font-weight="800" text-anchor="middle" stroke="#fff" stroke-width="5" stroke-linejoin="round" paint-order="stroke">
+            <text x="140" y="250" font-size="22" fill="#2c6fd6">1</text>
+            <text x="240" y="147" font-size="22" fill="#2c6fd6">1</text>
+            <text x="118" y="122" font-size="32" fill="#e0313b">√2</text>
+            <text x="46" y="242" font-size="19" fill="#1f2a5c">O</text>
+            <text x="234" y="242" font-size="19" fill="#1f2a5c">A</text>
+            <text x="234" y="52" font-size="19" fill="#1f2a5c">B</text>
+          </g>
+          <g fill="#1f2a5c" stroke="#fff" stroke-width="2"><circle cx="60" cy="220" r="5.5"/><circle cx="220" cy="220" r="5.5"/><circle cx="220" cy="60" r="5.5"/></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Τι χρειαζόμαστε -->
+<section class="block b-green" aria-labelledby="s2">
+  <div class="tab"><span class="num">2</span><h2 id="s2">Τι χρειαζόμαστε</h2></div>
+  <div class="chips">
+    <div class="chip c1"><span class="ico" aria-hidden="true">📏</span>Χάρακας<small>για τον άξονα και τα τμήματα</small></div>
+    <div class="chip c2"><span class="ico" aria-hidden="true">📐</span>Γνώμονας<small>για την ορθή γωνία</small></div>
+    <div class="chip c3"><span class="ico" aria-hidden="true">🧭</span>Διαβήτης<small>για τον κύκλο</small></div>
+    <div class="chip c4">ΟΑ = 1<small>η μονάδα στον άξονα</small></div>
+    <div class="chip c5">ΑΒ = 1<small>κάθετη στο A</small></div>
+    <div class="chip c6">α² + β² = γ²<small>Πυθαγόρειο θεώρημα</small></div>
+  </div>
+</section>
+
+<!-- 3. Η κατασκευή βήμα-βήμα -->
+<section class="block b-blue" aria-labelledby="s3">
+  <div class="tab"><span class="num">3</span><h2 id="s3">Η κατασκευή βήμα-βήμα</h2></div>
+  <p class="lead">Πάτησε <strong>«Επόμενο»</strong> για να δεις κάθε βήμα της κατασκευής. Στο βήμα 5 <span class="hl v">γυρίζεις εσύ τον διαβήτη</span>!</p>
+  <div class="cx">
+    <div class="stage">
+      <div class="stage-head"><h3>Ο άξονας των πραγματικών αριθμών</h3><span class="tag">μονάδα ΟΑ = 1</span></div>
+      <div class="stage-fig"><svg id="stage" role="img" aria-label="Η κατασκευή του ρίζα 2"></svg></div>
+      <div class="stepbar">
+        <button class="btn ghost" id="prev" type="button">◀ Πίσω</button>
+        <ol class="dots" aria-label="Βήματα">
+          <li><button type="button" data-go="1" aria-label="Βήμα 1">1</button></li>
+          <li><button type="button" data-go="2" aria-label="Βήμα 2">2</button></li>
+          <li><button type="button" data-go="3" aria-label="Βήμα 3">3</button></li>
+          <li><button type="button" data-go="4" aria-label="Βήμα 4">4</button></li>
+          <li><button type="button" data-go="5" aria-label="Βήμα 5">5</button></li>
+          <li><button type="button" data-go="6" aria-label="Βήμα 6">6</button></li>
+        </ol>
+        <button class="btn" id="next" type="button">Επόμενο ▶</button>
+      </div>
+    </div>
+
+    <aside class="step-card" id="card" aria-live="polite">
+      <p class="step-count" id="stepCount">Βήμα 1 από 6</p>
+      <div class="step-head"><span class="letter" id="stepNum">1</span><h3 id="stepTitle">Ο άξονας και η μονάδα</h3></div>
+      <span class="tool" id="stepTool">📏 Χάρακας</span>
+
+      <div class="step-text" data-step="1" data-title="Ο άξονας και η μονάδα" data-tool="📏 Χάρακας" data-alt="Ο άξονας των πραγματικών αριθμών με αρχή O και μονάδα ΟΑ ίση με 1.">
+        <p>Σχεδιάζουμε τον <span class="hl y">άξονα των πραγματικών αριθμών</span> με αρχή το σημείο <b>O</b>, που αντιστοιχεί στο 0.</p>
+        <p>Παίρνουμε για μονάδα το τμήμα <span class="hl b">ΟΑ&nbsp;=&nbsp;1</span>. Έτσι το σημείο <b>A</b> έχει τετμημένη 1.</p>
+      </div>
+      <div class="step-text" data-step="2" data-title="Η κάθετη ΑΒ" data-tool="📐 Γνώμονας" data-alt="Στο σημείο A υψώνεται κάθετο τμήμα ΑΒ ίσο με 1." hidden>
+        <p>Στο σημείο <b>A</b> φέρνουμε <span class="hl y">κάθετο</span> ευθύγραμμο τμήμα <span class="hl b">ΑΒ&nbsp;=&nbsp;1</span>, όσο δηλαδή και η μονάδα.</p>
+        <p>Η γωνία στο A είναι <strong>ορθή</strong>: Â = 90°. Το δείχνει το μικρό τετραγωνάκι στο σχήμα.</p>
+      </div>
+      <div class="step-text" data-step="3" data-title="Το ορθογώνιο τρίγωνο ΟΑΒ" data-tool="📏 Χάρακας" data-alt="Το O ενώνεται με το B. Σχηματίζεται ορθογώνιο τρίγωνο ΟΑΒ με υποτείνουσα την ΟΒ." hidden>
+        <p>Ενώνουμε το <b>O</b> με το <b>B</b>. Το τρίγωνο ΟΑΒ είναι <span class="hl y">ορθογώνιο στο A</span>.</p>
+        <p>Η πλευρά <b class="red">ΟΒ</b>, απέναντι από την ορθή γωνία, λέγεται <span class="hl p">υποτείνουσα</span>. Οι ΟΑ και ΑΒ είναι οι κάθετες πλευρές.</p>
+        <p class="ask">🤔 Πόσο είναι το ΟΒ; Λίγο περισσότερο από 1… αλλά πόσο ακριβώς;</p>
+      </div>
+      <div class="step-text" data-step="4" data-title="Πυθαγόρειο θεώρημα" data-tool="✏️ Μολύβι και χαρτί" data-alt="Από το Πυθαγόρειο θεώρημα, η υποτείνουσα ΟΒ είναι ίση με ρίζα 2." hidden>
+        <p>Στο ορθογώνιο τρίγωνο, το τετράγωνο της υποτείνουσας ισούται με το άθροισμα των τετραγώνων των κάθετων πλευρών:</p>
+        <div class="calc">
+          <span class="or"></span><span>ΟΒ²</span><span>= ΟΑ² + ΑΒ²</span>
+          <span class="or">ή</span><span>ΟΒ²</span><span>= 1² + 1²</span>
+          <span class="or">ή</span><span>ΟΒ²</span><span>= 2</span>
+          <span class="or">ή</span><span class="red">ΟΒ</span><span class="red">= √2</span>
+        </div>
+        <p>Το ΟΒ είναι μήκος, άρα θετικός αριθμός: <span class="final">ΟΒ&nbsp;=&nbsp;√2</span></p>
+      </div>
+      <div class="step-text" data-step="5" data-title="Γύρισε τον διαβήτη" data-tool="🧭 Διαβήτης" data-alt="Ο διαβήτης έχει τη μύτη του στο O και άνοιγμα ΟΒ. Γυρίζει από το B προς τον άξονα." hidden>
+        <p>Βάζουμε τη μύτη του διαβήτη στο <b>O</b> και τον ανοίγουμε μέχρι το <b>B</b>. Το άνοιγμα είναι <span class="hl v">ΟΒ&nbsp;=&nbsp;√2</span>.</p>
+        <p><strong>Σειρά σου:</strong> γύρισε τον διαβήτη μέχρι το μολύβι να ακουμπήσει τον άξονα. Σύρε τη μωβ τελεία ή τη μπάρα.</p>
+        <div class="compass-ctl">
+          <div class="range-label"><label for="turn">Στροφή του διαβήτη</label><strong id="turnText">0°</strong></div>
+          <input id="turn" type="range" min="0" max="100" value="0">
+          <div><button class="btn violet" id="autoTurn" type="button">▶ Γύρισέ τον αυτόματα</button></div>
+          <div class="success" id="turnDone">🎉 Μπράβο! Το σημείο που βρήκες απέχει από το O όσο και το B, δηλαδή <b>√2</b>.</div>
+        </div>
+      </div>
+      <div class="step-text" data-step="6" data-title="Το √2 στον άξονα" data-tool="🧭 Διαβήτης" data-alt="Ο κύκλος με κέντρο O και ακτίνα ΟΒ τέμνει τον άξονα στα σημεία ρίζα 2 και μείον ρίζα 2." hidden>
+        <p>Ο κύκλος με κέντρο <b>O</b> και ακτίνα <b>ΟΒ</b> τέμνει τον άξονα σε δύο σημεία:</p>
+        <p>δεξιά του O στο <span class="hl g">√2</span> και αριστερά του O στο <span class="hl g">−√2</span>. Οι δύο αριθμοί είναι <strong>αντίθετοι</strong>.</p>
+        <p><span class="final">√2 ≈ 1,41 &nbsp;και&nbsp; −√2 ≈ −1,41</span></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. Γιατί δουλεύει -->
+<section class="block b-orange" aria-labelledby="s4">
+  <div class="tab"><span class="num">4</span><h2 id="s4">Γιατί δουλεύει η κατασκευή;</h2></div>
+  <div class="math-grid">
+    <article class="math-item m1"><h3><span class="q">1</span>Το Πυθαγόρειο θεώρημα με εμβαδά</h3>
+      <svg class="fig" viewBox="10 18 188 188" role="img" aria-label="Το τρίγωνο ΟΑΒ με τετράγωνα στις πλευρές του: δύο μικρά με εμβαδόν 1 και ένα μεγάλο με εμβαδόν 2.">
+        <polygon points="76,140 132,140 132,196 76,196" fill="#eaf4ff" stroke="#2c6fd6" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="132,140 188,140 188,84 132,84" fill="#eaf4ff" stroke="#2c6fd6" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="76,140 132,84 76,28 20,84" fill="#ffeef4" stroke="#e0313b" stroke-width="2.5" stroke-linejoin="round"/>
+        <g stroke-dasharray="5 5" stroke-width="1.8" fill="none">
+          <path d="M76 140L132 196M132 84L188 140" stroke="#2c6fd6"/>
+          <path d="M76 140V28M20 84H132" stroke="#e0313b"/>
+        </g>
+        <polygon points="76,140 132,140 132,84" fill="#fff3a6" stroke="#1f2a5c" stroke-width="2.5" stroke-linejoin="round"/>
+        <g font-weight="800" text-anchor="middle" stroke="#fff" stroke-width="5" stroke-linejoin="round" paint-order="stroke">
+          <text x="104" y="176" font-size="21" fill="#2c6fd6">1</text>
+          <text x="160" y="119" font-size="21" fill="#2c6fd6">1</text>
+          <text x="76" y="93" font-size="27" fill="#e0313b">2</text>
+        </g>
+      </svg>
+      <p>Κάθε μπλε τετράγωνο έχει εμβαδόν 1 και χωράει <strong>2</strong> τριγωνάκια ίσα με το ΟΑΒ. Το κόκκινο, πάνω στην υποτείνουσα, χωράει <strong>4</strong>, όσο τα δύο μπλε μαζί:</p>
+      <div class="fbox">ΟΒ² = 1 + 1 = 2</div>
+    </article>
+    <article class="math-item m2"><h3><span class="q">2</span>Γιατί χρειάζεται ο κύκλος;</h3>
+      <p>Όλα τα σημεία ενός κύκλου απέχουν από το κέντρο του <strong>όσο η ακτίνα</strong>. Ο κύκλος με κέντρο O και ακτίνα ΟΒ «μεταφέρει» το μήκος √2 πάνω στον άξονα:</p>
+      <div class="fbox green">απόσταση από το O = ΟΒ = √2</div>
+      <p>Το σημείο δεξιά του O έχει τετμημένη <b>√2</b>. Το σημείο αριστερά του O απέχει το ίδιο, άρα έχει τετμημένη τον αντίθετο αριθμό, <b>−√2</b>.</p>
+    </article>
+    <article class="math-item m3"><h3><span class="q">3</span>Πόσο είναι το √2;</h3>
+      <p>Ψάχνουμε δεκαδικό αριθμό που, όταν τον υψώσουμε στο τετράγωνο, δίνει όσο πιο κοντά στο 2:</p>
+      <div class="table"><span class="th">Αριθμός</span><span class="th">Τετράγωνο</span><span class="th">Σύγκριση</span><span>1,4</span><span>1,96</span><span class="lt">&lt; 2</span><span>1,5</span><span>2,25</span><span class="gt">&gt; 2</span><span>1,41</span><span>1,9881</span><span class="lt">&lt; 2</span><span>1,42</span><span>2,0164</span><span class="gt">&gt; 2</span></div>
+      <div class="fbox blue">1,41 &lt; √2 &lt; 1,42</div>
+    </article>
+    <article class="math-item m4"><h3><span class="q">4</span>Γιατί λέγεται άρρητος;</h3>
+      <p>Ο √2 <strong>δεν</strong> γράφεται ως κλάσμα με ακέραιους όρους. Τα δεκαδικά του ψηφία συνεχίζουν για πάντα, χωρίς να επαναλαμβάνονται:</p>
+      <div class="fbox pink">√2 = 1,41421356…</div>
+      <p>Με τον χάρακα δεν μετράμε ποτέ τόσα ψηφία. Με την κατασκευή όμως βρίσκουμε την <span class="hl y">ακριβή θέση</span> του √2 στον άξονα.</p>
+    </article>
+  </div>
+  <div class="answer">Συμπέρασμα: <span>ΟΒ = √2, και ο κύκλος (O, ΟΒ) τέμνει τον άξονα στο √2 ≈ 1,41 και στο −√2</span></div>
+  <div class="did-you-know"><strong>Ήξερες ότι;</strong><p>Ένα φύλλο <strong>Α4</strong> έχει πλευρές 21 cm και 29,7 cm, και 29,7 : 21 ≈ 1,414 ≈ √2! Γι' αυτό, όταν το διπλώνεις στη μέση, το Α5 που παίρνεις έχει το ίδιο σχήμα. Και πριν από περίπου 2.400 χρόνια, στον διάλογο «Μένων» του Πλάτωνα, ο Σωκράτης δείχνει σε έναν νεαρό ότι το τετράγωνο με διπλάσιο εμβαδόν χτίζεται πάνω στη διαγώνιο, όπως στο σχήμα 1.</p></div>
+</section>
+
+<!-- 5. Σωστό ή Λάθος -->
+<section class="block b-teal" aria-labelledby="s5">
+  <div class="tab"><span class="num">5</span><h2 id="s5">Σωστό ή Λάθος;</h2></div>
+  <p class="lead">Διάλεξε για κάθε πρόταση. Θα δεις αμέσως αν είναι σωστή και γιατί.</p>
+  <ol class="quiz">
+    <li class="q-item" data-answer="Λ"><span class="n">1</span><span class="stmt">Στο τρίγωνο ΟΑΒ η υποτείνουσα είναι η ΑΒ.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Υποτείνουσα είναι η ΟΒ, απέναντι από την ορθή γωνία στο A.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">2</span><span class="stmt">Ισχύει ΟΒ² = 1² + 1² = 2.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Είναι το Πυθαγόρειο θεώρημα για κάθετες πλευρές 1 και 1.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">3</span><span class="stmt">Για να βρούμε το √2 στον άξονα, βάζουμε τη μύτη του διαβήτη στο A.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Η μύτη μπαίνει στο O, γιατί θέλουμε σημείο που απέχει √2 από την αρχή O.</p></li>
+    <li class="q-item" data-answer="Σ"><span class="n">4</span><span class="stmt">Ο √2 βρίσκεται ανάμεσα στο 1,4 και στο 1,5.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Γιατί 1,4² = 1,96 &lt; 2 &lt; 2,25 = 1,5².</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">5</span><span class="stmt">Ο κύκλος (O, ΟΒ) τέμνει τον άξονα μόνο στο √2.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Τον τέμνει και στο −√2, αριστερά του O.</p></li>
+    <li class="q-item" data-answer="Λ"><span class="n">6</span><span class="stmt">Ο √2 γράφεται ως κλάσμα με ακέραιους όρους.</span><span class="opts"><button type="button" data-v="Σ">Σωστό</button><button type="button" data-v="Λ">Λάθος</button></span><p class="fb"><b></b> Ο √2 είναι άρρητος, δηλαδή δεν είναι ρητός αριθμός.</p></li>
+  </ol>
+  <div class="quiz-foot"><p class="score" role="status">Σωστές απαντήσεις: <b id="score">0 / 6</b></p><button class="btn ghost" id="quizReset" type="button">↺ Ξανά από την αρχή</button></div>
+</section>
+
+<!-- Πρόκληση -->
+<div class="next"><span class="go" aria-hidden="true">➜</span><p><b>Πρόκληση:</b> Κατασκεύασε το <b>√5</b> στον άξονα! Τι μήκη πρέπει να έχουν οι κάθετες πλευρές ΟΑ και ΑΒ; Σκέψου πρώτα με το χέρι και μετά έλεγξέ το παρακάτω.</p></div>
+<div class="mini">
+  <div class="mini-head">
+    <h3>Έλεγξε την απάντησή σου</h3>
+    <div class="steppers">
+      <span class="num-step">ΟΑ =<button type="button" data-k="a" data-d="-1" aria-label="Μείωσε το ΟΑ">−</button><output id="aOut" aria-live="polite">1</output><button type="button" data-k="a" data-d="1" aria-label="Αύξησε το ΟΑ">+</button></span>
+      <span class="num-step">ΑΒ =<button type="button" data-k="b" data-d="-1" aria-label="Μείωσε το ΑΒ">−</button><output id="bOut" aria-live="polite">1</output><button type="button" data-k="b" data-d="1" aria-label="Αύξησε το ΑΒ">+</button></span>
+    </div>
+  </div>
+  <div class="stage-fig"><svg id="mini" role="img" aria-label="Κατασκευή ρίζας με τις πλευρές που διάλεξες"></svg></div>
+  <p class="readout" id="readout" aria-live="polite"></p>
+</div>
+<details class="solution"><summary>Δες τη λύση <small>(δοκίμασε πρώτα μόνος σου!)</small></summary>
+<div class="sol-body">
+<p><strong>Ποιες πλευρές;</strong> Θέλουμε ΟΒ² = 5. Ψάχνουμε δύο τετράγωνα ακεραίων που κάνουν άθροισμα 5:</p>
+<div class="fbox">2² + 1² = 4 + 1 = 5</div>
+<p>Άρα παίρνουμε <b>ΟΑ = 2</b> και <b>ΑΒ = 1</b> (ή ΟΑ = 1 και ΑΒ = 2). Από το Πυθαγόρειο θεώρημα:</p>
+<div class="fbox pink">ΟΒ² = 2² + 1² = 5 &nbsp;→&nbsp; ΟΒ = √5</div>
+<p><strong>Στον άξονα:</strong> με κέντρο O και ακτίνα ΟΒ γράφουμε κύκλο. Τέμνει τον άξονα στο √5 και στο −√5.</p>
+<p><strong>Έλεγχος:</strong> 2,2² = 4,84 &lt; 5 &lt; 5,29 = 2,3², άρα ο √5 είναι ανάμεσα στο 2,2 και στο 2,3.</p>
+<p class="final">Απάντηση: ΟΑ = 2, ΑΒ = 1, ΟΒ = √5 ≈ 2,24</p>
+</div></details>
+
+<nav class="lab-pager" aria-label="Άλλα μαθήματα"><a href="../">← Όλα τα μαθήματα</a></nav>
+<footer>Math Lab: διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Δεν χρειάζεται λογαριασμός.</footer>
+</main>
+
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const C = { ink: '#1f2a5c', blue: '#2c6fd6', red: '#e0313b', green: '#2f8a4e', purple: '#8a5cf0', orange: '#f08a1c', yellow: '#fff3a6', gray: '#59627f' };
+const R2 = Math.SQRT2, Q = Math.PI / 4;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fmt = (x, d = 2) => x.toFixed(d).replace('.', ',');
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+const sign = n => n < 0 ? '−' + (-n) : String(n);
+const f2 = v => v.toFixed(2);
+
+/* «Μολύβι» για SVG. Δουλεύουμε σε μαθηματικές μονάδες (ο y προς τα πάνω).
+   U: pixel ανά μονάδα, fs: μέγεθος γραμμάτων, g: πάχος γραμμών και αποστάσεις. */
+function pen(U, fs, g) {
+  const X = u => f2(u * U), Y = v => f2(-v * U);
+  return {
+    U, fs, g, X, Y,
+    line: (a, b, col, w, extra = '') => `<line x1="${X(a[0])}" y1="${Y(a[1])}" x2="${X(b[0])}" y2="${Y(b[1])}" stroke="${col}" stroke-width="${f2(w * g)}" stroke-linecap="round" ${extra}/>`,
+    dot: (p, col, r = 5.5) => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="${f2(r * g)}" fill="${col}" stroke="#fff" stroke-width="${f2(2 * g)}"/>`,
+    poly: (pts, fill, op) => `<polygon points="${pts.map(p => X(p[0]) + ',' + Y(p[1])).join(' ')}" fill="${fill}" fill-opacity="${f2(op)}"/>`,
+    // dx, dy: μετατόπιση σε pixel του σχήματος
+    text: (p, s, o = {}) => `<text x="${f2(p[0] * U + (o.dx || 0))}" y="${f2(-p[1] * U + (o.dy || 0))}" font-size="${f2((o.size || 1) * fs)}" font-weight="${o.w || 800}" fill="${o.col || C.ink}" text-anchor="${o.anchor || 'middle'}" stroke="#fff" stroke-width="${f2(5 * g)}" stroke-linejoin="round" paint-order="stroke"${o.op != null ? ` opacity="${f2(o.op)}"` : ''}>${s}</text>`
+  };
+}
+
+// Ο άξονας των πραγματικών αριθμών από το lo έως το hi.
+function axis(P, lo, hi) {
+  const { U, g, fs } = P, x0 = lo * U + 4 * g, x1 = hi * U - 4 * g, a = 12 * g;
+  let s = `<line x1="${f2(x0)}" y1="0" x2="${f2(x1)}" y2="0" stroke="${C.ink}" stroke-width="${f2(2.5 * g)}" stroke-linecap="round"/>`;
+  s += `<path d="M${f2(x1 - a)} ${f2(-a * 0.6)}L${f2(x1)} 0L${f2(x1 - a)} ${f2(a * 0.6)}" fill="none" stroke="${C.ink}" stroke-width="${f2(2.5 * g)}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  for (let n = Math.ceil(lo + 0.2); n <= Math.floor(hi - 0.3); n++) {
+    s += `<line x1="${f2(n * U)}" y1="${f2(-7 * g)}" x2="${f2(n * U)}" y2="${f2(7 * g)}" stroke="${C.ink}" stroke-width="${f2(2.2 * g)}"/>`;
+    s += `<text x="${f2(n * U)}" y="${f2(8 * g + fs * 0.95)}" font-size="${f2(fs)}" font-weight="700" fill="${C.ink}" text-anchor="middle">${sign(n)}</text>`;
+  }
+  return s;
+}
+// Το πάνω μισό του κύκλου με κέντρο O και ακτίνα r (σε pixel), σχεδιασμένο κατά ένα ποσοστό t.
+const halfCircle = (r, g, t = 1) => `<path d="M${f2(r)} 0A${f2(r)} ${f2(r)} 0 0 0 ${f2(-r)} 0" fill="${C.purple}" fill-opacity="${(0.07 * t).toFixed(3)}" stroke="${C.purple}" stroke-width="${f2(2.8 * g)}" pathLength="1" stroke-dasharray="${t.toFixed(4)} 1"/>`;
+const rightAngle = (P, x, w) =>`<path d="M${f2(x * P.U - w)} 0V${f2(-w)}H${f2(x * P.U)}" fill="none" stroke="${C.ink}" stroke-width="${f2(2.2 * P.g)}"/>`;
+
+/* ---------- Η κατασκευή βήμα-βήμα ---------- */
+const stage = $('#stage'), card = $('#card');
+const texts = $$('.step-text'), dots = $$('.dots button');
+const U = 120;
+const S = { step: 1, p: 1, c: 0 };      // βήμα, πρόοδος κίνησης του βήματος (0–1), στροφή του διαβήτη (0–1)
+const COLORS = [['#e0313b', '#ffeceb'], ['#e2508c', '#ffeaf2'], ['#f08a1c', '#fff2df'], ['#3f9d58', '#e9f8ec'], ['#8a5cf0', '#f3edff'], ['#1f9aa8', '#e5f7f9']];
+
+function stageGeom() {
+  const w = stage.clientWidth || 720, narrow = w < 520;
+  const lo = narrow ? -2.3 : -3.45, hi = narrow ? 2.45 : 3.45, top = 1.58, bottom = 0.74;
+  const vbw = (hi - lo) * U, px = vbw / w;
+  return { lo, hi, vb: [lo * U, -top * U, vbw, (top + bottom) * U], fs: Math.max(20, 14.5 * px), g: Math.max(1, px / 1.25) };
+}
+
+function drawStage() {
+  const G = stageGeom(), P = pen(U, G.fs, G.g), g = G.g, fs = G.fs;
+  stage.setAttribute('viewBox', G.vb.map(f2).join(' '));
+  const s = S.step, e = ease(S.p);
+  const k = n => s > n ? 1 : s === n ? e : 0;   // πόσο έχει εμφανιστεί αυτό που προστίθεται στο βήμα n
+  const r = R2 * U;
+  let out = '';
+
+  // Βήμα 6: ο κύκλος (O, ΟΒ), κάτω από όλα τα άλλα. Δείχνουμε το πάνω μισό του, από το √2 ως το −√2.
+  if (s >= 6) out += halfCircle(r, g, k(6));
+  // Βήμα 3 και μετά: το ορθογώνιο τρίγωνο ΟΑΒ.
+  if (s >= 3) out += P.poly([[0, 0], [1, 0], [1, 1]], C.yellow, 0.95 * k(3));
+  out += axis(P, G.lo, G.hi);
+  if (s >= 6) out += P.line([0, 0], [R2, 0], C.green, 7, `stroke-opacity="${f2(0.6 * k(6))}"`);
+  // Βήμα 1: ΟΑ = 1.
+  out += P.line([0, 0], [k(1), 0], C.blue, 6);
+  // Βήμα 2: η κάθετη ΑΒ = 1 και η ορθή γωνία.
+  if (s >= 2) out += P.line([1, 0], [1, k(2)], C.blue, 5);
+  if (s > 2 || (s === 2 && e > 0.95)) out += rightAngle(P, 1, 15 * g);
+  // Βήμα 3: η υποτείνουσα ΟΒ.
+  if (s >= 3) { const q = k(3); out += P.line([0, 0], [q, q], C.red, 3.6, `stroke-dasharray="${f2(11 * g)} ${f2(8 * g)}"`); }
+
+  // Βήμα 5: ο διαβήτης γυρίζει από το B προς τον άξονα.
+  let tip = null;
+  if (s === 5) {
+    const th = Q * (1 - S.c), d = [Math.cos(th), Math.sin(th)];
+    tip = [R2 * d[0], R2 * d[1]];
+    if (S.c > 0.002) out += `<path d="M${P.X(1)} ${P.Y(1)}A${f2(r)} ${f2(r)} 0 0 1 ${P.X(tip[0])} ${P.Y(tip[1])}" fill="none" stroke="${C.purple}" stroke-width="${f2(3.4 * g)}" stroke-linecap="round"/>`;
+    out += P.line([0, 0], tip, C.purple, 2.4, `stroke-dasharray="${f2(6 * g)} ${f2(6 * g)}"`);
+    const n = [-d[1], d[0]];                                 // κάθετη στην ακτίνα, προς τα πάνω
+    const H = [tip[0] / 2 + n[0] * 0.42 * R2, tip[1] / 2 + n[1] * 0.42 * R2], Hh = [H[0] + n[0] * 0.17, H[1] + n[1] * 0.17];
+    // Όταν το μολύβι φτάσει στον άξονα, κρύβουμε τον διαβήτη για να φαίνεται καθαρά το αποτέλεσμα.
+    if (S.c < 1) out += `<g opacity="0.8">${P.line([0, 0], H, C.gray, 5)}${P.line(H, tip, C.gray, 5)}${P.line(H, Hh, C.gray, 8)}<circle cx="${P.X(H[0])}" cy="${P.Y(H[1])}" r="${f2(8 * g)}" fill="${C.orange}" stroke="#fff" stroke-width="${f2(2 * g)}"/></g>`;
+  }
+
+  // Σημεία και ετικέτες.
+  out += P.dot([0, 0], C.ink) + P.text([0, 0], 'O', { dx: -11 * g, dy: -11 * g, anchor: 'end', size: 0.95 });
+  out += P.text([0.5, 0], '1', { dy: -12 * g, col: C.blue, size: 0.9, op: k(1) });
+  if (k(1) > 0.9) out += P.dot([1, 0], C.ink) + P.text([1, 0], 'A', { dx: 13 * g, dy: -11 * g, anchor: 'start', size: 0.95 });
+  if (s >= 2) out += P.text([1, 0.5], '1', { dx: 13 * g, dy: 7 * g, anchor: 'start', col: C.blue, size: 0.9, op: k(2) });
+  if (s >= 2 && k(2) > 0.9) out += P.dot([1, 1], C.ink) + P.text([1, 1], 'B', { dx: 10 * g, dy: -10 * g, anchor: 'start', size: 0.95 });
+  if (s >= 3) {
+    const lab = s === 3 ? '?' : '√2', size = s === 4 ? 1.1 + 0.6 * (1 - e) : 1.1;
+    out += P.text([0.5, 0.5], lab, { dx: -19 * g, dy: -14 * g, col: C.red, size, op: s === 3 ? k(3) : 1 });
+  }
+  const found = (s === 5 && S.c >= 1) || s >= 6;
+  if (found) out += P.dot([R2, 0], C.green, 6.5) + P.text([R2, 0], '√2', { dx: 12 * g, dy: -12 * g, anchor: 'start', col: C.green, size: 1.05 });
+  if (s >= 6 && k(6) > 0.55) out += P.dot([-R2, 0], C.green, 6.5) + P.text([-R2, 0], '−√2', { dx: -12 * g, dy: -12 * g, anchor: 'end', col: C.green, size: 1.05 });
+  if (s >= 6) out += P.text([R2, 0], '√2 ≈ 1,41', { dy: 8 * g + fs * 2.15, col: C.green, size: 0.95, op: k(6) });
+
+  // Η μύτη του μολυβιού: τη σέρνεις για να γυρίσεις τον διαβήτη.
+  if (tip && S.c < 1) {
+    out += `<circle class="halo" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(17 * g)}" fill="${C.purple}" opacity="0.2"/>`;
+    out += `<circle cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(10 * g)}" fill="${C.purple}" stroke="#fff" stroke-width="${f2(3 * g)}"/>`;
+  }
+  if (tip) out += `<circle class="grip" cx="${P.X(tip[0])}" cy="${P.Y(tip[1])}" r="${f2(28 * g)}" fill="transparent"/>`;
+  stage.innerHTML = out;
+}
+
+let raf = 0;
+function animate(fn, dur, done) {
+  cancelAnimationFrame(raf);
+  if (reduce) { fn(1); if (done) done(); return; }
+  const t0 = performance.now();
+  const tick = now => { const t = Math.min(1, (now - t0) / dur); fn(t); if (t < 1) raf = requestAnimationFrame(tick); else if (done) done(); };
+  raf = requestAnimationFrame(tick);
+}
+
+const turn = $('#turn'), turnText = $('#turnText'), turnDone = $('#turnDone');
+function setCompass(c, draw = true) {
+  S.c = clamp(c, 0, 1);
+  turn.value = Math.round(S.c * 100);
+  turnText.textContent = Math.round(45 * S.c) + '°';
+  turnDone.classList.toggle('show', S.c >= 1);
+  if (draw) drawStage();
+}
+
+function showCard() {
+  const n = S.step, el = texts[n - 1];
+  texts.forEach(t => { t.hidden = t !== el; });
+  $('#stepTitle').textContent = el.dataset.title;
+  $('#stepTool').textContent = el.dataset.tool;
+  $('#stepNum').textContent = n;
+  $('#stepCount').textContent = 'Βήμα ' + n + ' από 6';
+  card.style.setProperty('--sc', COLORS[n - 1][0]);
+  card.style.setProperty('--sh', COLORS[n - 1][1]);
+  dots.forEach((b, i) => { b.classList.toggle('done', i + 1 < n); if (i + 1 === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+  $('#prev').disabled = n === 1;
+  $('#next').textContent = n === 6 ? '↺ Από την αρχή' : 'Επόμενο ▶';
+  stage.setAttribute('aria-label', el.dataset.alt);
+}
+
+function goTo(n) {
+  n = clamp(n, 1, 6);
+  if (n === 5 && S.step < 5) setCompass(0, false);   // ο διαβήτης ξεκινά πάντα από το B
+  S.step = n; S.p = 0;
+  showCard();
+  animate(t => { S.p = t; drawStage(); }, 950);
+}
+
+$('#prev').addEventListener('click', () => goTo(S.step - 1));
+$('#next').addEventListener('click', () => goTo(S.step === 6 ? 1 : S.step + 1));
+dots.forEach(b => b.addEventListener('click', () => goTo(Number(b.dataset.go))));
+$('.cx').addEventListener('keydown', e => {
+  if (e.target.matches('input')) return;
+  if (e.key === 'ArrowRight') { goTo(S.step + 1); e.preventDefault(); }
+  if (e.key === 'ArrowLeft') { goTo(S.step - 1); e.preventDefault(); }
+});
+
+turn.addEventListener('input', () => { cancelAnimationFrame(raf); S.p = 1; setCompass(Number(turn.value) / 100); });
+$('#autoTurn').addEventListener('click', () => {
+  S.p = 1;
+  const c0 = S.c >= 1 ? 0 : S.c;
+  animate(t => setCompass(c0 + (1 - c0) * ease(t)), 1500 * (1 - c0) + 200);
+});
+
+// Σύρσιμο της μύτης του μολυβιού πάνω στο σχήμα.
+let dragging = false;
+stage.addEventListener('pointerdown', e => {
+  if (S.step !== 5 || !e.target.classList.contains('grip')) return;
+  dragging = true; cancelAnimationFrame(raf); S.p = 1;
+  stage.setPointerCapture(e.pointerId); e.preventDefault();
+});
+stage.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const m = stage.getScreenCTM(); if (!m) return;
+  const pt = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
+  const th = clamp(Math.atan2(-pt.y, Math.max(pt.x, 1e-6)), 0, Q);
+  let c = 1 - th / Q; if (c > 0.96) c = 1;
+  setCompass(c);
+});
+['pointerup', 'pointercancel', 'lostpointercapture'].forEach(t => stage.addEventListener(t, () => { dragging = false; }));
+
+/* ---------- Πρόκληση: φτιάξε κι άλλες ρίζες ---------- */
+const mini = $('#mini'), M = { a: 1, b: 1 };
+function drawMini() {
+  const { a, b } = M, n = a * a + b * b, r = Math.sqrt(n), exact = Number.isInteger(r);
+  const w = mini.clientWidth || 720, narrow = w < 520, W = narrow ? 560 : 820, H = narrow ? 400 : 340;
+  const px = W / w, fs = Math.max(19, 14 * px), g = Math.max(1, px / 1.25);
+  const half = Math.max(r + 0.75, 2.6), topU = Math.max(r, b) + 0.4, bot = 8 * g + 2.5 * fs + 6;   // κάτω από τον άξονα: αριθμοί και ετικέτα
+  const U2 = Math.min(W / (2 * half), (H - bot) / topU);
+  const P = pen(U2, fs, g), extra = H - topU * U2 - bot;
+  mini.setAttribute('viewBox', [-W / 2, -topU * U2 - extra / 2, W, H].map(f2).join(' '));
+  const root = exact ? String(r) : '√' + n;
+  let out = '';
+  out += halfCircle(r * U2, g);
+  out += P.poly([[0, 0], [a, 0], [a, b]], C.yellow, 0.95);
+  out += axis(P, -W / 2 / U2, W / 2 / U2);
+  out += P.line([0, 0], [r, 0], C.green, 7, 'stroke-opacity="0.6"');
+  out += P.line([0, 0], [a, 0], C.blue, 6) + P.line([a, 0], [a, b], C.blue, 5) + rightAngle(P, a, 14 * g);
+  out += P.line([0, 0], [a, b], C.red, 3.6, `stroke-dasharray="${f2(11 * g)} ${f2(8 * g)}"`);
+  const nl = Math.hypot(a, b), nx = -b / nl, ny = a / nl;           // κάθετη στην ΟΒ, προς τα πάνω-αριστερά
+  out += P.text([a / 2, 0], String(a), { dy: -12 * g, col: C.blue, size: 0.9 });
+  out += P.text([a, b / 2], String(b), { dx: 12 * g, dy: 7 * g, anchor: 'start', col: C.blue, size: 0.9 });
+  out += P.text([a / 2, b / 2], root, { dx: nx * 24 * g, dy: -ny * 24 * g + 7 * g, col: C.red, size: 1.05 });
+  out += P.dot([0, 0], C.ink) + P.text([0, 0], 'O', { dx: -11 * g, dy: -11 * g, anchor: 'end', size: 0.9 });
+  out += P.dot([a, 0], C.ink) + P.text([a, 0], 'A', { dx: 12 * g, dy: 8 * g + fs * 0.95, anchor: 'start', size: 0.9 });
+  out += P.dot([a, b], C.ink) + P.text([a, b], 'B', { dx: 10 * g, dy: -10 * g, anchor: 'start', size: 0.9 });
+  out += P.dot([r, 0], C.green, 6.5) + P.dot([-r, 0], C.green, 6.5);
+  out += P.text([-r, 0], '−' + root, { dx: -10 * g, dy: -12 * g, anchor: 'end', col: C.green, size: 0.95 });
+  out += P.text([r, 0], exact ? root : root + ' ≈ ' + fmt(r), { dy: 8 * g + fs * 2.1, col: C.green, size: 0.95 });
+  mini.innerHTML = out;
+
+  $('#aOut').textContent = a; $('#bOut').textContent = b;
+  $$('.num-step button').forEach(btn => { const v = M[btn.dataset.k] + Number(btn.dataset.d); btn.disabled = v < 1 || v > 4; });
+  const ob = exact ? `ΟΒ = √${n} = ${r}` : `ΟΒ = √${n} ≈ ${fmt(r)}`;
+  let note = '';
+  if (n === 5) note = '<span class="ok">✓ Βρήκες το √5!</span>';
+  else if (exact) note = '<span class="ok">ρητός αριθμός!</span>';
+  $('#readout').innerHTML = `ΟΒ² = ${a}² + ${b}² = ${a * a} + ${b * b} = ${n} &nbsp;→&nbsp; ${ob}${note}`;
+  mini.setAttribute('aria-label', `Ορθογώνιο τρίγωνο με ΟΑ = ${a} και ΑΒ = ${b}. Η υποτείνουσα ΟΒ είναι ${exact ? r : 'ρίζα ' + n}, και ο κύκλος τέμνει τον άξονα σε αυτό το σημείο και στον αντίθετό του.`);
+}
+$$('.num-step button').forEach(btn => btn.addEventListener('click', () => {
+  M[btn.dataset.k] = clamp(M[btn.dataset.k] + Number(btn.dataset.d), 1, 4);
+  drawMini();
+}));
+
+/* ---------- Σωστό ή Λάθος ---------- */
+const items = $$('.q-item');
+const score = () => { $('#score').textContent = items.filter(q => q.classList.contains('right')).length + ' / ' + items.length; };
+items.forEach(q => q.querySelectorAll('.opts button').forEach(b => b.addEventListener('click', () => {
+  if (q.classList.contains('answered')) return;
+  const ok = b.dataset.v === q.dataset.answer;
+  q.classList.add('answered', ok ? 'right' : 'wrong');
+  b.classList.add('picked');
+  q.querySelectorAll('.opts button').forEach(x => { x.disabled = true; });
+  q.querySelector('.fb b').textContent = ok ? '✓ Σωστά!' : '✗ Όχι ακριβώς.';
+  score();
+})));
+$('#quizReset').addEventListener('click', () => {
+  items.forEach(q => {
+    q.classList.remove('answered', 'right', 'wrong');
+    q.querySelectorAll('.opts button').forEach(x => { x.disabled = false; x.classList.remove('picked'); });
+  });
+  score();
+});
+
+/* ---------- Ξεκίνημα ---------- */
+let lastW = 0;
+new ResizeObserver(() => { const w = stage.clientWidth; if (w !== lastW) { lastW = w; drawStage(); drawMini(); } }).observe(stage);
+showCard(); goTo(1); drawMini();
+})();
+</script></body></html>

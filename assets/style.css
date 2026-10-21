@@ -1,0 +1,263 @@
+/* Math Lab: κοινό στυλ για την αρχική σελίδα και όλα τα μαθήματα.
+   Ίδια «χειρόγραφη» αισθητική με το Fractal Lab: τετραγωνισμένο χαρτί,
+   χρωματιστά πλαίσια με αριθμημένο «αυτάκι», μαρκαδόροι υπογράμμισης. */
+:root{
+  --ink:#1f2a5c;--muted:#4b5682;--paper:#ffffff;--grid:#e6eefa;
+  --red:#e0313b;--blue:#2c6fd6;--pink:#e2508c;--green:#3f9d58;--purple:#8a5cf0;--orange:#f08a1c;--teal:#1f9aa8;
+  --hl-yellow:#fff27a;--hl-green:#c9f4c0;--hl-pink:#ffd3e4;--hl-blue:#cfe6ff;--hl-orange:#ffe1b8;--hl-purple:#e8dcff;
+  --hand:'Playpen Sans','Comic Sans MS','Segoe Print',cursive;
+  --wobble:18px 26px 20px 24px / 24px 18px 26px 20px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:400 17px/1.6 var(--hand);background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.sheet{max-width:1180px;margin:0 auto;padding:22px 18px 40px}
+
+/* Επικεφαλίδα φύλλου εργασίας */
+.sheet-head{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:stretch}
+.title-card{background:#fffbe8;border:3px solid var(--orange);border-radius:var(--wobble);padding:14px 22px}
+.title-card h1{margin:0;font-size:clamp(28px,4.2vw,46px);line-height:1.15;font-weight:800;letter-spacing:-.5px}
+.title-card h1 .t1{color:var(--red)}.title-card h1 .t2{color:var(--blue)}
+.title-card p{margin:6px 0 0;font-size:clamp(16px,2vw,21px);font-weight:600}
+.brand-card{background:#fff;border:3px solid var(--red);border-radius:16px 22px 18px 20px / 20px 16px 22px 18px;padding:10px 18px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-width:200px}
+.brand-card strong{color:var(--red);font-size:28px;line-height:1.1;font-weight:800}
+.brand-card span{font-size:14px;line-height:1.35}
+.brand-card em{font-style:normal;color:var(--blue);font-weight:700;border-top:2px solid var(--red);margin-top:6px;padding-top:4px;font-size:14px}
+
+/* Ενότητες με αριθμημένο «αυτάκι» */
+.block{position:relative;background:var(--paper);border:3px solid var(--c,var(--pink));border-radius:var(--wobble);padding:0 22px 22px;margin-top:40px}
+.tab{position:relative;top:-24px;margin:0 0 -8px -6px;max-width:calc(100% + 6px);display:inline-flex;align-items:center;gap:10px;background:var(--tab,#ffe6ef);border:3px solid var(--c,var(--pink));border-radius:14px 20px 16px 18px;padding:2px 18px 2px 4px}
+.tab .num{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--c,var(--pink));color:#fff;font-weight:800;font-size:22px;border:3px solid #fff;margin:-8px 0 -8px -12px;box-shadow:0 0 0 3px var(--c,var(--pink))}
+.tab h2{margin:0;font-size:clamp(21px,2.6vw,29px);font-weight:800;line-height:1.3}
+.b-pink{--c:var(--pink);--tab:#ffe6ef}.b-green{--c:var(--green);--tab:#e3f7e4}.b-blue{--c:var(--blue);--tab:#e2eeff}
+.b-purple{--c:var(--purple);--tab:#efe6ff}.b-orange{--c:var(--orange);--tab:#fff0dc}.b-teal{--c:var(--teal);--tab:#e2f6f8}
+
+/* Μαρκαδόροι υπογράμμισης */
+.hl{padding:0 .18em;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hl.y{background:linear-gradient(transparent 12%,var(--hl-yellow) 12% 90%,transparent 90%)}
+.hl.g{background:linear-gradient(transparent 12%,var(--hl-green) 12% 90%,transparent 90%)}
+.hl.p{background:linear-gradient(transparent 12%,var(--hl-pink) 12% 90%,transparent 90%)}
+.hl.b{background:linear-gradient(transparent 12%,var(--hl-blue) 12% 90%,transparent 90%)}
+.hl.o{background:linear-gradient(transparent 12%,var(--hl-orange) 12% 90%,transparent 90%)}
+.hl.v{background:linear-gradient(transparent 12%,var(--hl-purple) 12% 90%,transparent 90%)}
+.red{color:var(--red)}.blue{color:var(--blue)}.green{color:#2f8a4e}.purple{color:var(--purple)}
+
+/* Πλοήγηση */
+.lab-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px;font-size:15px}
+.lab-nav a,.lab-pager a{text-decoration:none;font-weight:700;color:var(--blue);background:#fff;border:2.5px solid #cfe0f7;border-radius:10px 13px 11px 14px;padding:3px 12px}
+.lab-nav a:hover,.lab-pager a:hover{background:#eef5ff}
+.lab-nav span{color:var(--muted);font-weight:600}
+.lab-pager{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:16px}
+.lab-pager a{padding:8px 14px}
+
+/* Ενότητα 1: εκφώνηση */
+.intro{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:start}
+.intro p{margin:0 0 12px}
+.task{border:2.5px solid var(--orange);background:#fff8e6;border-radius:12px 16px 13px 17px;padding:10px 16px;margin:0 0 14px;font-size:18px;font-weight:600}
+.task .lbl{display:inline-block;background:var(--orange);color:#fff;font-weight:800;border-radius:8px;padding:0 10px;margin-right:8px;font-size:15px;vertical-align:2px}
+.figure{position:relative;padding-top:6px}
+.note{background:#ecfbe8;border:2px solid var(--green);border-radius:12px 16px 14px 18px;padding:8px 12px;font-size:14.5px;line-height:1.4;transform:rotate(-1.5deg);max-width:270px;margin-left:auto}
+.arrow{display:block;width:90px;height:46px;margin:-2px 0 -10px 40px}
+.fig-box{border:2px dashed #b9c8e6;border-radius:16px;background:#f8fbff;max-width:340px;margin:0 auto;padding:12px}
+.fig-box svg{display:block;width:100%;height:auto;max-height:320px}
+.goals{margin-top:6px;border:2.5px dashed var(--purple);border-radius:14px 18px 16px 20px;background:#faf7ff;padding:12px 16px}
+.goals h3{margin:0 0 6px;color:var(--purple);font-size:20px}
+.goals ol{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.goals li{display:flex;gap:10px;align-items:baseline;font-size:15.5px;line-height:1.45}
+.goals li b{flex:none;color:var(--red);border:2px solid var(--red);border-radius:6px;padding:0 6px;font-size:14px;background:#fff}
+
+/* Ενότητα 2: τι χρειαζόμαστε */
+.chips{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.chip{border:2.5px solid var(--cc);background:var(--cb);border-radius:10px 14px 12px 15px;padding:8px 10px;font-size:19px;font-weight:700;text-align:center;line-height:1.3}
+.chip small{display:block;font-size:13.5px;font-weight:500;color:var(--muted)}
+.chip .ico{display:block;font-size:24px;line-height:1.2}
+.c1{--cc:#f0a0b8;--cb:#ffeef4}.c2{--cc:#8fbbea;--cb:#eaf4ff}.c3{--cc:#b49be8;--cb:#f2ecff}.c4{--cc:#8fd09b;--cb:#ecfaee}.c5{--cc:#f3b46b;--cb:#fff4e6}.c6{--cc:#7fcbd3;--cb:#e8f9fb}
+
+/* Ενότητα 3: η κατασκευή βήμα-βήμα */
+.lead{margin:0 0 14px;font-size:16px}
+.cx{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:18px;align-items:start}
+.stage{border:2.5px solid var(--blue);border-radius:16px 20px 15px 19px;background:#fff;overflow:hidden}
+.stage-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 10px;padding:8px 14px;background:#eaf2ff;border-bottom:2.5px solid var(--blue)}
+.stage-head h3{margin:0;font-size:19px;line-height:1.3}
+.stage-head .tag{display:inline-block;border:2px solid var(--blue);background:#fff;border-radius:8px;padding:0 10px;font-size:14px;font-weight:700}
+.stage-fig{background:#fff;padding:6px 4px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px}
+.stage-fig svg{display:block;width:100%;height:auto}
+.grip{cursor:grab;touch-action:none}
+.grip:active{cursor:grabbing}
+.halo{animation:halo 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes halo{0%,100%{opacity:.18;transform:scale(1)}50%{opacity:.34;transform:scale(1.25)}}
+.stepbar{display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:2px solid #e2ecfb;flex-wrap:wrap}
+.dots{list-style:none;display:flex;gap:6px;margin:0 auto;padding:0}
+.dots button{width:36px;height:36px;border-radius:50%;border:2.5px solid #c9d6ef;background:#fff;font-weight:800;color:var(--muted);font-size:16px;padding:0}
+.dots button.done{border-color:var(--blue);color:var(--blue)}
+.dots button[aria-current="step"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn{display:inline-block;background:var(--bc,var(--blue));color:#fff;border:2.5px solid var(--bd,#1d4fa3);border-radius:12px 15px 12px 14px;padding:6px 14px;font-weight:800;box-shadow:0 3px 0 var(--bd,#1d4fa3);font-size:15.5px}
+.btn:hover{filter:brightness(1.07)}.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--bd,#1d4fa3)}
+.btn.ghost{background:#fff;color:var(--ink);border-color:#c9d6ef;box-shadow:0 3px 0 #c9d6ef}
+.btn:disabled{opacity:.45;cursor:default;transform:none;filter:none}
+.btn.violet{--bc:var(--purple);--bd:#5d3bb8}
+.step-card{--sc:var(--red);--sh:#ffeceb;border:2.5px solid var(--sc);border-radius:16px 20px 15px 19px;background:#fff;padding:12px 16px 16px;transition:border-color .3s}
+.step-count{margin:0 0 6px;font-size:14px;color:var(--muted);font-weight:700}
+.step-head{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+.letter{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--sc);color:#fff;font-weight:800;font-size:20px;transition:background .3s}
+.step-head h3{margin:0;font-size:19px;line-height:1.25;background:var(--sh);border:2px solid var(--sc);border-radius:10px;padding:3px 10px;transition:background .3s,border-color .3s}
+.tool{display:inline-flex;align-items:center;gap:6px;border:2px dashed var(--sc);border-radius:9px;padding:0 10px;font-size:14px;font-weight:700;color:var(--ink);background:#fff;margin:2px 0 4px}
+.step-text p{margin:8px 0;font-size:16px;line-height:1.55}
+.ask{background:#fff9df;border:2px solid #f2c94c;border-radius:10px 13px 11px 14px;padding:6px 12px;font-weight:600;font-size:15.5px}
+.calc{display:grid;grid-template-columns:auto auto auto;gap:0 10px;width:max-content;max-width:100%;margin:10px auto;font-size:21px;font-weight:700;line-height:1.55;align-items:baseline}
+.calc .or{font-size:15px;font-weight:600;color:var(--muted);text-align:right}
+.calc .eq{text-align:center}
+.compass-ctl{margin-top:10px;display:grid;gap:8px}
+.range-label{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:15.5px}
+.range-label strong{display:inline-grid;place-items:center;min-width:48px;height:30px;border:2.5px solid var(--purple);border-radius:9px;color:var(--purple);font-size:15px}
+input[type=range]{width:100%;accent-color:var(--purple)}
+.success{display:none;border:2.5px solid var(--green);background:#ecfaee;border-radius:10px 13px 11px 14px;padding:6px 12px;font-weight:700;color:#24683a;font-size:15.5px}
+.success.show{display:block;animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+.final{display:inline-block;border:2.5px solid var(--red);background:#fff2f3;color:var(--red);font-weight:800;border-radius:10px 13px 11px 14px;padding:3px 12px;margin-top:4px}
+
+/* Ενότητα 4: μαθηματικά */
+.math-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.math-item{border:2.5px solid var(--mc);border-radius:16px 20px 15px 19px;padding:14px 16px;background:#fff}
+.math-item h3{margin:0 0 6px;font-size:19px;line-height:1.3}
+.math-item h3 .q{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--mc);color:#fff;font-size:16px;margin-right:6px;vertical-align:1px}
+.math-item p{margin:6px 0;font-size:15.5px;line-height:1.5}
+.math-item .fig{display:block;width:100%;max-width:260px;height:auto;margin:6px auto}
+.m1{--mc:#e0313b}.m2{--mc:#2c6fd6}.m3{--mc:#3f9d58}.m4{--mc:#8a5cf0}
+.fbox{display:table;margin:8px auto;padding:6px 18px;border:2.5px solid var(--fc,#f2c94c);background:var(--fb,#fff8d6);border-radius:10px 13px 11px 14px;font-weight:700;font-size:20px;text-align:center;line-height:1.5}
+.fbox.blue{--fc:#8fbbea;--fb:#eaf4ff}.fbox.pink{--fc:#f0a0b8;--fb:#ffeef4}.fbox.green{--fc:#8fd09b;--fb:#ecfaee}
+.table{display:grid;grid-template-columns:auto auto auto;gap:2px 16px;justify-content:center;margin:8px 0;font-size:15.5px}
+.table span:nth-child(3n+1){font-weight:700}
+.table span:nth-child(3n+2){font-weight:800;color:var(--blue)}
+.table span:nth-child(3n){font-weight:700}
+.table .th{color:var(--muted)!important;font-weight:600!important;font-size:13.5px}
+.table .lt{color:#2f8a4e}.table .gt{color:var(--red)}
+.answer{display:table;margin:18px auto 0;border:3px solid var(--red);background:#fff2f3;border-radius:14px 18px 15px 19px;padding:8px 22px;color:var(--red);font-size:clamp(18px,2.3vw,24px);font-weight:800;text-align:center;line-height:1.4}
+.answer span{color:var(--ink);font-weight:600}
+.did-you-know{margin-top:14px;border:2.5px dashed var(--orange);background:#fffaf0;border-radius:14px 18px 15px 19px;padding:10px 16px;font-size:15.5px}
+.did-you-know strong{color:var(--orange)}
+.did-you-know p{margin:4px 0 0}
+
+/* Ενότητα 5: Σωστό ή Λάθος */
+.quiz{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.q-item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:center;border:2.5px solid #d9e2f3;border-radius:12px 15px 13px 16px;padding:8px 12px;background:#fff;transition:border-color .2s,background .2s}
+.q-item .n{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:15px}
+.q-item .stmt{font-size:16px;font-weight:600}
+.q-item .opts{display:flex;gap:6px}
+.q-item .opts button{border:2.5px solid #c9d6ef;background:#fff;border-radius:10px 12px 10px 13px;padding:2px 12px;font-weight:800;font-size:15px}
+.q-item .opts button:hover:not(:disabled){background:#f4f7ff}
+.q-item .opts button:disabled{cursor:default}
+.q-item .opts button.picked{border-color:currentColor}
+.q-item .fb{grid-column:2 / -1;margin:0;font-size:15px;display:none}
+.q-item.answered .fb{display:block}
+.q-item.right{border-color:var(--green);background:#f0fbf2}.q-item.right .opts button.picked{color:#24683a;background:#dff5e3}
+.q-item.wrong{border-color:var(--red);background:#fff4f5}.q-item.wrong .opts button.picked{color:var(--red);background:#ffe3e6}
+.q-item.right .fb b{color:#24683a}.q-item.wrong .fb b{color:var(--red)}
+.quiz-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}
+.score{font-weight:800;font-size:18px}
+.score b{display:inline-grid;place-items:center;min-width:56px;border:2.5px solid var(--teal);border-radius:9px;color:var(--teal);margin-left:6px}
+
+/* Πρόκληση */
+.next{margin-top:26px;display:flex;align-items:center;gap:14px;background:#f1ecff;border:3px solid var(--purple);border-radius:14px 20px 16px 18px;padding:10px 16px}
+.next .go{flex:none;display:grid;place-items:center;width:46px;height:38px;background:#ffe35c;border:2.5px solid #d4a800;border-radius:9px 12px 10px 13px;font-size:22px}
+.next p{margin:0;font-size:clamp(16px,2vw,19px);font-weight:600}
+.next p b{color:var(--red)}
+.mini{margin-top:12px;border:2.5px solid var(--purple);border-radius:16px 20px 15px 19px;background:#fff;overflow:hidden}
+.mini-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;padding:8px 14px;background:#f3edff;border-bottom:2.5px solid var(--purple)}
+.mini-head h3{margin:0;font-size:19px}
+.steppers{display:flex;flex-wrap:wrap;gap:8px 18px}
+.num-step{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:16px}
+.num-step button{width:34px;height:34px;border-radius:50%;border:2.5px solid var(--purple);background:#fff;color:var(--purple);font-weight:800;font-size:19px;line-height:1;padding:0}
+.num-step button:disabled{opacity:.35;cursor:default}
+.num-step output{display:inline-grid;place-items:center;min-width:36px;height:32px;border:2.5px solid var(--blue);border-radius:9px;color:var(--blue);font-weight:800;background:#fff}
+.mini .stage-fig svg{max-height:420px}
+.readout{margin:0;padding:10px 14px 12px;border-top:2px solid #ece6fb;font-size:clamp(16px,2vw,20px);font-weight:700;text-align:center}
+.readout .ok{display:inline-block;margin-left:6px;color:#24683a;background:#ecfaee;border:2px solid var(--green);border-radius:9px;padding:0 10px;font-size:15px}
+.solution{margin-top:10px;border:2.5px dashed var(--purple);border-radius:14px 18px 15px 19px;background:#fff;padding:0 16px}
+.solution summary{cursor:pointer;list-style:none;padding:10px 0;font-weight:800;color:var(--purple);font-size:17px}
+.solution summary::-webkit-details-marker{display:none}
+.solution summary::before{content:"▸ "}
+.solution[open] summary::before{content:"▾ "}
+.solution summary small{font-weight:600;color:var(--muted);font-size:14px}
+.sol-body{padding:0 0 14px;font-size:16px}
+.sol-body p{margin:6px 0}
+.sol-body .fbox{margin:6px 0}
+
+/* Αρχική σελίδα (κόμβος) */
+.about{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:center}
+.about p{margin:0 0 12px}
+.pillars{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pillars li{display:flex;gap:10px;align-items:center;border:2.5px solid var(--pc);background:var(--pb);border-radius:12px 15px 13px 16px;padding:6px 12px;font-size:16px;font-weight:600}
+.pillars li span{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--pc);color:#fff;font-weight:800;font-size:15px}
+.p1{--pc:#e0313b;--pb:#ffeceb}.p2{--pc:#2c6fd6;--pb:#eaf2ff}.p3{--pc:#8a5cf0;--pb:#f3edff}.p4{--pc:#3f9d58;--pb:#ecfaee}
+.class-group{margin:4px 0 6px;font-size:24px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:10px}
+.class-group::after{content:"";flex:1;border-top:2.5px dashed #c9d6ef}
+.field{margin:2px 0 12px;font-size:16px;font-weight:700;color:var(--muted)}
+.field b{color:var(--fc,var(--blue))}
+.labs + .class-group{margin-top:30px}
+.labs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.lab{display:flex;flex-direction:column;border:3px solid var(--lc);border-radius:18px 24px 16px 22px / 22px 16px 24px 18px;background:#fff;overflow:hidden}
+.lab-art{position:relative;background:var(--lb);border-bottom:2.5px solid var(--lc);padding:16px;height:240px;display:flex;align-items:center;justify-content:center;
+  background-image:linear-gradient(#ffffffaa 1px,transparent 1px),linear-gradient(90deg,#ffffffaa 1px,transparent 1px);background-size:20px 20px}
+.lab-art svg{width:100%;height:100%}
+.lab-art .badge{position:absolute;top:12px;left:12px;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--lc);color:#fff;font-weight:800;font-size:22px;border:3px solid #fff;box-shadow:0 0 0 3px var(--lc)}
+.lab-art .dim{position:absolute;top:14px;right:14px;background:#fff;border:2.5px solid var(--lc);border-radius:9px;padding:0 10px;font-weight:800;color:var(--lc);font-size:14px}
+.lab-body{padding:14px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.lab h3{margin:0;font-size:26px;line-height:1.2;font-weight:800;color:var(--lc)}
+.lab .meta{margin:-4px 0 0;font-size:14.5px;color:var(--muted);font-weight:600}
+.lab p{margin:0;font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0}
+.tags span{border:2px solid var(--tc);background:var(--tb);border-radius:8px 10px 9px 11px;padding:0 9px;font-size:14px;font-weight:600}
+.t1{--tc:#f0a0b8;--tb:#ffeef4}.t2{--tc:#8fbbea;--tb:#eaf4ff}.t3{--tc:#b49be8;--tb:#f2ecff}.t4{--tc:#8fd09b;--tb:#ecfaee}.t5{--tc:#f3b46b;--tb:#fff4e6}
+.lab-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
+.open{display:inline-block;text-decoration:none;background:var(--lc);color:#fff;border:2.5px solid var(--ld);border-radius:12px 15px 12px 14px;padding:7px 16px;font-weight:800;box-shadow:0 3px 0 var(--ld)}
+.open:hover{filter:brightness(1.07)}.open:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ld)}
+.src{display:inline-block;text-decoration:none;background:#fff;border:2.5px solid #cdd6ea;border-radius:12px 14px 12px 15px;padding:6px 12px;font-weight:700}
+.src:hover{background:#f4f7ff}
+.soon{display:flex;align-items:center;justify-content:center;text-align:center;border:3px dashed #c9d6ef;border-radius:18px 24px 16px 22px / 22px 16px 24px 18px;padding:20px;color:var(--muted);font-weight:600;min-height:160px;background:#fbfcff}
+.teach{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.note-card{border:2.5px solid var(--nc);border-radius:16px 20px 15px 19px;padding:12px 16px;background:#fff}
+.note-card h3{margin:0 0 6px;font-size:19px;line-height:1.3}
+.note-card h3 .q{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--nc);color:#fff;font-size:16px;margin-right:6px;vertical-align:1px}
+.note-card p,.note-card li{font-size:15.5px;line-height:1.5}
+.note-card p{margin:6px 0}
+.note-card ol,.note-card ul{margin:6px 0 0;padding-left:20px}
+.note-card li{margin:3px 0}
+.n1{--nc:#e0313b}.n2{--nc:#2c6fd6}.n3{--nc:#8a5cf0}
+
+footer{text-align:center;color:var(--muted);font-size:14px;margin-top:22px}
+footer a{color:var(--blue);font-weight:700}
+
+@media(max-width:900px){
+  .cx{grid-template-columns:1fr}
+}
+@media(max-width:850px){
+  .sheet-head,.intro,.math-grid,.about,.labs,.teach{grid-template-columns:1fr}
+  .chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand-card{min-width:0}
+  .note{margin:0 auto}
+  .block{padding:0 14px 16px}
+  .tab{padding-right:12px}
+  .tab h2{font-size:20px}
+  .lab-art{height:210px}
+}
+@media(max-width:560px){
+  .sheet{padding:16px 12px 32px}
+  .q-item{grid-template-columns:auto minmax(0,1fr)}
+  .q-item .opts{grid-column:2}
+  .q-item .fb{grid-column:1 / -1}
+  .dots{order:-1;width:100%;justify-content:center}
+  .dots button{width:34px;height:34px;font-size:15px}
+  .stepbar{justify-content:space-between}
+  .stepbar .btn{padding:6px 12px}
+  .calc{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){
+  .halo,.success.show{animation:none}
+}
