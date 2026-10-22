@@ -17,3 +17,8 @@ math{font-family:Cambria Math,STIX Two Math,serif;font-size:1.15em}math[display=
 .thalis-source{font-size:14px}.thalis-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 @media(max-width:600px){.thalis-links{grid-template-columns:1fr}.thalis-equation{font-size:18px}.thalis-figure text{font-size:21px}}
 @media print{.thalis-steps [hidden]{display:block!important}.thalis-controls,.thalis-nav,.thalis-check button{display:none}.step-card{break-inside:avoid}.thalis-hints{display:none}}
+
+/* Equal-height class cards with aligned, full-width actions. */
+.thalis-links > .note-card{display:flex;flex-direction:column;min-width:0}
+.thalis-links > .note-card > p{flex:1;margin:6px 0 16px}
+.thalis-links > .note-card > .btn{display:flex;align-items:center;justify-content:center;min-height:46px;width:100%;margin-top:auto;text-align:center;text-decoration:none}
