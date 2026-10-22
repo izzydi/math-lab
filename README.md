@@ -32,4 +32,7 @@ All pages share [`assets/style.css`](assets/style.css) and [`assets/lesson.js`](
 
 ## Προετοιμασία για τον Θαλή
 
-[Θαλής 2025 — Β΄ και Γ΄ Γυμνασίου](https://izzydi.github.io/math-lab/thalis/). Three problems per class, progressive hints, independently explained step-by-step solutions, comprehension checks, and a geometry figure linked to the proof. Statements are condensed with a link to the official EME source. Uses the existing Math Lab stylesheet, with scoped additions in `thalis/thalis.css`. No additional JavaScript dependencies.
+[Θαλής 2024 και 2025 — Β΄ και Γ΄ Γυμνασίου](https://izzydi.github.io/math-lab/thalis/). Three problems per class, progressive hints, independently explained step-by-step solutions, comprehension checks, and a geometry figure linked to the proof. Statements are condensed with a link to the official EME source. Uses the existing Math Lab stylesheet, with scoped additions in `thalis/thalis.css`. No additional JavaScript dependencies.
+
+
+The 2024 lessons live in `thalis/2024/`, with independent geometry controls in `2024.js`. Both official statement and solution PDFs are linked from each lesson.

@@ -22,3 +22,7 @@ math{font-family:Cambria Math,STIX Two Math,serif;font-size:1.15em}math[display=
 .thalis-links > .note-card{display:flex;flex-direction:column;min-width:0}
 .thalis-links > .note-card > p{flex:1;margin:6px 0 16px}
 .thalis-links > .note-card > .btn{display:flex;align-items:center;justify-content:center;min-height:46px;width:100%;margin-top:auto;text-align:center;text-decoration:none}
+
+
+.thalis-table{border-collapse:collapse;width:100%;max-width:480px;margin:14px 0}.thalis-table th,.thalis-table td{border:1px solid #aeb9d4;padding:8px 14px;text-align:center}.thalis-table th{background:#eaf2ff}.thalis-table caption{text-align:left;margin-bottom:8px;font-weight:700}
+#year2024,#year2025{scroll-margin-top:20px}
