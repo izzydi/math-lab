@@ -16,9 +16,11 @@ Interactive maths lessons for Greek lower-secondary (Gymnasium) students. Each l
 
 Lessons are grouped by class and by the thematic fields of the new Greek textbooks: Αριθμός και Άλγεβρα, Γεωμετρία, Στοχαστικά Μαθηματικά.
 
-## Thalis competition practice (Προετοιμασία για τον Θαλή)
+## Thalis competition practice
 
-[Θαλής 2025 και 2024, Β΄ και Γ΄ Γυμνασίου](https://izzydi.github.io/math-lab/thalis/). Three problems per class, with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
+**[▶ Προετοιμασία για τον Θαλή](https://izzydi.github.io/math-lab/thalis/)**
+
+The 2025 and 2024 competitions for Β΄ and Γ΄ Γυμνασίου. Three problems per class, with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
 
 | Year | Folder | Script |
 |---|---|---|
