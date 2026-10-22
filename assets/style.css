@@ -97,7 +97,7 @@ button:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{o
 .dots button{width:36px;height:36px;border-radius:50%;border:2.5px solid #c9d6ef;background:#fff;font-weight:800;color:var(--muted);font-size:16px;padding:0}
 .dots button.done{border-color:var(--blue);color:var(--blue)}
 .dots button[aria-current="step"]{background:var(--blue);border-color:var(--blue);color:#fff}
-.btn{display:inline-block;background:var(--bc,var(--blue));color:#fff;border:2.5px solid var(--bd,#1d4fa3);border-radius:12px 15px 12px 14px;padding:6px 14px;font-weight:800;box-shadow:0 3px 0 var(--bd,#1d4fa3);font-size:15.5px}
+.btn{text-decoration:none;display:inline-block;background:var(--bc,var(--blue));color:#fff;border:2.5px solid var(--bd,#1d4fa3);border-radius:12px 15px 12px 14px;padding:6px 14px;font-weight:800;box-shadow:0 3px 0 var(--bd,#1d4fa3);font-size:15.5px}
 .btn:hover{filter:brightness(1.07)}.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--bd,#1d4fa3)}
 .btn.ghost{background:#fff;color:var(--ink);border-color:#c9d6ef;box-shadow:0 3px 0 #c9d6ef}
 .btn:disabled{opacity:.45;cursor:default;transform:none;filter:none}
