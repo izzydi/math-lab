@@ -20,12 +20,13 @@ Lessons are grouped by class and by the thematic fields of the new Greek textboo
 
 **[▶ Προετοιμασία για τον Θαλή](https://izzydi.github.io/math-lab/thalis/)**
 
-The 2025 and 2024 competitions for Β΄ and Γ΄ Γυμνασίου. Three problems per class, with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
+The 2025, 2024 and 2023 competitions for Β΄ and Γ΄ Γυμνασίου. Three problems per class, with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
 
 | Year | Folder | Script |
 |---|---|---|
 | 2025 (7 Νοεμβρίου 2025) | [`thalis/2025/`](thalis/2025) (`b.html`, `g.html`) | [`thalis/thalis.js`](thalis/thalis.js) |
 | 2024 (8 Νοεμβρίου 2024) | [`thalis/2024/`](thalis/2024) (`b.html`, `g.html`) | [`thalis/2024/2024.js`](thalis/2024/2024.js) |
+| 2023 (4 Νοεμβρίου 2023) | [`thalis/2023/`](thalis/2023) (`b.html`, `g.html`) | [`thalis/2023/2023.js`](thalis/2023/2023.js) |
 
 The pages use the Math Lab stylesheet, with scoped additions in [`thalis/thalis.css`](thalis/thalis.css), and no other JavaScript dependencies.
 
@@ -43,4 +44,4 @@ All lessons share [`assets/style.css`](assets/style.css) and [`assets/lesson.js`
 
 Διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Κάθε μάθημα ξεκινά από ένα θέμα του σχολικού βιβλίου και το ζωντανεύει πάνω σε ένα σχήμα (κατασκευές, πειράματα, παράδοξα), στον browser, χωρίς εγκατάσταση και χωρίς λογαριασμό. Τα μαθήματα είναι οργανωμένα ανά τάξη και θεματικό πεδίο.
 
-Στην ενότητα [Προετοιμασία για τον Θαλή](https://izzydi.github.io/math-lab/thalis/) υπάρχουν τα θέματα του 2025 και του 2024 για Β΄ και Γ΄ Γυμνασίου, με υποδείξεις και λύσεις βήμα-βήμα.
+Στην ενότητα [Προετοιμασία για τον Θαλή](https://izzydi.github.io/math-lab/thalis/) υπάρχουν τα θέματα του 2025, του 2024 και του 2023 για Β΄ και Γ΄ Γυμνασίου, με υποδείξεις και λύσεις βήμα-βήμα.
