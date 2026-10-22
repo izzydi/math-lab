@@ -20,7 +20,7 @@ Lessons are grouped by class and by the thematic fields of the new Greek textboo
 
 **[▶ Προετοιμασία για τον Θαλή](https://izzydi.github.io/math-lab/thalis/)**
 
-The 2025, 2024 and 2023 competitions for Β΄ and Γ΄ Γυμνασίου. Three problems per class, with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
+The 2025, 2024 and 2023 competitions for Β΄ and Γ΄ Γυμνασίου. Every problem of the official EME paper for each class (three in 2025 and 2024, four in 2023), with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
 
 | Year | Folder | Script |
 |---|---|---|

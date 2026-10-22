@@ -8,8 +8,8 @@
 <header class="sheet-head">
 <div class="title-card">
 <h1><span class="t1">Θαλής 2023 –</span> <span class="t2">Β΄ Γυμνασίου</span></h1>
-<p>4 Νοεμβρίου 2023, 3 θέματα, με τον δικό σου ρυθμό</p></div><aside class="brand-card"><strong>Math Lab</strong><span>Σκέφτομαι, δοκιμάζω,<br>εξηγώ κάθε βήμα</span><em>Προετοιμασία για τον Θαλή</em></aside></header>
-<nav class="thalis-nav" aria-label="Τάξη και θέματα"><a class="btn ghost" href="g.html">Γ΄ Γυμνασίου</a><a class="btn ghost" href="#p1">Θέμα 1</a><a class="btn ghost" href="#p2">Θέμα 2</a><a class="btn ghost" href="#p3">Θέμα 3</a></nav>
+<p>4 Νοεμβρίου 2023, 4 θέματα, με τον δικό σου ρυθμό</p></div><aside class="brand-card"><strong>Math Lab</strong><span>Σκέφτομαι, δοκιμάζω,<br>εξηγώ κάθε βήμα</span><em>Προετοιμασία για τον Θαλή</em></aside></header>
+<nav class="thalis-nav" aria-label="Τάξη και θέματα"><a class="btn ghost" href="g.html">Γ΄ Γυμνασίου</a><a class="btn ghost" href="#p1">Θέμα 1</a><a class="btn ghost" href="#p2">Θέμα 2</a><a class="btn ghost" href="#p3">Θέμα 3</a><a class="btn ghost" href="#p4">Θέμα 4</a></nav>
 <p class="lead">Διάβασε την εκφώνηση, προσπάθησε στο χαρτί και χρησιμοποίησε τις υποδείξεις μόνο όσο χρειάζεται. Τα βήματα της λύσης ανοίγουν ένα-ένα.</p>
 
 <section class="block b-pink" id="p1">
@@ -112,5 +112,33 @@
 <div class="thalis-check" data-correct="0"><h3>Έλεγξε αν το κατάλαβες</h3><p>Τι γίνεται με το Ο όταν μετακινείς το Ε πάνω στη ΒΓ;</p>
 <button class="btn ghost" type="button" data-choice="0">Μένει πάντα στο κέντρο του ορθογωνίου</button><button class="btn ghost" type="button" data-choice="1">Μετακινείται μαζί με το Ε</button>
 <p role="status" data-feedback="Το Ο είναι πάντα το μέσο της ΑΓ, δηλαδή το σημείο όπου τέμνονται οι διαγώνιοι του ορθογωνίου. Δοκίμασέ το με τον δρομέα!"></p></div></section>
+<section class="block b-purple" id="p4">
+<div class="tab"><span class="num">4</span><h2>Παιδιά σε κύκλο</h2></div>
+<div class="task thalis-task">
+<span class="lbl">Εκφώνηση σε σύντομη διατύπωση</span>
+<p>20 παιδιά στέκονται σε κύκλο και καθένα παίρνει έναν φάκελο με έναν αριθμό από το 1 έως το 20, κάθε αριθμό μία φορά. Ένα παιδί επιλέγεται μόνο αν δίπλα του έχει ένα παιδί με μικρότερο αριθμό και ένα παιδί με μεγαλύτερο αριθμό.</p>
+<p>Επιλέχθηκαν 7 παιδιά. Μπορεί το άθροισμα των αριθμών τους να είναι 113;</p></div>
+<p>Δοκίμασε πρώτα στο τετράδιό σου. Αν κολλήσεις, άνοιξε μία υπόδειξη κάθε φορά.</p>
+<div class="thalis-hints">
+<details><summary>Υπόδειξη 1</summary><p>Σκέψου το παιδί με τον αριθμό 20. Μπορεί να έχει γείτονα με μεγαλύτερο αριθμό;</p></details>
+<details><summary>Υπόδειξη 2</summary><p>Ποιοι είναι οι 7 μεγαλύτεροι αριθμοί που μπορεί να έχουν τα επιλεγμένα παιδιά;</p></details>
+<details><summary>Υπόδειξη 3</summary><p>Υπολόγισε το μεγαλύτερο δυνατό άθροισμα και σύγκρινέ το με το 113.</p></details></div>
+<div class="thalis-steps">
+<article class="step-card" hidden><div class="step-head"><span class="letter">1</span><h3>Πότε επιλέγεται ένα παιδί</h3></div>
+<p>Ο αριθμός του παιδιού πρέπει να βρίσκεται ανάμεσα στους αριθμούς των δύο γειτόνων του. Για παράδειγμα, ένα παιδί με το 9 και γείτονες με το 5 και το 12 επιλέγεται.</p>
+<div class="fbox blue">μικρότερος γείτονας &lt; παιδί &lt; μεγαλύτερος γείτονας</div></article>
+<article class="step-card" hidden><div class="step-head"><span class="letter">2</span><h3>Το παιδί με το 20 δεν επιλέγεται ποτέ</h3></div>
+<p>Όλοι οι άλλοι αριθμοί είναι μικρότεροι από το 20. Άρα και οι δύο γείτονες του παιδιού με το 20 έχουν μικρότερο αριθμό, και κανένας δεν έχει μεγαλύτερο.</p>
+<div class="fbox blue">Τα 7 επιλεγμένα παιδιά έχουν αριθμούς από το 1 έως το 19</div></article>
+<article class="step-card" hidden><div class="step-head"><span class="letter">3</span><h3>Το μεγαλύτερο δυνατό άθροισμα</h3></div>
+<p>Τα 7 παιδιά έχουν 7 διαφορετικούς αριθμούς, όλους έως το 19. Το άθροισμά τους γίνεται όσο πιο μεγάλο γίνεται, αν πάρουμε τους 7 μεγαλύτερους. Τους προσθέτουμε σε ζευγάρια: 19 + 13 = 32, 18 + 14 = 32, 17 + 15 = 32 και μένει το 16.</p>
+<div class="fbox blue">19 + 18 + 17 + 16 + 15 + 14 + 13 = 3 · 32 + 16 = 112</div></article>
+<article class="step-card" hidden><div class="step-head"><span class="letter">4</span><h3>Γράφουμε την απάντηση</h3></div>
+<p>Όπως κι αν κάθονται τα παιδιά, το άθροισμα των 7 επιλεγμένων είναι το πολύ 112. Δεν χρειάζεται να βρούμε διάταξη: αρκεί ότι το 113 είναι μεγαλύτερο από κάθε δυνατό άθροισμα.</p>
+<div class="fbox blue">113 &gt; 112, άρα το άθροισμα δεν μπορεί να είναι 113</div></article>
+<div class="thalis-controls"><button class="btn reveal" type="button">Δείξε το πρώτο βήμα</button><button class="btn ghost reset" type="button">Από την αρχή</button><span class="thalis-progress" aria-live="polite"></span></div></div>
+<div class="thalis-check" data-correct="0"><h3>Έλεγξε αν το κατάλαβες</h3><p>Ποιο παιδί δεν μπορεί ποτέ να επιλεγεί;</p>
+<button class="btn ghost" type="button" data-choice="0">Αυτό με το 20</button><button class="btn ghost" type="button" data-choice="1">Αυτό με το 10</button>
+<p role="status" data-feedback="Το 20 δεν έχει γείτονα με μεγαλύτερο αριθμό. Το ίδιο ισχύει για το 1: δεν έχει γείτονα με μικρότερο αριθμό."></p></div></section>
 <footer class="thalis-source">Πηγή: <a href="https://hms.gr/wp-content/uploads/2025/07/themata_lyseis_THALH_04_11_2023_final.pdf">ΕΜΕ — επίσημες εκφωνήσεις και ενδεικτικές λύσεις 2023 (PDF)</a>. Οι εκφωνήσεις αποδίδονται συνοπτικά. Οι αναλυτικές διδακτικές εξηγήσεις και τα διαδραστικά σχήματα είναι του Math Lab. <a href="../#year2023">←&nbsp;Επιλογή τάξης 2023</a></footer></main>
 <script src="2023.js"></script></body></html>
