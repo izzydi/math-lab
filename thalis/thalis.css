@@ -1,0 +1,19 @@
+/* Scoped additions; the Math Lab stylesheet remains the visual foundation. */
+.thalis-nav{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}.thalis-nav a{text-decoration:none}
+.thalis-task{font-weight:500}.thalis-task h3{margin-top:0}
+.thalis-equation{overflow-x:auto;padding:10px 2px;font-size:clamp(18px,2.3vw,24px);font-weight:700}
+math{font-family:Cambria Math,STIX Two Math,serif;font-size:1.15em}math[display=block]{margin:10px 0;text-align:left}
+.thalis-hints details{margin:10px 0;border:2px dashed var(--purple);border-radius:12px;background:#faf7ff;padding:10px 14px}
+.thalis-hints summary{cursor:pointer;font-weight:700}.thalis-hints details p{margin:10px 0 0}
+.thalis-steps{margin-top:18px}.thalis-steps .step-card{margin:12px 0;--sc:var(--blue);--sh:#eaf2ff}
+.thalis-steps .step-card p{margin:10px 0}.thalis-steps [hidden]{display:none!important}
+.thalis-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:15px 0}
+.thalis-progress{font-size:14px;font-weight:700;color:var(--muted)}
+.thalis-figure{width:100%;max-width:650px;margin:12px auto;display:block}.thalis-figure text{font:700 19px var(--hand)}
+.thalis-geometry{border:2px solid var(--blue);border-radius:16px;padding:14px;background:#f8fbff}
+.thalis-geometry label{display:block;font-weight:700}.thalis-caption{font-size:14px;margin:6px 0}
+.thalis-check{border:2px solid var(--green);border-radius:14px;padding:14px;margin-top:20px;background:#effaef}
+.thalis-check button{margin:5px}.thalis-check [role=status]{min-height:1.6em;font-weight:700}
+.thalis-source{font-size:14px}.thalis-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media(max-width:600px){.thalis-links{grid-template-columns:1fr}.thalis-equation{font-size:18px}.thalis-figure text{font-size:21px}}
+@media print{.thalis-steps [hidden]{display:block!important}.thalis-controls,.thalis-nav,.thalis-check button{display:none}.step-card{break-inside:avoid}.thalis-hints{display:none}}

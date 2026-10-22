@@ -28,3 +28,8 @@ All pages share [`assets/style.css`](assets/style.css) and [`assets/lesson.js`](
 ## Στα ελληνικά
 
 Διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Κάθε μάθημα ξεκινά από ένα θέμα του σχολικού βιβλίου και το ζωντανεύει πάνω σε ένα σχήμα (κατασκευές, πειράματα, παράδοξα), στον browser, χωρίς εγκατάσταση και χωρίς λογαριασμό. Τα μαθήματα είναι οργανωμένα ανά τάξη και θεματικό πεδίο.
+
+
+## Προετοιμασία για τον Θαλή
+
+[Θαλής 2025 — Β΄ και Γ΄ Γυμνασίου](https://izzydi.github.io/math-lab/thalis/). Three problems per class, progressive hints, independently explained step-by-step solutions, comprehension checks, and a geometry figure linked to the proof. Statements are condensed with a link to the official EME source. Uses the existing Math Lab stylesheet, with scoped additions in `thalis/thalis.css`. No additional JavaScript dependencies.
