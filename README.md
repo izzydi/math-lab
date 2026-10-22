@@ -16,23 +16,29 @@ Interactive maths lessons for Greek lower-secondary (Gymnasium) students. Each l
 
 Lessons are grouped by class and by the thematic fields of the new Greek textbooks: Αριθμός και Άλγεβρα, Γεωμετρία, Στοχαστικά Μαθηματικά.
 
+## Thalis competition practice (Προετοιμασία για τον Θαλή)
+
+[Θαλής 2025 και 2024, Β΄ και Γ΄ Γυμνασίου](https://izzydi.github.io/math-lab/thalis/). Three problems per class, with progressive hints, step-by-step solutions explained one step at a time, comprehension checks, and a geometry figure linked to the proof. Statements are condensed, and each lesson links the official EME PDFs.
+
+| Year | Folder | Script |
+|---|---|---|
+| 2025 (7 Νοεμβρίου 2025) | [`thalis/2025/`](thalis/2025) (`b.html`, `g.html`) | [`thalis/thalis.js`](thalis/thalis.js) |
+| 2024 (8 Νοεμβρίου 2024) | [`thalis/2024/`](thalis/2024) (`b.html`, `g.html`) | [`thalis/2024/2024.js`](thalis/2024/2024.js) |
+
+The pages use the Math Lab stylesheet, with scoped additions in [`thalis/thalis.css`](thalis/thalis.css), and no other JavaScript dependencies.
+
 ## Adding a lesson
 
-1. Copy one of the lesson folders to a new folder with a short English name, e.g. `thales/`.
+1. Copy one of the lesson folders to a new folder with a short English name, e.g. `pythagorean-theorem/`.
 2. Edit the text in the HTML. The sections are numbered blocks (`<section class="block …">`), so you can keep, remove or reorder them.
-3. Add a card for it on `index.html`, between `<!-- LESSONS:START -->` and `<!-- LESSONS:END -->`, under the right class heading.
-4. Add a row to the table above.
+3. Add a card for it on `index.html`, between `<!-- LESSONS:START -->` and `<!-- LESSONS:END -->`, under the right class heading, and renumber the badges.
+4. Update the «Επόμενο» links in the `.lab-pager` at the bottom of each page, so they follow the order of the cards: the lesson before the new one points to it, and the new one points to the lesson after it.
+5. Add a row to the lesson table above and renumber.
 
-All pages share [`assets/style.css`](assets/style.css) and [`assets/lesson.js`](assets/lesson.js) (the true/false quiz and small helpers), so a change there updates every lesson. Published with GitHub Pages from the `main` branch.
+All lessons share [`assets/style.css`](assets/style.css) and [`assets/lesson.js`](assets/lesson.js) (the true/false quiz and small helpers), so a change there updates every lesson. Published with GitHub Pages from the `main` branch.
 
 ## Στα ελληνικά
 
 Διαδραστικά μαθήματα Μαθηματικών για το Γυμνάσιο. Κάθε μάθημα ξεκινά από ένα θέμα του σχολικού βιβλίου και το ζωντανεύει πάνω σε ένα σχήμα (κατασκευές, πειράματα, παράδοξα), στον browser, χωρίς εγκατάσταση και χωρίς λογαριασμό. Τα μαθήματα είναι οργανωμένα ανά τάξη και θεματικό πεδίο.
 
-
-## Προετοιμασία για τον Θαλή
-
-[Θαλής 2024 και 2025 — Β΄ και Γ΄ Γυμνασίου](https://izzydi.github.io/math-lab/thalis/). Three problems per class, progressive hints, independently explained step-by-step solutions, comprehension checks, and a geometry figure linked to the proof. Statements are condensed with a link to the official EME source. Uses the existing Math Lab stylesheet, with scoped additions in `thalis/thalis.css`. No additional JavaScript dependencies.
-
-
-The 2024 lessons live in `thalis/2024/`, with independent geometry controls in `2024.js`. Both official statement and solution PDFs are linked from each lesson.
+Στην ενότητα [Προετοιμασία για τον Θαλή](https://izzydi.github.io/math-lab/thalis/) υπάρχουν τα θέματα του 2025 και του 2024 για Β΄ και Γ΄ Γυμνασίου, με υποδείξεις και λύσεις βήμα-βήμα.
